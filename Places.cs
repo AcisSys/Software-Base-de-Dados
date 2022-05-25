@@ -33,7 +33,11 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
-
+        public int ID { get; set; }
+        public string Localizacao { get; set; }
+        public string X { get; set; }
+        public string Y { get; set; }
+    
 
         private void Places_Load(object sender, EventArgs e)
         {
@@ -64,14 +68,19 @@ namespace Software_Base_de_Dados
                 // Disable campo ID
 
                 maskedTextBox1.ReadOnly = true;
-                maskedTextBox2.Select();
                 maskedTextBox1.Enabled = false;
             }
             else
             {
                 button1.Text = "Modificar";
-                maskedTextBox1.ReadOnly = false;
-                maskedTextBox1.Enabled = true;
+                maskedTextBox1.ReadOnly = true;
+                maskedTextBox3.Select();
+                maskedTextBox1.Enabled = false;
+                maskedTextBox1.Text = ID.ToString();
+                maskedTextBox2.Text = Localizacao;
+                maskedTextBox3.Text = X;
+                maskedTextBox4.Text = Y;
+
             }
         }
 

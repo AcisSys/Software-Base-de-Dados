@@ -60,6 +60,7 @@ namespace Software_Base_de_Dados
             // 
             this.Modify_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Modify_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Modify_Button.Enabled = false;
             this.Modify_Button.Image = ((System.Drawing.Image)(resources.GetObject("Modify_Button.Image")));
             this.Modify_Button.Location = new System.Drawing.Point(809, 456);
             this.Modify_Button.Name = "Modify_Button";
@@ -76,6 +77,7 @@ namespace Software_Base_de_Dados
             this.Remove_Button.AccessibleName = "Erase Button";
             this.Remove_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Remove_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Remove_Button.Enabled = false;
             this.Remove_Button.Image = ((System.Drawing.Image)(resources.GetObject("Remove_Button.Image")));
             this.Remove_Button.Location = new System.Drawing.Point(809, 526);
             this.Remove_Button.Name = "Remove_Button";
@@ -109,7 +111,7 @@ namespace Software_Base_de_Dados
             this.sfDataGrid2.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
             this.sfDataGrid2.Location = new System.Drawing.Point(3, 375);
             this.sfDataGrid2.Name = "sfDataGrid2";
-            this.sfDataGrid2.Size = new System.Drawing.Size(804, 180);
+            this.sfDataGrid2.Size = new System.Drawing.Size(804, 216);
             this.sfDataGrid2.TabIndex = 5;
             this.sfDataGrid2.Text = "sfDataGrid2";
             // 

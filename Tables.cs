@@ -46,6 +46,8 @@ namespace Software_Base_de_Dados
         public string Tabela2 { get; set; }
         private void Tables_Load(object sender, EventArgs e)
         {
+            Modify_Button.Enabled = false;
+            Remove_Button.Enabled = false;
             sfDataGrid2.DataSource = null;
             if (connection.State == ConnectionState.Closed)
             {
@@ -213,6 +215,8 @@ namespace Software_Base_de_Dados
 
             // Update á tabela quando retorna ao usercontrol
             UpdateTable();
+            Modify_Button.Enabled = false;
+            Remove_Button.Enabled = false;
 
         }
         private void Remove_Button_Click(object sender, EventArgs e)
@@ -273,6 +277,8 @@ namespace Software_Base_de_Dados
             }
             // Atualiza tabela
             UpdateTable();
+            Modify_Button.Enabled = false;
+            Remove_Button.Enabled = false;
         }
 
         private void Tables_Load_1(object sender, EventArgs e)
@@ -282,6 +288,8 @@ namespace Software_Base_de_Dados
 
         private void SfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
+            Modify_Button.Enabled = true;
+            Remove_Button.Enabled = true;
             DataSet ds = new DataSet();
             ds.Reset();
             if (connection.State != ConnectionState.Open)
@@ -306,6 +314,13 @@ namespace Software_Base_de_Dados
                 agend.Idequipa = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 agend.Idtask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
 
+            }
+            if (Tabela == "tab_places")
+            {
+                places.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                places.Localizacao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                places.X = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+                places.Y = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
             }
             if (Tabela == "tab_subtasks")
             {
