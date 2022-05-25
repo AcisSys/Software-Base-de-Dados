@@ -83,7 +83,6 @@ namespace Software_Base_de_Dados
                 // Utilizador necessita de introduzir o ID
                 maskedTextBox1.ReadOnly = false;
                 maskedTextBox1.Text = Id.ToString();
-                
                 maskedTextBox1.ReadOnly = true;
                 maskedTextBox1.Enabled = false;
 

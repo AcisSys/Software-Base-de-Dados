@@ -34,6 +34,10 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
+        public int ID { get; set; }
+        public string IDTask { get; set; }
+        public string Desc { get; set; }
+        public string Type { get; set; }
         private void Subtasks_Load(object sender, EventArgs e)
         {
             if (connection.State == System.Data.ConnectionState.Closed)
@@ -64,12 +68,21 @@ namespace Software_Base_de_Dados
                 // Disable campo ID
 
                 maskedTextBox1.ReadOnly = true;
-                comboBox1.Select();
                 maskedTextBox1.Enabled = false;
             }
             else
             {
                 button1.Text = "Modificar";
+
+                maskedTextBox1.Text = ID.ToString();
+                comboBox1.Text = IDTask;
+                maskedTextBox2.Text = Desc;
+                comboBox2.Text = Type;
+
+                // Disable campo ID
+
+                maskedTextBox1.ReadOnly = true;
+                maskedTextBox1.Enabled = false;
             }
 
 
@@ -88,6 +101,8 @@ namespace Software_Base_de_Dados
             dataTable = dset.Tables["type"];
             comboBox2.DataSource = dataTable;
             comboBox2.DisplayMember = "Type";
+
+            button1.Select();
 
         }
 
@@ -142,6 +157,16 @@ namespace Software_Base_de_Dados
                     MessageBoxIcon.Information);
             }
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1.Select();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1.Select();
         }
     }
 }
