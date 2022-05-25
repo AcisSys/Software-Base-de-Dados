@@ -1,4 +1,7 @@
-﻿namespace Software_Base_de_Dados
+﻿
+using System.Windows.Forms;
+
+namespace Software_Base_de_Dados
 {
     partial class Places
     {

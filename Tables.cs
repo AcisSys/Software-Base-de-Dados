@@ -93,11 +93,6 @@ namespace Software_Base_de_Dados
             sfDataGrid1.DataSource = null;
             sfDataGrid1.DataSource = dset.Tables["table"];
             sfDataGrid1.Update();
-
-            querry = "SELECT * FROM " + Tabela2;
-            adapter = new OleDbDataAdapter(querry, connection);
-            adapter.Fill(dset, "tabled");
-            sfDataGrid2.DataSource = dset.Tables["tabled"];
             connection.Close();
         }
 
@@ -143,7 +138,7 @@ namespace Software_Base_de_Dados
             if (Tabela == "tab_workers")
             {
                 Workers workers = new Workers();
-                workers.tipo = "Add";
+                workers.Tipo = "Add";
                 workers.ShowDialog();
             }
 
@@ -196,7 +191,7 @@ namespace Software_Base_de_Dados
             if (Tabela == "tab_workers")
             {
                 Workers workers = new Workers();
-                workers.tipo = "";
+                workers.Tipo = "";
                 workers.ShowDialog();
             }
 
@@ -271,13 +266,55 @@ namespace Software_Base_de_Dados
 
         private void sfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
-            
-            DataSet ds = new DataSet();
-            string querry = "SELECT * FROM " + Tabela2 + " WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-            adapter = new OleDbDataAdapter(querry, connection);
-            adapter.Fill(ds, "tabled");
-            sfDataGrid2.DataSource = ds.Tables["tabled"];
-            connection.Close();
+            if (connection.State != ConnectionState.Open)
+            {
+                try
+                {
+                    connection.Open();
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            if (Tabela == "tab_agend")
+            {
+                DataSet ds = new DataSet();
+                string querry = "SELECT Descricao FROM tab_teams WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                adapter = new OleDbDataAdapter(querry, connection);
+                adapter.Fill(ds, "tabled");
+                querry = "SELECT Descricao, IDPlace, Active, RefTag FROM tab_tasks WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+                adapter.Fill(ds, "tabled");
+                sfDataGrid2.DataSource = ds.Tables["tabled"];
+                connection.Close();
+            }
+            if (Tabela == "tab_subtasks")
+            {
+                DataSet ds = new DataSet();
+                string querry = "SELECT * FROM " + Tabela2 + " WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                adapter = new OleDbDataAdapter(querry, connection);
+                adapter.Fill(ds, "tabled");
+                sfDataGrid2.DataSource = ds.Tables["tabled"];
+                connection.Close();
+            }
+            if (Tabela == "tab_tasks")
+            {
+                DataSet ds = new DataSet();
+                string querry = "SELECT * FROM " + Tabela2 + " WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+                adapter = new OleDbDataAdapter(querry, connection);
+                adapter.Fill(ds, "tabled");
+                sfDataGrid2.DataSource = ds.Tables["tabled"];
+                connection.Close();
+
+            }
+            if (Tabela == "tab_workers")
+            {
+                DataSet ds = new DataSet();
+                string querry = "SELECT * FROM " + Tabela2 + " WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+                adapter = new OleDbDataAdapter(querry, connection);
+                adapter.Fill(ds, "tabled");
+                sfDataGrid2.DataSource = ds.Tables["tabled"];
+                connection.Close();
+            }
         }
     }
 }

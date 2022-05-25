@@ -63,6 +63,7 @@ namespace Software_Base_de_Dados
         private void Workers_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_workers";
+            table.Tabela2 = "tab_teams";
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
@@ -72,6 +73,7 @@ namespace Software_Base_de_Dados
         private void Teams_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_teams";
+            
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
@@ -81,6 +83,7 @@ namespace Software_Base_de_Dados
         private void Tasks_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_tasks";
+            table.Tabela2 = "tab_places";
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
@@ -90,6 +93,7 @@ namespace Software_Base_de_Dados
         private void SubTasks_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_subtasks";
+            table.Tabela2 = "tab_tasks";
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
