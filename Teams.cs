@@ -26,13 +26,13 @@ namespace Software_Base_de_Dados
 
         // Conexão
 
-        public readonly OleDbConnection connection = new(caminho);
+        public readonly OleDbConnection connection = new OleDbConnection(caminho);
 
 
 
         // String publica para dar a conhecer a table que está a ser visualisada
 
-        public string? tipo { get; set; }
+        public string tipo { get; set; }
 
 
         private void Teams_Load(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace Software_Base_de_Dados
 
 
                 string comand = "SELECT MAX (ID) FROM tab_teams";
-                OleDbCommand oleDbCommand = new(comand, connection);
+                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
@@ -80,7 +80,7 @@ namespace Software_Base_de_Dados
             {
                 string querry = "INSERT INTO tab_teams (ID, Descricao)" +
                         "VALUES (@ID, @Descricao)";
-                OleDbCommand oleDbCommand = new(querry, connection);
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@Descricao",
                     OleDbType.LongVarChar).Value = maskedTextBox2.Text;
@@ -106,7 +106,7 @@ namespace Software_Base_de_Dados
 
                 string querry = "UPDATE tab_teams  SET Descricao = @Descricao where ID = "
                     + maskedTextBox1.Text;
-                OleDbCommand oleDbCommand = new(querry, connection);
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@Descricao",
                     OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 try

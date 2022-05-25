@@ -26,20 +26,20 @@ namespace Software_Base_de_Dados
 
         // Conexão
 
-        public readonly OleDbConnection connection = new(caminho);
+        public readonly OleDbConnection connection = new OleDbConnection(caminho);
 
         // DataSet para as tabelas
 
-        DataSet dset = new();
+        DataSet dset = new DataSet();
 
         // Adaptador para o DataSet
 
-        OleDbDataAdapter adapter = new();
+        OleDbDataAdapter adapter = new OleDbDataAdapter();
 
 
         // String publica para dar a conhecer a table que está a ser visualisada
 
-        public string? tipo { get; set; }
+        public string Tipo { get; set; }
 
         private void Workers_Load(object sender, EventArgs e)
         {
@@ -55,7 +55,7 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            if (tipo == "Add")
+            if (Tipo == "Add")
             {
                 button1.Text = "Guardar";
 
@@ -63,7 +63,7 @@ namespace Software_Base_de_Dados
 
 
                 string comand = "SELECT MAX (ID) FROM tab_workers";
-                OleDbCommand oleDbCommand = new(comand, connection);
+                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
@@ -81,21 +81,21 @@ namespace Software_Base_de_Dados
 
             // Dados para ComboBox1
             string querry = "SELECT * FROM tab_tasks";
-            adapter = new(querry, connection);
+            adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
-            DataTable? dataTable = dset.Tables["idtask"];
+            DataTable dataTable = dset.Tables["idtask"];
             comboBox1.DataSource = dataTable;
             comboBox1.DisplayMember = "ID";
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            if (tipo == "Add")
+            if (Tipo == "Add")
             {
                 string querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod)" +
                         "VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
-                OleDbCommand oleDbCommand = new(querry, connection);
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = comboBox1.Text;
@@ -118,7 +118,7 @@ namespace Software_Base_de_Dados
             {
                 string querry = "UPDATE tab_workers  SET Nome = @Nome," +
                         " IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = " + maskedTextBox1.Text;
-                 OleDbCommand oleDbCommand = new(querry, connection);
+                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = comboBox1.Text;
                 oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;

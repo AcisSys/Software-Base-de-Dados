@@ -26,20 +26,20 @@ namespace Software_Base_de_Dados
 
         // Conexão
 
-        public readonly OleDbConnection connection = new(caminho);
+        public readonly OleDbConnection connection = new OleDbConnection(caminho);
 
         // DataSet para as tabelas
 
-        DataSet dset = new();
+        DataSet dset = new DataSet();
 
         // Adaptador para o DataSet
 
-        OleDbDataAdapter adapter = new();
+        OleDbDataAdapter adapter = new OleDbDataAdapter();
 
 
         // String publica para dar a conhecer a table que está a ser visualisada
 
-        public string? tipo { get; set; }
+        public string tipo { get; set; }
         private void Tasks_Load(object sender, EventArgs e)
         {
             if (connection.State == System.Data.ConnectionState.Closed)
@@ -62,7 +62,7 @@ namespace Software_Base_de_Dados
 
 
                 string comand = "SELECT MAX (ID) FROM tab_tasks";
-                OleDbCommand oleDbCommand = new(comand, connection);
+                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
@@ -81,15 +81,15 @@ namespace Software_Base_de_Dados
 
             // Dados para ComboBox1
             string querry = "SELECT * FROM tab_places";
-            adapter = new(querry, connection);
+            adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
-            DataTable? dataTable = dset.Tables["idtask"];
+            DataTable dataTable = dset.Tables["idtask"];
             comboBox1.DataSource = dataTable;
             comboBox1.DisplayMember = "ID";
 
             // Dados para ComboBox2
             querry = "SELECT DISTINCT Ref FROM tab_tags";
-            adapter = new(querry, connection);
+            adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
             comboBox2.DataSource = dataTable;
@@ -113,7 +113,7 @@ namespace Software_Base_de_Dados
 
                 string querry = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +
                          "VALUES (@ID, @Descricao, @IDPlace, @Active, @RefTag)";
-                OleDbCommand oleDbCommand = new(querry, connection);
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@Descricao", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = comboBox1.Text;
