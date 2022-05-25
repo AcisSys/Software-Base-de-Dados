@@ -47,9 +47,9 @@ namespace Software_Base_de_Dados
             this.Add_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Add_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Add_Button.Image = ((System.Drawing.Image)(resources.GetObject("Add_Button.Image")));
-            this.Add_Button.Location = new System.Drawing.Point(944, 445);
+            this.Add_Button.Location = new System.Drawing.Point(809, 386);
             this.Add_Button.Name = "Add_Button";
-            this.Add_Button.Size = new System.Drawing.Size(191, 75);
+            this.Add_Button.Size = new System.Drawing.Size(164, 65);
             this.Add_Button.TabIndex = 1;
             this.Add_Button.Text = "Adicionar";
             this.Add_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -61,9 +61,9 @@ namespace Software_Base_de_Dados
             this.Modify_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Modify_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Modify_Button.Image = ((System.Drawing.Image)(resources.GetObject("Modify_Button.Image")));
-            this.Modify_Button.Location = new System.Drawing.Point(944, 526);
+            this.Modify_Button.Location = new System.Drawing.Point(809, 456);
             this.Modify_Button.Name = "Modify_Button";
-            this.Modify_Button.Size = new System.Drawing.Size(191, 75);
+            this.Modify_Button.Size = new System.Drawing.Size(164, 65);
             this.Modify_Button.TabIndex = 2;
             this.Modify_Button.Text = "Modificar";
             this.Modify_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -77,9 +77,9 @@ namespace Software_Base_de_Dados
             this.Remove_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Remove_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Remove_Button.Image = ((System.Drawing.Image)(resources.GetObject("Remove_Button.Image")));
-            this.Remove_Button.Location = new System.Drawing.Point(944, 607);
+            this.Remove_Button.Location = new System.Drawing.Point(809, 526);
             this.Remove_Button.Name = "Remove_Button";
-            this.Remove_Button.Size = new System.Drawing.Size(191, 75);
+            this.Remove_Button.Size = new System.Drawing.Size(164, 65);
             this.Remove_Button.TabIndex = 3;
             this.Remove_Button.Text = "Apagar";
             this.Remove_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -96,12 +96,7 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
             this.sfDataGrid1.Location = new System.Drawing.Point(3, 0);
             this.sfDataGrid1.Name = "sfDataGrid1";
-            this.sfDataGrid1.Size = new System.Drawing.Size(938, 426);
-            this.sfDataGrid1.Style.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.sfDataGrid1.Style.CheckBoxStyle.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.sfDataGrid1.Style.CheckBoxStyle.CheckedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.sfDataGrid1.Style.CheckBoxStyle.IndeterminateBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.sfDataGrid1.Style.HyperlinkStyle.DefaultLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.sfDataGrid1.Size = new System.Drawing.Size(804, 369);
             this.sfDataGrid1.TabIndex = 4;
             this.sfDataGrid1.Text = "sfDataGrid1";
             this.sfDataGrid1.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.sfDataGrid1_SelectionChanged);
@@ -109,20 +104,18 @@ namespace Software_Base_de_Dados
             // sfDataGrid2
             // 
             this.sfDataGrid2.AccessibleName = "Table";
-            this.sfDataGrid2.Location = new System.Drawing.Point(0, 432);
+            this.sfDataGrid2.AllowEditing = false;
+            this.sfDataGrid2.AllowFiltering = true;
+            this.sfDataGrid2.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            this.sfDataGrid2.Location = new System.Drawing.Point(3, 375);
             this.sfDataGrid2.Name = "sfDataGrid2";
-            this.sfDataGrid2.Size = new System.Drawing.Size(938, 207);
-            this.sfDataGrid2.Style.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.sfDataGrid2.Style.CheckBoxStyle.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.sfDataGrid2.Style.CheckBoxStyle.CheckedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.sfDataGrid2.Style.CheckBoxStyle.IndeterminateBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.sfDataGrid2.Style.HyperlinkStyle.DefaultLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.sfDataGrid2.Size = new System.Drawing.Size(804, 180);
             this.sfDataGrid2.TabIndex = 5;
             this.sfDataGrid2.Text = "sfDataGrid2";
             // 
             // Tables
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
@@ -132,7 +125,7 @@ namespace Software_Base_de_Dados
             this.Controls.Add(this.Modify_Button);
             this.Controls.Add(this.Add_Button);
             this.Name = "Tables";
-            this.Size = new System.Drawing.Size(1138, 685);
+            this.Size = new System.Drawing.Size(975, 594);
             this.Load += new System.EventHandler(this.Tables_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid2)).EndInit();
