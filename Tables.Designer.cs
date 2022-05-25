@@ -99,6 +99,8 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.Location = new System.Drawing.Point(3, 0);
             this.sfDataGrid1.Name = "sfDataGrid1";
             this.sfDataGrid1.Size = new System.Drawing.Size(804, 369);
+            this.sfDataGrid1.Style.HeaderStyle.Font.Bold = true;
+            this.sfDataGrid1.Style.HeaderStyle.Font.Size = 11F;
             this.sfDataGrid1.TabIndex = 4;
             this.sfDataGrid1.Text = "sfDataGrid1";
             this.sfDataGrid1.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.SfDataGrid1_SelectionChanged);
@@ -112,6 +114,8 @@ namespace Software_Base_de_Dados
             this.sfDataGrid2.Location = new System.Drawing.Point(3, 375);
             this.sfDataGrid2.Name = "sfDataGrid2";
             this.sfDataGrid2.Size = new System.Drawing.Size(804, 216);
+            this.sfDataGrid2.Style.HeaderStyle.Font.Bold = true;
+            this.sfDataGrid2.Style.HeaderStyle.Font.Size = 11F;
             this.sfDataGrid2.TabIndex = 5;
             this.sfDataGrid2.Text = "sfDataGrid2";
             // 
