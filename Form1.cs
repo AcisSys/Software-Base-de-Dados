@@ -100,5 +100,10 @@ namespace Software_Base_de_Dados
             panel1.Controls.Clear();
             panel1.Controls.Add(table);
         }
+
+        private void Exportar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

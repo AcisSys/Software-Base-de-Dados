@@ -36,6 +36,7 @@ namespace Software_Base_de_Dados
             this.Remove_Button = new System.Windows.Forms.Button();
             this.sfDataGrid1 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.sfDataGrid2 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            this.Exportar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid2)).BeginInit();
             this.SuspendLayout();
@@ -119,12 +120,25 @@ namespace Software_Base_de_Dados
             this.sfDataGrid2.TabIndex = 5;
             this.sfDataGrid2.Text = "sfDataGrid2";
             // 
+            // Exportar
+            // 
+            this.Exportar.Image = ((System.Drawing.Image)(resources.GetObject("Exportar.Image")));
+            this.Exportar.Location = new System.Drawing.Point(808, 3);
+            this.Exportar.Name = "Exportar";
+            this.Exportar.Size = new System.Drawing.Size(164, 65);
+            this.Exportar.TabIndex = 6;
+            this.Exportar.Text = "Exportar";
+            this.Exportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Exportar.UseVisualStyleBackColor = true;
+            this.Exportar.Click += new System.EventHandler(this.Exportar_Click);
+            // 
             // Tables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.Exportar);
             this.Controls.Add(this.sfDataGrid2);
             this.Controls.Add(this.sfDataGrid1);
             this.Controls.Add(this.Remove_Button);
@@ -145,5 +159,6 @@ namespace Software_Base_de_Dados
         private Button Remove_Button;
         private Syncfusion.WinForms.DataGrid.SfDataGrid sfDataGrid1;
         private Syncfusion.WinForms.DataGrid.SfDataGrid sfDataGrid2;
+        private Button Exportar;
     }
 }

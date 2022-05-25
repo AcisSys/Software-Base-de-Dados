@@ -78,7 +78,7 @@ namespace Software_Base_de_Dados
             this.SubTasks_Button});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1138, 60);
+            this.toolStrip1.Size = new System.Drawing.Size(975, 52);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -175,18 +175,18 @@ namespace Software_Base_de_Dados
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
-            this.panel1.Location = new System.Drawing.Point(0, 66);
-            this.panel1.Margin = new System.Windows.Forms.Padding(6);
+            this.panel1.Location = new System.Drawing.Point(0, 57);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1138, 685);
+            this.panel1.Size = new System.Drawing.Size(975, 594);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1138, 749);
+            this.ClientSize = new System.Drawing.Size(975, 649);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
@@ -209,6 +209,5 @@ namespace Software_Base_de_Dados
         private ToolStripButton Tasks_Button;
         private ToolStripButton SubTasks_Button;
         private Panel panel1;
-        
     }
 }
