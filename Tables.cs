@@ -31,6 +31,14 @@ namespace Software_Base_de_Dados
 
         OleDbDataAdapter adapter = new OleDbDataAdapter();
 
+        Agend agend = new Agend();
+        Places places = new Places();
+        Subtasks subtasks = new Subtasks();
+        Tags tags = new Tags();
+        Tasks tasks = new Tasks();
+        Teams teams = new Teams();
+        Workers workers = new Workers();
+
 
         // String publica para dar a conhecer a table que está a ser visualisada
 
@@ -106,50 +114,43 @@ namespace Software_Base_de_Dados
             }
             if (Tabela == "tab_places")
             {
-                Places places = new Places
-                {
-                    Tipo = "Add"
-                };
+
+                places.Tipo = "Add";
+
                 places.ShowDialog();
             }
             if (Tabela == "tab_tasks")
             {
-                Tasks tasks = new Tasks
-                {
-                    Tipo = "Add"
-                };
+                tasks.Tipo = "Add";
+
                 tasks.ShowDialog();
             }
             if (Tabela == "tab_subtasks")
             {
-                Subtasks subtasks = new Subtasks
-                {
-                    Tipo = "Add"
-                };
+
+
+                subtasks.Tipo = "Add";
+
                 subtasks.ShowDialog();
             }
             if (Tabela == "tab_tags")
             {
-                Tags tags = new Tags
-                {
-                    Tipo = "Add"
-                };
+
+                tags.Tipo = "Add";
                 tags.ShowDialog();
             }
             if (Tabela == "tab_teams")
             {
-                Teams teams = new Teams
-                {
-                    Tipo = "Add"
-                };
+
+                teams.Tipo = "Add";
+
                 teams.ShowDialog();
             }
             if (Tabela == "tab_workers")
             {
-                Workers workers = new Workers
-                {
-                    Tipo = "Add"
-                };
+
+                workers.Tipo = "Add";
+
                 workers.ShowDialog();
             }
 
@@ -165,58 +166,48 @@ namespace Software_Base_de_Dados
             // chama a form para modificar campos da tabela
             if (Tabela == "tab_agend")
             {
-                Agend agend = new Agend
-                {
-                    Tipo = ""
-                };
+
+                agend.Tipo = "";
+                
                 agend.ShowDialog();
             }
             if (Tabela == "tab_places")
             {
-                Places places = new Places
-                {
-                    Tipo = ""
-                };
+                places.Tipo = "";
+                
                 places.ShowDialog();
             }
             if (Tabela == "tab_tasks")
             {
-                Tasks tasks = new Tasks
-                {
-                    Tipo = ""
-                };
+                tasks.Tipo = "";
+                
                 tasks.ShowDialog();
             }
             if (Tabela == "tab_subtasks")
             {
-                Subtasks subtasks = new Subtasks
-                {
-                    Tipo = ""
-                };
+                subtasks.Tipo = "";
+               
                 subtasks.ShowDialog();
             }
             if (Tabela == "tab_tags")
             {
-                Tags tags = new Tags
-                {
-                    Tipo = ""
-                };
+
+                tags.Tipo = "";
+              
                 tags.ShowDialog();
             }
             if (Tabela == "tab_teams")
             {
-                Teams teams = new Teams
-                {
-                    Tipo = ""
-                };
+
+                teams.Tipo = "";
+                
                 teams.ShowDialog();
             }
             if (Tabela == "tab_workers")
             {
-                Workers workers = new Workers
-                {
-                    Tipo = ""
-                };
+
+                workers.Tipo = "";
+               
                 workers.ShowDialog();
             }
 
@@ -311,7 +302,10 @@ namespace Software_Base_de_Dados
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
                 sfDataGrid2.DataSource = ds.Tables["tabled"];
-                connection.Close();
+                agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                agend.Idequipa = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                agend.Idtask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+
             }
             if (Tabela == "tab_subtasks")
             {
@@ -348,7 +342,7 @@ namespace Software_Base_de_Dados
             }
             if (Tabela == "tab_tags")
             {
-                string querry = "SELECT * FROM tab_tasks WHERE RefTag = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1]+"'";
+                string querry = "SELECT * FROM tab_tasks WHERE RefTag = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1] + "'";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
                 sfDataGrid2.DataSource = ds.Tables["tabled"];

@@ -35,9 +35,9 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
-
-
-
+        public int Id { get; set; }
+        public string Idequipa { get; set; }
+        public string Idtask { get; set; }
         private void Agend_Load(object sender, EventArgs e)
         {
 
@@ -72,7 +72,6 @@ namespace Software_Base_de_Dados
                 // Disable campo ID
 
                 maskedTextBox1.ReadOnly = true;
-                comboBox1.Select();
                 maskedTextBox1.Enabled = false;
             }
             else
@@ -83,6 +82,11 @@ namespace Software_Base_de_Dados
 
                 // Utilizador necessita de introduzir o ID
                 maskedTextBox1.ReadOnly = false;
+                maskedTextBox1.Text = Id.ToString();
+                
+                maskedTextBox1.ReadOnly = true;
+                maskedTextBox1.Enabled = false;
+
             }
 
 
@@ -105,6 +109,9 @@ namespace Software_Base_de_Dados
             comboBox2.DataSource = dataTable;
             comboBox2.DisplayMember = "ID";
 
+
+            comboBox1.Text = Idequipa;
+            comboBox2.Text = Idtask;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -184,6 +191,16 @@ namespace Software_Base_de_Dados
             comboBox2.Text = "";
             this.Close();
 
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1.Select();
+        }
+
+        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1.Select();
         }
     }
 }

@@ -118,6 +118,29 @@ namespace Software_Base_de_Dados
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
+            else
+            {
+                string querry = "UPDATE tab_subtasks IDTask = @IDTask, Desc = @Desc, Type = @Type" +
+                         "WHERE ID =" + maskedTextBox1.Text;
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = comboBox1.Text;
+                oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+                oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = comboBox2.Text;
+                try
+                {
+                    oleDbCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
+                        "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Dados adicionados com sucesso", "",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
 
         }
     }
