@@ -279,10 +279,8 @@ namespace Software_Base_de_Dados
             if (Tabela == "tab_agend")
             {
                 DataSet ds = new DataSet();
-                string querry = "SELECT Descricao FROM tab_teams WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                string querry = "SELECT Descricao FROM wab_teams WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 adapter = new OleDbDataAdapter(querry, connection);
-                adapter.Fill(ds, "tabled");
-                querry = "SELECT Descricao, IDPlace, Active, RefTag FROM tab_tasks WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                 adapter.Fill(ds, "tabled");
                 sfDataGrid2.DataSource = ds.Tables["tabled"];
                 connection.Close();
