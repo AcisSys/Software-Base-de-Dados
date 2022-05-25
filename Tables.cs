@@ -348,7 +348,7 @@ namespace Software_Base_de_Dados
             }
             if (Tabela == "tab_tags")
             {
-                string querry = "SELECT * FROM tab_tasks WHERE RefTag = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                string querry = "SELECT * FROM tab_tasks WHERE RefTag = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1]+"'";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
                 sfDataGrid2.DataSource = ds.Tables["tabled"];

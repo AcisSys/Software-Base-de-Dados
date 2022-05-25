@@ -40,16 +40,16 @@ namespace Software_Base_de_Dados
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(92, 31);
+            this.maskedTextBox1.Location = new System.Drawing.Point(79, 27);
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.maskedTextBox1.Size = new System.Drawing.Size(86, 20);
             this.maskedTextBox1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(28, 33);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label1.Location = new System.Drawing.Point(24, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 21);
             this.label1.TabIndex = 3;
@@ -58,8 +58,8 @@ namespace Software_Base_de_Dados
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(28, 67);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label2.Location = new System.Drawing.Point(24, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 21);
             this.label2.TabIndex = 4;
@@ -67,9 +67,9 @@ namespace Software_Base_de_Dados
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(85, 168);
+            this.button1.Location = new System.Drawing.Point(52, 129);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(95, 31);
             this.button1.TabIndex = 6;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -78,8 +78,8 @@ namespace Software_Base_de_Dados
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.Location = new System.Drawing.Point(92, 113);
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.checkBox1.Location = new System.Drawing.Point(79, 86);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(68, 25);
             this.checkBox1.TabIndex = 8;
@@ -88,22 +88,23 @@ namespace Software_Base_de_Dados
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(92, 69);
+            this.maskedTextBox2.Location = new System.Drawing.Point(79, 60);
             this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 23);
+            this.maskedTextBox2.Size = new System.Drawing.Size(86, 20);
             this.maskedTextBox2.TabIndex = 9;
             // 
             // Tags
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 212);
+            this.ClientSize = new System.Drawing.Size(209, 184);
             this.Controls.Add(this.maskedTextBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.maskedTextBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Tags";

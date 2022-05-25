@@ -82,7 +82,7 @@ namespace Software_Base_de_Dados
             comboBox1.DisplayMember = "ID";
 
             // Dados para ComboBox2
-            querry = "SELECT DISTINCT Ref FROM tab_tags";
+            querry = "SELECT Ref FROM tab_tags WHERE taken = 'Não'";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
