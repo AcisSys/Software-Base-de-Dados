@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Software_Base_de_Dados
@@ -97,7 +91,7 @@ namespace Software_Base_de_Dados
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             string active;
             if (checkBox1.Checked == true)
@@ -119,7 +113,7 @@ namespace Software_Base_de_Dados
                 oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = comboBox1.Text;
                 oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
                 oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = comboBox2.Text;
-                
+
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();

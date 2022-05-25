@@ -107,7 +107,7 @@ namespace Software_Base_de_Dados
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
 
             if (Tipo == "Add")
@@ -183,11 +183,6 @@ namespace Software_Base_de_Dados
             comboBox1.Text = "";
             comboBox2.Text = "";
             this.Close();
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
     }

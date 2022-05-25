@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Software_Base_de_Dados
@@ -118,7 +112,7 @@ namespace Software_Base_de_Dados
             {
                 string querry = "UPDATE tab_workers  SET Nome = @Nome," +
                         " IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = " + maskedTextBox1.Text;
-                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = comboBox1.Text;
                 oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;
@@ -139,9 +133,9 @@ namespace Software_Base_de_Dados
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
-            
+
         }
 
-        
+
     }
 }

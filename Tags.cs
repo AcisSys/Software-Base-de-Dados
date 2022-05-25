@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Software_Base_de_Dados
@@ -55,7 +48,7 @@ namespace Software_Base_de_Dados
 
                 // ID é automatico
 
-                
+
                 string comand = "SELECT MAX (ID) FROM tab_tags";
                 OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
@@ -73,19 +66,19 @@ namespace Software_Base_de_Dados
                 button1.Text = "Modificar";
                 maskedTextBox1.ReadOnly = false;
             }
-            
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             string check;
             if (checkBox1.Checked == true)
             {
-                 check = "Sim";
+                check = "Sim";
             }
             else
             {
-                 check = "Não";
+                check = "Não";
             }
 
             if (Tipo == "Add")
@@ -135,11 +128,6 @@ namespace Software_Base_de_Dados
             maskedTextBox1.Text = "";
             maskedTextBox2.Text = "";
             checkBox1.Checked = false;
-            
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
 
         }
     }
