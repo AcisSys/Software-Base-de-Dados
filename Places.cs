@@ -24,16 +24,16 @@ namespace Software_Base_de_Dados
 
         // DataSet para as tabelas
 
-        DataSet dset = new DataSet();
+
 
         // Adaptador para o DataSet
 
-        OleDbDataAdapter adapter = new OleDbDataAdapter();
+
 
 
         // String publica para dar a conhecer a table que está a ser visualisada
 
-        public string tipo { get; set; }
+        public string Tipo { get; set; }
 
 
         private void Places_Load(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            if (tipo == "Add")
+            if (Tipo == "Add")
             {
                 button1.Text = "Guardar";
                 // ID é automatico
@@ -76,10 +76,10 @@ namespace Software_Base_de_Dados
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
 
-            if (tipo == "Add")
+            if (Tipo == "Add")
             {
                 // Cria uma nova querry de acordo com a tabela e parametros da mesma
                 string querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
@@ -145,7 +145,7 @@ namespace Software_Base_de_Dados
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void Label2_Click(object sender, EventArgs e)
         {
 
         }

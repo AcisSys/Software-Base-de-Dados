@@ -36,21 +36,6 @@ namespace Software_Base_de_Dados
 
         public string Tabela { get; set; }
         public string Tabela2 { get; set; }
-
-
-
-        // Outras forms
-        Agend agend = new Agend();
-        Places places = new Places();
-        Subtasks subtasks = new Subtasks();
-        Tags tags = new Tags();
-        Teams teams = new Teams();
-        Workers workers = new Workers();
-
-
-
-
-
         private void Tables_Load(object sender, EventArgs e)
         {
             sfDataGrid2.DataSource = null;
@@ -59,7 +44,8 @@ namespace Software_Base_de_Dados
                 try
                 {
                     connection.Open();
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -109,47 +95,61 @@ namespace Software_Base_de_Dados
 
         private void Add_Button_Click(object sender, EventArgs e)
         {
-           
-            if (Tabela == "tab_agend") 
+
+            if (Tabela == "tab_agend")
             {
-                Agend agend = new Agend();
-                agend.tipo = "Add";
+                Agend agend = new Agend
+                {
+                    Tipo = "Add"
+                };
                 agend.ShowDialog();
             }
             if (Tabela == "tab_places")
             {
-                Places places = new Places();
-                places.tipo = "Add";
+                Places places = new Places
+                {
+                    Tipo = "Add"
+                };
                 places.ShowDialog();
             }
             if (Tabela == "tab_tasks")
             {
-                Tasks tasks = new Tasks();
-                tasks.tipo = "Add";
+                Tasks tasks = new Tasks
+                {
+                    Tipo = "Add"
+                };
                 tasks.ShowDialog();
             }
             if (Tabela == "tab_subtasks")
             {
-                Subtasks subtasks = new Subtasks();
-                subtasks.tipo = "Add";
+                Subtasks subtasks = new Subtasks
+                {
+                    Tipo = "Add"
+                };
                 subtasks.ShowDialog();
             }
             if (Tabela == "tab_tags")
             {
-                Tags tags = new Tags();
-                tags.tipo = "Add";
+                Tags tags = new Tags
+                {
+                    Tipo = "Add"
+                };
                 tags.ShowDialog();
             }
             if (Tabela == "tab_teams")
             {
-                Teams teams = new Teams();
-                teams.tipo = "Add";
+                Teams teams = new Teams
+                {
+                    Tipo = "Add"
+                };
                 teams.ShowDialog();
             }
             if (Tabela == "tab_workers")
             {
-                Workers workers = new Workers();
-                workers.Tipo = "Add";
+                Workers workers = new Workers
+                {
+                    Tipo = "Add"
+                };
                 workers.ShowDialog();
             }
 
@@ -165,44 +165,58 @@ namespace Software_Base_de_Dados
             // chama a form para modificar campos da tabela
             if (Tabela == "tab_agend")
             {
-                Agend agend = new Agend();
-                agend.tipo = "";
+                Agend agend = new Agend
+                {
+                    Tipo = ""
+                };
                 agend.ShowDialog();
             }
             if (Tabela == "tab_places")
             {
-                Places places = new Places();
-                places.tipo = "";
+                Places places = new Places
+                {
+                    Tipo = ""
+                };
                 places.ShowDialog();
             }
             if (Tabela == "tab_tasks")
             {
-                Tasks tasks = new Tasks();
-                tasks.tipo = "";
+                Tasks tasks = new Tasks
+                {
+                    Tipo = ""
+                };
                 tasks.ShowDialog();
             }
             if (Tabela == "tab_subtasks")
             {
-                Subtasks subtasks = new Subtasks();
-                subtasks.tipo = "";
+                Subtasks subtasks = new Subtasks
+                {
+                    Tipo = ""
+                };
                 subtasks.ShowDialog();
             }
             if (Tabela == "tab_tags")
             {
-                Tags tags = new Tags();
-                tags.tipo = "";
+                Tags tags = new Tags
+                {
+                    Tipo = ""
+                };
                 tags.ShowDialog();
             }
             if (Tabela == "tab_teams")
             {
-                Teams teams = new Teams();
-                teams.tipo = "";
+                Teams teams = new Teams
+                {
+                    Tipo = ""
+                };
                 teams.ShowDialog();
             }
             if (Tabela == "tab_workers")
             {
-                Workers workers = new Workers();
-                workers.Tipo = "";
+                Workers workers = new Workers
+                {
+                    Tipo = ""
+                };
                 workers.ShowDialog();
             }
 
@@ -227,19 +241,19 @@ namespace Software_Base_de_Dados
                 }
             }
 
-             
+
 
             // Pede Confirmação para apagar dados
             DialogResult response = MessageBox.Show("Tem a certeza?", "Apagar?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
-           
-            
+
+
 
             // String com comando para apagar dados
 
-            string querry = "DELETE ROW FROM " + Tabela + " WHERE ID = "+ (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+            string querry = "DELETE ROW FROM " + Tabela + " WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
 
             // se confirmado, apaga / tenta apagar dados
@@ -275,7 +289,7 @@ namespace Software_Base_de_Dados
 
         }
 
-        private void sfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
+        private void SfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
             DataSet ds = new DataSet();
             ds.Reset();
@@ -284,14 +298,15 @@ namespace Software_Base_de_Dados
                 try
                 {
                     connection.Open();
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
             if (Tabela == "tab_agend")
             {
-                 
+
                 string querry = "SELECT Descricao FROM tab_teams WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");

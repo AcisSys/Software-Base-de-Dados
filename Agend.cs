@@ -34,7 +34,7 @@ namespace Software_Base_de_Dados
 
         // String publica para dar a conhecer a table que está a ser visualisada
 
-        public string tipo { get; set; }
+        public string Tipo { get; set; }
 
 
 
@@ -56,7 +56,7 @@ namespace Software_Base_de_Dados
             }
 
             // Caso seja para adicionar dados
-            if (tipo == "Add")
+            if (Tipo == "Add")
             {
                 button1.Text = "Guardar";
 
@@ -110,7 +110,7 @@ namespace Software_Base_de_Dados
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (tipo == "Add")
+            if (Tipo == "Add")
             {
 
                 // Querry para adicionar dados

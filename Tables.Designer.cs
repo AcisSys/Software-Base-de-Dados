@@ -99,7 +99,7 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.Size = new System.Drawing.Size(804, 369);
             this.sfDataGrid1.TabIndex = 4;
             this.sfDataGrid1.Text = "sfDataGrid1";
-            this.sfDataGrid1.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.sfDataGrid1_SelectionChanged);
+            this.sfDataGrid1.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.SfDataGrid1_SelectionChanged);
             // 
             // sfDataGrid2
             // 

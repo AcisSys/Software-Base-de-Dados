@@ -39,7 +39,7 @@ namespace Software_Base_de_Dados
 
         // String publica para dar a conhecer a table que está a ser visualisada
 
-        public string tipo { get; set; }
+        public string Tipo { get; set; }
         private void Tasks_Load(object sender, EventArgs e)
         {
             if (connection.State == System.Data.ConnectionState.Closed)
@@ -54,7 +54,7 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            if (tipo == "Add")
+            if (Tipo == "Add")
             {
                 button1.Text = "Guardar";
 
@@ -108,7 +108,7 @@ namespace Software_Base_de_Dados
             {
                 active = "Não";
             }
-            if (tipo == "Add")
+            if (Tipo == "Add")
             {
 
                 string querry = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +

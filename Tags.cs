@@ -32,7 +32,7 @@ namespace Software_Base_de_Dados
 
         // String publica para dar a conhecer a table que está a ser visualisada
 
-        public string tipo { get; set; }
+        public string Tipo { get; set; }
 
         private void Tags_Load(object sender, EventArgs e)
         {
@@ -48,7 +48,7 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            if (tipo == "Add")
+            if (Tipo == "Add")
             {
                 button1.Text = "Guardar";
                 button1.Text = "Guardar";
@@ -88,7 +88,7 @@ namespace Software_Base_de_Dados
                  check = "Não";
             }
 
-            if (tipo == "Add")
+            if (Tipo == "Add")
             {
                 string querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
                             "VALUES (@ID, @IDEquipa, @IDTask)";
