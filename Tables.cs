@@ -107,7 +107,7 @@ namespace Software_Base_de_Dados
             sfDataGrid2.DataSource = null;
             connection.Close();
 
-           
+
         }
 
         private void Add_Button_Click(object sender, EventArgs e)
@@ -136,99 +136,73 @@ namespace Software_Base_de_Dados
             }
             if (Tabela == "tab_subtasks")
             {
-
-
                 subtasks.Tipo = "Add";
-
                 subtasks.ShowDialog();
             }
             if (Tabela == "tab_tags")
             {
-
                 tags.Tipo = "Add";
                 tags.ShowDialog();
             }
             if (Tabela == "tab_teams")
             {
-
                 teams.Tipo = "Add";
-
                 teams.ShowDialog();
             }
             if (Tabela == "tab_workers")
             {
-
                 workers.Tipo = "Add";
-
                 workers.ShowDialog();
             }
-
             // chama a form para adicionar campos a tabela
-
             // Update á tabela quando retorna ao usercontrol
             UpdateTable();
         }
-
         private void Modify_Button_Click(object sender, EventArgs e)
         {
-
             // chama a form para modificar campos da tabela
             if (Tabela == "tab_agend")
             {
-
                 agend.Tipo = "";
-                
                 agend.ShowDialog();
             }
             if (Tabela == "tab_places")
             {
                 places.Tipo = "";
-                
                 places.ShowDialog();
             }
             if (Tabela == "tab_tasks")
             {
                 tasks.Tipo = "";
-                
                 tasks.ShowDialog();
             }
             if (Tabela == "tab_subtasks")
             {
                 subtasks.Tipo = "";
-               
                 subtasks.ShowDialog();
             }
             if (Tabela == "tab_tags")
             {
-
                 tags.Tipo = "";
-              
                 tags.ShowDialog();
             }
             if (Tabela == "tab_teams")
             {
-
                 teams.Tipo = "";
-                
                 teams.ShowDialog();
             }
             if (Tabela == "tab_workers")
             {
-
                 workers.Tipo = "";
-               
                 workers.ShowDialog();
             }
-
             // Update á tabela quando retorna ao usercontrol
             UpdateTable();
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
-
         }
         private void Remove_Button_Click(object sender, EventArgs e)
         {
-
             // Verifica a conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {
@@ -242,22 +216,14 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-
-
             // Pede Confirmação para apagar dados
             DialogResult response = MessageBox.Show("Tem a certeza?", "Apagar?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
-
-
-
             // String com comando para apagar dados
-
             string querry = "DELETE ROW FROM " + Tabela + " WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-
             // se confirmado, apaga / tenta apagar dados
             if (response == DialogResult.Yes)
             {
@@ -274,9 +240,7 @@ namespace Software_Base_de_Dados
                     return;
                 }
             }
-
             // Se não for confirmado, indica ao utilizador que foi cancelado
-
             else
             {
                 MessageBox.Show("Cancelado", "",
@@ -287,12 +251,10 @@ namespace Software_Base_de_Dados
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
         }
-
         private void Tables_Load_1(object sender, EventArgs e)
         {
 
         }
-
         private void SfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
             Modify_Button.Enabled = true;
@@ -312,7 +274,6 @@ namespace Software_Base_de_Dados
             }
             if (Tabela == "tab_agend")
             {
-
                 string querry = "SELECT Descricao FROM tab_teams WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
@@ -343,7 +304,6 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tasks")
             {
-
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 tasks.IDPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
@@ -355,12 +315,10 @@ namespace Software_Base_de_Dados
                 {
                     tasks.Active = false;
                 }
-                if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].GetType().ToString() != "System.DBNull")
+                if (((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].GetType().ToString() != "System.DBNull")
                 {
                     tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
                 }
-                
-
                 string querry = "SELECT Desc, Type FROM " + Tabela2 + " WHERE IDTask = '" + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + "'";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
@@ -370,18 +328,14 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_workers")
             {
-
-
                 workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 workers.Nome = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 workers.IDEquipa = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-                if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].GetType().ToString() != "System.DBNull")
+                if (((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].GetType().ToString() != "System.DBNull")
                 {
                     workers.Img = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
                 }
-                
                 workers.Cod = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
-
                 string querry = "SELECT * FROM " + Tabela2 + " WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
@@ -390,7 +344,6 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_teams")
             {
-
                 teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 string querry = "SELECT ID, Nome, Cod FROM tab_workers WHERE IDEquipa = '" + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + "'";
@@ -401,20 +354,17 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tags")
             {
-
-
                 tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 tags.Ref = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] == "Sim")
                 {
                     tags.Taken = true;
-                    
+
                 }
                 else
                 {
                     tags.Taken = false;
                 }
-
                 string querry = "SELECT * FROM tab_tasks WHERE RefTag = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1] + "'";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
@@ -422,11 +372,7 @@ namespace Software_Base_de_Dados
                 connection.Close();
             }
         }
-
-
-
         // Botão de Exportar do outro projeto
-
         private void Exportar_Click(object sender, EventArgs e)
         {
             var options = new ExcelExportingOptions
@@ -435,13 +381,11 @@ namespace Software_Base_de_Dados
             };
             var excelEngine = sfDataGrid1.ExportToExcel(sfDataGrid1.View, options);
             var workBook = excelEngine.Excel.Workbooks[0];
-
             SaveFileDialog saveFilterDialog = new SaveFileDialog
             {
                 FilterIndex = 2,
                 Filter = "Excel 97 to 2003 Files(*.xls)|*.xls|Excel 2007 to 2010 Files(*.xlsx)|*.xlsx|Excel 2013 File(*.xlsx)|*.xlsx"
             };
-
             if (saveFilterDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 using (Stream stream = saveFilterDialog.OpenFile())
@@ -454,7 +398,6 @@ namespace Software_Base_de_Dados
                         workBook.Version = ExcelVersion.Excel2013;
                     workBook.SaveAs(stream);
                 }
-
                 //Message box confirmation to view the created workbook.
                 if (MessageBox.Show(this.sfDataGrid1, "Quer guardar esta exportação?", "Exportação Excel",
                                     MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
@@ -465,7 +408,6 @@ namespace Software_Base_de_Dados
                 }
             }
         }
-
         private void SfDataGrid1_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
         {
             if (e.RowType == RowType.DefaultRow)
