@@ -105,7 +105,7 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.Style.HeaderStyle.Font.Size = 11F;
             this.sfDataGrid1.TabIndex = 4;
             this.sfDataGrid1.Text = "sfDataGrid1";
-            this.sfDataGrid1.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.sfDataGrid1_QueryRowStyle);
+            this.sfDataGrid1.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.SfDataGrid1_QueryRowStyle);
             this.sfDataGrid1.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.SfDataGrid1_SelectionChanged);
             // 
             // sfDataGrid2

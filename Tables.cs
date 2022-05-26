@@ -429,8 +429,10 @@ namespace Software_Base_de_Dados
 
         private void Exportar_Click(object sender, EventArgs e)
         {
-            var options = new ExcelExportingOptions();
-            options.ExcelVersion = ExcelVersion.Excel2013;
+            var options = new ExcelExportingOptions
+            {
+                ExcelVersion = ExcelVersion.Excel2013
+            };
             var excelEngine = sfDataGrid1.ExportToExcel(sfDataGrid1.View, options);
             var workBook = excelEngine.Excel.Workbooks[0];
 
@@ -464,7 +466,7 @@ namespace Software_Base_de_Dados
             }
         }
 
-        private void sfDataGrid1_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
+        private void SfDataGrid1_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
         {
             if (e.RowType == RowType.DefaultRow)
             {
