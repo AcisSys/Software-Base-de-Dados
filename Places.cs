@@ -33,6 +33,8 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
+
+        // Int / String para cada campo da tabela
         public int ID { get; set; }
         public string Localizacao { get; set; }
         public string X { get; set; }
@@ -41,6 +43,7 @@ namespace Software_Base_de_Dados
 
         private void Places_Load(object sender, EventArgs e)
         {
+            // verifica conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -146,20 +149,12 @@ namespace Software_Base_de_Dados
                     MessageBoxIcon.Information);
 
             }
+
+            // apaga os valores de todos os campos
             maskedTextBox1.Text = "";
             maskedTextBox2.Text = "";
             maskedTextBox3.Text = "";
             maskedTextBox4.Text = "";
-
-        }
-
-        private void Label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
 
         }
     }

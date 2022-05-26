@@ -34,12 +34,16 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
+
+        // String / Int para cada campo da tabela
         public int ID { get; set; }
         public string IDTask { get; set; }
         public string Desc { get; set; }
         public string Type { get; set; }
         private void Subtasks_Load(object sender, EventArgs e)
         {
+
+            // Verifica conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -79,7 +83,6 @@ namespace Software_Base_de_Dados
                 maskedTextBox2.Text = Desc;
                 comboBox2.Text = Type;
 
-                // Disable campo ID
 
                 maskedTextBox1.ReadOnly = true;
                 maskedTextBox1.Enabled = false;
@@ -110,7 +113,7 @@ namespace Software_Base_de_Dados
         {
             if (Tipo == "Add")
             {
-
+                // querry para adicionar dados
                 string querry = "INSERT INTO tab_subtasks (ID, IDTask, Desc, Type)" +
                          "VALUES (@ID, @IDTask, @Desc, @Type)";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
@@ -118,6 +121,7 @@ namespace Software_Base_de_Dados
                 oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = comboBox1.Text;
                 oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = comboBox2.Text;
+                // tenta executar o comando e envia mensagem de sucesso / erro
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
@@ -135,12 +139,15 @@ namespace Software_Base_de_Dados
             }
             else
             {
+
+                // string para atualizar dados
                 string querry = "UPDATE tab_subtasks IDTask = @IDTask, Desc = @Desc, Type = @Type" +
                          "WHERE ID =" + maskedTextBox1.Text;
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = comboBox1.Text;
                 oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = comboBox2.Text;
+                // tenta executar o comando e envia mensagem de erro / sucesso
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();

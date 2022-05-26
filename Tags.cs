@@ -26,6 +26,9 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
+        public int ID { get; set; }
+        public string Ref { get; set; }
+        public bool Taken { get; set; }
 
         private void Tags_Load(object sender, EventArgs e)
         {
@@ -59,19 +62,33 @@ namespace Software_Base_de_Dados
 
                 maskedTextBox1.ReadOnly = true;
                 maskedTextBox1.Enabled = false;
-                maskedTextBox2.Select();
+                
             }
             else
             {
                 button1.Text = "Modificar";
-                maskedTextBox1.ReadOnly = false;
+                maskedTextBox1.ReadOnly = true;
+                maskedTextBox1.Enabled = false;
+                maskedTextBox1.Text = ID.ToString();
+                maskedTextBox2.Text = Ref;
+                if (Taken == true)
+                {
+                    checkBox1.Checked = true;
+                }
+                else
+                {
+                    checkBox1.Checked = false;
+                }
             }
+            button1.Select();
 
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             string check;
+            // verifica se a checkbox está acionada ou nao
+            // e indica o valor do campo de acordo
             if (checkBox1.Checked == true)
             {
                 check = "Sim";
@@ -83,6 +100,7 @@ namespace Software_Base_de_Dados
 
             if (Tipo == "Add")
             {
+                // querry para inserir dados
                 string querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
                             "VALUES (@ID, @IDEquipa, @IDTask)";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
@@ -90,6 +108,8 @@ namespace Software_Base_de_Dados
                 oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@Taken",
                     OleDbType.LongVarChar).Value = check;
+
+                // tenta executar o comando e envia mensagem de erro / sucesso
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
@@ -105,7 +125,6 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                // Ver documentação da linha 166 - 196
 
                 string querry = "UPDATE tab_tags  SET Ref = @Ref," +
                     " taken = @taken where ID = " + maskedTextBox1.Text;

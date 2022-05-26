@@ -34,6 +34,12 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
+        public int ID { get; set; }
+        public string Descricao { get; set; }
+        public string IDPlace { get; set; }
+        public bool Active { get; set; }
+        public string RefTag { get; set; }
+
         private void Tasks_Load(object sender, EventArgs e)
         {
             if (connection.State == System.Data.ConnectionState.Closed)
@@ -64,12 +70,25 @@ namespace Software_Base_de_Dados
                 // Disable campo ID
 
                 maskedTextBox1.ReadOnly = true;
-                comboBox1.Select();
+                button1.Select();
                 maskedTextBox1.Enabled = false;
             }
             else
             {
                 button1.Text = "Modificar";
+                maskedTextBox1.ReadOnly = true;
+                button1.Select();
+                maskedTextBox1.Enabled = false;
+                maskedTextBox1.Text = ID.ToString();
+                maskedTextBox2.Text = Descricao;
+                if (Active == true)
+                {
+                    checkBox1.Checked = true;
+                }
+                else
+                {
+                    checkBox1.Checked = false;
+                }
             }
 
 
@@ -89,6 +108,9 @@ namespace Software_Base_de_Dados
             comboBox2.DataSource = dataTable;
             comboBox2.DisplayMember = "Ref";
 
+            comboBox1.Text = IDPlace;
+            comboBox2.Text = RefTag;
+
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -104,7 +126,7 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-
+                // querry para adicionar dados a tabela
                 string querry = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +
                          "VALUES (@ID, @Descricao, @IDPlace, @Active, @RefTag)";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
@@ -129,7 +151,59 @@ namespace Software_Base_de_Dados
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
+            else
+            {
+                // Cria Querry com o comando para UPDATe
 
+                string querry = "UPDATE tab_tasks  Descricao = @Descricao, IDPlace = @IDPlace, Active = @Active, RefTag = @RefTag" +
+                    " where ID = " + maskedTextBox1.Text;
+
+                // Cria comando
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+
+                // Recebe os dados
+                oleDbCommand.Parameters.Add("@Descricao", OleDbType.Integer).Value = maskedTextBox2.Text;
+                oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = comboBox1.Text;
+                oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
+                oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
+                oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = comboBox2.Text;
+
+                // Executa o Comando
+                try
+                {
+                    oleDbCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel modificar dados\n" + ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // FeedBack de sucesso ou erro
+                MessageBox.Show("Dados modificados com sucesso", "",
+                    MessageBoxButtons.OK
+                    , MessageBoxIcon.Information);
+
+            }
+
+                // limpa todos os campos e fecha  a janela de introdução de dados
+                maskedTextBox1.Text = "";
+                comboBox1.Text = "";
+                comboBox2.Text = "";
+                this.Close();
+
+            }
+
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1.Select();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1.Select();
         }
     }
 }

@@ -35,6 +35,10 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
+
+
+        // String / Int para cada campo da tabela, ao modificar vai buscar o valor dos campos
+
         public int Id { get; set; }
         public string Idequipa { get; set; }
         public string Idtask { get; set; }
@@ -59,10 +63,7 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             {
                 button1.Text = "Guardar";
-
                 // ID é automatico
-
-
                 string comand = "SELECT MAX (ID) FROM tab_agend";
                 OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
@@ -108,7 +109,8 @@ namespace Software_Base_de_Dados
             comboBox2.DataSource = dataTable;
             comboBox2.DisplayMember = "ID";
 
-
+            // Texto das ComboBox é o valor do campo ao modificar
+            // ou nulo ao adicionar
             comboBox1.Text = Idequipa;
             comboBox2.Text = Idtask;
         }

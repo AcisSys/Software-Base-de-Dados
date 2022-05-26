@@ -26,6 +26,8 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
+        public int ID { get; set; }
+        public string Descricao { get; set; }
 
 
         private void Teams_Load(object sender, EventArgs e)
@@ -64,6 +66,12 @@ namespace Software_Base_de_Dados
             else
             {
                 button1.Text = "Modificar";
+                maskedTextBox1.ReadOnly = true;
+                maskedTextBox2.Select();
+                maskedTextBox1.Enabled = false;
+                maskedTextBox1.Text = ID.ToString();
+                maskedTextBox2.Text = Descricao;
+
             }
         }
 

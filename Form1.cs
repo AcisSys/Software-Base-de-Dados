@@ -5,24 +5,18 @@ namespace Software_Base_de_Dados
 {
     public partial class Form1 : Form
     {
+
+        // Inicia os UserControls
         readonly Title title = new Title();
         readonly Tables table = new Tables();
         string tabela = "";
         public Form1()
         {
             InitializeComponent();
+
+            // Adiciona Title ao Painel para mostar o UserControl
             panel1.Controls.Add(title);
 
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Panel1_Paint(object sender, PaintEventArgs e)
-        {
 
         }
 
@@ -30,13 +24,11 @@ namespace Software_Base_de_Dados
         {
 
 
-            // NAO ALTERAR ORDEM DESTAS LINHAS
             tabela = "tab_agend";
             table.Tabela2 = "tab_teams";
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
-            //table.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Left);
             panel1.Controls.Add(table);
             
 
@@ -84,7 +76,7 @@ namespace Software_Base_de_Dados
         private void Tasks_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_tasks";
-            table.Tabela2 = "tab_places";
+            table.Tabela2 = "tab_subtasks";
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
@@ -99,11 +91,6 @@ namespace Software_Base_de_Dados
             table.UpdateTable();
             panel1.Controls.Clear();
             panel1.Controls.Add(table);
-        }
-
-        private void Exportar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

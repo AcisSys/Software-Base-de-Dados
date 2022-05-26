@@ -318,14 +318,14 @@ namespace Software_Base_de_Dados
                 agend.Idtask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
 
             }
-            if (Tabela == "tab_places")
+            else if (Tabela == "tab_places")
             {
                 places.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 places.Localizacao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 places.X = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                 places.Y = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
             }
-            if (Tabela == "tab_subtasks")
+            else if (Tabela == "tab_subtasks")
             {
                 subtasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 subtasks.IDTask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
@@ -337,33 +337,80 @@ namespace Software_Base_de_Dados
                 sfDataGrid2.DataSource = ds.Tables["tabled"];
                 connection.Close();
             }
-            if (Tabela == "tab_tasks")
+            else if (Tabela == "tab_tasks")
             {
-                string querry = "SELECT * FROM " + Tabela2 + " WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+
+                tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                tasks.IDPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+                if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3] == "Sim")
+                {
+                    tasks.Active = true;
+                }
+                else
+                {
+                    tasks.Active = false;
+                }
+                if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].GetType().ToString() != "System.DBNull")
+                {
+                    tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
+                }
+                
+
+                string querry = "SELECT Desc, Type FROM " + Tabela2 + " WHERE IDTask = '" + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + "'";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
                 sfDataGrid2.DataSource = ds.Tables["tabled"];
                 connection.Close();
 
             }
-            if (Tabela == "tab_workers")
+            else if (Tabela == "tab_workers")
             {
+
+
+                workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                workers.Nome = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                workers.IDEquipa = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+                if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].GetType().ToString() != "System.DBNull")
+                {
+                    workers.Img = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
+                }
+                
+                workers.Cod = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
+
                 string querry = "SELECT * FROM " + Tabela2 + " WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
                 sfDataGrid2.DataSource = ds.Tables["tabled"];
                 connection.Close();
             }
-            if (Tabela == "tab_teams")
+            else if (Tabela == "tab_teams")
             {
+
+                teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 string querry = "SELECT ID, Nome, Cod FROM tab_workers WHERE IDEquipa = '" + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + "'";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
                 sfDataGrid2.DataSource = ds.Tables["tabled"];
                 connection.Close();
             }
-            if (Tabela == "tab_tags")
+            else if (Tabela == "tab_tags")
             {
+
+
+                tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                tags.Ref = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] == "Sim")
+                {
+                    tags.Taken = true;
+                    
+                }
+                else
+                {
+                    tags.Taken = false;
+                }
+
                 string querry = "SELECT * FROM tab_tasks WHERE RefTag = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1] + "'";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
@@ -371,6 +418,10 @@ namespace Software_Base_de_Dados
                 connection.Close();
             }
         }
+
+
+
+        // Botão de Exportar do outro projeto
 
         private void Exportar_Click(object sender, EventArgs e)
         {

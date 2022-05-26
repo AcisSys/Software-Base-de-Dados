@@ -180,7 +180,6 @@ namespace Software_Base_de_Dados
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(975, 594);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // Form1
             // 
@@ -192,7 +191,7 @@ namespace Software_Base_de_Dados
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Software Base de Dados";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);

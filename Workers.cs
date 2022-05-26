@@ -34,6 +34,11 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
+        public int ID { get; set; }
+        public string Nome { get; set; }
+        public string IDEquipa { get; set; }
+        public string Img { get; set; }
+        public string Cod { get; set; }
 
         private void Workers_Load(object sender, EventArgs e)
         {
@@ -71,6 +76,13 @@ namespace Software_Base_de_Dados
             else
             {
                 button1.Text = "Modificar";
+                maskedTextBox1.ReadOnly = true;
+                maskedTextBox2.Select();
+                maskedTextBox1.Enabled = false;
+                maskedTextBox1.Text = ID.ToString();
+                
+                maskedTextBox4.Text = Img;
+                maskedTextBox5.Text = Cod;
             }
 
             // Dados para ComboBox1
@@ -80,6 +92,7 @@ namespace Software_Base_de_Dados
             DataTable dataTable = dset.Tables["idtask"];
             comboBox1.DataSource = dataTable;
             comboBox1.DisplayMember = "ID";
+            comboBox1.Text = IDEquipa;
         }
 
 
@@ -136,6 +149,14 @@ namespace Software_Base_de_Dados
 
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1.Select();
+        }
     }
 }
