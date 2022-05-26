@@ -1,8 +1,10 @@
-﻿using Syncfusion.WinForms.DataGridConverter;
+﻿using Syncfusion.WinForms.DataGrid.Enums;
+using Syncfusion.WinForms.DataGridConverter;
 using Syncfusion.XlsIO;
 using System;
 using System.Data;
 using System.Data.OleDb;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -104,6 +106,8 @@ namespace Software_Base_de_Dados
             sfDataGrid1.Update();
             sfDataGrid2.DataSource = null;
             connection.Close();
+
+           
         }
 
         private void Add_Button_Click(object sender, EventArgs e)
@@ -457,6 +461,17 @@ namespace Software_Base_de_Dados
                     //Launching the Excel file using the default Application.[MS Excel Or Free ExcelViewer]
                     System.Diagnostics.Process.Start(saveFilterDialog.FileName);
                 }
+            }
+        }
+
+        private void sfDataGrid1_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
+        {
+            if (e.RowType == RowType.DefaultRow)
+            {
+                if (e.RowIndex % 2 == 0)
+                    e.Style.BackColor = Color.WhiteSmoke;
+                else
+                    e.Style.BackColor = Color.White;
             }
         }
     }
