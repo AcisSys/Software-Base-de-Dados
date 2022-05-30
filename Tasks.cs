@@ -97,19 +97,19 @@ namespace Software_Base_de_Dados
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
             DataTable dataTable = dset.Tables["idtask"];
-            comboBox1.DataSource = dataTable;
-            comboBox1.DisplayMember = "ID";
+            sfComboBox1.DataSource = dataTable;
+            sfComboBox1.DisplayMember = "ID";
 
             // Dados para ComboBox2
             querry = "SELECT Ref FROM tab_tags WHERE taken = 'Não'";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
-            comboBox2.DataSource = dataTable;
-            comboBox2.DisplayMember = "Ref";
+            sfComboBox2.DataSource = dataTable;
+            sfComboBox2.DisplayMember = "Ref";
 
-            comboBox1.Text = IDPlace;
-            comboBox2.Text = RefTag;
+            sfComboBox1.Text = IDPlace;
+            sfComboBox2.Text = RefTag;
 
         }
 
@@ -132,9 +132,9 @@ namespace Software_Base_de_Dados
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@Descricao", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = comboBox1.Text;
+                oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
                 oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
-                oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = comboBox2.Text;
+                oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
 
                 try
                 {
@@ -163,10 +163,10 @@ namespace Software_Base_de_Dados
 
                 // Recebe os dados
                 oleDbCommand.Parameters.Add("@Descricao", OleDbType.Integer).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = comboBox1.Text;
+                oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
                 oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
                 oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
-                oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = comboBox2.Text;
+                oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
 
                 // Executa o Comando
                 try
@@ -189,19 +189,19 @@ namespace Software_Base_de_Dados
 
                 // limpa todos os campos e fecha  a janela de introdução de dados
                 maskedTextBox1.Text = "";
-                comboBox1.Text = "";
-                comboBox2.Text = "";
+                sfComboBox1.Text = "";
+                sfComboBox2.Text = "";
                 this.Close();
 
             }
 
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             button1.Select();
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             button1.Select();
         }
