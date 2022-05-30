@@ -80,7 +80,7 @@ namespace Software_Base_de_Dados
                 maskedTextBox2.Select();
                 maskedTextBox1.Enabled = false;
                 maskedTextBox1.Text = ID.ToString();
-                
+
                 maskedTextBox4.Text = Img;
                 maskedTextBox5.Text = Cod;
             }
@@ -90,9 +90,9 @@ namespace Software_Base_de_Dados
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
             DataTable dataTable = dset.Tables["idtask"];
-            comboBox1.DataSource = dataTable;
-            comboBox1.DisplayMember = "ID";
-            comboBox1.Text = IDEquipa;
+            sfComboBox1.DataSource = dataTable;
+            sfComboBox1.DisplayMember = "ID";
+            sfComboBox1.Text = IDEquipa;
         }
 
 
@@ -105,7 +105,7 @@ namespace Software_Base_de_Dados
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = comboBox1.Text;
+                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
                 oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;
                 oleDbCommand.Parameters.Add("@Cod", OleDbType.Integer).Value = maskedTextBox5.Text;
                 try
@@ -127,7 +127,7 @@ namespace Software_Base_de_Dados
                         " IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = " + maskedTextBox1.Text;
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = comboBox1.Text;
+                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
                 oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;
                 oleDbCommand.Parameters.Add("@Cod", OleDbType.Integer).Value = maskedTextBox5.Text;
                 try
