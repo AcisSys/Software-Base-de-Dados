@@ -157,8 +157,7 @@ namespace Software_Base_de_Dados
             {
                 // Cria Querry com o comando para UPDATe
 
-                string querry = "UPDATE tab_agend  SET IDEquipa = @IDEquipa," +
-                    " IDTask = @IDTask where ID = " + maskedTextBox1.Text;
+                string querry = "UPDATE tab_agend  SET IDEquipa = @IDEquipa, IDTask = @IDTask where ID = " + maskedTextBox1.Text;
 
                 // Cria comando
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
@@ -178,7 +177,6 @@ namespace Software_Base_de_Dados
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
                 // FeedBack de sucesso ou erro
                 MessageBox.Show("Dados modificados com sucesso", "",
                     MessageBoxButtons.OK

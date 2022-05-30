@@ -53,9 +53,9 @@ namespace Software_Base_de_Dados
             Workers_Button.Image = ((System.Drawing.Image)(resources.GetObject("Workers_Button.Image")));
             Workers_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
             Workers_Button.Name = "Workers_Button";
-            Workers_Button.Size = new System.Drawing.Size(60, 40);
-            Workers_Button.Text = "Workers";
-            Workers_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            Workers_Button.Size = new System.Drawing.Size(80, 40);
+            Workers_Button.Text = "Operadores";
+            Workers_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             Workers_Button.Click += new System.EventHandler(this.Workers_Button_Click);
             // 
             // toolStrip1
@@ -63,18 +63,15 @@ namespace Software_Base_de_Dados
             this.toolStrip1.AccessibleDescription = "A bar with buttons leading to each table of the database";
             this.toolStrip1.AccessibleName = "Menu Bar";
             this.toolStrip1.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.toolStrip1.AutoSize = false;
             this.toolStrip1.BackColor = System.Drawing.SystemColors.Window;
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Agend_Button,
             this.Places_Button,
             this.Tags_Button,
+            this.Tasks_Button,
             Workers_Button,
             this.Teams_Button,
-            this.Tasks_Button,
+            this.Agend_Button,
             this.SubTasks_Button});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -91,9 +88,9 @@ namespace Software_Base_de_Dados
             this.Agend_Button.Image = ((System.Drawing.Image)(resources.GetObject("Agend_Button.Image")));
             this.Agend_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Agend_Button.Name = "Agend_Button";
-            this.Agend_Button.Size = new System.Drawing.Size(60, 40);
-            this.Agend_Button.Text = "Agend";
-            this.Agend_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.Agend_Button.Size = new System.Drawing.Size(80, 40);
+            this.Agend_Button.Text = "Programar";
+            this.Agend_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Agend_Button.Click += new System.EventHandler(this.Agend_Button_Click);
             // 
             // Places_Button
@@ -105,9 +102,9 @@ namespace Software_Base_de_Dados
             this.Places_Button.Image = ((System.Drawing.Image)(resources.GetObject("Places_Button.Image")));
             this.Places_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Places_Button.Name = "Places_Button";
-            this.Places_Button.Size = new System.Drawing.Size(60, 40);
-            this.Places_Button.Text = "Places";
-            this.Places_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.Places_Button.Size = new System.Drawing.Size(80, 40);
+            this.Places_Button.Text = "Localizações";
+            this.Places_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Places_Button.Click += new System.EventHandler(this.Places_Button_Click);
             // 
             // Tags_Button
@@ -119,9 +116,9 @@ namespace Software_Base_de_Dados
             this.Tags_Button.Image = ((System.Drawing.Image)(resources.GetObject("Tags_Button.Image")));
             this.Tags_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Tags_Button.Name = "Tags_Button";
-            this.Tags_Button.Size = new System.Drawing.Size(60, 40);
-            this.Tags_Button.Text = "Tags";
-            this.Tags_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.Tags_Button.Size = new System.Drawing.Size(80, 40);
+            this.Tags_Button.Text = "Etiquetas";
+            this.Tags_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Tags_Button.Click += new System.EventHandler(this.Tags_Button_Click);
             // 
             // Teams_Button
@@ -133,9 +130,9 @@ namespace Software_Base_de_Dados
             this.Teams_Button.Image = ((System.Drawing.Image)(resources.GetObject("Teams_Button.Image")));
             this.Teams_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Teams_Button.Name = "Teams_Button";
-            this.Teams_Button.Size = new System.Drawing.Size(60, 40);
-            this.Teams_Button.Text = "Teams";
-            this.Teams_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.Teams_Button.Size = new System.Drawing.Size(80, 40);
+            this.Teams_Button.Text = "Equipas";
+            this.Teams_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Teams_Button.Click += new System.EventHandler(this.Teams_Button_Click);
             // 
             // Tasks_Button
@@ -146,9 +143,9 @@ namespace Software_Base_de_Dados
             this.Tasks_Button.Image = ((System.Drawing.Image)(resources.GetObject("Tasks_Button.Image")));
             this.Tasks_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Tasks_Button.Name = "Tasks_Button";
-            this.Tasks_Button.Size = new System.Drawing.Size(60, 40);
-            this.Tasks_Button.Text = "Tasks";
-            this.Tasks_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.Tasks_Button.Size = new System.Drawing.Size(80, 40);
+            this.Tasks_Button.Text = "Tarefas";
+            this.Tasks_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Tasks_Button.Click += new System.EventHandler(this.Tasks_Button_Click);
             // 
             // SubTasks_Button
@@ -160,9 +157,9 @@ namespace Software_Base_de_Dados
             this.SubTasks_Button.Image = ((System.Drawing.Image)(resources.GetObject("SubTasks_Button.Image")));
             this.SubTasks_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SubTasks_Button.Name = "SubTasks_Button";
-            this.SubTasks_Button.Size = new System.Drawing.Size(60, 40);
+            this.SubTasks_Button.Size = new System.Drawing.Size(80, 40);
             this.SubTasks_Button.Text = "SubTasks";
-            this.SubTasks_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.SubTasks_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SubTasks_Button.Click += new System.EventHandler(this.SubTasks_Button_Click);
             // 
             // panel1
@@ -170,16 +167,17 @@ namespace Software_Base_de_Dados
             this.panel1.AccessibleDescription = "Panel that changes according to button pressed on the MenuBar";
             this.panel1.AccessibleName = "Panel 1";
             this.panel1.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
-            this.panel1.Location = new System.Drawing.Point(0, 57);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 52);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(975, 594);
+            this.panel1.Size = new System.Drawing.Size(975, 597);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // Form1
             // 
@@ -190,11 +188,12 @@ namespace Software_Base_de_Dados
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Software Base de Dados";
-            
+            this.Text = "Software verificação rotinas de manutenção";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

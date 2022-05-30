@@ -35,10 +35,8 @@ namespace Software_Base_de_Dados
             this.Modify_Button = new System.Windows.Forms.Button();
             this.Remove_Button = new System.Windows.Forms.Button();
             this.sfDataGrid1 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
-            this.sfDataGrid2 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.Exportar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid2)).BeginInit();
             this.SuspendLayout();
             // 
             // Add_Button
@@ -99,7 +97,7 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
             this.sfDataGrid1.Location = new System.Drawing.Point(3, 0);
             this.sfDataGrid1.Name = "sfDataGrid1";
-            this.sfDataGrid1.Size = new System.Drawing.Size(804, 369);
+            this.sfDataGrid1.Size = new System.Drawing.Size(804, 591);
             this.sfDataGrid1.Style.AddNewRowStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.sfDataGrid1.Style.HeaderStyle.Font.Bold = true;
             this.sfDataGrid1.Style.HeaderStyle.Font.Size = 11F;
@@ -107,23 +105,11 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.Text = "sfDataGrid1";
             this.sfDataGrid1.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.SfDataGrid1_QueryRowStyle);
             this.sfDataGrid1.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.SfDataGrid1_SelectionChanged);
-            // 
-            // sfDataGrid2
-            // 
-            this.sfDataGrid2.AccessibleName = "Table";
-            this.sfDataGrid2.AllowEditing = false;
-            this.sfDataGrid2.AllowFiltering = true;
-            this.sfDataGrid2.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            this.sfDataGrid2.Location = new System.Drawing.Point(3, 375);
-            this.sfDataGrid2.Name = "sfDataGrid2";
-            this.sfDataGrid2.Size = new System.Drawing.Size(804, 216);
-            this.sfDataGrid2.Style.HeaderStyle.Font.Bold = true;
-            this.sfDataGrid2.Style.HeaderStyle.Font.Size = 11F;
-            this.sfDataGrid2.TabIndex = 5;
-            this.sfDataGrid2.Text = "sfDataGrid2";
+            this.sfDataGrid1.Click += new System.EventHandler(this.sfDataGrid1_Click);
             // 
             // Exportar
             // 
+            this.Exportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Exportar.Image = ((System.Drawing.Image)(resources.GetObject("Exportar.Image")));
             this.Exportar.Location = new System.Drawing.Point(808, 3);
             this.Exportar.Name = "Exportar";
@@ -136,12 +122,10 @@ namespace Software_Base_de_Dados
             // 
             // Tables
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.Exportar);
-            this.Controls.Add(this.sfDataGrid2);
             this.Controls.Add(this.sfDataGrid1);
             this.Controls.Add(this.Remove_Button);
             this.Controls.Add(this.Modify_Button);
@@ -150,7 +134,6 @@ namespace Software_Base_de_Dados
             this.Size = new System.Drawing.Size(975, 594);
             this.Load += new System.EventHandler(this.Tables_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -160,7 +143,6 @@ namespace Software_Base_de_Dados
         private Button Modify_Button;
         private Button Remove_Button;
         private Syncfusion.WinForms.DataGrid.SfDataGrid sfDataGrid1;
-        private Syncfusion.WinForms.DataGrid.SfDataGrid sfDataGrid2;
         private Button Exportar;
     }
 }
