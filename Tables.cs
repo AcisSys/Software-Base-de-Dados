@@ -48,7 +48,7 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tabela { get; set; }
-        
+
         private void Tables_Load(object sender, EventArgs e)
         {
             Modify_Button.Enabled = false;
@@ -85,26 +85,42 @@ namespace Software_Base_de_Dados
                 }
             }
 
-            // Querry para o comando da base de dados
 
-            string querry = "SELECT * FROM " + Tabela;
 
-            // Limpa o DataSet
+            string querry;
+            if (Tabela == "tab_agend")
+            {
+                querry = "SELECT tab_agend.ID, tab_teams.Descricao," +
+                    " tab_agend.idtask " +
+                " FROM tab_teams INNER JOIN tab_agend " +
+                "ON tab_teams.ID = tab_agend.idequipa;";
+            }
+            else { querry = "SELECT * FROM " + Tabela; }
+
 
             dset.Reset();
-
-            // Vai buscar os dados ao executar o comando QUERRY
             adapter = new OleDbDataAdapter(querry, connection);
-
-            // Insere os dados no DataSet
-
             adapter.Fill(dset, "table");
 
-            // Associa o DataGrid ao DataSet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             sfDataGrid1.DataSource = null;
             sfDataGrid1.DataSource = dset.Tables["table"];
             sfDataGrid1.Update();
-            
+
             connection.Close();
 
 
@@ -277,7 +293,7 @@ namespace Software_Base_de_Dados
                 string querry = "SELECT Descricao FROM tab_teams WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
-                
+
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 agend.Idequipa = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 agend.Idtask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
@@ -296,7 +312,7 @@ namespace Software_Base_de_Dados
                 subtasks.IDTask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                 subtasks.Type = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
-                
+
                 connection.Close();
             }
             else if (Tabela == "tab_tasks")
@@ -304,8 +320,8 @@ namespace Software_Base_de_Dados
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 tasks.IDPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-               
-                
+
+
                 connection.Close();
 
             }
@@ -328,7 +344,7 @@ namespace Software_Base_de_Dados
                 string querry = "SELECT ID, Nome, Cod FROM tab_workers WHERE IDEquipa = '" + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + "'";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
-                
+
                 connection.Close();
             }
             else if (Tabela == "tab_tags")
@@ -347,7 +363,7 @@ namespace Software_Base_de_Dados
                 string querry = "SELECT * FROM tab_tasks WHERE RefTag = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1] + "'";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "tabled");
-                
+
                 connection.Close();
             }
         }
