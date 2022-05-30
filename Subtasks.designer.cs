@@ -31,14 +31,16 @@ namespace Software_Base_de_Dados
         private void InitializeComponent()
         {
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.sfComboBox1 = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.sfComboBox2 = new Syncfusion.WinForms.ListView.SfComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // maskedTextBox1
@@ -48,32 +50,12 @@ namespace Software_Base_de_Dados
             this.maskedTextBox1.Size = new System.Drawing.Size(86, 20);
             this.maskedTextBox1.TabIndex = 0;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(84, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(104, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // maskedTextBox2
             // 
             this.maskedTextBox2.Location = new System.Drawing.Point(84, 72);
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(221, 20);
             this.maskedTextBox2.TabIndex = 2;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(85, 98);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(104, 21);
-            this.comboBox2.TabIndex = 3;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -125,19 +107,37 @@ namespace Software_Base_de_Dados
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
+            // sfComboBox1
+            // 
+            this.sfComboBox1.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.sfComboBox1.Location = new System.Drawing.Point(85, 45);
+            this.sfComboBox1.Name = "sfComboBox1";
+            this.sfComboBox1.Size = new System.Drawing.Size(105, 21);
+            this.sfComboBox1.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.sfComboBox1.TabIndex = 9;
+            // 
+            // sfComboBox2
+            // 
+            this.sfComboBox2.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.sfComboBox2.Location = new System.Drawing.Point(85, 98);
+            this.sfComboBox2.Name = "sfComboBox2";
+            this.sfComboBox2.Size = new System.Drawing.Size(105, 21);
+            this.sfComboBox2.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.sfComboBox2.TabIndex = 10;
+            // 
             // Subtasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(328, 203);
+            this.Controls.Add(this.sfComboBox2);
+            this.Controls.Add(this.sfComboBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.maskedTextBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -146,6 +146,8 @@ namespace Software_Base_de_Dados
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Subtasks";
             this.Load += new System.EventHandler(this.Subtasks_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,13 +156,13 @@ namespace Software_Base_de_Dados
         #endregion
 
         private MaskedTextBox maskedTextBox1;
-        private ComboBox comboBox1;
         private MaskedTextBox maskedTextBox2;
-        private ComboBox comboBox2;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Button button1;
+        private Syncfusion.WinForms.ListView.SfComboBox sfComboBox1;
+        private Syncfusion.WinForms.ListView.SfComboBox sfComboBox2;
     }
 }
