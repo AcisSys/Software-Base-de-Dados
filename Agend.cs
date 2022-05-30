@@ -98,21 +98,21 @@ namespace Software_Base_de_Dados
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idteam");
             DataTable dataTable = dset.Tables["idteam"];
-            comboBox1.DataSource = dataTable;
-            comboBox1.DisplayMember = "ID";
+            sfComboBox1.DataSource = dataTable;
+            sfComboBox1.DisplayMember = "ID";
 
             // Dados para ComboBox2
             querry = "SELECT * FROM tab_tasks";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
             dataTable = dset.Tables["idtask"];
-            comboBox2.DataSource = dataTable;
-            comboBox2.DisplayMember = "ID";
+            sfComboBox2.DataSource = dataTable;
+            sfComboBox2.DisplayMember = "ID";
 
             // Texto das ComboBox é o valor do campo ao modificar
             // ou nulo ao adicionar
-            comboBox1.Text = Idequipa;
-            comboBox2.Text = Idtask;
+            sfComboBox1.Text = Idequipa;
+            sfComboBox2.Text = Idtask;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -129,8 +129,8 @@ namespace Software_Base_de_Dados
 
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
-                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = comboBox1.Text;
-                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = comboBox2.Text;
+                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
+                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
 
                 // Executa comando
                 try
@@ -163,8 +163,8 @@ namespace Software_Base_de_Dados
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
 
                 // Recebe os dados
-                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = comboBox1.Text;
-                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = comboBox2.Text;
+                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
+                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
 
                 // Executa o Comando
                 try
@@ -186,8 +186,8 @@ namespace Software_Base_de_Dados
 
             // limpa todos os campos e fecha  a janela de introdução de dados
             maskedTextBox1.Text = "";
-            comboBox1.Text = "";
-            comboBox2.Text = "";
+            sfComboBox1.Text = "";
+            sfComboBox2.Text = "";
             this.Close();
 
         }
