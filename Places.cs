@@ -58,7 +58,7 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-                button1.Text = "Guardar";
+                
                 // ID é automatico
 
 
@@ -75,7 +75,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                button1.Text = "Modificar";
+                
                 maskedTextBox1.ReadOnly = true;
                 maskedTextBox3.Select();
                 maskedTextBox1.Enabled = false;
@@ -157,6 +157,5 @@ namespace Software_Base_de_Dados
             maskedTextBox4.Text = "";
 
         }
-
     }
 }

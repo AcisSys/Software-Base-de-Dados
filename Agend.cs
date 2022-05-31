@@ -62,7 +62,7 @@ namespace Software_Base_de_Dados
             // Caso seja para adicionar dados
             if (Tipo == "Add")
             {
-                button1.Text = "Guardar";
+                
                 // ID é automatico
                 string comand = "SELECT MAX (ID) FROM tab_agend";
                 OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
@@ -79,7 +79,7 @@ namespace Software_Base_de_Dados
             {
 
                 // Case seja para modificar dados
-                button1.Text = "Modificar";
+                toolStripButton1.Text = "Modificar";
 
                 // Utilizador necessita de introduzir o ID
                 maskedTextBox1.ReadOnly = false;
@@ -193,12 +193,17 @@ namespace Software_Base_de_Dados
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            button1.Select();
+            toolStripButton1.Select();
         }
 
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            button1.Select();
+            toolStripButton1.Select();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

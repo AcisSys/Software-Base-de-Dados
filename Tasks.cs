@@ -56,7 +56,7 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-                button1.Text = "Guardar";
+                Button1.Text = "Guardar";
 
                 // ID é automatico
 
@@ -70,14 +70,14 @@ namespace Software_Base_de_Dados
                 // Disable campo ID
 
                 maskedTextBox1.ReadOnly = true;
-                button1.Select();
+                Button1.Select();
                 maskedTextBox1.Enabled = false;
             }
             else
             {
-                button1.Text = "Modificar";
+                Button1.Text = "Modificar";
                 maskedTextBox1.ReadOnly = true;
-                button1.Select();
+                Button1.Select();
                 maskedTextBox1.Enabled = false;
                 maskedTextBox1.Text = ID.ToString();
                 maskedTextBox2.Text = Descricao;
@@ -198,13 +198,14 @@ namespace Software_Base_de_Dados
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            button1.Select();
+            Button1.Select();
         }
 
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            button1.Select();
+            Button1.Select();
         }
+
 
     }
 }

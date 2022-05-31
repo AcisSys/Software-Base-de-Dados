@@ -31,6 +31,7 @@ namespace Software_Base_de_Dados
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Places));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,14 +40,16 @@ namespace Software_Base_de_Dados
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label1.Location = new System.Drawing.Point(25, 16);
+            this.label1.Location = new System.Drawing.Point(25, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 21);
             this.label1.TabIndex = 4;
@@ -56,17 +59,18 @@ namespace Software_Base_de_Dados
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(25, 42);
+            this.label2.Location = new System.Drawing.Point(25, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 21);
             this.label2.TabIndex = 5;
             this.label2.Text = "Localizacao:";
+            
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(218, 15);
+            this.label3.Location = new System.Drawing.Point(215, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 21);
             this.label3.TabIndex = 6;
@@ -76,7 +80,7 @@ namespace Software_Base_de_Dados
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(300, 15);
+            this.label4.Location = new System.Drawing.Point(297, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(22, 21);
             this.label4.TabIndex = 7;
@@ -84,48 +88,60 @@ namespace Software_Base_de_Dados
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(119, 15);
+            this.maskedTextBox1.Location = new System.Drawing.Point(123, 37);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(86, 20);
             this.maskedTextBox1.TabIndex = 8;
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(119, 41);
+            this.maskedTextBox2.Location = new System.Drawing.Point(123, 81);
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(266, 20);
             this.maskedTextBox2.TabIndex = 9;
             // 
             // maskedTextBox3
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(246, 15);
+            this.maskedTextBox3.Location = new System.Drawing.Point(243, 36);
             this.maskedTextBox3.Name = "maskedTextBox3";
             this.maskedTextBox3.Size = new System.Drawing.Size(48, 20);
             this.maskedTextBox3.TabIndex = 10;
             // 
             // maskedTextBox4
             // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(328, 15);
+            this.maskedTextBox4.Location = new System.Drawing.Point(325, 39);
             this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(57, 20);
+            this.maskedTextBox4.Size = new System.Drawing.Size(64, 20);
             this.maskedTextBox4.TabIndex = 11;
             // 
-            // button1
+            // toolStrip1
             // 
-            this.button1.Location = new System.Drawing.Point(172, 67);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 32);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 170);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(421, 25);
+            this.toolStrip1.TabIndex = 13;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Places
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 125);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(421, 195);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.maskedTextBox4);
             this.Controls.Add(this.maskedTextBox3);
             this.Controls.Add(this.maskedTextBox2);
@@ -139,8 +155,10 @@ namespace Software_Base_de_Dados
             this.MinimizeBox = false;
             this.Name = "Places";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Places";
+            this.Text = "Adicionar / Remover Localizações";
             this.Load += new System.EventHandler(this.Places_Load);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,6 +174,7 @@ namespace Software_Base_de_Dados
         private MaskedTextBox maskedTextBox2;
         private MaskedTextBox maskedTextBox3;
         private MaskedTextBox maskedTextBox4;
-        private Button button1;
+        private ToolStrip toolStrip1;
+        private ToolStripButton toolStripButton1;
     }
 }

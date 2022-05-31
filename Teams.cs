@@ -128,7 +128,5 @@ namespace Software_Base_de_Dados
             maskedTextBox2.Text = "";
 
         }
-
-
     }
 }
