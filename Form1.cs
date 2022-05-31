@@ -19,8 +19,6 @@ namespace Software_Base_de_Dados
 
         private void Agend_Button_Click(object sender, EventArgs e)
         {
-
-
             tabela = "tab_agend";
             table.Tabela = tabela;
             table.UpdateTable();
@@ -88,7 +86,6 @@ namespace Software_Base_de_Dados
             panel1.Controls.Add(table);
             table.Dock = DockStyle.Fill;
         }
-
 
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {

@@ -82,7 +82,7 @@ namespace Software_Base_de_Dados
             maskedTextBox1.Enabled = false;
 
             // Dados para ComboBox1
-            string querry = "SELECT * FROM tab_tasks";
+            string querry = "SELECT tab_workers.IDEquipa, tab_teams.Descricao FROM tab_teams INNER JOIN tab_workers ON tab_teams.ID = tab_workers.IDEquipa;";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
             DataTable dataTable = dset.Tables["idtask"];
