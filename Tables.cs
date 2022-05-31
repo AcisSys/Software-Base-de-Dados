@@ -15,7 +15,6 @@ namespace Software_Base_de_Dados
         public Tables()
         {
             InitializeComponent();
-
         }
 
         // String do caminho do ficheiro
