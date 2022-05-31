@@ -12,6 +12,13 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
 
+        // DataSet para as tabelas
+
+        DataSet dset = new DataSet();
+
+        // Adaptador para o DataSet
+
+        OleDbDataAdapter adapter = new OleDbDataAdapter();
 
         // String do caminho do ficheiro
 
@@ -21,19 +28,9 @@ namespace Software_Base_de_Dados
 
         public readonly OleDbConnection connection = new OleDbConnection(caminho);
 
-        // DataSet para as tabelas
-
-        DataSet dset = new DataSet();
-
-        // Adaptador para o DataSet
-
-        OleDbDataAdapter adapter = new OleDbDataAdapter();
-
-
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
-
 
         // String / Int para cada campo da tabela, ao modificar vai buscar o valor dos campos
 
@@ -60,27 +57,16 @@ namespace Software_Base_de_Dados
             // Caso seja para adicionar dados
             if (Tipo == "Add")
             {
-
                 // ID é automatico
                 string comand = "SELECT MAX (ID) FROM tab_agend";
                 OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
-
-                
             }
             else
             {
-
-                // Case seja para modificar dados
-                
-
-                // Utilizador necessita de introduzir o ID
-                
                 maskedTextBox1.Text = Id.ToString();
-                
-
             }
             // Disable campo ID
 
@@ -198,7 +184,5 @@ namespace Software_Base_de_Dados
         {
             toolStripButton1.Select();
         }
-
-
     }
 }
