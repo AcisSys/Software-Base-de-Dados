@@ -148,12 +148,6 @@ namespace Software_Base_de_Dados
             }
 
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             button1.Select();

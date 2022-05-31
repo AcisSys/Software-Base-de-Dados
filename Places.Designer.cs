@@ -61,7 +61,6 @@ namespace Software_Base_de_Dados
             this.label2.Size = new System.Drawing.Size(92, 21);
             this.label2.TabIndex = 5;
             this.label2.Text = "Localizacao:";
-            
             // 
             // label3
             // 
@@ -119,7 +118,7 @@ namespace Software_Base_de_Dados
             this.button1.TabIndex = 12;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Places
             // 

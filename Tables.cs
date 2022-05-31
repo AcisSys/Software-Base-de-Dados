@@ -24,7 +24,7 @@ namespace Software_Base_de_Dados
                         Data Source = WORK2GOData.accdb;
         Jet OLEDB:Database Password = ogednom ";
 
-          
+
 
         // Conexão
 
@@ -40,7 +40,7 @@ namespace Software_Base_de_Dados
 
         Agend agend = new Agend();
         Places places = new Places();
-        
+
         Tags tags = new Tags();
         Tasks tasks = new Tasks();
         Teams teams = new Teams();
@@ -97,7 +97,7 @@ namespace Software_Base_de_Dados
                 " FROM tab_teams INNER JOIN tab_agend " +
                 "ON tab_teams.ID = tab_agend.idequipa;";
             }
-            else if (Tabela == "tab_tasks") 
+            else if (Tabela == "tab_tasks")
             {
                 querry = "SELECT * " +
                     " FROM [tab_places] INNER JOIN([tab_tasks] INNER JOIN [tab_subtasks] ON [tab_tasks].[ID] = [tab_subtasks].[IDTask]) ON [tab_places].[ID] = [tab_tasks].[IDPlace];";
@@ -114,28 +114,10 @@ namespace Software_Base_de_Dados
                 adapter.Fill(dset, "table");
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             sfDataGrid1.DataSource = null;
             sfDataGrid1.DataSource = dset.Tables["table"];
             sfDataGrid1.Update();
-
             connection.Close();
-
-
         }
 
         private void Add_Button_Click(object sender, EventArgs e)
@@ -162,7 +144,7 @@ namespace Software_Base_de_Dados
 
                 tasks.ShowDialog();
             }
-            
+
             if (Tabela == "tab_tags")
             {
                 tags.Tipo = "Add";
@@ -200,7 +182,7 @@ namespace Software_Base_de_Dados
                 tasks.Tipo = "";
                 tasks.ShowDialog();
             }
-            
+
             if (Tabela == "tab_tags")
             {
                 tags.Tipo = "";
@@ -310,7 +292,7 @@ namespace Software_Base_de_Dados
                 places.X = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                 places.Y = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
             }
-           
+
             else if (Tabela == "tab_tasks")
             {
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];

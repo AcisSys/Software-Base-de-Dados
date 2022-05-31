@@ -39,7 +39,7 @@ namespace Software_Base_de_Dados
         public string Localizacao { get; set; }
         public string X { get; set; }
         public string Y { get; set; }
-    
+
 
         private void Places_Load(object sender, EventArgs e)
         {
@@ -157,5 +157,6 @@ namespace Software_Base_de_Dados
             maskedTextBox4.Text = "";
 
         }
+
     }
 }

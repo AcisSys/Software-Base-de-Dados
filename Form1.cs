@@ -26,7 +26,7 @@ namespace Software_Base_de_Dados
 
 
             tabela = "tab_agend";
-            
+
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
@@ -40,7 +40,7 @@ namespace Software_Base_de_Dados
         {
             tabela = "tab_places";
             table.Tabela = tabela;
-            
+
             table.UpdateTable();
             panel1.Controls.Clear();
             panel1.Controls.Add(table);
@@ -60,7 +60,7 @@ namespace Software_Base_de_Dados
         private void Workers_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_workers";
-            
+
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
@@ -71,7 +71,7 @@ namespace Software_Base_de_Dados
         private void Teams_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_teams";
-            
+
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
@@ -82,7 +82,7 @@ namespace Software_Base_de_Dados
         private void Tasks_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_tasks";
-            
+
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
@@ -93,7 +93,7 @@ namespace Software_Base_de_Dados
         private void SubTasks_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_subtasks";
-            
+
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
@@ -101,10 +101,6 @@ namespace Software_Base_de_Dados
             table.Dock = DockStyle.Fill;
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {

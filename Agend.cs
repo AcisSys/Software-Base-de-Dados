@@ -90,7 +90,6 @@ namespace Software_Base_de_Dados
             }
 
 
-
             // Bloco encarregue de adicionar as opções das 2 comboBox
 
             // Dados para ComboBox1
