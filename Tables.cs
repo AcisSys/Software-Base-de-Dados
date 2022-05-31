@@ -93,7 +93,7 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tasks")
             {
-                querry = "SELECT tab_tasks.ID, tab_tasks.Descricao, tab_places.Localizacao, tab_tasks.Active, tab_tasks.RefTag, tab_subtasks.Desc FROM tab_places, tab_tasks,  INNER JOIN(tab_tasks INNER JOIN tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask) ON tab_places.ID = tab_tasks.IDPlace;";
+                querry = "SELECT tab_tasks.ID, tab_tasks.Descricao, tab_places.Localizacao, tab_tasks.Active, tab_tasks.RefTag, tab_subtasks.Desc FROM tab_places, tab_tasks,  INNER JOIN(tab_tasks INNER JOIN tab_subtasks ON" + "'" + "tab_tasks.ID"  + "'" + "= " + "'" + "tab_subtasks.IDTask" + "'" + ") ON tab_places.ID = tab_tasks.IDPlace;";
 
             }
             else { querry = "SELECT * FROM " + Tabela; }
