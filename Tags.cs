@@ -44,96 +44,60 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-                button1.Text = "Guardar";
-                button1.Text = "Guardar";
-
                 // ID é automatico
-
-
                 string comand = "SELECT MAX (ID) FROM tab_tags";
                 OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
-
-                // Disable campo ID
-
-                maskedTextBox1.ReadOnly = true;
-                maskedTextBox1.Enabled = false;
-
             }
             else
             {
-                button1.Text = "Modificar";
-                maskedTextBox1.ReadOnly = true;
-                maskedTextBox1.Enabled = false;
                 maskedTextBox1.Text = ID.ToString();
                 maskedTextBox2.Text = Ref;
-
             }
+            maskedTextBox1.ReadOnly = true;
+            maskedTextBox1.Enabled = false;
             button1.Select();
-
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
-
+            OleDbCommand oleDbCommand;
             if (Tipo == "Add")
             {
                 // querry para inserir dados
                 string querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
                             "VALUES (@ID, @IDEquipa, @IDTask)";
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@Taken",
                     OleDbType.LongVarChar).Value = "Não";
-
-                // tenta executar o comando e envia mensagem de erro / sucesso
-                try
-                {
-                    oleDbCommand.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
-                        null, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                MessageBox.Show("Dados adicionados com sucesso", "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
             }
             else
             {
-
                 string querry = "UPDATE tab_tags  SET Ref = @Ref," +
                     " taken = @taken where ID = " + maskedTextBox1.Text;
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
-                try
-                {
-                    oleDbCommand.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Não foi possivel modificar dados\n" + ex.Message,
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                MessageBox.Show("Dados modificados com sucesso", "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
             }
+            // tenta executar o comando e envia mensagem de erro / sucesso
+            try
+            {
+                oleDbCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
+                    null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            MessageBox.Show("Dados adicionados com sucesso", "", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
             maskedTextBox1.Text = "";
             maskedTextBox2.Text = "";
-
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -56,37 +56,27 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-
-                // ID é automatico
-
-
                 string comand = "SELECT MAX (ID) FROM tab_places";
                 OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
-
-                // Disable campo ID
-
-                maskedTextBox1.ReadOnly = true;
-                maskedTextBox1.Enabled = false;
             }
             else
             {
-
-                maskedTextBox1.ReadOnly = true;
-                maskedTextBox3.Select();
-                maskedTextBox1.Enabled = false;
                 maskedTextBox1.Text = ID.ToString();
                 maskedTextBox2.Text = Localizacao;
                 maskedTextBox3.Text = X;
                 maskedTextBox4.Text = Y;
-
             }
+            maskedTextBox1.ReadOnly = true;
+            maskedTextBox2.Select();
+            maskedTextBox1.Enabled = false;
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            OleDbCommand oleDbCommand;
 
             if (Tipo == "Add")
             {
@@ -94,61 +84,38 @@ namespace Software_Base_de_Dados
                 string querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
                    "VALUES (@ID, @Localizacao, @X, @Y)";
                 // Cria um comando para executar a Querry, dados os parametros necessários
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                 oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@Localizacao",
                     OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                 oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
-
-                // Tenta executar o comando
-                try
-                {
-                    oleDbCommand.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-
-                    // Envia mensagem de erro caso necessário
-                    MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message, "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    // Para o código
-                    return;
-                }
-                MessageBox.Show("Dados adicionados com sucesso", "",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
             }
-
             else
             {
-                // Ver documentação da linha 166 - 196
-
                 string querry = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
                      " Y = @Y where ID = " + maskedTextBox1.Text;
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                 oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@Localizacao",
                     OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                 oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
-                try
-                {
-                    oleDbCommand.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Não foi possivel modificar dados\n" + ex.Message, "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                MessageBox.Show("Dados modificados com sucesso", "",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-
             }
-
-            // apaga os valores de todos os campos
+            // Tenta executar o comando
+            try
+            {
+                oleDbCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // Envia mensagem de erro caso necessário
+                MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            MessageBox.Show("Dados adicionados com sucesso", "",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
             maskedTextBox1.Text = "";
             maskedTextBox2.Text = "";
             maskedTextBox3.Text = "";

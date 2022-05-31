@@ -105,7 +105,7 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.Text = "sfDataGrid1";
             this.sfDataGrid1.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.SfDataGrid1_QueryRowStyle);
             this.sfDataGrid1.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.SfDataGrid1_SelectionChanged);
-            this.sfDataGrid1.Click += new System.EventHandler(this.sfDataGrid1_Click);
+            
             // 
             // Exportar
             // 
@@ -132,7 +132,7 @@ namespace Software_Base_de_Dados
             this.Controls.Add(this.Add_Button);
             this.Name = "Tables";
             this.Size = new System.Drawing.Size(975, 594);
-            this.Load += new System.EventHandler(this.Tables_Load_1);
+            
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).EndInit();
             this.ResumeLayout(false);
 

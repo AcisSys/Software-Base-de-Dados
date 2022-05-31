@@ -24,8 +24,6 @@ namespace Software_Base_de_Dados
                         Data Source = WORK2GOData.accdb;
         Jet OLEDB:Database Password = ogednom ";
 
-
-
         // Conexão
 
         public readonly OleDbConnection connection = new OleDbConnection(caminho);
@@ -86,9 +84,6 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-
-
             string querry;
             if (Tabela == "tab_agend")
             {
@@ -103,8 +98,6 @@ namespace Software_Base_de_Dados
                     " FROM [tab_places] INNER JOIN([tab_tasks] INNER JOIN [tab_subtasks] ON [tab_tasks].[ID] = [tab_subtasks].[IDTask]) ON [tab_places].[ID] = [tab_tasks].[IDPlace];";
             }
             else { querry = "SELECT * FROM " + Tabela; }
-
-
             dset.Reset();
             adapter = new OleDbDataAdapter(querry, connection);
             using (OleDbConnection connection = new OleDbConnection(caminho))
@@ -122,7 +115,6 @@ namespace Software_Base_de_Dados
 
         private void Add_Button_Click(object sender, EventArgs e)
         {
-
             if (Tabela == "tab_agend")
             {
                 Agend agend = new Agend
@@ -144,7 +136,6 @@ namespace Software_Base_de_Dados
 
                 tasks.ShowDialog();
             }
-
             if (Tabela == "tab_tags")
             {
                 tags.Tipo = "Add";
@@ -160,8 +151,6 @@ namespace Software_Base_de_Dados
                 workers.Tipo = "Add";
                 workers.ShowDialog();
             }
-            // chama a form para adicionar campos a tabela
-            // Update á tabela quando retorna ao usercontrol
             UpdateTable();
         }
         private void Modify_Button_Click(object sender, EventArgs e)
@@ -182,7 +171,6 @@ namespace Software_Base_de_Dados
                 tasks.Tipo = "";
                 tasks.ShowDialog();
             }
-
             if (Tabela == "tab_tags")
             {
                 tags.Tipo = "";
@@ -253,10 +241,6 @@ namespace Software_Base_de_Dados
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
         }
-        private void Tables_Load_1(object sender, EventArgs e)
-        {
-
-        }
         private void SfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
             Modify_Button.Enabled = true;
@@ -276,9 +260,6 @@ namespace Software_Base_de_Dados
             }
             if (Tabela == "tab_agend")
             {
-                string querry = "SELECT Descricao FROM tab_teams WHERE ID = " + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                adapter = new OleDbDataAdapter(querry, connection);
-                adapter.Fill(ds, "tabled");
 
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 agend.Idequipa = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
@@ -319,9 +300,7 @@ namespace Software_Base_de_Dados
             {
                 teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                string querry = "SELECT ID, Nome, Cod FROM tab_workers WHERE IDEquipa = '" + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + "'";
-                adapter = new OleDbDataAdapter(querry, connection);
-                adapter.Fill(ds, "tabled");
+
 
                 connection.Close();
             }
@@ -338,10 +317,6 @@ namespace Software_Base_de_Dados
                 {
                     tags.Taken = false;
                 }
-                string querry = "SELECT * FROM tab_tasks WHERE RefTag = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1] + "'";
-                adapter = new OleDbDataAdapter(querry, connection);
-                adapter.Fill(ds, "tabled");
-
                 connection.Close();
             }
         }
@@ -390,11 +365,6 @@ namespace Software_Base_de_Dados
                 else
                     e.Style.BackColor = Color.White;
             }
-        }
-
-        private void sfDataGrid1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

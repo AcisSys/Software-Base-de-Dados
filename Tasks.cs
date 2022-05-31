@@ -54,29 +54,16 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-                Button1.Text = "Guardar";
-
                 // ID é automatico
-
-
                 string comand = "SELECT MAX (ID) FROM tab_tasks";
                 OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
 
-                // Disable campo ID
-
-                maskedTextBox1.ReadOnly = true;
-                Button1.Select();
-                maskedTextBox1.Enabled = false;
             }
             else
             {
-                Button1.Text = "Modificar";
-                maskedTextBox1.ReadOnly = true;
-                Button1.Select();
-                maskedTextBox1.Enabled = false;
                 maskedTextBox1.Text = ID.ToString();
                 maskedTextBox2.Text = Descricao;
                 if (Active == true)
@@ -105,14 +92,17 @@ namespace Software_Base_de_Dados
             dataTable = dset.Tables["type"];
             sfComboBox2.DataSource = dataTable;
             sfComboBox2.DisplayMember = "Ref";
-
             sfComboBox1.Text = IDPlace;
             sfComboBox2.Text = RefTag;
+            maskedTextBox1.ReadOnly = true;
+            Button1.Select();
+            maskedTextBox1.Enabled = false;
 
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            OleDbCommand oleDbCommand;
             string active;
             if (checkBox1.Checked == true)
             {
@@ -127,13 +117,12 @@ namespace Software_Base_de_Dados
                 // querry para adicionar dados a tabela
                 string querry = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +
                          "VALUES (@ID, @Descricao, @IDPlace, @Active, @RefTag)";
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@Descricao", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
                 oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
                 oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
-
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
@@ -151,40 +140,32 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                // Cria Querry com o comando para UPDATe
-
                 string querry = "UPDATE tab_tasks  Descricao = @Descricao, IDPlace = @IDPlace, Active = @Active, RefTag = @RefTag" +
                     " where ID = " + maskedTextBox1.Text;
-
-                // Cria comando
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-
+                oleDbCommand = new OleDbCommand(querry, connection);
                 // Recebe os dados
                 oleDbCommand.Parameters.Add("@Descricao", OleDbType.Integer).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
                 oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
                 oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
                 oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
-
-                // Executa o Comando
-                try
-                {
-                    oleDbCommand.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Não foi possivel modificar dados\n" + ex.Message, "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // FeedBack de sucesso ou erro
-                MessageBox.Show("Dados modificados com sucesso", "",
-                    MessageBoxButtons.OK
-                    , MessageBoxIcon.Information);
-
+            }
+            // Executa o Comando
+            try
+            {
+                oleDbCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possivel modificar dados\n" + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
+            // FeedBack de sucesso ou erro
+            MessageBox.Show("Dados modificados com sucesso", "",
+                MessageBoxButtons.OK
+                , MessageBoxIcon.Information);
             // limpa todos os campos e fecha  a janela de introdução de dados
             maskedTextBox1.Text = "";
             sfComboBox1.Text = "";
