@@ -62,7 +62,7 @@ namespace Software_Base_de_Dados
 
                 maskedTextBox1.ReadOnly = true;
                 maskedTextBox1.Enabled = false;
-                
+
             }
             else
             {
@@ -71,14 +71,7 @@ namespace Software_Base_de_Dados
                 maskedTextBox1.Enabled = false;
                 maskedTextBox1.Text = ID.ToString();
                 maskedTextBox2.Text = Ref;
-                if (Taken == true)
-                {
-                    checkBox1.Checked = true;
-                }
-                else
-                {
-                    checkBox1.Checked = false;
-                }
+
             }
             button1.Select();
 
@@ -86,17 +79,7 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            string check;
-            // verifica se a checkbox está acionada ou nao
-            // e indica o valor do campo de acordo
-            if (checkBox1.Checked == true)
-            {
-                check = "Sim";
-            }
-            else
-            {
-                check = "Não";
-            }
+
 
             if (Tipo == "Add")
             {
@@ -107,7 +90,7 @@ namespace Software_Base_de_Dados
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@Taken",
-                    OleDbType.LongVarChar).Value = check;
+                    OleDbType.LongVarChar).Value = "Não";
 
                 // tenta executar o comando e envia mensagem de erro / sucesso
                 try
@@ -130,7 +113,7 @@ namespace Software_Base_de_Dados
                     " taken = @taken where ID = " + maskedTextBox1.Text;
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = check;
+                oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
@@ -146,7 +129,7 @@ namespace Software_Base_de_Dados
             }
             maskedTextBox1.Text = "";
             maskedTextBox2.Text = "";
-            checkBox1.Checked = false;
+
 
         }
     }

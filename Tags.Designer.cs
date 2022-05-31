@@ -34,7 +34,6 @@ namespace Software_Base_de_Dados
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
@@ -75,17 +74,6 @@ namespace Software_Base_de_Dados
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.checkBox1.Location = new System.Drawing.Point(79, 86);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(68, 25);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Taken";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // maskedTextBox2
             // 
             this.maskedTextBox2.Location = new System.Drawing.Point(79, 60);
@@ -99,7 +87,6 @@ namespace Software_Base_de_Dados
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(209, 184);
             this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -122,7 +109,6 @@ namespace Software_Base_de_Dados
         private Label label1;
         private Label label2;
         private Button button1;
-        private CheckBox checkBox1;
         private MaskedTextBox maskedTextBox2;
     }
 }

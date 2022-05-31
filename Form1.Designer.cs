@@ -38,9 +38,8 @@ namespace Software_Base_de_Dados
             this.Tasks_Button = new System.Windows.Forms.ToolStripButton();
             this.Teams_Button = new System.Windows.Forms.ToolStripButton();
             this.Agend_Button = new System.Windows.Forms.ToolStripButton();
-            this.SubTasks_Button = new System.Windows.Forms.ToolStripButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             Workers_Button = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +72,6 @@ namespace Software_Base_de_Dados
             Workers_Button,
             this.Teams_Button,
             this.Agend_Button,
-            this.SubTasks_Button,
             this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -150,19 +148,16 @@ namespace Software_Base_de_Dados
             this.Agend_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Agend_Button.Click += new System.EventHandler(this.Agend_Button_Click);
             // 
-            // SubTasks_Button
+            // toolStripButton1
             // 
-            this.SubTasks_Button.AccessibleDescription = "A button leading for the table \"SubTasks\" from the database";
-            this.SubTasks_Button.AccessibleName = "Subtasks Button";
-            this.SubTasks_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.SubTasks_Button.AutoSize = false;
-            this.SubTasks_Button.Image = ((System.Drawing.Image)(resources.GetObject("SubTasks_Button.Image")));
-            this.SubTasks_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SubTasks_Button.Name = "SubTasks_Button";
-            this.SubTasks_Button.Size = new System.Drawing.Size(80, 40);
-            this.SubTasks_Button.Text = "SubTasks";
-            this.SubTasks_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.SubTasks_Button.Click += new System.EventHandler(this.SubTasks_Button_Click);
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(58, 49);
+            this.toolStripButton1.Text = "Conexão";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // panel1
             // 
@@ -181,17 +176,6 @@ namespace Software_Base_de_Dados
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(58, 49);
-            this.toolStripButton1.Text = "Conexão";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,6 +183,9 @@ namespace Software_Base_de_Dados
             this.ClientSize = new System.Drawing.Size(975, 649);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Software verificação rotinas de manutenção";
@@ -218,7 +205,6 @@ namespace Software_Base_de_Dados
         private ToolStripButton Tags_Button;
         private ToolStripButton Teams_Button;
         private ToolStripButton Tasks_Button;
-        private ToolStripButton SubTasks_Button;
         private Panel panel1;
         private ToolStripButton toolStripButton1;
     }

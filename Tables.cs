@@ -40,7 +40,7 @@ namespace Software_Base_de_Dados
 
         Agend agend = new Agend();
         Places places = new Places();
-        Subtasks subtasks = new Subtasks();
+        
         Tags tags = new Tags();
         Tasks tasks = new Tasks();
         Teams teams = new Teams();
@@ -162,11 +162,7 @@ namespace Software_Base_de_Dados
 
                 tasks.ShowDialog();
             }
-            if (Tabela == "tab_subtasks")
-            {
-                subtasks.Tipo = "Add";
-                subtasks.ShowDialog();
-            }
+            
             if (Tabela == "tab_tags")
             {
                 tags.Tipo = "Add";
@@ -204,11 +200,7 @@ namespace Software_Base_de_Dados
                 tasks.Tipo = "";
                 tasks.ShowDialog();
             }
-            if (Tabela == "tab_subtasks")
-            {
-                subtasks.Tipo = "";
-                subtasks.ShowDialog();
-            }
+            
             if (Tabela == "tab_tags")
             {
                 tags.Tipo = "";
@@ -318,15 +310,7 @@ namespace Software_Base_de_Dados
                 places.X = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                 places.Y = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
             }
-            else if (Tabela == "tab_subtasks")
-            {
-                subtasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                subtasks.IDTask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-                subtasks.Type = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
-
-                connection.Close();
-            }
+           
             else if (Tabela == "tab_tasks")
             {
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
