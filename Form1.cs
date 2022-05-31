@@ -96,7 +96,7 @@ namespace Software_Base_de_Dados
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Tables.caminho = File.ReadAllText("FILENAME.txt");
+            Tables.Caminho = File.ReadAllText("FILENAME.txt");
         }
     }
 }

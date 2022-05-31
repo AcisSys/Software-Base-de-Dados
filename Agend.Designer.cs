@@ -120,7 +120,7 @@ namespace Software_Base_de_Dados
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "button1";
-            this.toolStripButton1.Click += new System.EventHandler(this.button1_Click);
+            this.toolStripButton1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Agend
             // 

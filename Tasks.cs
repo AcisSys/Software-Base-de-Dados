@@ -14,7 +14,7 @@ namespace Software_Base_de_Dados
 
         // String do caminho do ficheiro
 
-        static readonly string caminho = Tables.caminho;
+        static readonly string caminho = Tables.Caminho;
 
         // Conexão
 

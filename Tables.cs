@@ -19,13 +19,13 @@ namespace Software_Base_de_Dados
 
         // String do caminho do ficheiro
 
-        public static string caminho { get; set; } = @"Provider = Microsoft.ACE.OLEDB.12.0;
+        public static string Caminho { get; set; } = @"Provider = Microsoft.ACE.OLEDB.12.0;
                         Data Source = WORK2GOData.accdb;
         Jet OLEDB:Database Password = ogednom ";
 
         // Conexão
 
-        public readonly OleDbConnection connection = new OleDbConnection(caminho);
+        public readonly OleDbConnection connection = new OleDbConnection(Caminho);
 
         // DataSet para as tabelas
 
@@ -99,13 +99,14 @@ namespace Software_Base_de_Dados
             else { querry = "SELECT * FROM " + Tabela; }
             dset.Reset();
             adapter = new OleDbDataAdapter(querry, connection);
-            using (OleDbConnection connection = new OleDbConnection(caminho))
+            using (OleDbConnection connection = new OleDbConnection(Caminho))
             {
-                adapter = new OleDbDataAdapter();
-                adapter.SelectCommand = new OleDbCommand(querry, connection);
+                adapter = new OleDbDataAdapter
+                {
+                    SelectCommand = new OleDbCommand(querry, connection)
+                };
                 adapter.Fill(dset, "table");
             }
-
             sfDataGrid1.DataSource = null;
             sfDataGrid1.DataSource = dset.Tables["table"];
             sfDataGrid1.Update();

@@ -22,7 +22,7 @@ namespace Software_Base_de_Dados
 
         // String do caminho do ficheiro
 
-        static readonly string caminho = Tables.caminho;
+        static readonly string caminho = Tables.Caminho;
 
         // String do comando enviado para a base de dados
 
@@ -94,7 +94,7 @@ namespace Software_Base_de_Dados
             sfComboBox2.Text = Idtask;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             OleDbCommand oleDbCommand;
 

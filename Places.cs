@@ -13,7 +13,7 @@ namespace Software_Base_de_Dados
 
         // String do caminho do ficheiro
 
-        static readonly string caminho = Tables.caminho;
+        static readonly string caminho = Tables.Caminho;
 
         // Conexão
 
@@ -84,7 +84,7 @@ namespace Software_Base_de_Dados
                 string querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
                    "VALUES (@ID, @Localizacao, @X, @Y)";
                 // Cria um comando para executar a Querry, dados os parametros necessários
-                 oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@Localizacao",
                     OleDbType.LongVarChar).Value = maskedTextBox2.Text;
@@ -95,7 +95,7 @@ namespace Software_Base_de_Dados
             {
                 string querry = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
                      " Y = @Y where ID = " + maskedTextBox1.Text;
-                 oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@Localizacao",
                     OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;

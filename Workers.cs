@@ -14,7 +14,7 @@ namespace Software_Base_de_Dados
 
         // String do caminho do ficheiro
 
-        static readonly string caminho = Tables.caminho;
+        static readonly string caminho = Tables.Caminho;
 
         // Conexão
 
@@ -98,7 +98,7 @@ namespace Software_Base_de_Dados
         {
             OleDbCommand oleDbCommand;
             if (Tipo == "Add")
-                // querry e parametros para adicionar dados
+            // querry e parametros para adicionar dados
             {
                 string querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod)" +
                         "VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
