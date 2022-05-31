@@ -57,7 +57,6 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
             // Caso seja para adicionar dados
             if (Tipo == "Add")
             {
@@ -72,12 +71,8 @@ namespace Software_Base_de_Dados
             {
                 maskedTextBox1.Text = Id.ToString();
             }
-            // Disable campo ID
-
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
-
-
             // Bloco encarregue de adicionar as opções das 2 comboBox
             // Dados para ComboBox1
             string querry = "SELECT * FROM tab_teams";
@@ -111,69 +106,44 @@ namespace Software_Base_de_Dados
 
                 // Parametros com dados a adicionar
 
-                 oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
                 oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
-
-                // Executa comando
-                try
-                {
-                    oleDbCommand.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    // mostra mensagem de erro caso necessário
-                    MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    return;
-                }
-
-                // mostra feedback caso os dados sejam adicionados
-                MessageBox.Show("Dados adicionados com sucesso", "",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
             }
-
             else
             {
                 // Cria Querry com o comando para UPDATe
-
                 string querry = "UPDATE tab_agend  SET IDEquipa = @IDEquipa, IDTask = @IDTask where ID = " + maskedTextBox1.Text;
-
                 // Cria comando
-                 oleDbCommand = new OleDbCommand(querry, connection);
-
+                oleDbCommand = new OleDbCommand(querry, connection);
                 // Recebe os dados
                 oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
                 oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
-
-                // Executa o Comando
-                try
-                {
-                    oleDbCommand.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Não foi possivel modificar dados\n" + ex.Message, "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                // FeedBack de sucesso ou erro
-                MessageBox.Show("Dados modificados com sucesso", "",
-                    MessageBoxButtons.OK
-                    , MessageBoxIcon.Information);
-
             }
-
+            // Executa comando
+            try
+            {
+                oleDbCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // mostra mensagem de erro caso necessário
+                MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+            // mostra feedback caso os dados sejam adicionados
+            MessageBox.Show("Dados adicionados com sucesso", "",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
             // limpa todos os campos e fecha  a janela de introdução de dados
             maskedTextBox1.Text = "";
             sfComboBox1.Text = "";
             sfComboBox2.Text = "";
             this.Close();
-
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -94,7 +94,7 @@ namespace Software_Base_de_Dados
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(23, 22);
             this.button1.Text = "toolStripButton1";
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Teams
             // 
