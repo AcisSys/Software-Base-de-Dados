@@ -103,9 +103,7 @@ namespace Software_Base_de_Dados
                 // Querry para adicionar dados
                 string querry = "INSERT INTO tab_agend (ID, IDEquipa, IDTask)" +
                        "VALUES (@ID, @IDEquipa, @IDTask)";
-
                 // Parametros com dados a adicionar
-
                 oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
