@@ -64,7 +64,6 @@ namespace Software_Base_de_Dados
             this.label2.Size = new System.Drawing.Size(92, 21);
             this.label2.TabIndex = 5;
             this.label2.Text = "Localizacao:";
-            
             // 
             // label3
             // 
@@ -119,7 +118,7 @@ namespace Software_Base_de_Dados
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 170);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 131);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(421, 25);
             this.toolStrip1.TabIndex = 13;
@@ -140,7 +139,7 @@ namespace Software_Base_de_Dados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 195);
+            this.ClientSize = new System.Drawing.Size(421, 156);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.maskedTextBox4);
             this.Controls.Add(this.maskedTextBox3);

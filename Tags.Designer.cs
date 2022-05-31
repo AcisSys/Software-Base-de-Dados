@@ -42,7 +42,7 @@ namespace Software_Base_de_Dados
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(145, 29);
+            this.maskedTextBox1.Location = new System.Drawing.Point(145, 32);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(86, 20);
             this.maskedTextBox1.TabIndex = 0;
@@ -51,7 +51,7 @@ namespace Software_Base_de_Dados
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label1.Location = new System.Drawing.Point(51, 29);
+            this.label1.Location = new System.Drawing.Point(51, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 21);
             this.label1.TabIndex = 3;
@@ -61,7 +61,7 @@ namespace Software_Base_de_Dados
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(51, 61);
+            this.label2.Location = new System.Drawing.Point(51, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 21);
             this.label2.TabIndex = 4;
@@ -69,7 +69,7 @@ namespace Software_Base_de_Dados
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(145, 61);
+            this.maskedTextBox2.Location = new System.Drawing.Point(145, 75);
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(86, 20);
             this.maskedTextBox2.TabIndex = 9;
