@@ -174,7 +174,6 @@ namespace Software_Base_de_Dados
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(975, 597);
             this.panel1.TabIndex = 1;
-            
             // 
             // Form1
             // 
@@ -190,6 +189,7 @@ namespace Software_Base_de_Dados
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Software verificação rotinas de manutenção";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Software_Base_de_Dados
@@ -91,6 +92,11 @@ namespace Software_Base_de_Dados
         {
             Conexao conexao = new Conexao();
             conexao.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
