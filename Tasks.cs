@@ -187,13 +187,13 @@ namespace Software_Base_de_Dados
 
             }
 
-                // limpa todos os campos e fecha  a janela de introdução de dados
-                maskedTextBox1.Text = "";
-                sfComboBox1.Text = "";
-                sfComboBox2.Text = "";
-                this.Close();
+            // limpa todos os campos e fecha  a janela de introdução de dados
+            maskedTextBox1.Text = "";
+            sfComboBox1.Text = "";
+            sfComboBox2.Text = "";
+            this.Close();
 
-            }
+        }
 
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)

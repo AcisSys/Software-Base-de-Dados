@@ -1,5 +1,4 @@
 using System;
-using System.Data.OleDb;
 using System.Windows.Forms;
 
 namespace Software_Base_de_Dados
@@ -107,7 +106,7 @@ namespace Software_Base_de_Dados
         {
             Conexao conexao = new Conexao();
             conexao.ShowDialog();
-           
+
         }
     }
 }
