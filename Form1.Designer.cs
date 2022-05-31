@@ -33,13 +33,14 @@ namespace Software_Base_de_Dados
             System.Windows.Forms.ToolStripButton Workers_Button;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.Agend_Button = new System.Windows.Forms.ToolStripButton();
             this.Places_Button = new System.Windows.Forms.ToolStripButton();
             this.Tags_Button = new System.Windows.Forms.ToolStripButton();
-            this.Teams_Button = new System.Windows.Forms.ToolStripButton();
             this.Tasks_Button = new System.Windows.Forms.ToolStripButton();
+            this.Teams_Button = new System.Windows.Forms.ToolStripButton();
+            this.Agend_Button = new System.Windows.Forms.ToolStripButton();
             this.SubTasks_Button = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             Workers_Button = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,26 +73,13 @@ namespace Software_Base_de_Dados
             Workers_Button,
             this.Teams_Button,
             this.Agend_Button,
-            this.SubTasks_Button});
+            this.SubTasks_Button,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(975, 52);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // Agend_Button
-            // 
-            this.Agend_Button.AccessibleDescription = "A button leading for the table \"Agend\" from the database";
-            this.Agend_Button.AccessibleName = "Agend Button";
-            this.Agend_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.Agend_Button.AutoSize = false;
-            this.Agend_Button.Image = ((System.Drawing.Image)(resources.GetObject("Agend_Button.Image")));
-            this.Agend_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Agend_Button.Name = "Agend_Button";
-            this.Agend_Button.Size = new System.Drawing.Size(80, 40);
-            this.Agend_Button.Text = "Programar";
-            this.Agend_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.Agend_Button.Click += new System.EventHandler(this.Agend_Button_Click);
             // 
             // Places_Button
             // 
@@ -121,6 +109,19 @@ namespace Software_Base_de_Dados
             this.Tags_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Tags_Button.Click += new System.EventHandler(this.Tags_Button_Click);
             // 
+            // Tasks_Button
+            // 
+            this.Tasks_Button.AccessibleDescription = "A button leading for the table \"Tasks\" from the database";
+            this.Tasks_Button.AccessibleName = "Tasks button";
+            this.Tasks_Button.AutoSize = false;
+            this.Tasks_Button.Image = ((System.Drawing.Image)(resources.GetObject("Tasks_Button.Image")));
+            this.Tasks_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Tasks_Button.Name = "Tasks_Button";
+            this.Tasks_Button.Size = new System.Drawing.Size(80, 40);
+            this.Tasks_Button.Text = "Tarefas";
+            this.Tasks_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.Tasks_Button.Click += new System.EventHandler(this.Tasks_Button_Click);
+            // 
             // Teams_Button
             // 
             this.Teams_Button.AccessibleDescription = "A button leading for the table \"Teams\" from the database";
@@ -135,18 +136,19 @@ namespace Software_Base_de_Dados
             this.Teams_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Teams_Button.Click += new System.EventHandler(this.Teams_Button_Click);
             // 
-            // Tasks_Button
+            // Agend_Button
             // 
-            this.Tasks_Button.AccessibleDescription = "A button leading for the table \"Tasks\" from the database";
-            this.Tasks_Button.AccessibleName = "Tasks button";
-            this.Tasks_Button.AutoSize = false;
-            this.Tasks_Button.Image = ((System.Drawing.Image)(resources.GetObject("Tasks_Button.Image")));
-            this.Tasks_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Tasks_Button.Name = "Tasks_Button";
-            this.Tasks_Button.Size = new System.Drawing.Size(80, 40);
-            this.Tasks_Button.Text = "Tarefas";
-            this.Tasks_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.Tasks_Button.Click += new System.EventHandler(this.Tasks_Button_Click);
+            this.Agend_Button.AccessibleDescription = "A button leading for the table \"Agend\" from the database";
+            this.Agend_Button.AccessibleName = "Agend Button";
+            this.Agend_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.Agend_Button.AutoSize = false;
+            this.Agend_Button.Image = ((System.Drawing.Image)(resources.GetObject("Agend_Button.Image")));
+            this.Agend_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Agend_Button.Name = "Agend_Button";
+            this.Agend_Button.Size = new System.Drawing.Size(80, 40);
+            this.Agend_Button.Text = "Programar";
+            this.Agend_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.Agend_Button.Click += new System.EventHandler(this.Agend_Button_Click);
             // 
             // SubTasks_Button
             // 
@@ -179,6 +181,17 @@ namespace Software_Base_de_Dados
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(58, 49);
+            this.toolStripButton1.Text = "Conexão";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,5 +220,6 @@ namespace Software_Base_de_Dados
         private ToolStripButton Tasks_Button;
         private ToolStripButton SubTasks_Button;
         private Panel panel1;
+        private ToolStripButton toolStripButton1;
     }
 }

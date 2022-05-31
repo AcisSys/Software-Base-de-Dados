@@ -135,14 +135,6 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="Agend_Button.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABcSURBVEhL7ZUxDsAwCAP5/6fSn7WpRCaDiAUSCyfdZBOP
-        kW5e1SPKQ0oHnu05yLq2gFXMCFiBW1aoG6qsUDduQNI/UCVglTICbkAyAyEzENI/UCVQ+eH8bw03iHx9
-        lbZMEz093gAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="Places_Button.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -166,6 +158,15 @@
         YK1ifDlWY9xvnct65vpo1OxlaxZ/Dl33BVWoph0v4Ki1AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="Tasks_Button.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAClSURBVEhL7ZSBCcIwEEUzgiN0lI7gJnYDO4IjuImO0A0c
+        oW6g/2M+HCXyY4WCkgcPLpcfDq7Q9Jdc4WOlF2gpPfxES3VwQRtgaQMsbYDlNwbssiW+HjDAOXtgY8Hq
+        AR3kb1h9yR7vhPqWGByhzne4z7JW/wiJzhYFb6E+wbh71uyVshYF6QR7+A7eMRPfWBjiCrieWpjV2iwM
+        x49XC9+cX+VmpPQEvqKEhry5NjIAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="Teams_Button.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -178,13 +179,12 @@
         3KFMJZDBf49h+AFeLZHFHvS85wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="Tasks_Button.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Agend_Button.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAClSURBVEhL7ZSBCcIwEEUzgiN0lI7gJnYDO4IjuImO0A0c
-        oW6g/2M+HCXyY4WCkgcPLpcfDq7Q9Jdc4WOlF2gpPfxES3VwQRtgaQMsbYDlNwbssiW+HjDAOXtgY8Hq
-        AR3kb1h9yR7vhPqWGByhzne4z7JW/wiJzhYFb6E+wbh71uyVshYF6QR7+A7eMRPfWBjiCrieWpjV2iwM
-        x49XC9+cX+VmpPQEvqKEhry5NjIAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABcSURBVEhL7ZUxDsAwCAP5/6fSn7WpRCaDiAUSCyfdZBOP
+        kW5e1SPKQ0oHnu05yLq2gFXMCFiBW1aoG6qsUDduQNI/UCVglTICbkAyAyEzENI/UCVQ+eH8bw03iHx9
+        lbZMEz093gAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="SubTasks_Button.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -194,6 +194,18 @@
         cG6g/2M/hNCQeoqI3IMHTfpDoAdX/pIzvM/0BFNag6+Y0h10LAtSfneB6kjh65BoMFL4OqQ76FgWpHxk
         wara4u0FOzhVt2w4Zi9YQ/6G1Zfs8U6on2KDI1R9g5sqz+rvIVGdouDVnA/Qvj3P7LWyKQrSCxxgBO+Y
         sTMpDPEJ+Dy9MKtnS2HYfrxeOHN8Hr9GKQ821ZR2m/jn1AAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFGSURBVEhL5ZXRUQJBEEQvBEMwBDKQEMwAM5AMMAPIBDKA
+        DDADyEAzwH54bU0ds3u38qdd9T5u2Z3pmZ1aun+nB7EQa7HvWYm5uFszcRKXAluBgV/pRTjQu1gKXMOb
+        +BT89iGakzwKDhKAYJkIehCupEk+uLl+lUUSVzL5TnDPgbOYUjoV1iq90bPgwO769S3uAzLhfLi/qqEj
+        VwRZEiegrakYxaNwO0oVOAn7o5gu1tP7IqjnnI2IAHyzHu+AAKxjJooRZj1toZ2xKcqHoiuScfGs0zZk
+        9+xPB8Ku7N5yFRCd0TbWaCMiKMGHbfuR5z2b4dh3O24eyVoCRJJaBaNqcRQHwhWNyjM85cHyfRXnvSSX
+        zTtfSuJKeXcmu7cIGp9e/kyeel4Fc89vEO+jSSRxJRnVUWwRd0I7SEav6Tuux+7nT6nrvgDXuXfgTTed
+        ZAAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

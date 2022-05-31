@@ -20,9 +20,11 @@ namespace Software_Base_de_Dados
 
         // String do caminho do ficheiro
 
-        static readonly string caminho = @"Provider = Microsoft.ACE.OLEDB.12.0;
+        public static string caminho { get; set; } = @"Provider = Microsoft.ACE.OLEDB.12.0;
                         Data Source = WORK2GOData.accdb;
         Jet OLEDB:Database Password = ogednom ";
+
+          
 
         // Conexão
 
@@ -97,15 +99,20 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tasks") 
             {
-                querry = "SELECT tab_tasks.ID, tab_tasks.Descricao, tab_places.Localizacao, tab_tasks.Active, tab_tasks.RefTag, tab_subtasks.Desc" +
-                    " FROM tab_places INNER JOIN(tab_tasks INNER JOIN tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask) ON tab_places.ID = tab_tasks.IDPlace;";
+                querry = "SELECT * " +
+                    " FROM [tab_places] INNER JOIN([tab_tasks] INNER JOIN [tab_subtasks] ON [tab_tasks].[ID] = [tab_subtasks].[IDTask]) ON [tab_places].[ID] = [tab_tasks].[IDPlace];";
             }
             else { querry = "SELECT * FROM " + Tabela; }
 
 
             dset.Reset();
             adapter = new OleDbDataAdapter(querry, connection);
-            adapter.Fill(dset, "table");
+            using (OleDbConnection connection = new OleDbConnection(caminho))
+            {
+                adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = new OleDbCommand(querry, connection);
+                adapter.Fill(dset, "table");
+            }
 
 
 
