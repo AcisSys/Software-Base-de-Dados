@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.OleDb;
 using System.Windows.Forms;
 
 namespace Software_Base_de_Dados
@@ -12,12 +13,25 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Tables tables = new Tables();
-            if (textBox1.Text != null)
+            OleDbConnection con = new OleDbConnection();
+            if (textBox1.Text != "" && textBox1.Text != null)
             {
-                Tables.caminho = textBox1.Text.ToString();
+                try
+                {
+                    con.Open();
+                    Tables.caminho = textBox1.Text.ToString();
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro na conexão, verifique o caminho do ficheiro\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            this.Close();
+            else
+            {
+                MessageBox.Show("Cancelado", null, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
         }
     }
 }
