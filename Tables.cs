@@ -93,8 +93,7 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tasks")
             {
-                querry = "SELECT tab_tasks.ID, tab_tasks.Descricao, tab_places.Localizacao, tab_tasks.Active, tab_tasks.RefTag, tab_subtasks.Desc FROM tab_places, tab_tasks,  INNER JOIN(tab_tasks INNER JOIN tab_subtasks ON" + "'" + "tab_tasks.ID"  + "'" + "= " + "'" + "tab_subtasks.IDTask" + "'" + ") ON tab_places.ID = tab_tasks.IDPlace;";
-
+                querry = "SELECT tab_tasks.ID, tab_tasks.Descricao, tab_tasks.Active, tab_tasks.RefTag, tab_subtasks.Desc FROM tab_places, tab_tasks  RIGHT JOIN tab_tasks  ON tab_subtasks.IDTask = tab_tasks.ID;";
             }
             else { querry = "SELECT * FROM " + Tabela; }
             dset.Reset();
@@ -268,7 +267,6 @@ namespace Software_Base_de_Dados
                 places.X = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                 places.Y = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
             }
-
             else if (Tabela == "tab_tasks")
             {
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
@@ -298,7 +296,6 @@ namespace Software_Base_de_Dados
                 if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] == "Sim")
                 {
                     tags.Taken = true;
-
                 }
                 else
                 {
