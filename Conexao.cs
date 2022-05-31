@@ -29,7 +29,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                MessageBox.Show("Cancelado", null, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cancelado", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
         }
