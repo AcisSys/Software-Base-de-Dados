@@ -39,9 +39,6 @@ namespace Software_Base_de_Dados
                 {
                     con.Open();
                     Tables.Caminho = textBox1.Text;
-                    //
-
-                    //
                     this.Close();
                 }
                 catch (Exception ex)

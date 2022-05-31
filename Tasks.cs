@@ -28,7 +28,6 @@ namespace Software_Base_de_Dados
 
         OleDbDataAdapter adapter = new OleDbDataAdapter();
 
-
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
@@ -76,7 +75,6 @@ namespace Software_Base_de_Dados
                 }
             }
 
-
             // Dados para ComboBox1
             string querry = "SELECT * FROM tab_places";
             adapter = new OleDbDataAdapter(querry, connection);
@@ -97,7 +95,6 @@ namespace Software_Base_de_Dados
             maskedTextBox1.ReadOnly = true;
             Button1.Select();
             maskedTextBox1.Enabled = false;
-
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -161,7 +158,6 @@ namespace Software_Base_de_Dados
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             // FeedBack de sucesso ou erro
             MessageBox.Show("Dados modificados com sucesso", "",
                 MessageBoxButtons.OK
@@ -171,7 +167,6 @@ namespace Software_Base_de_Dados
             sfComboBox1.Text = "";
             sfComboBox2.Text = "";
             this.Close();
-
         }
 
 
@@ -184,7 +179,5 @@ namespace Software_Base_de_Dados
         {
             Button1.Select();
         }
-
-
     }
 }
