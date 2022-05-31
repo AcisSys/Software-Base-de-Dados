@@ -62,7 +62,7 @@ namespace Software_Base_de_Dados
             // Caso seja para adicionar dados
             if (Tipo == "Add")
             {
-                
+
                 // ID é automatico
                 string comand = "SELECT MAX (ID) FROM tab_agend";
                 OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
@@ -114,7 +114,7 @@ namespace Software_Base_de_Dados
             sfComboBox2.Text = Idtask;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
 
             if (Tipo == "Add")
@@ -201,9 +201,6 @@ namespace Software_Base_de_Dados
             toolStripButton1.Select();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

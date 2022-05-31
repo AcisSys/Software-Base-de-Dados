@@ -58,7 +58,7 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-                
+
                 // ID é automatico
 
 
@@ -75,7 +75,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                
+
                 maskedTextBox1.ReadOnly = true;
                 maskedTextBox3.Select();
                 maskedTextBox1.Enabled = false;
