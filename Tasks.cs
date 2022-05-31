@@ -14,9 +14,7 @@ namespace Software_Base_de_Dados
 
         // String do caminho do ficheiro
 
-        static readonly string caminho = @"Provider = Microsoft.ACE.OLEDB.12.0;
-                        Data Source = WORK2GOData.accdb;
-        Jet OLEDB:Database Password = ogednom ";
+        static readonly string caminho = Tables.caminho;
 
         // Conexão
 

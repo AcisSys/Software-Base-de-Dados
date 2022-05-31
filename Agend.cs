@@ -15,9 +15,7 @@ namespace Software_Base_de_Dados
 
         // String do caminho do ficheiro
 
-        static readonly string caminho = @"Provider = Microsoft.ACE.OLEDB.12.0;
-                        Data Source = WORK2GOData.accdb;
-        Jet OLEDB:Database Password = ogednom ";
+        static readonly string caminho = Tables.caminho;
 
         // Conexão
 
@@ -70,24 +68,24 @@ namespace Software_Base_de_Dados
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
 
-                // Disable campo ID
-
-                maskedTextBox1.ReadOnly = true;
-                maskedTextBox1.Enabled = false;
+                
             }
             else
             {
 
                 // Case seja para modificar dados
-                toolStripButton1.Text = "Modificar";
+                
 
                 // Utilizador necessita de introduzir o ID
-                maskedTextBox1.ReadOnly = false;
+                
                 maskedTextBox1.Text = Id.ToString();
-                maskedTextBox1.ReadOnly = true;
-                maskedTextBox1.Enabled = false;
+                
 
             }
+            // Disable campo ID
+
+            maskedTextBox1.ReadOnly = true;
+            maskedTextBox1.Enabled = false;
 
 
             // Bloco encarregue de adicionar as opções das 2 comboBox
