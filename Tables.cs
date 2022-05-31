@@ -86,10 +86,7 @@ namespace Software_Base_de_Dados
             string querry;
             if (Tabela == "tab_agend")
             {
-                querry = "SELECT tab_agend.ID, tab_teams.Descricao," +
-                    " tab_agend.idtask " +
-                " FROM tab_teams INNER JOIN tab_agend " +
-                "ON tab_teams.ID = tab_agend.idequipa;";
+                 querry = "SELECT tab_agend.ID, tab_teams.Descricao, tab_agend.idtask " + " FROM tab_teams " + " INNER JOIN tab_agend ON cast(tab_teams.ID as varchar(250) = cast(tab_agend.idequipa as varchar(250); ";
             }
             else if (Tabela == "tab_tasks")
             {
