@@ -157,7 +157,7 @@ namespace Software_Base_de_Dados
             this.toolStripButton1.Size = new System.Drawing.Size(58, 49);
             this.toolStripButton1.Text = "Conexão";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
             // 
             // panel1
             // 

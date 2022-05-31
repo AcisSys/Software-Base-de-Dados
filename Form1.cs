@@ -90,7 +90,7 @@ namespace Software_Base_de_Dados
         }
 
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void ToolStripButton1_Click(object sender, EventArgs e)
         {
             Conexao conexao = new Conexao();
             conexao.ShowDialog();
