@@ -125,15 +125,12 @@ namespace Software_Base_de_Dados
             }
             if (Tabela == "tab_places")
             {
-
                 places.Tipo = "Add";
-
                 places.ShowDialog();
             }
             if (Tabela == "tab_tasks")
             {
                 tasks.Tipo = "Add";
-
                 tasks.ShowDialog();
             }
             if (Tabela == "tab_tags")
@@ -260,11 +257,9 @@ namespace Software_Base_de_Dados
             }
             if (Tabela == "tab_agend")
             {
-
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 agend.Idequipa = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 agend.Idtask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-
             }
             else if (Tabela == "tab_places")
             {
@@ -279,10 +274,6 @@ namespace Software_Base_de_Dados
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 tasks.IDPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-
-
-                connection.Close();
-
             }
             else if (Tabela == "tab_workers")
             {
@@ -294,15 +285,11 @@ namespace Software_Base_de_Dados
                     workers.Img = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
                 }
                 workers.Cod = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
-                connection.Close();
             }
             else if (Tabela == "tab_teams")
             {
                 teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-
-
-                connection.Close();
             }
             else if (Tabela == "tab_tags")
             {
@@ -317,7 +304,6 @@ namespace Software_Base_de_Dados
                 {
                     tags.Taken = false;
                 }
-                connection.Close();
             }
         }
         // Botão de Exportar do outro projeto
@@ -350,7 +336,6 @@ namespace Software_Base_de_Dados
                 if (MessageBox.Show(this.sfDataGrid1, "Quer guardar esta exportação?", "Exportação Excel",
                                     MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-
                     //Launching the Excel file using the default Application.[MS Excel Or Free ExcelViewer]
                     System.Diagnostics.Process.Start(saveFilterDialog.FileName);
                 }
