@@ -106,11 +106,13 @@ namespace Software_Base_de_Dados
                 };
             DataTable ds = new DataTable();
             DataSet1TableAdapters.DataTable1TableAdapter adapter = new DataSet1TableAdapters.DataTable1TableAdapter();*/
+
+           
+            DataSet1.DataTable1DataTable dt = new DataSet1.DataTable1DataTable();
             
-
-
+            
             sfDataGrid1.DataSource = null;
-            sfDataGrid1.DataSource = DataSet1.DataTable2DataTable;
+            sfDataGrid1.DataSource = dt;
             sfDataGrid1.Update();
             connection.Close();
         }
