@@ -37,6 +37,7 @@ namespace Software_Base_de_Dados
         public string Localizacao { get; set; }
         public string X { get; set; }
         public string Y { get; set; }
+        string querry;
 
 
         private void Places_Load(object sender, EventArgs e)
@@ -56,8 +57,8 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-                string comand = "SELECT MAX (ID) FROM tab_places";
-                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
+                 querry = "SELECT MAX (ID) FROM tab_places";
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
@@ -90,7 +91,7 @@ namespace Software_Base_de_Dados
                 if (Tipo == "Add")
                 {
                     // Cria uma nova querry de acordo com a tabela e parametros da mesma
-                    string querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
+                     querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
                        "VALUES (@ID, @Localizacao, @X, @Y)";
                     // Cria um comando para executar a Querry, dados os parametros necessários
                     oleDbCommand = new OleDbCommand(querry, connection);
@@ -102,7 +103,7 @@ namespace Software_Base_de_Dados
                 }
                 else
                 {
-                    string querry = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
+                     querry = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
                          " Y = @Y where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@Localizacao",
@@ -134,7 +135,7 @@ namespace Software_Base_de_Dados
         }
 
 
-        private void toolStripButton1_MouseLeave(object sender, EventArgs e)
+        private void ToolStripButton1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();
         }

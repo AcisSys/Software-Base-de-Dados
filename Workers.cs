@@ -37,6 +37,7 @@ namespace Software_Base_de_Dados
         public string IDEquipa { get; set; }
         public string Img { get; set; }
         public string Cod { get; set; }
+        string querry;
 
         private void Workers_Load(object sender, EventArgs e)
         {
@@ -56,24 +57,18 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             {
 
-
                 // ID é automatico
-
-
-                string comand = "SELECT MAX (ID) FROM tab_workers";
-                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
+                querry = "SELECT MAX (ID) FROM tab_workers";
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
-
-
             }
             else
             {
                 // id automatico
 
                 maskedTextBox1.Text = ID.ToString();
-
                 maskedTextBox4.Text = Img;
                 maskedTextBox5.Text = Cod;
             }
@@ -83,7 +78,7 @@ namespace Software_Base_de_Dados
 
             // Dados para ComboBox1
             //string querry = "SELECT tab_workers.IDEquipa, tab_teams.Descricao FROM tab_teams INNER JOIN tab_workers ON tab_teams.ID = tab_workers.IDEquipa;";
-            string querry = "SELECT tab_workers.IDEquipa, tab_teams.Descricao FROM tab_teams, tab_workers WHERE tab_workers.IDEquipa = '3';";
+            querry = "SELECT tab_workers.IDEquipa, tab_teams.Descricao FROM tab_teams, tab_workers WHERE tab_workers.IDEquipa = '3';";
 
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
@@ -107,8 +102,8 @@ namespace Software_Base_de_Dados
                 if (Tipo == "Add")
                 // querry e parametros para adicionar dados
                 {
-                    string querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod)" +
-                            "VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
+                    querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod)" +
+                           "VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
@@ -120,8 +115,8 @@ namespace Software_Base_de_Dados
                 else
                 {
                     // querry e parametros para modificar dados
-                    string querry = "UPDATE tab_workers  SET Nome = @Nome," +
-                            " IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = " + maskedTextBox1.Text;
+                    querry = "UPDATE tab_workers  SET Nome = @Nome," +
+                           " IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;

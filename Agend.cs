@@ -26,13 +26,13 @@ namespace Software_Base_de_Dados
 
         // String do comando enviado para a base de dados
 
-        public string querry;
+         string querry;
 
         // Conexão
 
         public readonly OleDbConnection connection = new OleDbConnection(caminho);
 
-        // String publica para dar a conhecer a table que está a ser visualisada
+        
 
         public string Tipo { get; set; }
 
@@ -75,7 +75,7 @@ namespace Software_Base_de_Dados
             maskedTextBox1.Enabled = false;
             // Bloco encarregue de adicionar as opções das 2 comboBox
             // Dados para ComboBox1
-            string querry = "SELECT * FROM tab_teams";
+             querry = "SELECT * FROM tab_teams";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idteam");
             DataTable dataTable = dset.Tables["idteam"];
@@ -112,7 +112,7 @@ namespace Software_Base_de_Dados
                 if (Tipo == "Add")
                 {
                     // Querry para adicionar dados
-                    string querry = "INSERT INTO tab_agend (ID, IDEquipa, IDTask)" +
+                     querry = "INSERT INTO tab_agend (ID, IDEquipa, IDTask)" +
                            "VALUES (@ID, @IDEquipa, @IDTask)";
                     // Parametros com dados a adicionar
                     oleDbCommand = new OleDbCommand(querry, connection);
@@ -123,7 +123,7 @@ namespace Software_Base_de_Dados
                 else
                 {
                     // Cria Querry com o comando para UPDATe
-                    string querry = "UPDATE tab_agend  SET IDEquipa = @IDEquipa, IDTask = @IDTask where ID = " + maskedTextBox1.Text;
+                     querry = "UPDATE tab_agend  SET IDEquipa = @IDEquipa, IDTask = @IDTask where ID = " + maskedTextBox1.Text;
                     // Cria comando
                     oleDbCommand = new OleDbCommand(querry, connection);
                     // Recebe os dados

@@ -203,8 +203,6 @@ namespace Software_Base_de_Dados
                 }
             }
 
-
-
             // Verifica a conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {

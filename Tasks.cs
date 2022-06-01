@@ -36,6 +36,7 @@ namespace Software_Base_de_Dados
         public string IDPlace { get; set; }
         public bool Active { get; set; }
         public string RefTag { get; set; }
+        string querry;
 
         private void Tasks_Load(object sender, EventArgs e)
         {
@@ -76,7 +77,7 @@ namespace Software_Base_de_Dados
             }
 
             // Dados para ComboBox1
-            string querry = "SELECT * FROM tab_places";
+            querry = "SELECT * FROM tab_places";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
             DataTable dataTable = dset.Tables["idtask"];
@@ -96,7 +97,6 @@ namespace Software_Base_de_Dados
             Button1.Select();
             maskedTextBox1.Enabled = false;
         }
-        public string querry = "";
         private void Button1_Click(object sender, EventArgs e)
         {
             if (maskedTextBox2.Text == "" || sfComboBox1.SelectedItem == null || sfComboBox2.SelectedItem == null)
@@ -105,7 +105,6 @@ namespace Software_Base_de_Dados
             }
             else
             {
-
 
                 OleDbCommand oleDbCommand;
                 string active;
@@ -152,24 +151,10 @@ namespace Software_Base_de_Dados
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-
-
-
-
-
                 querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + sfComboBox2.Text;
                 OleDbCommand ole = new OleDbCommand(querry, connection);
                 ole.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Sim";
                 ole.ExecuteNonQuery();
-
-
-
-
-
-
-
-
                 // FeedBack de sucesso ou erro
                 MessageBox.Show("Dados modificados com sucesso", "",
                     MessageBoxButtons.OK
@@ -180,17 +165,6 @@ namespace Software_Base_de_Dados
                 sfComboBox2.Text = "";
                 this.Close();
             }
-        }
-
-
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Button1.Select();
-        }
-
-        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Button1.Select();
         }
 
         private void Button1_MouseLeave(object sender, EventArgs e)

@@ -26,6 +26,7 @@ namespace Software_Base_de_Dados
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Descricao { get; set; }
+        string querry;
 
 
         private void Teams_Load(object sender, EventArgs e)
@@ -50,8 +51,8 @@ namespace Software_Base_de_Dados
                 // ID é automatico
 
 
-                string comand = "SELECT MAX (ID) FROM tab_teams";
-                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
+                 querry = "SELECT MAX (ID) FROM tab_teams";
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
@@ -62,7 +63,6 @@ namespace Software_Base_de_Dados
                 button1.Text = "Modificar";
                 maskedTextBox1.Text = ID.ToString();
                 maskedTextBox2.Text = Descricao;
-
             }
             maskedTextBox1.ReadOnly = true;
             maskedTextBox2.Select();
@@ -83,7 +83,7 @@ namespace Software_Base_de_Dados
                 if (Tipo == "Add")
                 {
                     // Querry e parametros para adicionar dados
-                    string querry = "INSERT INTO tab_teams (ID, Descricao)" +
+                     querry = "INSERT INTO tab_teams (ID, Descricao)" +
                             "VALUES (@ID, @Descricao)";
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
@@ -95,7 +95,7 @@ namespace Software_Base_de_Dados
                 {
                     // Querry e parametros para modificar dados
 
-                    string querry = "UPDATE tab_teams  SET Descricao = @Descricao where ID = "
+                     querry = "UPDATE tab_teams  SET Descricao = @Descricao where ID = "
                         + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@Descricao",
