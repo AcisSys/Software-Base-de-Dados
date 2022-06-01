@@ -96,50 +96,63 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            OleDbCommand oleDbCommand;
-            if (Tipo == "Add")
-            // querry e parametros para adicionar dados
+            if (maskedTextBox2.Text == null || maskedTextBox4.Text == null || sfComboBox1.SelectedItem == null
+                || maskedTextBox5.Text == null)
             {
-                string querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod)" +
-                        "VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
-                oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
-                oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
-                oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;
-                oleDbCommand.Parameters.Add("@Cod", OleDbType.Integer).Value = maskedTextBox5.Text;
-
+                sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
             }
             else
             {
-                // querry e parametros para modificar dados
-                string querry = "UPDATE tab_workers  SET Nome = @Nome," +
-                        " IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = " + maskedTextBox1.Text;
-                oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
-                oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;
-                oleDbCommand.Parameters.Add("@Cod", OleDbType.Integer).Value = maskedTextBox5.Text;
-            }
+                OleDbCommand oleDbCommand;
+                if (Tipo == "Add")
+                // querry e parametros para adicionar dados
+                {
+                    string querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod)" +
+                            "VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
+                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
+                    oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+                    oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
+                    oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;
+                    oleDbCommand.Parameters.Add("@Cod", OleDbType.Integer).Value = maskedTextBox5.Text;
 
-            // Executa Comando e envia feedback ao utilizador (erro ou sucesso)
-            try
-            {
-                oleDbCommand.ExecuteNonQuery();
+                }
+                else
+                {
+                    // querry e parametros para modificar dados
+                    string querry = "UPDATE tab_workers  SET Nome = @Nome," +
+                            " IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = " + maskedTextBox1.Text;
+                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+                    oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
+                    oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;
+                    oleDbCommand.Parameters.Add("@Cod", OleDbType.Integer).Value = maskedTextBox5.Text;
+                }
+
+                // Executa Comando e envia feedback ao utilizador (erro ou sucesso)
+                try
+                {
+                    oleDbCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel atualizar dados\n" + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Dados atualizados com sucesso", "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Não foi possivel atualizar dados\n" + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            MessageBox.Show("Dados atualizados com sucesso", "", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
 
         }
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            button1.Select();
+            maskedTextBox4.Select();
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            sfToolTip1.Hide();
         }
     }
 }

@@ -31,6 +31,7 @@ namespace Software_Base_de_Dados
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Places));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@ namespace Software_Base_de_Dados
             this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.sfToolTip1 = new Syncfusion.Windows.Forms.SfToolTip(this.components);
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,6 +136,7 @@ namespace Software_Base_de_Dados
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.Click += new System.EventHandler(this.Button1_Click);
+            this.toolStripButton1.MouseLeave += new System.EventHandler(this.toolStripButton1_MouseLeave);
             // 
             // Places
             // 
@@ -175,5 +178,6 @@ namespace Software_Base_de_Dados
         private MaskedTextBox maskedTextBox4;
         private ToolStrip toolStrip1;
         private ToolStripButton toolStripButton1;
+        private Syncfusion.Windows.Forms.SfToolTip sfToolTip1;
     }
 }

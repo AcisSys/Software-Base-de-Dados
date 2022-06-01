@@ -96,62 +96,81 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            OleDbCommand oleDbCommand;
-
-            if (Tipo == "Add")
+            if (sfComboBox1.SelectedItem == null || sfComboBox2.SelectedItem == null)
             {
-                // Querry para adicionar dados
-                string querry = "INSERT INTO tab_agend (ID, IDEquipa, IDTask)" +
-                       "VALUES (@ID, @IDEquipa, @IDTask)";
-                // Parametros com dados a adicionar
-                oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
-                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
-                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
+                sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
+
             }
             else
             {
-                // Cria Querry com o comando para UPDATe
-                string querry = "UPDATE tab_agend  SET IDEquipa = @IDEquipa, IDTask = @IDTask where ID = " + maskedTextBox1.Text;
-                // Cria comando
-                oleDbCommand = new OleDbCommand(querry, connection);
-                // Recebe os dados
-                oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
-                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
-            }
-            // Executa comando
-            try
-            {
-                oleDbCommand.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                // mostra mensagem de erro caso necessário
-                MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
-                    "Error",
+                if (sfComboBox1.SelectedItem == null)
+                {
+                    toolStripButton1.ToolTipText = "Verifique o preenchimento de todos os campos antes de validar dados";
+                }
+                OleDbCommand oleDbCommand;
+
+                if (Tipo == "Add")
+                {
+                    // Querry para adicionar dados
+                    string querry = "INSERT INTO tab_agend (ID, IDEquipa, IDTask)" +
+                           "VALUES (@ID, @IDEquipa, @IDTask)";
+                    // Parametros com dados a adicionar
+                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
+                    oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
+                    oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
+                }
+                else
+                {
+                    // Cria Querry com o comando para UPDATe
+                    string querry = "UPDATE tab_agend  SET IDEquipa = @IDEquipa, IDTask = @IDTask where ID = " + maskedTextBox1.Text;
+                    // Cria comando
+                    oleDbCommand = new OleDbCommand(querry, connection);
+                    // Recebe os dados
+                    oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
+                    oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
+                }
+                // Executa comando
+                try
+                {
+                    oleDbCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    // mostra mensagem de erro caso necessário
+                    MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+                // mostra feedback caso os dados sejam adicionados
+                MessageBox.Show("Dados adicionados com sucesso", "",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
+                    MessageBoxIcon.Information);
+                // limpa todos os campos e fecha  a janela de introdução de dados
+                maskedTextBox1.Text = "";
+                sfComboBox1.Text = "";
+                sfComboBox2.Text = "";
+                this.Close();
             }
-            // mostra feedback caso os dados sejam adicionados
-            MessageBox.Show("Dados adicionados com sucesso", "",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            // limpa todos os campos e fecha  a janela de introdução de dados
-            maskedTextBox1.Text = "";
-            sfComboBox1.Text = "";
-            sfComboBox2.Text = "";
-            this.Close();
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            toolStripButton1.Select();
         }
 
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            toolStripButton1.Select();
+        }
+
+        private void sfComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void toolStripButton1_MouseLeave(object sender, EventArgs e)
+        {
+            sfToolTip1.Hide();
         }
     }
 }
