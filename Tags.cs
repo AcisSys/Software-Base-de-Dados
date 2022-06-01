@@ -63,41 +63,55 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            OleDbCommand oleDbCommand;
-            if (Tipo == "Add")
+            if (maskedTextBox2.Text == "")
             {
-                // querry para inserir dados
-                string querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
-                            "VALUES (@ID, @IDEquipa, @IDTask)";
-                oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
-                oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@Taken",
-                    OleDbType.LongVarChar).Value = "Não";
+                sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
             }
             else
             {
-                string querry = "UPDATE tab_tags  SET Ref = @Ref," +
-                    " taken = @taken where ID = " + maskedTextBox1.Text;
-                oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
+
+
+                OleDbCommand oleDbCommand;
+                if (Tipo == "Add")
+                {
+                    // querry para inserir dados
+                    string querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
+                                "VALUES (@ID, @IDEquipa, @IDTask)";
+                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
+                    oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
+                    oleDbCommand.Parameters.Add("@Taken",
+                        OleDbType.LongVarChar).Value = "Não";
+                }
+                else
+                {
+                    string querry = "UPDATE tab_tags  SET Ref = @Ref," +
+                        " taken = @taken where ID = " + maskedTextBox1.Text;
+                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
+                    oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
+                }
+                // tenta executar o comando e envia mensagem de erro / sucesso
+                try
+                {
+                    oleDbCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
+                        null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Dados adicionados com sucesso", "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                maskedTextBox1.Text = "";
+                maskedTextBox2.Text = "";
             }
-            // tenta executar o comando e envia mensagem de erro / sucesso
-            try
-            {
-                oleDbCommand.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
-                    null, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            MessageBox.Show("Dados adicionados com sucesso", "", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            maskedTextBox1.Text = "";
-            maskedTextBox2.Text = "";
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            sfToolTip1.Hide();
         }
     }
 }

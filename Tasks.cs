@@ -99,74 +99,83 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            OleDbCommand oleDbCommand;
-            string active;
-            if (checkBox1.Checked == true)
+            if (maskedTextBox2.Text == "" || sfComboBox1.SelectedItem == null || sfComboBox2.SelectedItem == null)
             {
-                active = "Sim";
+                sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
             }
             else
             {
-                active = "Não";
-            }
-            if (Tipo == "Add")
-            {
-                // querry para adicionar dados a tabela
-                string querry = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +
-                         "VALUES (@ID, @Descricao, @IDPlace, @Active, @RefTag)";
-                oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
-                oleDbCommand.Parameters.Add("@Descricao", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
-                oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
-                oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
+
+
+                OleDbCommand oleDbCommand;
+                string active;
+                if (checkBox1.Checked == true)
+                {
+                    active = "Sim";
+                }
+                else
+                {
+                    active = "Não";
+                }
+                if (Tipo == "Add")
+                {
+                    // querry para adicionar dados a tabela
+                    string querry = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +
+                             "VALUES (@ID, @Descricao, @IDPlace, @Active, @RefTag)";
+                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
+                    oleDbCommand.Parameters.Add("@Descricao", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+                    oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
+                    oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
+                    oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
+                    try
+                    {
+                        oleDbCommand.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
+                            "Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return;
+                    }
+                    MessageBox.Show("Dados adicionados com sucesso", "",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string querry = "UPDATE tab_tasks  Descricao = @Descricao, IDPlace = @IDPlace, Active = @Active, RefTag = @RefTag" +
+                        " where ID = " + maskedTextBox1.Text;
+                    oleDbCommand = new OleDbCommand(querry, connection);
+                    // Recebe os dados
+                    oleDbCommand.Parameters.Add("@Descricao", OleDbType.Integer).Value = maskedTextBox2.Text;
+                    oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
+                    oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
+                    oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
+                    oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
+                }
+                // Executa o Comando
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
-                        "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBox.Show("Não foi possivel modificar dados\n" + ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                MessageBox.Show("Dados adicionados com sucesso", "",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                // FeedBack de sucesso ou erro
+                MessageBox.Show("Dados modificados com sucesso", "",
+                    MessageBoxButtons.OK
+                    , MessageBoxIcon.Information);
+                // limpa todos os campos e fecha  a janela de introdução de dados
+                maskedTextBox1.Text = "";
+                sfComboBox1.Text = "";
+                sfComboBox2.Text = "";
+                this.Close();
             }
-            else
-            {
-                string querry = "UPDATE tab_tasks  Descricao = @Descricao, IDPlace = @IDPlace, Active = @Active, RefTag = @RefTag" +
-                    " where ID = " + maskedTextBox1.Text;
-                oleDbCommand = new OleDbCommand(querry, connection);
-                // Recebe os dados
-                oleDbCommand.Parameters.Add("@Descricao", OleDbType.Integer).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
-                oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
-                oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
-                oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
-            }
-            // Executa o Comando
-            try
-            {
-                oleDbCommand.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Não foi possivel modificar dados\n" + ex.Message, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            // FeedBack de sucesso ou erro
-            MessageBox.Show("Dados modificados com sucesso", "",
-                MessageBoxButtons.OK
-                , MessageBoxIcon.Information);
-            // limpa todos os campos e fecha  a janela de introdução de dados
-            maskedTextBox1.Text = "";
-            sfComboBox1.Text = "";
-            sfComboBox2.Text = "";
-            this.Close();
         }
 
 
@@ -178,6 +187,11 @@ namespace Software_Base_de_Dados
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             Button1.Select();
+        }
+
+        private void Button1_MouseLeave(object sender, EventArgs e)
+        {
+            sfToolTip1.Hide();
         }
     }
 }

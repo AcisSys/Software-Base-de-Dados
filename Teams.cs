@@ -71,48 +71,61 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            OleDbCommand oleDbCommand;
-            if (Tipo == "Add")
+            if (maskedTextBox2.Text == "")
             {
-                // Querry e parametros para adicionar dados
-                string querry = "INSERT INTO tab_teams (ID, Descricao)" +
-                        "VALUES (@ID, @Descricao)";
-                oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
-                oleDbCommand.Parameters.Add("@Descricao",
-                    OleDbType.LongVarChar).Value = maskedTextBox2.Text;
-
+                sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
             }
             else
             {
-                // Querry e parametros para modificar dados
 
-                string querry = "UPDATE tab_teams  SET Descricao = @Descricao where ID = "
-                    + maskedTextBox1.Text;
-                oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand.Parameters.Add("@Descricao",
-                    OleDbType.LongVarChar).Value = maskedTextBox2.Text;
 
-            }
-            try
-            {
-                //Executa comando e envia feedback ao user
-                oleDbCommand.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Não foi possivel atualizar dados\n" + ex.Message,
-                    "Error",
+                OleDbCommand oleDbCommand;
+                if (Tipo == "Add")
+                {
+                    // Querry e parametros para adicionar dados
+                    string querry = "INSERT INTO tab_teams (ID, Descricao)" +
+                            "VALUES (@ID, @Descricao)";
+                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
+                    oleDbCommand.Parameters.Add("@Descricao",
+                        OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+
+                }
+                else
+                {
+                    // Querry e parametros para modificar dados
+
+                    string querry = "UPDATE tab_teams  SET Descricao = @Descricao where ID = "
+                        + maskedTextBox1.Text;
+                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand.Parameters.Add("@Descricao",
+                        OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+
+                }
+                try
+                {
+                    //Executa comando e envia feedback ao user
+                    oleDbCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel atualizar dados\n" + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Dados atualizados com sucesso", "",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
+                    MessageBoxIcon.Information);
+                maskedTextBox1.Text = "";
+                maskedTextBox2.Text = "";
             }
-            MessageBox.Show("Dados atualizados com sucesso", "",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            maskedTextBox1.Text = "";
-            maskedTextBox2.Text = "";
+        }
 
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            sfToolTip1.Hide();
         }
     }
 }
