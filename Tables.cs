@@ -27,10 +27,6 @@ namespace Software_Base_de_Dados
 
         public readonly OleDbConnection connection = new OleDbConnection(Caminho);
 
-        // Adaptador para o DataSet
-
-        OleDbDataAdapter adapter = new OleDbDataAdapter();
-
         Agend agend = new Agend();
         Places places = new Places();
 
