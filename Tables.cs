@@ -177,7 +177,7 @@ namespace Software_Base_de_Dados
                 teams.Tipo = "";
                 teams.ShowDialog();
             }
-            else 
+            else
             {
                 workers.Tipo = "";
                 workers.ShowDialog();
@@ -240,7 +240,6 @@ namespace Software_Base_de_Dados
                 }
                 try
                 {
-
                     oleDbCommand.ExecuteNonQuery();
                     MessageBox.Show("Dados apagados com sucesso", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -283,29 +282,22 @@ namespace Software_Base_de_Dados
             if (Tabela == "tab_agend")
             {
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-
             }
             else if (Tabela == "tab_places")
             {
                 places.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-
             }
             else if (Tabela == "tab_tasks")
             {
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-
             }
             else if (Tabela == "tab_workers")
             {
                 workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                workers.Nome = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-
-
             }
             else if (Tabela == "tab_teams")
             {
                 teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
             }
             else
             {
