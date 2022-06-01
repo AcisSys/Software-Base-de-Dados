@@ -57,7 +57,7 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-                 querry = "SELECT MAX (ID) FROM tab_places";
+                querry = "SELECT MAX (ID) FROM tab_places";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
@@ -91,8 +91,8 @@ namespace Software_Base_de_Dados
                 if (Tipo == "Add")
                 {
                     // Cria uma nova querry de acordo com a tabela e parametros da mesma
-                     querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
-                       "VALUES (@ID, @Localizacao, @X, @Y)";
+                    querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
+                      "VALUES (@ID, @Localizacao, @X, @Y)";
                     // Cria um comando para executar a Querry, dados os parametros necessários
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
@@ -103,8 +103,8 @@ namespace Software_Base_de_Dados
                 }
                 else
                 {
-                     querry = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
-                         " Y = @Y where ID = " + maskedTextBox1.Text;
+                    querry = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
+                        " Y = @Y where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@Localizacao",
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text;

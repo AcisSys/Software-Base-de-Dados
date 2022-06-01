@@ -51,7 +51,7 @@ namespace Software_Base_de_Dados
                 // ID é automatico
 
 
-                 querry = "SELECT MAX (ID) FROM tab_teams";
+                querry = "SELECT MAX (ID) FROM tab_teams";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
@@ -83,8 +83,8 @@ namespace Software_Base_de_Dados
                 if (Tipo == "Add")
                 {
                     // Querry e parametros para adicionar dados
-                     querry = "INSERT INTO tab_teams (ID, Descricao)" +
-                            "VALUES (@ID, @Descricao)";
+                    querry = "INSERT INTO tab_teams (ID, Descricao)" +
+                           "VALUES (@ID, @Descricao)";
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Descricao",
@@ -95,8 +95,8 @@ namespace Software_Base_de_Dados
                 {
                     // Querry e parametros para modificar dados
 
-                     querry = "UPDATE tab_teams  SET Descricao = @Descricao where ID = "
-                        + maskedTextBox1.Text;
+                    querry = "UPDATE tab_teams  SET Descricao = @Descricao where ID = "
+                       + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@Descricao",
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text;
