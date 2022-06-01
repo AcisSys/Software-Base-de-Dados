@@ -92,7 +92,6 @@ namespace Software_Base_de_Dados
             this.sfComboBox1.Size = new System.Drawing.Size(238, 21);
             this.sfComboBox1.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.sfComboBox1.TabIndex = 9;
-            
             // 
             // sfComboBox2
             // 
