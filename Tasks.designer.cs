@@ -146,6 +146,7 @@ namespace Software_Base_de_Dados
             // Button1
             // 
             this.Button1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.Button1.AutoToolTip = false;
             this.Button1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.Button1.Image = ((System.Drawing.Image)(resources.GetObject("Button1.Image")));
             this.Button1.ImageTransparentColor = System.Drawing.Color.Magenta;
