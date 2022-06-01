@@ -109,29 +109,30 @@ namespace Software_Base_de_Dados
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
-
-                    // Tenta executar o comando
-                    try
-                    {
-                        oleDbCommand.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        // Envia mensagem de erro caso necessário
-                        MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    MessageBox.Show("Dados adicionados com sucesso", "",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                    maskedTextBox1.Text = "";
-                    maskedTextBox2.Text = "";
-                    maskedTextBox3.Text = "";
-                    maskedTextBox4.Text = "";
                 }
+                // Tenta executar o comando
+                try
+                {
+                    oleDbCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    // Envia mensagem de erro caso necessário
+                    MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Dados adicionados com sucesso", "",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                maskedTextBox1.Text = "";
+                maskedTextBox2.Text = "";
+                maskedTextBox3.Text = "";
+                maskedTextBox4.Text = "";
+                this.Close();
             }
         }
+
 
         private void toolStripButton1_MouseLeave(object sender, EventArgs e)
         {

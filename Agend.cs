@@ -156,19 +156,7 @@ namespace Software_Base_de_Dados
             }
         }
 
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void sfComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void toolStripButton1_MouseLeave(object sender, EventArgs e)
+        private void ToolStripButton1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();
         }

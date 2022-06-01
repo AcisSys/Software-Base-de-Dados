@@ -120,20 +120,20 @@ namespace Software_Base_de_Dados
                 if (Tipo == "Add")
                 {
                     // querry para adicionar dados a tabela
-                     querry = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +
-                             "VALUES (@ID, @Descricao, @IDPlace, @Active, @RefTag)";
+                    querry = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +
+                            "VALUES (@ID, @Descricao, @IDPlace, @Active, @RefTag)";
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Descricao", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
                     oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
                     oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
-                    
+
                 }
                 else
                 {
-                     querry = "UPDATE tab_tasks  Descricao = @Descricao, IDPlace = @IDPlace, Active = @Active, RefTag = @RefTag" +
-                        " where ID = " + maskedTextBox1.Text;
+                    querry = "UPDATE tab_tasks  Descricao = @Descricao, IDPlace = @IDPlace, Active = @Active, RefTag = @RefTag" +
+                       " where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     // Recebe os dados
                     oleDbCommand.Parameters.Add("@Descricao", OleDbType.Integer).Value = maskedTextBox2.Text;
@@ -158,7 +158,7 @@ namespace Software_Base_de_Dados
 
 
 
-                 querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " +  sfComboBox2.Text;
+                querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + sfComboBox2.Text;
                 OleDbCommand ole = new OleDbCommand(querry, connection);
                 ole.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Sim";
                 ole.ExecuteNonQuery();

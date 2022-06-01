@@ -106,6 +106,7 @@ namespace Software_Base_de_Dados
                     MessageBoxIcon.Information);
                 maskedTextBox1.Text = "";
                 maskedTextBox2.Text = "";
+                this.Close();
             }
         }
 

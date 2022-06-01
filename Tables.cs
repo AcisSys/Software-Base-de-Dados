@@ -190,8 +190,24 @@ namespace Software_Base_de_Dados
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
         }
+        string querry;
         private void Remove_Button_Click(object sender, EventArgs e)
         {
+            if (connection.State == System.Data.ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
+
             // Verifica a conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {
@@ -211,13 +227,23 @@ namespace Software_Base_de_Dados
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
             // String com comando para apagar dados
-            string querry = "DELETE ROW FROM " + Tabela + " WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+            querry = "DELETE ROW FROM " + Tabela + " WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
             // se confirmado, apaga / tenta apagar dados
             if (response == DialogResult.Yes)
             {
+                if (Tabela == "tab_tasks")
+                {
+                    string a;
+                    a = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
+                    querry = "UPDATE tab_tags SET taken=@taken WHERE Ref = " + a;
+                    OleDbCommand ole = new OleDbCommand(querry, connection);
+                    ole.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Sim";
+                    ole.ExecuteNonQuery();
+                }
                 try
                 {
+
                     oleDbCommand.ExecuteNonQuery();
                     MessageBox.Show("Dados apagados com sucesso", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -260,32 +286,24 @@ namespace Software_Base_de_Dados
             if (Tabela == "tab_agend")
             {
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                agend.Idequipa = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                agend.Idtask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+
             }
             else if (Tabela == "tab_places")
             {
                 places.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                places.Localizacao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                places.X = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-                places.Y = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
+
             }
             else if (Tabela == "tab_tasks")
             {
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                tasks.IDPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+
             }
             else if (Tabela == "tab_workers")
             {
                 workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 workers.Nome = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                workers.IDEquipa = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-                if (((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].GetType().ToString() != "System.DBNull")
-                {
-                    workers.Img = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
-                }
-                workers.Cod = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
+
+
             }
             else if (Tabela == "tab_teams")
             {
@@ -295,7 +313,7 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_tags")
             {
                 tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                tags.Ref = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].ToString();
+                tags.Ref = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].ToString();
                 if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] == "Sim")
                 {
                     tags.Taken = true;

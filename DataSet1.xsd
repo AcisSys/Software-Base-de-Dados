@@ -12,9 +12,9 @@
               <DbSource ConnectionRef="WORK2GODataConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        tab_places.Localizacao, tab_subtasks.[Desc], tab_subtasks.Type, tab_tasks.*, tab_subtasks.IDTask
-FROM            ((tab_tasks LEFT JOIN
-                         tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT JOIN
+                    <CommandText>SELECT      tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa,  tab_places.Localizacao, tab_subtasks.Type AS Tipo,  tab_tasks.Active AS Ativo, tab_tasks.RefTag as Referencia
+FROM            ((tab_tasks LEFT OUTER JOIN
+                         tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT OUTER JOIN
                          tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask)</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -23,14 +23,12 @@ FROM            ((tab_tasks LEFT JOIN
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
-              <Mapping SourceColumn="Descricao" DataSetColumn="Descricao" />
-              <Mapping SourceColumn="Active" DataSetColumn="Active" />
-              <Mapping SourceColumn="RefTag" DataSetColumn="RefTag" />
               <Mapping SourceColumn="Localizacao" DataSetColumn="Localizacao" />
-              <Mapping SourceColumn="Desc" DataSetColumn="Desc" />
-              <Mapping SourceColumn="Type" DataSetColumn="Type" />
-              <Mapping SourceColumn="IDPlace" DataSetColumn="IDPlace" />
-              <Mapping SourceColumn="IDTask" DataSetColumn="IDTask" />
+              <Mapping SourceColumn="SubTarefa" DataSetColumn="SubTarefa" />
+              <Mapping SourceColumn="Tipo" DataSetColumn="Tipo" />
+              <Mapping SourceColumn="Tarefa" DataSetColumn="Tarefa" />
+              <Mapping SourceColumn="Ativo" DataSetColumn="Ativo" />
+              <Mapping SourceColumn="Referencia" DataSetColumn="Referencia" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -39,9 +37,9 @@ FROM            ((tab_tasks LEFT JOIN
               <DbSource ConnectionRef="WORK2GODataConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        tab_agend.ID, tab_agend.idequipa, tab_teams.Descricao AS Expr1, tab_agend.idtask, tab_tasks.Descricao, tab_tasks.Active
-FROM            ((tab_agend LEFT OUTER JOIN
-                         tab_tasks ON tab_agend.idtask = tab_tasks.ID) LEFT OUTER JOIN
+                    <CommandText>SELECT        tab_agend.ID, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa
+FROM            ((tab_agend LEFT JOIN
+                         tab_tasks ON tab_agend.idtask = tab_tasks.ID) LEFT JOIN
                          tab_teams ON tab_agend.idequipa = tab_teams.ID)</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -50,11 +48,8 @@ FROM            ((tab_agend LEFT OUTER JOIN
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
-              <Mapping SourceColumn="idequipa" DataSetColumn="idequipa" />
-              <Mapping SourceColumn="idtask" DataSetColumn="idtask" />
-              <Mapping SourceColumn="Descricao" DataSetColumn="Descricao" />
-              <Mapping SourceColumn="Active" DataSetColumn="Active" />
-              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="Equipa" DataSetColumn="Equipa" />
+              <Mapping SourceColumn="Tarefa" DataSetColumn="Tarefa" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -63,7 +58,7 @@ FROM            ((tab_agend LEFT OUTER JOIN
               <DbSource ConnectionRef="WORK2GODataConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        tab_workers.ID, tab_workers.Nome, tab_workers.IDEquipa, tab_teams.Descricao, tab_workers.img, tab_workers.Cod
+                    <CommandText>SELECT        tab_workers.ID, tab_workers.Nome, tab_teams.Descricao AS Equipa, tab_workers.img, tab_workers.Cod
 FROM            (tab_workers INNER JOIN
                          tab_teams ON tab_workers.IDEquipa = tab_teams.ID)</CommandText>
                     <Parameters />
@@ -74,10 +69,9 @@ FROM            (tab_workers INNER JOIN
             <Mappings>
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
               <Mapping SourceColumn="Nome" DataSetColumn="Nome" />
-              <Mapping SourceColumn="IDEquipa" DataSetColumn="IDEquipa" />
               <Mapping SourceColumn="img" DataSetColumn="img" />
               <Mapping SourceColumn="Cod" DataSetColumn="Cod" />
-              <Mapping SourceColumn="Descricao" DataSetColumn="Descricao" />
+              <Mapping SourceColumn="Equipa" DataSetColumn="Equipa" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -93,21 +87,6 @@ FROM            (tab_workers INNER JOIN
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" minOccurs="0" />
-              <xs:element name="Descricao" msprop:Generator_UserColumnName="Descricao" msprop:Generator_ColumnPropNameInTable="DescricaoColumn" msprop:Generator_ColumnPropNameInRow="Descricao" msprop:Generator_ColumnVarNameInTable="columnDescricao" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="255" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Active" msprop:Generator_UserColumnName="Active" msprop:Generator_ColumnPropNameInTable="ActiveColumn" msprop:Generator_ColumnPropNameInRow="Active" msprop:Generator_ColumnVarNameInTable="columnActive" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="255" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="RefTag" msprop:Generator_UserColumnName="RefTag" msprop:Generator_ColumnPropNameInTable="RefTagColumn" msprop:Generator_ColumnPropNameInRow="RefTag" msprop:Generator_ColumnVarNameInTable="columnRefTag" type="xs:long" minOccurs="0" />
               <xs:element name="Localizacao" msprop:Generator_UserColumnName="Localizacao" msprop:Generator_ColumnPropNameInTable="LocalizacaoColumn" msprop:Generator_ColumnPropNameInRow="Localizacao" msprop:Generator_ColumnVarNameInTable="columnLocalizacao" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -115,22 +94,35 @@ FROM            (tab_workers INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Desc" msprop:Generator_UserColumnName="Desc" msprop:Generator_ColumnPropNameInTable="DescColumn" msprop:Generator_ColumnPropNameInRow="Desc" msprop:Generator_ColumnVarNameInTable="columnDesc" minOccurs="0">
+              <xs:element name="SubTarefa" msprop:Generator_ColumnPropNameInRow="SubTarefa" msprop:Generator_ColumnPropNameInTable="SubTarefaColumn" msprop:Generator_ColumnVarNameInTable="columnSubTarefa" msprop:Generator_UserColumnName="SubTarefa" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Type" msprop:Generator_UserColumnName="Type" msprop:Generator_ColumnPropNameInTable="TypeColumn" msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnVarNameInTable="columnType" minOccurs="0">
+              <xs:element name="Tipo" msprop:Generator_ColumnPropNameInRow="Tipo" msprop:Generator_ColumnPropNameInTable="TipoColumn" msprop:Generator_ColumnVarNameInTable="columnTipo" msprop:Generator_UserColumnName="Tipo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="IDPlace" msprop:Generator_UserColumnName="IDPlace" msprop:Generator_ColumnPropNameInTable="IDPlaceColumn" msprop:Generator_ColumnPropNameInRow="IDPlace" msprop:Generator_ColumnVarNameInTable="columnIDPlace" type="xs:int" minOccurs="0" />
-              <xs:element name="IDTask" msprop:Generator_UserColumnName="IDTask" msprop:Generator_ColumnPropNameInTable="IDTaskColumn" msprop:Generator_ColumnPropNameInRow="IDTask" msprop:Generator_ColumnVarNameInTable="columnIDTask" type="xs:int" minOccurs="0" />
+              <xs:element name="Tarefa" msprop:Generator_ColumnPropNameInRow="Tarefa" msprop:Generator_ColumnPropNameInTable="TarefaColumn" msprop:Generator_ColumnVarNameInTable="columnTarefa" msprop:Generator_UserColumnName="Tarefa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ativo" msprop:Generator_ColumnPropNameInRow="Ativo" msprop:Generator_ColumnPropNameInTable="AtivoColumn" msprop:Generator_ColumnVarNameInTable="columnAtivo" msprop:Generator_UserColumnName="Ativo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Referencia" msprop:Generator_ColumnPropNameInRow="Referencia" msprop:Generator_ColumnPropNameInTable="ReferenciaColumn" msprop:Generator_ColumnVarNameInTable="columnReferencia" msprop:Generator_UserColumnName="Referencia" type="xs:long" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -138,23 +130,14 @@ FROM            (tab_workers INNER JOIN
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" minOccurs="0" />
-              <xs:element name="idequipa" msprop:Generator_UserColumnName="idequipa" msprop:Generator_ColumnPropNameInTable="idequipaColumn" msprop:Generator_ColumnPropNameInRow="idequipa" msprop:Generator_ColumnVarNameInTable="columnidequipa" type="xs:int" minOccurs="0" />
-              <xs:element name="idtask" msprop:Generator_UserColumnName="idtask" msprop:Generator_ColumnPropNameInTable="idtaskColumn" msprop:Generator_ColumnPropNameInRow="idtask" msprop:Generator_ColumnVarNameInTable="columnidtask" type="xs:int" minOccurs="0" />
-              <xs:element name="Descricao" msprop:Generator_UserColumnName="Descricao" msprop:Generator_ColumnPropNameInTable="DescricaoColumn" msprop:Generator_ColumnPropNameInRow="Descricao" msprop:Generator_ColumnVarNameInTable="columnDescricao" minOccurs="0">
+              <xs:element name="Equipa" msprop:Generator_ColumnPropNameInRow="Equipa" msprop:Generator_ColumnPropNameInTable="EquipaColumn" msprop:Generator_ColumnVarNameInTable="columnEquipa" msprop:Generator_UserColumnName="Equipa" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Active" msprop:Generator_UserColumnName="Active" msprop:Generator_ColumnPropNameInTable="ActiveColumn" msprop:Generator_ColumnPropNameInRow="Active" msprop:Generator_ColumnVarNameInTable="columnActive" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="255" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Expr1" msprop:Generator_UserColumnName="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" minOccurs="0">
+              <xs:element name="Tarefa" msprop:Generator_ColumnPropNameInRow="Tarefa" msprop:Generator_ColumnPropNameInTable="TarefaColumn" msprop:Generator_ColumnVarNameInTable="columnTarefa" msprop:Generator_UserColumnName="Tarefa" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
@@ -175,7 +158,6 @@ FROM            (tab_workers INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="IDEquipa" msprop:Generator_UserColumnName="IDEquipa" msprop:Generator_ColumnPropNameInTable="IDEquipaColumn" msprop:Generator_ColumnPropNameInRow="IDEquipa" msprop:Generator_ColumnVarNameInTable="columnIDEquipa" type="xs:long" minOccurs="0" />
               <xs:element name="img" msprop:Generator_UserColumnName="img" msprop:Generator_ColumnPropNameInTable="imgColumn" msprop:Generator_ColumnPropNameInRow="img" msprop:Generator_ColumnVarNameInTable="columnimg" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -184,7 +166,7 @@ FROM            (tab_workers INNER JOIN
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Cod" msprop:Generator_UserColumnName="Cod" msprop:Generator_ColumnPropNameInTable="CodColumn" msprop:Generator_ColumnPropNameInRow="Cod" msprop:Generator_ColumnVarNameInTable="columnCod" type="xs:long" minOccurs="0" />
-              <xs:element name="Descricao" msprop:Generator_UserColumnName="Descricao" msprop:Generator_ColumnPropNameInTable="DescricaoColumn" msprop:Generator_ColumnPropNameInRow="Descricao" msprop:Generator_ColumnVarNameInTable="columnDescricao" minOccurs="0">
+              <xs:element name="Equipa" msprop:Generator_ColumnPropNameInRow="Equipa" msprop:Generator_ColumnPropNameInTable="EquipaColumn" msprop:Generator_ColumnVarNameInTable="columnEquipa" msprop:Generator_UserColumnName="Equipa" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
