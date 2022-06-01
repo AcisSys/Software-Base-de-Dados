@@ -26,10 +26,6 @@ namespace Software_Base_de_Dados
         // Conexão
 
         public readonly OleDbConnection connection = new OleDbConnection(Caminho);
-
-
-
-
         Agend agend = new Agend();
         Places places = new Places();
         Tags tags = new Tags();
@@ -41,6 +37,7 @@ namespace Software_Base_de_Dados
         // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tabela { get; set; }
+        string querry;
 
         private void Tables_Load(object sender, EventArgs e)
         {
@@ -78,7 +75,7 @@ namespace Software_Base_de_Dados
                 }
             }
 
-            string querry;
+
 
             DataSet dset = new DataSet();
             if (Tabela == "tab_tasks")
@@ -125,27 +122,27 @@ namespace Software_Base_de_Dados
                 agend.Tipo = "Add";
                 agend.ShowDialog();
             }
-            if (Tabela == "tab_places")
+            else if (Tabela == "tab_places")
             {
                 places.Tipo = "Add";
                 places.ShowDialog();
             }
-            if (Tabela == "tab_tasks")
+            else if (Tabela == "tab_tasks")
             {
                 tasks.Tipo = "Add";
                 tasks.ShowDialog();
             }
-            if (Tabela == "tab_tags")
+            else if (Tabela == "tab_tags")
             {
                 tags.Tipo = "Add";
                 tags.ShowDialog();
             }
-            if (Tabela == "tab_teams")
+            else if (Tabela == "tab_teams")
             {
                 teams.Tipo = "Add";
                 teams.ShowDialog();
             }
-            if (Tabela == "tab_workers")
+            else
             {
                 workers.Tipo = "Add";
                 workers.ShowDialog();
@@ -160,27 +157,27 @@ namespace Software_Base_de_Dados
                 agend.Tipo = "";
                 agend.ShowDialog();
             }
-            if (Tabela == "tab_places")
+            else if (Tabela == "tab_places")
             {
                 places.Tipo = "";
                 places.ShowDialog();
             }
-            if (Tabela == "tab_tasks")
+            else if (Tabela == "tab_tasks")
             {
                 tasks.Tipo = "";
                 tasks.ShowDialog();
             }
-            if (Tabela == "tab_tags")
+            else if (Tabela == "tab_tags")
             {
                 tags.Tipo = "";
                 tags.ShowDialog();
             }
-            if (Tabela == "tab_teams")
+            else if (Tabela == "tab_teams")
             {
                 teams.Tipo = "";
                 teams.ShowDialog();
             }
-            if (Tabela == "tab_workers")
+            else 
             {
                 workers.Tipo = "";
                 workers.ShowDialog();
@@ -190,7 +187,7 @@ namespace Software_Base_de_Dados
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
         }
-        string querry;
+
         private void Remove_Button_Click(object sender, EventArgs e)
         {
             if (connection.State == System.Data.ConnectionState.Closed)
@@ -310,7 +307,7 @@ namespace Software_Base_de_Dados
                 teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
             }
-            else if (Tabela == "tab_tags")
+            else
             {
                 tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 tags.Ref = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].ToString();

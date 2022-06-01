@@ -27,6 +27,7 @@ namespace Software_Base_de_Dados
         public int ID { get; set; }
         public string Ref { get; set; }
         public bool Taken { get; set; }
+        string querry;
 
         private void Tags_Load(object sender, EventArgs e)
         {
@@ -45,8 +46,8 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             {
                 // ID é automatico
-                string comand = "SELECT MAX (ID) FROM tab_tags";
-                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
+                querry = "SELECT MAX (ID) FROM tab_tags";
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
@@ -63,20 +64,18 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(maskedTextBox2.Text, out _) == false) 
+            if (int.TryParse(maskedTextBox2.Text, out _) == false)
             {
                 sfToolTip1.Show("Verifique se todos os campos estão \ncorretos antes de validar dados!");
             }
             else
             {
-
-
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
                 {
                     // querry para inserir dados
-                    string querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
-                                "VALUES (@ID, @IDEquipa, @IDTask)";
+                    querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
+                               "VALUES (@ID, @IDEquipa, @IDTask)";
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
@@ -85,8 +84,8 @@ namespace Software_Base_de_Dados
                 }
                 else
                 {
-                    string querry = "UPDATE tab_tags  SET Ref = @Ref," +
-                        " taken = @taken where ID = " + maskedTextBox1.Text;
+                    querry = "UPDATE tab_tags  SET Ref = @Ref," +
+                       " taken = @taken where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
