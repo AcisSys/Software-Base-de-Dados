@@ -9,12 +9,12 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="WORK2GODataConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="WORK2GODataConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        tab_tasks.ID, tab_tasks.Descricao, tab_tasks.Active, tab_tasks.RefTag, tab_places.Localizacao, tab_subtasks.[Desc], tab_subtasks.Type
-FROM            ((tab_tasks INNER JOIN
-                         tab_places ON tab_tasks.IDPlace = tab_places.ID) INNER JOIN
+                    <CommandText>SELECT        tab_places.Localizacao, tab_subtasks.[Desc], tab_subtasks.Type, tab_tasks.*, tab_subtasks.IDTask
+FROM            ((tab_tasks LEFT JOIN
+                         tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT JOIN
                          tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask)</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -29,6 +29,8 @@ FROM            ((tab_tasks INNER JOIN
               <Mapping SourceColumn="Localizacao" DataSetColumn="Localizacao" />
               <Mapping SourceColumn="Desc" DataSetColumn="Desc" />
               <Mapping SourceColumn="Type" DataSetColumn="Type" />
+              <Mapping SourceColumn="IDPlace" DataSetColumn="IDPlace" />
+              <Mapping SourceColumn="IDTask" DataSetColumn="IDTask" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -105,6 +107,8 @@ FROM            ((tab_tasks INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="IDPlace" msprop:Generator_ColumnPropNameInRow="IDPlace" msprop:Generator_ColumnPropNameInTable="IDPlaceColumn" msprop:Generator_ColumnVarNameInTable="columnIDPlace" msprop:Generator_UserColumnName="IDPlace" type="xs:int" minOccurs="0" />
+              <xs:element name="IDTask" msprop:Generator_ColumnPropNameInRow="IDTask" msprop:Generator_ColumnPropNameInTable="IDTaskColumn" msprop:Generator_ColumnVarNameInTable="columnIDTask" msprop:Generator_UserColumnName="IDTask" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

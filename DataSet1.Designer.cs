@@ -328,6 +328,10 @@ namespace Software_Base_de_Dados {
             
             private global::System.Data.DataColumn columnType;
             
+            private global::System.Data.DataColumn columnIDPlace;
+            
+            private global::System.Data.DataColumn columnIDTask;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DataTable1DataTable() {
@@ -419,6 +423,22 @@ namespace Software_Base_de_Dados {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDPlaceColumn {
+                get {
+                    return this.columnIDPlace;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDTaskColumn {
+                get {
+                    return this.columnIDTask;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -454,7 +474,7 @@ namespace Software_Base_de_Dados {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataTable1Row AddDataTable1Row(string Descricao, string Active, long RefTag, string Localizacao, string Desc, string Type) {
+            public DataTable1Row AddDataTable1Row(string Descricao, string Active, long RefTag, string Localizacao, string Desc, string Type, int IDPlace, int IDTask) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -463,7 +483,9 @@ namespace Software_Base_de_Dados {
                         RefTag,
                         Localizacao,
                         Desc,
-                        Type};
+                        Type,
+                        IDPlace,
+                        IDTask};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -493,6 +515,8 @@ namespace Software_Base_de_Dados {
                 this.columnLocalizacao = base.Columns["Localizacao"];
                 this.columnDesc = base.Columns["Desc"];
                 this.columnType = base.Columns["Type"];
+                this.columnIDPlace = base.Columns["IDPlace"];
+                this.columnIDTask = base.Columns["IDTask"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -512,6 +536,10 @@ namespace Software_Base_de_Dados {
                 base.Columns.Add(this.columnDesc);
                 this.columnType = new global::System.Data.DataColumn("Type", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnType);
+                this.columnIDPlace = new global::System.Data.DataColumn("IDPlace", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDPlace);
+                this.columnIDTask = new global::System.Data.DataColumn("IDTask", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDTask);
                 this.columnID.AutoIncrement = true;
                 this.columnID.AutoIncrementSeed = -1;
                 this.columnID.AutoIncrementStep = -1;
@@ -1113,6 +1141,38 @@ namespace Software_Base_de_Dados {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int IDPlace {
+                get {
+                    try {
+                        return ((int)(this[this.tableDataTable1.IDPlaceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IDPlace\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.IDPlaceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int IDTask {
+                get {
+                    try {
+                        return ((int)(this[this.tableDataTable1.IDTaskColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IDTask\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.IDTaskColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tableDataTable1.IDColumn);
             }
@@ -1193,6 +1253,30 @@ namespace Software_Base_de_Dados {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTypeNull() {
                 this[this.tableDataTable1.TypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIDPlaceNull() {
+                return this.IsNull(this.tableDataTable1.IDPlaceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIDPlaceNull() {
+                this[this.tableDataTable1.IDPlaceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIDTaskNull() {
+                return this.IsNull(this.tableDataTable1.IDTaskColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIDTaskNull() {
+                this[this.tableDataTable1.IDTaskColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1607,6 +1691,8 @@ namespace Software_Base_de_Dados.DataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("Localizacao", "Localizacao");
             tableMapping.ColumnMappings.Add("Desc", "Desc");
             tableMapping.ColumnMappings.Add("Type", "Type");
+            tableMapping.ColumnMappings.Add("IDPlace", "IDPlace");
+            tableMapping.ColumnMappings.Add("IDTask", "IDTask");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1623,9 +1709,9 @@ namespace Software_Base_de_Dados.DataSet1TableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        tab_tasks.ID, tab_tasks.Descricao, tab_tasks.Active, tab_tasks.RefTag, tab_places.Localizacao, tab_subtasks.[Desc], tab_subtasks.Type
-FROM            ((tab_tasks INNER JOIN
-                         tab_places ON tab_tasks.IDPlace = tab_places.ID) INNER JOIN
+            this._commandCollection[0].CommandText = @"SELECT        tab_places.Localizacao, tab_subtasks.[Desc], tab_subtasks.Type, tab_tasks.*, tab_subtasks.IDTask
+FROM            ((tab_tasks LEFT JOIN
+                         tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT JOIN
                          tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
