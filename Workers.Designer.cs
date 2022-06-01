@@ -75,9 +75,9 @@ namespace Software_Base_de_Dados
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label3.Location = new System.Drawing.Point(34, 96);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 21);
+            this.label3.Size = new System.Drawing.Size(79, 21);
             this.label3.TabIndex = 2;
-            this.label3.Text = "IDEquipa:";
+            this.label3.Text = "ID Equipa:";
             // 
             // label4
             // 
@@ -85,9 +85,9 @@ namespace Software_Base_de_Dados
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label4.Location = new System.Drawing.Point(34, 133);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 21);
+            this.label4.Size = new System.Drawing.Size(70, 21);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Img:";
+            this.label4.Text = "Imagem:";
             // 
             // label5
             // 
@@ -95,9 +95,9 @@ namespace Software_Base_de_Dados
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label5.Location = new System.Drawing.Point(34, 165);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 21);
+            this.label5.Size = new System.Drawing.Size(63, 21);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Cod:";
+            this.label5.Text = "Codigo:";
             // 
             // maskedTextBox1
             // 

@@ -75,9 +75,9 @@ namespace Software_Base_de_Dados
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label3.Location = new System.Drawing.Point(88, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 21);
+            this.label3.Size = new System.Drawing.Size(108, 21);
             this.label3.TabIndex = 2;
-            this.label3.Text = "IDPlace";
+            this.label3.Text = "ID Localizacao";
             // 
             // label5
             // 
@@ -85,9 +85,9 @@ namespace Software_Base_de_Dados
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label5.Location = new System.Drawing.Point(88, 108);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 21);
+            this.label5.Size = new System.Drawing.Size(66, 21);
             this.label5.TabIndex = 4;
-            this.label5.Text = "RefTag:";
+            this.label5.Text = "Etiqueta";
             // 
             // maskedTextBox1
             // 

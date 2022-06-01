@@ -72,9 +72,9 @@ namespace Software_Base_de_Dados
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label2.Location = new System.Drawing.Point(19, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 21);
+            this.label2.Size = new System.Drawing.Size(80, 21);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Desc:";
+            this.label2.Text = "Descricao:";
             // 
             // toolStrip1
             // 

@@ -70,9 +70,9 @@ namespace Software_Base_de_Dados
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label2.Location = new System.Drawing.Point(12, 77);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 21);
+            this.label2.Size = new System.Drawing.Size(79, 21);
             this.label2.TabIndex = 4;
-            this.label2.Text = "IDEquipa:";
+            this.label2.Text = "ID Equipa:";
             // 
             // label3
             // 
@@ -80,9 +80,9 @@ namespace Software_Base_de_Dados
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label3.Location = new System.Drawing.Point(12, 117);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 21);
+            this.label3.Size = new System.Drawing.Size(73, 21);
             this.label3.TabIndex = 5;
-            this.label3.Text = "IDTask:";
+            this.label3.Text = "ID Tarefa:";
             // 
             // sfComboBox1
             // 
