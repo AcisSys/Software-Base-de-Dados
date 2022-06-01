@@ -62,18 +62,7 @@ namespace Software_Base_de_Dados
 
         public void UpdateTable()
         {
-            if (connection.State == System.Data.ConnectionState.Closed)
-            {
-                try
-                {
-                    connection.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+
 
             DataSet dset = new DataSet();
             if (Tabela == "tab_tasks")
@@ -186,32 +175,6 @@ namespace Software_Base_de_Dados
 
         private void Remove_Button_Click(object sender, EventArgs e)
         {
-            if (connection.State == System.Data.ConnectionState.Closed)
-            {
-                try
-                {
-                    connection.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-            // Verifica a conexao
-            if (connection.State == System.Data.ConnectionState.Closed)
-            {
-                try
-                {
-                    connection.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
             // Pede Confirmação para apagar dados
             DialogResult response = MessageBox.Show("Tem a certeza?", "Apagar?",
                 MessageBoxButtons.YesNo,
@@ -262,17 +225,6 @@ namespace Software_Base_de_Dados
             Remove_Button.Enabled = true;
             DataSet ds = new DataSet();
             ds.Reset();
-            if (connection.State != ConnectionState.Open)
-            {
-                try
-                {
-                    connection.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
             if (Tabela == "tab_agend")
             {
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
