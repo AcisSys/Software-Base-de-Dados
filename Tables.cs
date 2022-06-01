@@ -89,6 +89,14 @@ namespace Software_Base_de_Dados
                 sfDataGrid1.DataSource = null;
                 sfDataGrid1.DataSource = dt;
             }
+            else if (Tabela == "tab_tags")
+            {
+                DataSet1TableAdapters.tab_tagsTableAdapter dadapter = new DataSet1TableAdapters.tab_tagsTableAdapter();
+                DataSet1.tab_tagsDataTable dt = new DataSet1.tab_tagsDataTable();
+                dadapter.Fill(dt);
+                sfDataGrid1.DataSource = null;
+                sfDataGrid1.DataSource = dt;
+            }
             else
             {
                 querry = "SELECT * FROM " + Tabela;
