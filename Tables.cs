@@ -103,14 +103,46 @@ namespace Software_Base_de_Dados
              DataTable ds = new DataTable();
              DataSet1TableAdapters.DataTable1TableAdapter adapter = new DataSet1TableAdapters.DataTable1TableAdapter();*/
 
-            DataSet1TableAdapters.DataTable1TableAdapter adapter = new DataSet1TableAdapters.DataTable1TableAdapter();
-            DataSet1.DataTable1DataTable dt = new DataSet1.DataTable1DataTable();
-            adapter.Fill(dt);
-            
 
 
-            sfDataGrid1.DataSource = null;
-            sfDataGrid1.DataSource = dt;
+
+
+            string querry;
+
+            DataSet dset = new DataSet();
+            if (Tabela == "tab_tasks")
+            {
+                DataSet1TableAdapters.DataTable1TableAdapter dadapter = new DataSet1TableAdapters.DataTable1TableAdapter();
+                DataSet1.DataTable1DataTable dt = new DataSet1.DataTable1DataTable();
+                dadapter.Fill(dt);
+                sfDataGrid1.DataSource = null;
+                sfDataGrid1.DataSource = dt;
+            }
+            else if (Tabela == "tab_agend")
+            {
+                DataSet1TableAdapters.DataTable2TableAdapter dadapter = new DataSet1TableAdapters.DataTable2TableAdapter();
+                DataSet1.DataTable2DataTable dt = new DataSet1.DataTable2DataTable();
+                dadapter.Fill(dt);
+                sfDataGrid1.DataSource = null;
+                sfDataGrid1.DataSource = dt;
+            }
+            else if (Tabela == "tab_workers")
+            {
+                DataSet1TableAdapters.DataTable3TableAdapter dadapter = new DataSet1TableAdapters.DataTable3TableAdapter();
+                DataSet1.DataTable3DataTable dt = new DataSet1.DataTable3DataTable();
+                dadapter.Fill(dt);
+                sfDataGrid1.DataSource = null;
+                sfDataGrid1.DataSource = dt;
+            }
+            else
+            {
+                querry = "SELECT * FROM " + Tabela;
+                dset.Reset();
+                OleDbDataAdapter adapter = new OleDbDataAdapter(querry, connection);
+                adapter.Fill(dset);
+                sfDataGrid1.DataSource = dset;
+            }
+
             sfDataGrid1.Update();
             connection.Close();
         }

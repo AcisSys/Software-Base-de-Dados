@@ -36,13 +36,13 @@ FROM            ((tab_tasks LEFT JOIN
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable2TableAdapter" GeneratorDataComponentClassName="DataTable2TableAdapter" Name="DataTable2" UserDataComponentName="DataTable2TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="WORK2GODataConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="WORK2GODataConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        tab_tasks.ID, tab_tasks.Descricao, tab_tasks.Active, tab_tasks.RefTag, tab_places.Localizacao, tab_subtasks.[Desc], tab_subtasks.Type
-FROM            ((tab_tasks INNER JOIN
-                         tab_places ON tab_tasks.IDPlace = tab_places.ID) INNER JOIN
-                         tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask)</CommandText>
+                    <CommandText>SELECT        tab_agend.ID, tab_agend.idequipa, tab_teams.Descricao AS Expr1, tab_agend.idtask, tab_tasks.Descricao, tab_tasks.Active
+FROM            ((tab_agend LEFT OUTER JOIN
+                         tab_tasks ON tab_agend.idtask = tab_tasks.ID) LEFT OUTER JOIN
+                         tab_teams ON tab_agend.idequipa = tab_teams.ID)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -50,12 +50,34 @@ FROM            ((tab_tasks INNER JOIN
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="idequipa" DataSetColumn="idequipa" />
+              <Mapping SourceColumn="idtask" DataSetColumn="idtask" />
               <Mapping SourceColumn="Descricao" DataSetColumn="Descricao" />
               <Mapping SourceColumn="Active" DataSetColumn="Active" />
-              <Mapping SourceColumn="RefTag" DataSetColumn="RefTag" />
-              <Mapping SourceColumn="Localizacao" DataSetColumn="Localizacao" />
-              <Mapping SourceColumn="Desc" DataSetColumn="Desc" />
-              <Mapping SourceColumn="Type" DataSetColumn="Type" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable3TableAdapter" GeneratorDataComponentClassName="DataTable3TableAdapter" Name="DataTable3" UserDataComponentName="DataTable3TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WORK2GODataConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        tab_workers.ID, tab_workers.Nome, tab_workers.IDEquipa, tab_teams.Descricao, tab_workers.img, tab_workers.Cod
+FROM            (tab_workers INNER JOIN
+                         tab_teams ON tab_workers.IDEquipa = tab_teams.ID)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Nome" DataSetColumn="Nome" />
+              <Mapping SourceColumn="IDEquipa" DataSetColumn="IDEquipa" />
+              <Mapping SourceColumn="img" DataSetColumn="img" />
+              <Mapping SourceColumn="Cod" DataSetColumn="Cod" />
+              <Mapping SourceColumn="Descricao" DataSetColumn="Descricao" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -116,6 +138,8 @@ FROM            ((tab_tasks INNER JOIN
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="idequipa" msprop:Generator_ColumnPropNameInRow="idequipa" msprop:Generator_ColumnPropNameInTable="idequipaColumn" msprop:Generator_ColumnVarNameInTable="columnidequipa" msprop:Generator_UserColumnName="idequipa" type="xs:int" minOccurs="0" />
+              <xs:element name="idtask" msprop:Generator_ColumnPropNameInRow="idtask" msprop:Generator_ColumnPropNameInTable="idtaskColumn" msprop:Generator_ColumnVarNameInTable="columnidtask" msprop:Generator_UserColumnName="idtask" type="xs:int" minOccurs="0" />
               <xs:element name="Descricao" msprop:Generator_ColumnPropNameInRow="Descricao" msprop:Generator_ColumnPropNameInTable="DescricaoColumn" msprop:Generator_ColumnVarNameInTable="columnDescricao" msprop:Generator_UserColumnName="Descricao" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -130,22 +154,37 @@ FROM            ((tab_tasks INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="RefTag" msprop:Generator_ColumnPropNameInRow="RefTag" msprop:Generator_ColumnPropNameInTable="RefTagColumn" msprop:Generator_ColumnVarNameInTable="columnRefTag" msprop:Generator_UserColumnName="RefTag" type="xs:long" minOccurs="0" />
-              <xs:element name="Localizacao" msprop:Generator_ColumnPropNameInRow="Localizacao" msprop:Generator_ColumnPropNameInTable="LocalizacaoColumn" msprop:Generator_ColumnVarNameInTable="columnLocalizacao" msprop:Generator_UserColumnName="Localizacao" minOccurs="0">
+              <xs:element name="Expr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_UserColumnName="Expr1" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Desc" msprop:Generator_ColumnPropNameInRow="Desc" msprop:Generator_ColumnPropNameInTable="DescColumn" msprop:Generator_ColumnVarNameInTable="columnDesc" msprop:Generator_UserColumnName="Desc" minOccurs="0">
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable3" msprop:Generator_RowEvHandlerName="DataTable3RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable3RowDeleted" msprop:Generator_RowDeletingName="DataTable3RowDeleting" msprop:Generator_RowEvArgName="DataTable3RowChangeEvent" msprop:Generator_TablePropName="DataTable3" msprop:Generator_RowChangedName="DataTable3RowChanged" msprop:Generator_RowChangingName="DataTable3RowChanging" msprop:Generator_TableClassName="DataTable3DataTable" msprop:Generator_RowClassName="DataTable3Row" msprop:Generator_TableVarName="tableDataTable3" msprop:Generator_UserTableName="DataTable3">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="Nome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnPropNameInTable="NomeColumn" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_UserColumnName="Nome" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Type" msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnPropNameInTable="TypeColumn" msprop:Generator_ColumnVarNameInTable="columnType" msprop:Generator_UserColumnName="Type" minOccurs="0">
+              <xs:element name="IDEquipa" msprop:Generator_ColumnPropNameInRow="IDEquipa" msprop:Generator_ColumnPropNameInTable="IDEquipaColumn" msprop:Generator_ColumnVarNameInTable="columnIDEquipa" msprop:Generator_UserColumnName="IDEquipa" type="xs:long" minOccurs="0" />
+              <xs:element name="img" msprop:Generator_ColumnPropNameInRow="img" msprop:Generator_ColumnPropNameInTable="imgColumn" msprop:Generator_ColumnVarNameInTable="columnimg" msprop:Generator_UserColumnName="img" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cod" msprop:Generator_ColumnPropNameInRow="Cod" msprop:Generator_ColumnPropNameInTable="CodColumn" msprop:Generator_ColumnVarNameInTable="columnCod" msprop:Generator_UserColumnName="Cod" type="xs:long" minOccurs="0" />
+              <xs:element name="Descricao" msprop:Generator_ColumnPropNameInRow="Descricao" msprop:Generator_ColumnPropNameInTable="DescricaoColumn" msprop:Generator_ColumnVarNameInTable="columnDescricao" msprop:Generator_UserColumnName="Descricao" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
