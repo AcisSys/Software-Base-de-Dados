@@ -75,8 +75,6 @@ namespace Software_Base_de_Dados
                 }
             }
 
-
-
             DataSet dset = new DataSet();
             if (Tabela == "tab_tasks")
             {
@@ -110,9 +108,7 @@ namespace Software_Base_de_Dados
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
             }
-
             sfDataGrid1.Update();
-            connection.Close();
         }
 
         private void Add_Button_Click(object sender, EventArgs e)
