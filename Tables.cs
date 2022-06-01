@@ -27,9 +27,11 @@ namespace Software_Base_de_Dados
 
         public readonly OleDbConnection connection = new OleDbConnection(Caminho);
 
+
+
+
         Agend agend = new Agend();
         Places places = new Places();
-
         Tags tags = new Tags();
         Tasks tasks = new Tasks();
         Teams teams = new Teams();
@@ -75,33 +77,6 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            /* string querry;
-             if (Tabela == "tab_agend")
-             {
-                 querry = "SELECT [tab_agend].[ID], [tab_teams].[Descricao], [tab_agend].[idtask] " + " FROM [tab_teams] " + " INNER JOIN [tab_agend] ON cast([tab_teams].[ID] as int) = cast([tab_agend].[idequipa] as int); ";
-             }
-             else if (Tabela == "tab_tasks")
-             {
-                 querry = "SELECT tab_tasks.ID, tab_tasks.Descricao, tab_tasks.Active, tab_tasks.RefTag, tab_subtasks.Desc FROM tab_places, tab_tasks  RIGHT JOIN tab_tasks  ON tab_subtasks.IDTask = tab_tasks.ID;";
-             }
-             else { querry = "SELECT * FROM " + Tabela; }
-             dset.Reset();
-             adapter = new OleDbDataAdapter(querry, connection);
-             DataSet1TableAdapters.DataTable1TableAdapter adapter = new DataSet1TableAdapters.DataTable1TableAdapter(data);
-
-
-             using (OleDbConnection connection = new OleDbConnection(Caminho))
-             {
-                 adapter = new DataSet1TableAdapters.DataTable1TableAdapter;
-                 {
-                     SelectCommand = new OleDbCommand(querry, connection)
-                 };
-             DataTable ds = new DataTable();
-             DataSet1TableAdapters.DataTable1TableAdapter adapter = new DataSet1TableAdapters.DataTable1TableAdapter();*/
-
-
-
-
 
             string querry;
 
@@ -147,10 +122,7 @@ namespace Software_Base_de_Dados
         {
             if (Tabela == "tab_agend")
             {
-                Agend agend = new Agend
-                {
-                    Tipo = "Add"
-                };
+                agend.Tipo = "Add";
                 agend.ShowDialog();
             }
             if (Tabela == "tab_places")
