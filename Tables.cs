@@ -86,7 +86,7 @@ namespace Software_Base_de_Dados
             string querry;
             if (Tabela == "tab_agend")
             {
-                 querry = "SELECT [tab_agend].[ID], [tab_teams].[Descricao], [tab_agend].[idtask] " + " FROM [tab_teams] " + " INNER JOIN [tab_agend] ON cast([tab_teams].[ID] as int) = cast([tab_agend].[idequipa] as int); ";
+                querry = "SELECT [tab_agend].[ID], [tab_teams].[Descricao], [tab_agend].[idtask] " + " FROM [tab_teams] " + " INNER JOIN [tab_agend] ON cast([tab_teams].[ID] as int) = cast([tab_agend].[idequipa] as int); ";
             }
             else if (Tabela == "tab_tasks")
             {
