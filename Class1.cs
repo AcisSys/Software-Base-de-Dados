@@ -16,8 +16,8 @@ namespace Software_Base_de_Dados
             {
                 aes.Key = Encoding.UTF8.GetBytes(key);
                 aes.IV = iv;
-
-                ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+                aes.Padding = PaddingMode.None;
+                ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV );
 
                 using (MemoryStream memoryStream = new MemoryStream())
                 {
@@ -47,6 +47,7 @@ namespace Software_Base_de_Dados
             {
                 aes.Key = Encoding.UTF8.GetBytes(key);
                 aes.IV = iv;
+                aes.Padding = PaddingMode.None;
                 ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
 
                 using (MemoryStream memoryStream = new MemoryStream(buffer))

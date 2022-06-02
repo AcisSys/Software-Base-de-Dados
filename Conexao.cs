@@ -99,8 +99,8 @@ namespace Software_Base_de_Dados
 
                 //Desencript Text
                 text1 = text.Substring(0, 64);
-                text2 = text.Substring(63, 64);
-                text3 = text.Substring(63 + 62, 27);
+                text2 = text.Substring(64, 60);
+                text3 = text.Substring(63 + 64, 27);
                 var decryptedString1 = AesOperation.DecryptString(key, text1);
                 var decryptedString2 = AesOperation.DecryptString(key, text2);
                 var decryptedString3 = AesOperation.DecryptString(key, text3);
