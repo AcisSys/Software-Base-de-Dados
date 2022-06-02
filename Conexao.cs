@@ -32,7 +32,7 @@ namespace Software_Base_de_Dados
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro na conexão, verifiquea chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
             }
