@@ -108,6 +108,7 @@
     <Compile Include="Agend.Designer.cs">
       <DependentUpon>Agend.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="Conexao.cs">
       <SubType>Form</SubType>
     </Compile>

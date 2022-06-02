@@ -12,7 +12,7 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
 
-        const string key = "ogednom";
+        string key = "b14ca5898a4e4133bbce2ea2315a1916";
         string text;
 
         private void Button1_Click(object sender, EventArgs e)
@@ -47,11 +47,11 @@ namespace Software_Base_de_Dados
                     text = textBox1.Text;
 
 
-
+                    var encryptedString = AesOperation.EncryptString(key, text);
                     // encript text
 
 
-                    sw.WriteLine(text); // Write text to .txt file
+                    sw.WriteLine(encryptedString); // Write text to .txt file
                     MessageBox.Show("Conexao alterada", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
@@ -63,8 +63,9 @@ namespace Software_Base_de_Dados
                     text = textBox1.Text;
 
                     // Encript Text
+                    var encryptedString = AesOperation.EncryptString(key, text);
 
-                    sw.WriteLine(text); // Write text to .txt file
+                    sw.WriteLine(encryptedString); // Write text to .txt file
                 }
 
             }
@@ -90,8 +91,9 @@ namespace Software_Base_de_Dados
                 text = File.ReadAllText("ChaveConexao.txt");
 
                 //Desencript Text
+                var decryptedString = AesOperation.DecryptString(key, text);
 
-                textBox1.Text = text;
+                textBox1.Text = decryptedString;
 
                 button1.Select();
 
