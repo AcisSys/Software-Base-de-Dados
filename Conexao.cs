@@ -53,7 +53,16 @@ namespace Software_Base_de_Dados
 
                     //var encryptedString = AesOperation.EncryptString(key, text);
                     // encript text
+                    text = textBox1.Text;
+                    text1 = textBox1.Text.ToString().Substring(0, 62);
+                    int a = textBox1.TextLength;
+                    text2 = textBox1.Text.ToString().Substring(62, 45);
 
+                    // Encript Text
+                    var encryptedString = AesOperation.EncryptString(key, text1);
+                    var encryptedString2 = AesOperation.EncryptString(key, text2);
+
+                    sw.WriteLine(encryptedString + encryptedString2); // Write text to .txt file
 
                     //sw.WriteLine(encryptedString); // Write text to .txt file
                     MessageBox.Show("Conexao alterada", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
