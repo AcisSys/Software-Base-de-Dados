@@ -80,8 +80,6 @@ namespace Software_Base_de_Dados
             else // If file already exists
             {
                 text = File.ReadAllText("ChaveConexao.txt");
-
-                
                 button1.Select();
 
             }
