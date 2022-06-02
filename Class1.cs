@@ -41,7 +41,7 @@ namespace Software_Base_de_Dados
         {
             byte[] iv = new byte[16];
             byte[] buffer = Convert.FromBase64String(cipherText);
-            //byte[] buffer = Convert.FromBase64String(cipherText);
+           
 
             using (Aes aes = Aes.Create())
             {
