@@ -62,7 +62,7 @@ namespace Software_Base_de_Dados
             }
             this.Close();
         }
-
+        
 
         private void Button1_MouseLeave_1(object sender, EventArgs e)
         {
