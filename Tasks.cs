@@ -40,6 +40,7 @@ namespace Software_Base_de_Dados
 
         private void Tasks_Load(object sender, EventArgs e)
         {
+            // Verifica a conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -106,7 +107,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
-
+                // Verifica o valor do campo active
                 OleDbCommand oleDbCommand;
                 string active;
                 if (checkBox1.Checked == true)

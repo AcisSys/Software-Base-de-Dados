@@ -11,6 +11,7 @@ namespace Software_Base_de_Dados
         // Inicia os UserControls
         readonly Title title = new Title();
         readonly Tables table = new Tables();
+        Conexao conexao = new Conexao();
         string tabela = "";
         public Form1()
         {
@@ -91,12 +92,13 @@ namespace Software_Base_de_Dados
 
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {
-            Conexao conexao = new Conexao();
+            
             conexao.ShowDialog();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Vai buscar a chave de conexao e verifica se a mesma é válida
             Tables.Caminho = File.ReadAllText("ChaveConexao.txt");
             try
             {
@@ -105,6 +107,7 @@ namespace Software_Base_de_Dados
             catch (Exception ex)
             {
                 MessageBox.Show("Conexao inválida, verifique a chave de conexao.\n" + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                conexao.ShowDialog();
             }
         }
     }

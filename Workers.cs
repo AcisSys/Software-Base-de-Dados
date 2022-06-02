@@ -92,6 +92,7 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            // Verifica o preenchimento de todos os campos
             if (maskedTextBox2.Text == null || maskedTextBox4.Text == null || sfComboBox1.SelectedItem == null
                 || maskedTextBox5.Text == null)
             {

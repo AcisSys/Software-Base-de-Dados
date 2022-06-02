@@ -7,7 +7,6 @@ namespace Software_Base_de_Dados
 {
     public partial class Conexao : Form
     {
-        public string cpath;
         public Conexao()
         {
             InitializeComponent();
@@ -17,6 +16,7 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            // verifica se o campo esta vazio
             if (textBox1.Text == "")
             {
                 sfToolTip1.Show("Introduza a chave de conexão antes de continuar");
@@ -25,10 +25,11 @@ namespace Software_Base_de_Dados
             
             try
             {
+                // verifica se o valor do campo é uma chave válida
                 OleDbConnection con = new OleDbConnection(textBox1.Text);
                 con.Open();
                 Tables.Caminho = textBox1.Text;
-                cpath = textBox1.Text;
+               
             }
             catch (Exception ex)
             {
@@ -55,7 +56,6 @@ namespace Software_Base_de_Dados
                 }
 
             }
-
             this.Close();
         }
 
@@ -67,6 +67,7 @@ namespace Software_Base_de_Dados
 
         private void Conexao_Load(object sender, EventArgs e)
         {
+            // Ao carregar o FORM, verifica se já existe um ficheiro e caso exista, vai buscar o texto atual do mesmo
             if (!File.Exists("ChaveConexao.txt")) // If file does not exists
             {
                 File.Create("ChaveConexao.txt").Close(); // Create file
