@@ -14,6 +14,8 @@ namespace Software_Base_de_Dados
 
         string key = "b14ca5898a4e4133bbce2ea2315a1916";
         string text;
+        string text1;
+        string text2;
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -47,11 +49,11 @@ namespace Software_Base_de_Dados
                     text = textBox1.Text;
 
 
-                    var encryptedString = AesOperation.EncryptString(key, text);
+                    //var encryptedString = AesOperation.EncryptString(key, text);
                     // encript text
 
 
-                    sw.WriteLine(encryptedString); // Write text to .txt file
+                    //sw.WriteLine(encryptedString); // Write text to .txt file
                     MessageBox.Show("Conexao alterada", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
@@ -61,11 +63,14 @@ namespace Software_Base_de_Dados
                 using (StreamWriter sw = File.AppendText("ChaveConexao.txt"))
                 {
                     text = textBox1.Text;
+                    text1 = textBox1.Text.ToString().Substring(0, 62);
+                    text2 = textBox1.Text.ToString().Substring(62, textBox1.TextLength);
 
                     // Encript Text
-                    var encryptedString = AesOperation.EncryptString(key, text);
+                    var encryptedString = AesOperation.EncryptString(key, text1);
+                    var encryptedString2 = AesOperation.EncryptString(key, text2);
 
-                    sw.WriteLine(encryptedString); // Write text to .txt file
+                    sw.WriteLine(encryptedString + encryptedString2); // Write text to .txt file
                 }
 
             }

@@ -37,6 +37,7 @@ namespace Software_Base_de_Dados
         }
 
         public static string DecryptString(string key, string cipherText)
+
         {
             byte[] iv = new byte[16];
             byte[] buffer = Convert.FromBase64String(cipherText);
