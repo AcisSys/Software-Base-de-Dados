@@ -16,6 +16,7 @@ namespace Software_Base_de_Dados
         string text;
         string text1;
         string text2;
+        string text3;
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -64,7 +65,8 @@ namespace Software_Base_de_Dados
                 {
                     text = textBox1.Text;
                     text1 = textBox1.Text.ToString().Substring(0, 62);
-                    text2 = textBox1.Text.ToString().Substring(62, textBox1.TextLength);
+                    int a = textBox1.TextLength;
+                    text2 = textBox1.Text.ToString().Substring(62, 45);
 
                     // Encript Text
                     var encryptedString = AesOperation.EncryptString(key, text1);
@@ -96,9 +98,14 @@ namespace Software_Base_de_Dados
                 text = File.ReadAllText("ChaveConexao.txt");
 
                 //Desencript Text
-                var decryptedString = AesOperation.DecryptString(key, text);
+                text1 = text.Substring(0, 64);
+                text2 = text.Substring(63, 64);
+                text3 = text.Substring(63 + 62, 27);
+                var decryptedString1 = AesOperation.DecryptString(key, text1);
+                var decryptedString2 = AesOperation.DecryptString(key, text2);
+                var decryptedString3 = AesOperation.DecryptString(key, text3);
 
-                textBox1.Text = decryptedString;
+                textBox1.Text = decryptedString1 + decryptedString2 + decryptedString3;
 
                 button1.Select();
 

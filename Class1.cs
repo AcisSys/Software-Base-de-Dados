@@ -54,7 +54,7 @@ namespace Software_Base_de_Dados
                     using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, decryptor, CryptoStreamMode.Read))
                     {
                         using (StreamReader streamReader = new StreamReader((Stream)cryptoStream))
-                        {
+                        { 
                             return streamReader.ReadToEnd();
                         }
                     }
