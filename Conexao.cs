@@ -97,7 +97,6 @@ namespace Software_Base_de_Dados
             else // If file already exists
             {
                 text = File.ReadAllText("ChaveConexao.txt");
-
                 //Desencript Text
                 text1 = text.Substring(0, 64);
                 text2 = text.Substring(65, 64);
