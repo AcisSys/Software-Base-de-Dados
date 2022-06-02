@@ -236,45 +236,41 @@ namespace Software_Base_de_Dados
             if (Tabela == "tab_tasks")
             {
                 querry = "UPDATE tab_tasks SET Active = 'Não' WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                 oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand(querry, connection);
             }
             else
             {
 
 
                 querry = "DELETE ROW FROM " + Tabela + " WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                 oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand(querry, connection);
                 // se confirmado, apaga / tenta apagar dados
             }
-                if (response == DialogResult.Yes)
+            if (response == DialogResult.Yes)
+            {
+                try
                 {
-
-
-                    try
-                    {
-                        oleDbCommand.ExecuteNonQuery();
-                        MessageBox.Show("Dados apagados com sucesso", "",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Não foi possivel apagar os dados.\n " + ex.Message,
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    oleDbCommand.ExecuteNonQuery();
+                    MessageBox.Show("Dados apagados com sucesso", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                // Se não for confirmado, indica ao utilizador que foi cancelado
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Cancelado", "",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Não foi possivel apagar os dados.\n " + ex.Message,
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-
-                // Atualiza tabela
-                UpdateTable();
-                Modify_Button.Enabled = false;
-                Remove_Button.Enabled = false;
-            
+            }
+            // Se não for confirmado, indica ao utilizador que foi cancelado
+            else
+            {
+                MessageBox.Show("Cancelado", "",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            // Atualiza tabela
+            UpdateTable();
+            Modify_Button.Enabled = false;
+            Remove_Button.Enabled = false;
         }
         private void SfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {

@@ -92,7 +92,7 @@ namespace Software_Base_de_Dados
 
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {
-            
+
             conexao.ShowDialog();
         }
 

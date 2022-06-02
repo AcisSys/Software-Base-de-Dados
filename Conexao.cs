@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.OleDb;
 using System.IO;
-using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace Software_Base_de_Dados
@@ -24,14 +23,14 @@ namespace Software_Base_de_Dados
                 sfToolTip1.Show("Introduza a chave de conexão antes de continuar");
                 return;
             }
-            
+
             try
             {
                 // verifica se o valor do campo é uma chave válida
                 OleDbConnection con = new OleDbConnection(textBox1.Text);
                 con.Open();
                 Tables.Caminho = textBox1.Text;
-               
+
             }
             catch (Exception ex)
             {
@@ -71,7 +70,7 @@ namespace Software_Base_de_Dados
             }
             this.Close();
         }
-        
+
 
         private void Button1_MouseLeave_1(object sender, EventArgs e)
         {
