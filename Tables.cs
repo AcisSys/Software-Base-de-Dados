@@ -19,9 +19,9 @@ namespace Software_Base_de_Dados
 
         // String do caminho do ficheiro
 
-        public static string Caminho { get; set; } = @"Provider = Microsoft.ACE.OLEDB.12.0;
+        public static string Caminho { get; set; } /*= @"Provider = Microsoft.ACE.OLEDB.12.0;
                         Data Source = WORK2GOData.accdb;
-        Jet OLEDB:Database Password = ogednom ";
+        Jet OLEDB:Database Password = ogednom ";*/
 
         // Conexão
 
@@ -62,8 +62,18 @@ namespace Software_Base_de_Dados
 
         public void UpdateTable()
         {
-
-
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.ConnectionString = Caminho;
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             DataSet dset = new DataSet();
             if (Tabela == "tab_tasks")
             {
@@ -110,6 +120,17 @@ namespace Software_Base_de_Dados
 
         private void Add_Button_Click(object sender, EventArgs e)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             if (Tabela == "tab_agend")
             {
                 agend.Tipo = "Add";
@@ -144,6 +165,17 @@ namespace Software_Base_de_Dados
         }
         private void Modify_Button_Click(object sender, EventArgs e)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             // chama a form para modificar campos da tabela
             if (Tabela == "tab_agend")
             {
@@ -183,6 +215,17 @@ namespace Software_Base_de_Dados
 
         private void Remove_Button_Click(object sender, EventArgs e)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             // Pede Confirmação para apagar dados
             DialogResult response = MessageBox.Show("Tem a certeza?", "Apagar?",
                 MessageBoxButtons.YesNo,

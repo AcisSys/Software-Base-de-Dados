@@ -1,4 +1,5 @@
 using System;
+using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
 
@@ -96,7 +97,15 @@ namespace Software_Base_de_Dados
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Tables.Caminho = File.ReadAllText("FILENAME.txt");
+            Tables.Caminho = File.ReadAllText("ChaveConexao.txt");
+            try
+            {
+                OleDbConnection connection = new OleDbConnection(Tables.Caminho);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Conexao inválida, verifique a chave de conexao.\n" + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

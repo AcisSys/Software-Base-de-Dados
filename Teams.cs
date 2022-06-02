@@ -36,6 +36,7 @@ namespace Software_Base_de_Dados
             {
                 try
                 {
+                    connection.ConnectionString = Tables.Caminho;
                     connection.Open();
                 }
                 catch (Exception ex)
@@ -124,7 +125,7 @@ namespace Software_Base_de_Dados
             }
         }
 
-        private void button1_MouseLeave(object sender, EventArgs e)
+        private void Button1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();
         }
