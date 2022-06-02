@@ -13,7 +13,7 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
 
-        string key = "ogednom";
+        const string key = "ogednom";
         string text;
 
         private void Button1_Click(object sender, EventArgs e)
@@ -46,6 +46,12 @@ namespace Software_Base_de_Dados
                 using (StreamWriter sw = File.AppendText("ChaveConexao.txt"))
                 {
                     text = textBox1.Text;
+
+
+
+                    // encript text
+
+
                     sw.WriteLine(text); // Write text to .txt file
                     MessageBox.Show("Conexao alterada", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -55,8 +61,11 @@ namespace Software_Base_de_Dados
                 File.WriteAllText("ChaveConexao.txt", String.Empty); // Clear file
                 using (StreamWriter sw = File.AppendText("ChaveConexao.txt"))
                 {
-                    
-                    sw.WriteLine(textBox1.Text); // Write text to .txt file
+                    text = textBox1.Text;
+
+                    // Encript Text
+
+                    sw.WriteLine(text); // Write text to .txt file
                 }
 
             }
@@ -80,6 +89,11 @@ namespace Software_Base_de_Dados
             else // If file already exists
             {
                 text = File.ReadAllText("ChaveConexao.txt");
+
+                //Desencript Text
+
+                textBox1.Text = text;
+
                 button1.Select();
 
             }
