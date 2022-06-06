@@ -37,7 +37,6 @@ namespace Software_Base_de_Dados
                     sw.WriteLine("Provider = " + Provid + ";");
                     //encryptedString = AesOperation.EncryptString(key, DSource);
                     sw.WriteLine("Data Source = " + DSource + ";");
-
                     //encryptedString = AesOperation.EncryptString(key, Password);
                     sw.WriteLine("Jet OLEDB:Database Password = " + Password);
                 }
