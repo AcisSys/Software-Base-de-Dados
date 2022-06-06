@@ -38,9 +38,9 @@ namespace Software_Base_de_Dados
         // String / Int para cada campo da tabela, ao modificar vai buscar o valor dos campos
 
         public int Id { get; set; }
-        public string idtask { get; set; }
-        public string desc { get; set; }
-        public string type { get; set; }
+        public string Idtask { get; set; }
+        public string Desc { get; set; }
+        public string Type { get; set; }
 
         private void Subtasks_Load(object sender, EventArgs e)
         {
@@ -92,11 +92,11 @@ namespace Software_Base_de_Dados
             comboBox2.DisplayMember = "ID";
             // Texto das ComboBox é o valor do campo ao modificar
             // ou nulo ao adicionar
-            comboBox1.Text = idtask;
-            comboBox2.Text = type;
+            comboBox1.Text = Idtask;
+            comboBox2.Text = Type;
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void ToolStripButton1_Click(object sender, EventArgs e)
         {
             // Verifica se todos os campos foram preenchidos
             if (comboBox1.SelectedItem == null || comboBox1.SelectedItem == null)
