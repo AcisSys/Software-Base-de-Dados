@@ -96,9 +96,6 @@ namespace Software_Base_de_Dados
                 if (Provid != null)
                 {
                     // Mostra o texto ao user
-                    string Providsub = Provid.Substring(11, Provid.Length - 12);
-                    string DSourcesub = DSource.Substring(14, DSource.Length - 15);
-                    string Passwordsub = Password.Substring(30, Password.Length - 31);
                     var decryptedString = AesOperation.DecryptString(key, Provid.Substring(11, Provid.Length - 12));
                     textBox1.Text = decryptedString;
                     var decryptedString2 = AesOperation.DecryptString(key, DSource.Substring(14, DSource.Length - 15));
