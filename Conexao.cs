@@ -13,9 +13,9 @@ namespace Software_Base_de_Dados
         }
         string key = "b14ca5898a4e4133bbce2ea2315a1916";
         string text;
-        string text1;
-        string text2;
-        string text3;
+        string Provid;
+        string DSource;
+        string Password;
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -39,38 +39,39 @@ namespace Software_Base_de_Dados
                 return;
             }
 
-            if (!File.Exists("ChaveConexao.txt")) // If file does not exists
+            if (!File.Exists("ChaveConexao.txt"))
             {
-                File.Create("ChaveConexao.txt").Close(); // Create file
+                File.Create("ChaveConexao.txt").Close();
                 using (StreamWriter sw = File.AppendText("ChaveConexao.txt"))
                 {
-                    // encript text
-                    text = textBox1.Text;
-                    text = textBox1.Text;
-                    text1 = textBox1.Text.ToString().Substring(0, 62);
-                    int a = textBox1.TextLength;
-                    text2 = textBox1.Text.ToString().Substring(62, 45);
-                    var encryptedString = AesOperation.EncryptString(key, text1);
-                    var encryptedString2 = AesOperation.EncryptString(key, text2);
-                    sw.WriteLine(encryptedString + encryptedString2); // Write text to .txt file
-                    MessageBox.Show("Conexao alterada", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Provid = textBox1.Text;
+                    DSource = textBox2.Text;
+                    Password = textBox3.Text;
+                    var encryptedString = AesOperation.EncryptString(key, Provid);
+                    sw.WriteLine("Provid = " + Provid + ";");
+                    encryptedString = AesOperation.EncryptString(key, DSource);
+                    sw.WriteLine("Data Source = " + DSource + ";");
+
+                    encryptedString = AesOperation.EncryptString(key, Password);
+                    sw.WriteLine("Jet OLEDB:Database Password = " + Password);
                 }
             }
-            else // If file already exists
+            else
             {
-                File.WriteAllText("ChaveConexao.txt", String.Empty); // Clear file
+                File.WriteAllText("ChaveConexao.txt", String.Empty);
                 using (StreamWriter sw = File.AppendText("ChaveConexao.txt"))
                 {
-                    // Encript Text
-                    text = textBox1.Text;
-                    text1 = textBox1.Text.ToString().Substring(0, 62);
-                    int a = textBox1.TextLength;
-                    text2 = textBox1.Text.ToString().Substring(62, 41);
-                    var encryptedString = AesOperation.EncryptString(key, text1);
-                    var encryptedString2 = AesOperation.EncryptString(key, text2);
-                    sw.WriteLine(encryptedString + encryptedString2); // Write text to .txt file
-                }
+                    Provid = textBox1.Text;
+                    DSource = textBox2.Text;
+                    Password = textBox3.Text;
+                    var encryptedString = AesOperation.EncryptString(key, Provid);
+                    sw.WriteLine("Provid = " + Provid + ";");
+                    encryptedString = AesOperation.EncryptString(key, DSource);
+                    sw.WriteLine("Data Source = " + DSource + ";");
 
+                    encryptedString = AesOperation.EncryptString(key, Password);
+                    sw.WriteLine("Jet OLEDB:Database Password = " + Password);
+                }
             }
             this.Close();
         }
