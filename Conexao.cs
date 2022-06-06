@@ -91,18 +91,9 @@ namespace Software_Base_de_Dados
             }
             else // If file already exists
             {
-                /*text = File.ReadAllText("ChaveConexao.txt");
-                //Desencript Text
-                text1 = text.Substring(0, 64);
-                text2 = text.Substring(65, 64);
-                text3 = text.Substring(63 + 64, 26);
-                var decryptedString1 = AesOperation.DecryptString(key, text1);
-                var decryptedString2 = AesOperation.DecryptString(key, text2);
-                var decryptedString3 = AesOperation.DecryptString(key, text3);
+                
 
-                textBox1.Text = decryptedString1 + decryptedString2 + decryptedString3;
-
-                button1.Select();*/
+                button1.Select();
 
             }
         }
