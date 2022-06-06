@@ -110,43 +110,37 @@ namespace Software_Base_de_Dados
                     toolStripButton1.ToolTipText = "Verifique o preenchimento de todos os campos antes de validar dados";
                 }
                 OleDbCommand oleDbCommand;
-
+                // Querry para adicionar dados
                 if (Tipo == "Add")
                 {
-                    // Querry para adicionar dados
                     querry = "INSERT INTO tab_agend (ID, IDEquipa, IDTask)" +
                           "VALUES (@ID, @IDEquipa, @IDTask)";
-                    // Parametros com dados a adicionar
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
                     oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
                 }
+                // Cria Querry com o comando para update
                 else
                 {
-                    // Cria Querry com o comando para UPDATe
                     querry = "UPDATE tab_agend  SET IDEquipa = @IDEquipa, IDTask = @IDTask where ID = " + maskedTextBox1.Text;
-                    // Cria comando
                     oleDbCommand = new OleDbCommand(querry, connection);
-                    // Recebe os dados
                     oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
                     oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
                 }
-                // Executa comando
+                // Executa comando e envia feedback para o utilizador
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
-                    // mostra mensagem de erro caso necessário
                     MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
                         "Error",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     return;
                 }
-                // mostra feedback caso os dados sejam adicionados
                 MessageBox.Show("Dados adicionados com sucesso", "",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);

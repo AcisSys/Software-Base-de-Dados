@@ -59,7 +59,6 @@ namespace Software_Base_de_Dados
 
 
         // Função para atualizar as tabelas
-
         public void UpdateTable()
         {
             if (connection.State == ConnectionState.Closed)
@@ -172,6 +171,7 @@ namespace Software_Base_de_Dados
         }
         private void Modify_Button_Click(object sender, EventArgs e)
         {
+            // verifica conexao
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -223,9 +223,9 @@ namespace Software_Base_de_Dados
         private void Remove_Button_Click(object sender, EventArgs e)
         {
             OleDbCommand oleDbCommand;
+            // Verifica conexao
             if (connection.State == ConnectionState.Closed)
             {
-                // Verifica conexao
                 try
                 {
                     connection.Open();
@@ -248,8 +248,6 @@ namespace Software_Base_de_Dados
             }
             else
             {
-
-
                 querry = "DELETE ROW FROM " + Tabela + " WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 oleDbCommand = new OleDbCommand(querry, connection);
                 // se confirmado, apaga / tenta apagar dados
