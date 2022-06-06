@@ -84,6 +84,7 @@ namespace Software_Base_de_Dados
 
         private void Conexao_Load(object sender, EventArgs e)
         {
+            // Verifica se o ficheiro existe
             if (File.Exists("ChaveConexao.txt"))
             {
                 using (var reader = new StreamReader("ChaveConexao.txt"))
@@ -92,8 +93,10 @@ namespace Software_Base_de_Dados
                     DSource = reader.ReadLine();
                     Password = reader.ReadLine();
                 }
-                if (Provid != null)
+                // Verifica se contem texto
+                if (Provid != "")
                 {
+                    // Mostra o texto ao user
                     textBox1.Text = Provid.Substring(11, Provid.Length - 12);
                     textBox2.Text = DSource.Substring(14, DSource.Length - 15);
                     textBox3.Text = Password.Substring(30, Password.Length - 30);
