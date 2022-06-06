@@ -77,19 +77,20 @@ namespace Software_Base_de_Dados
             maskedTextBox1.Enabled = false;
             // Bloco encarregue de adicionar as opções das 2 comboBox
             // Dados para ComboBox1
-            querry = "SELECT * FROM tab_teams";
-            adapter = new OleDbDataAdapter(querry, connection);
-            adapter.Fill(dset, "idteam");
-            DataTable dataTable = dset.Tables["idteam"];
-            comboBox1.DataSource = dataTable;
-            comboBox1.DisplayMember = "ID";
-            // Dados para ComboBox2
             querry = "SELECT * FROM tab_tasks";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
-            dataTable = dset.Tables["idtask"];
-            comboBox2.DataSource = dataTable;
-            comboBox2.DisplayMember = "ID";
+            DataTable dataTable = dset.Tables["istask"];
+            comboBox1.DataSource = dataTable;
+            comboBox1.DisplayMember = "ID";
+            // Dados para ComboBox2
+            
+
+
+
+
+
+
             // Texto das ComboBox é o valor do campo ao modificar
             // ou nulo ao adicionar
             comboBox1.Text = Idtask;
