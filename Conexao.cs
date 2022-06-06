@@ -15,7 +15,6 @@ namespace Software_Base_de_Dados
         string Provid;
         string DSource;
         string Password;
-
         private void Button1_Click(object sender, EventArgs e)
         {
             // verifica se o campo esta vazio
@@ -24,8 +23,6 @@ namespace Software_Base_de_Dados
                 sfToolTip1.Show("Introduza a chave de conexão antes de continuar");
                 return;
             }
-
-
 
             if (!File.Exists("ChaveConexao.txt"))
             {
