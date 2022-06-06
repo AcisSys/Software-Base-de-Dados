@@ -32,6 +32,7 @@ namespace Software_Base_de_Dados
         Tasks tasks = new Tasks();
         Teams teams = new Teams();
         Workers workers = new Workers();
+        Subtasks subtasks = new Subtasks();
 
 
         // String publica para dar a conhecer a table que está a ser visualisada
@@ -318,6 +319,9 @@ namespace Software_Base_de_Dados
                 {
                     tags.Taken = false;
                 }
+                subtasks.IDTask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+
             }
         }
         // Botão de Exportar do outro projeto
