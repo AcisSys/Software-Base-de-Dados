@@ -11,7 +11,7 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        static string key = "bbce2ea2315a1916";
+        static readonly string key = "bbce2ea2315a1916";
         string Provid;
         string DSource;
         string Password;
