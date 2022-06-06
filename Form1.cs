@@ -112,9 +112,9 @@ namespace Software_Base_de_Dados
             {
                 using (var reader = new StreamReader("ChaveConexao.txt"))
                 {
-                     Provid = reader.ReadLine();
-                     DSource = reader.ReadLine();
-                     Password = reader.ReadLine();
+                    Provid = reader.ReadLine();
+                    DSource = reader.ReadLine();
+                    Password = reader.ReadLine();
                 }
                 // Verifica se contem texto
                 if (Provid != null)
@@ -137,7 +137,7 @@ namespace Software_Base_de_Dados
                         MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    
+
                 }
             }
 
