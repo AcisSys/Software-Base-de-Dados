@@ -33,11 +33,12 @@ namespace Software_Base_de_Dados
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
                     // encrypt
-                    var encryptedString = AesOperation.EncryptString(key, Provid);
-                    sw.WriteLine("Provider = " + Provid + ";");
-                    //encryptedString = AesOperation.EncryptString(key, DSource);
+                    var encryptedString = AesOperation.EncryptString(key, Provid);  
+
+                    sw.WriteLine("Provider = " + encryptedString + ";");
+                    encryptedString = AesOperation.EncryptString(key, DSource);
                     sw.WriteLine("Data Source = " + DSource + ";");
-                    //encryptedString = AesOperation.EncryptString(key, Password);
+                    encryptedString = AesOperation.EncryptString(key, Password);
                     sw.WriteLine("Jet OLEDB:Database Password = " + Password);
                 }
             }
@@ -51,10 +52,10 @@ namespace Software_Base_de_Dados
                     Password = textBox3.Text;
                     // encrypt
                     var encryptedString = AesOperation.EncryptString(key, Provid);
-                    sw.WriteLine("Provider = " + Provid + ";");
-                    //encryptedString = AesOperation.EncryptString(key, DSource);
-                    sw.WriteLine("Data Source = " + DSource + ";");
-                    //encryptedString = AesOperation.EncryptString(key, Password);
+                    sw.WriteLine("Provider = " + encryptedString + ";");
+                    encryptedString = AesOperation.EncryptString(key, DSource);
+                    sw.WriteLine("Data Source = " + encryptedString + ";");
+                    encryptedString = AesOperation.EncryptString(key, Password);
                     sw.WriteLine("Jet OLEDB:Database Password = " + Password);
                 }
             }
@@ -90,12 +91,15 @@ namespace Software_Base_de_Dados
                     Password = reader.ReadLine();
                 }
                 // Verifica se contem texto
-                if (Provid != "")
+                if (Provid != null)
                 {
                     // Mostra o texto ao user
-                    textBox1.Text = Provid.Substring(11, Provid.Length - 12);
-                    textBox2.Text = DSource.Substring(14, DSource.Length - 15);
-                    textBox3.Text = Password.Substring(30, Password.Length - 30);
+                    var decryptedString = AesOperation.DecryptString(key, Provid.Substring(11, Provid.Length - 12));
+                    textBox1.Text = decryptedString;
+                     //decryptedString = AesOperation.DecryptString(key, DSource.Substring(11, Provid.Length - 20));
+                    //textBox2.Text = decryptedString.Substring(14, decryptedString.Length - 15);
+                     //decryptedString = AesOperation.DecryptString(key, Password.Substring(11, Provid.Length - 12));
+                    //textBox3.Text = decryptedString.Substring(30, decryptedString.Length - 30);
                 }
             }
         }
