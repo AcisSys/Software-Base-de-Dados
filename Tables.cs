@@ -76,7 +76,6 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-
             // Para cada tabela:
             // vai buscar os dados, e mostra a tabela
             // Tabelas compostas caso necessário são criadas no DataSet1.xsd
