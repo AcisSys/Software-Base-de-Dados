@@ -57,9 +57,9 @@ namespace Software_Base_de_Dados
                     sw.WriteLine("Jet OLEDB:Database Password = " + Password);
                 }
             }
+            // verifica se o valor do campo é uma chave válida
             try
             {
-                // verifica se o valor do campo é uma chave válida
                 Tables.Caminho = File.ReadAllText("ChaveConexao.txt");
                 OleDbConnection con = new OleDbConnection(Tables.Caminho);
                 con.Open();

@@ -73,9 +73,9 @@ namespace Software_Base_de_Dados
             else
             {
                 OleDbCommand oleDbCommand;
+                // querry para inserir dados
                 if (Tipo == "Add")
                 {
-                    // querry para inserir dados
                     querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
                                "VALUES (@ID, @IDEquipa, @IDTask)";
                     oleDbCommand = new OleDbCommand(querry, connection);
@@ -84,9 +84,9 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@Taken",
                         OleDbType.LongVarChar).Value = "Não";
                 }
+                // querry para modificar dados
                 else
                 {
-                    // querry para apagar dados
                     querry = "UPDATE tab_tags  SET Ref = @Ref," +
                        " taken = @taken where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);

@@ -87,16 +87,12 @@ namespace Software_Base_de_Dados
             }
             else
             {
-
-
                 OleDbCommand oleDbCommand;
-
+                // Querry para adicionar dados
                 if (Tipo == "Add")
                 {
-                    // Cria uma nova querry de acordo com a tabela e parametros da mesma
                     querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
                       "VALUES (@ID, @Localizacao, @X, @Y)";
-                    // Cria um comando para executar a Querry, dados os parametros necessários
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Localizacao",
@@ -104,6 +100,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }
+                // Querry para modificar dados
                 else
                 {
                     querry = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
@@ -114,14 +111,13 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }
-                // Tenta executar o comando
+                // Tenta executar o comando e envia feedback ao user
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
-                    // Envia mensagem de erro caso necessário
                     MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
