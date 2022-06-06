@@ -42,7 +42,6 @@ namespace Software_Base_de_Dados
         public string Type { get; set; }
         private void Subtasks_Load(object sender, EventArgs e)
         {
-
             // Verifica conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {
@@ -56,39 +55,28 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            if (Tipo == "Add")
-            {
-                button1.Text = "Guardar";
-
-                // ID é automatico
-
-
-
-
-                // Disable campo ID
-
-                maskedTextBox1.ReadOnly = true;
-                maskedTextBox1.Enabled = false;
-            }
-            else
-            {
-                button1.Text = "Modificar";
-
-                maskedTextBox1.Text = ID.ToString();
-                sfComboBox1.Text = IDTask;
-                maskedTextBox2.Text = Desc;
-                sfComboBox2.Text = Type;
+            button1.Text = "Modificar";
+            maskedTextBox1.Text = ID.ToString();
+            sfComboBox1.Text = IDTask;
+            maskedTextBox2.Text = Desc;
+            sfComboBox2.Text = Type;
+            maskedTextBox1.ReadOnly = true;
+            maskedTextBox1.Enabled = false;
 
 
-                maskedTextBox1.ReadOnly = true;
-                maskedTextBox1.Enabled = false;
-            }
 
-            string comand = "SELECT MAX (ID) FROM tab_subtasks";
+
+
+            /*string comand = "SELECT MAX (ID) FROM tab_subtasks";
             OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
             int maxid = (int)oleDbCommand.ExecuteScalar();
             int currentid = maxid + 1;
-            maskedTextBox1.Text = currentid.ToString();
+            maskedTextBox1.Text = currentid.ToString();*/
+
+
+
+
+
             // Dados para ComboBox1
             string querry = "SELECT * FROM tab_tasks";
             adapter = new OleDbDataAdapter(querry, connection);
@@ -96,7 +84,6 @@ namespace Software_Base_de_Dados
             DataTable dataTable = dset.Tables["idtask"];
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
-
             // Dados para ComboBox2
             querry = "SELECT DISTINCT Type FROM tab_subtasks";
             adapter = new OleDbDataAdapter(querry, connection);
@@ -104,9 +91,7 @@ namespace Software_Base_de_Dados
             dataTable = dset.Tables["type"];
             sfComboBox2.DataSource = dataTable;
             sfComboBox2.DisplayMember = "Type";
-
             button1.Select();
-
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -139,8 +124,6 @@ namespace Software_Base_de_Dados
             MessageBox.Show("Dados adicionados com sucesso", "",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-
-
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
