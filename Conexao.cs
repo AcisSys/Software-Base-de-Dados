@@ -32,9 +32,7 @@ namespace Software_Base_de_Dados
                     Provid = textBox1.Text;
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
-
                     // encrypt
-
                     var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provider = " + Provid + ";");
                     //encryptedString = AesOperation.EncryptString(key, DSource);
@@ -51,9 +49,7 @@ namespace Software_Base_de_Dados
                     Provid = textBox1.Text;
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
-
                     // encrypt
-
                     var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provider = " + Provid + ";");
                     //encryptedString = AesOperation.EncryptString(key, DSource);
