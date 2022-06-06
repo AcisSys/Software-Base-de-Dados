@@ -48,6 +48,7 @@ namespace Software_Base_de_Dados
             {
                 try
                 {
+                    connection.ConnectionString = Caminho;
                     connection.Open();
                 }
                 catch (Exception ex)

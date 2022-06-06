@@ -13,6 +13,10 @@ namespace Software_Base_de_Dados
         readonly Tables table = new Tables();
         Conexao conexao = new Conexao();
         string tabela = "";
+        string Provid;
+        string DSource;
+        string Password;
+        static readonly string key = "bbce2ea2315a1916";
         public Form1()
         {
             InitializeComponent();
@@ -104,17 +108,36 @@ namespace Software_Base_de_Dados
                 MessageBox.Show("Não existe uma conexão, configure uma", "Erro de Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexao.ShowDialog();
             }
-            else
+            if (File.Exists("ChaveConexao.txt"))
             {
-                Tables.Caminho = File.ReadAllText("ChaveConexao.txt");
-                try
+                using (var reader = new StreamReader("ChaveConexao.txt"))
                 {
-                    OleDbConnection connection = new OleDbConnection(Tables.Caminho);
+                     Provid = reader.ReadLine();
+                     DSource = reader.ReadLine();
+                     Password = reader.ReadLine();
                 }
-                catch (Exception ex)
+                // Verifica se contem texto
+                if (Provid != null)
                 {
-                    MessageBox.Show("Conexao inválida, verifique a chave de conexao.\n" + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    conexao.ShowDialog();
+                    // Mostra o texto ao user
+                    var decryptedString = AesOperation.DecryptString(key, Provid.Substring(11, Provid.Length - 12));
+                    string prov = decryptedString;
+                    var decryptedString2 = AesOperation.DecryptString(key, DSource.Substring(14, DSource.Length - 15));
+                    string pat = decryptedString2;
+                    var decryptedString3 = AesOperation.DecryptString(key, Password.Substring(30, Password.Length - 30));
+                    string pass = decryptedString3;
+                    try
+                    {
+                        Tables.Caminho = "Provider = " + prov + "; Data Source = " + pat + "; Jet OLEDB:Database Password = " + pass;
+                        OleDbConnection con = new OleDbConnection(Tables.Caminho);
+                        con.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    
                 }
             }
 
