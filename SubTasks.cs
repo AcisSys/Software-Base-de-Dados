@@ -5,12 +5,23 @@ using System.Windows.Forms;
 
 namespace Software_Base_de_Dados
 {
-    public partial class SubTasks : Form
+    public partial class Subtasks : Form
     {
-        public SubTasks()
+        public Subtasks()
         {
             InitializeComponent();
         }
+
+        // String do caminho do ficheiro
+
+        static readonly string caminho = @"Provider = Microsoft.ACE.OLEDB.12.0;
+                        Data Source = WORK2GOData.accdb;
+        Jet OLEDB:Database Password = ogednom ";
+
+        // Conexão
+
+        public readonly OleDbConnection connection = new OleDbConnection(caminho);
+
         // DataSet para as tabelas
 
         DataSet dset = new DataSet();
@@ -19,38 +30,24 @@ namespace Software_Base_de_Dados
 
         OleDbDataAdapter adapter = new OleDbDataAdapter();
 
-        // String do caminho do ficheiro
 
-        static readonly string caminho = Tables.Caminho;
-
-        // String do comando enviado para a base de dados
-
-        string querry;
-
-        // Conexão
-
-        public readonly OleDbConnection connection = new OleDbConnection(caminho);
-
-
+        // String publica para dar a conhecer a table que está a ser visualisada
 
         public string Tipo { get; set; }
 
-        // String / Int para cada campo da tabela, ao modificar vai buscar o valor dos campos
-
-        public int Id { get; set; }
-        public string Idtask { get; set; }
+        // String / Int para cada campo da tabela
+        public int ID { get; set; }
+        public string IDTask { get; set; }
         public string Desc { get; set; }
         public string Type { get; set; }
-
         private void Subtasks_Load(object sender, EventArgs e)
         {
 
-            // Abre a conexao se a mesma estiver fechada
+            // Verifica conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
                 {
-                    connection.ConnectionString = Tables.Caminho;
                     connection.Open();
                 }
                 catch (Exception ex)
@@ -59,78 +56,72 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            // Caso seja para adicionar dados
             if (Tipo == "Add")
             {
+                button1.Text = "Guardar";
+
                 // ID é automatico
-                string comand = "SELECT MAX (ID) FROM tab_agend";
+
+
+                string comand = "SELECT MAX (ID) FROM tab_tasks";
                 OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
+
+                // Disable campo ID
+
+                maskedTextBox1.ReadOnly = true;
+                maskedTextBox1.Enabled = false;
             }
             else
             {
-                maskedTextBox1.Text = Id.ToString();
+                button1.Text = "Modificar";
+
+                maskedTextBox1.Text = ID.ToString();
+                sfComboBox1.Text = IDTask;
+                maskedTextBox2.Text = Desc;
+                sfComboBox2.Text = Type;
+
+
+                maskedTextBox1.ReadOnly = true;
+                maskedTextBox1.Enabled = false;
             }
-            maskedTextBox1.ReadOnly = true;
-            maskedTextBox1.Enabled = false;
-            // Bloco encarregue de adicionar as opções das 2 comboBox
+
+
             // Dados para ComboBox1
-            querry = "SELECT * FROM tab_tasks";
+            string querry = "SELECT * FROM tab_tasks";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
-            DataTable dataTable = dset.Tables["istask"];
-            comboBox1.DataSource = dataTable;
-            comboBox1.DisplayMember = "ID";
+            DataTable dataTable = dset.Tables["idtask"];
+            sfComboBox1.DataSource = dataTable;
+            sfComboBox1.DisplayMember = "ID";
+
             // Dados para ComboBox2
-            
+            querry = "SELECT DISTINCT Type FROM tab_subtasks";
+            adapter = new OleDbDataAdapter(querry, connection);
+            adapter.Fill(dset, "type");
+            dataTable = dset.Tables["type"];
+                sfComboBox2.DataSource = dataTable;
+            sfComboBox2.DisplayMember = "Type";
 
+            button1.Select();
 
-
-
-
-
-            // Texto das ComboBox é o valor do campo ao modificar
-            // ou nulo ao adicionar
-            comboBox1.Text = Idtask;
-            comboBox2.Text = Type;
         }
 
-        private void ToolStripButton1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            // Verifica se todos os campos foram preenchidos
-            if (comboBox1.SelectedItem == null || comboBox1.SelectedItem == null)
+            if (Tipo == "Add")
             {
-                // sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
-
-            }
-            else
-            {
-                if (comboBox1.SelectedItem == null)
-                {
-                    toolStripButton1.ToolTipText = "Verifique o preenchimento de todos os campos antes de validar dados";
-                }
-                OleDbCommand oleDbCommand;
-                // Querry para adicionar dados
-                if (Tipo == "Add")
-                {
-                    querry = "INSERT INTO tab_subtasks (ID, IDTask, Desc, Type)" +
-                          "VALUES (@ID, @IDTask, @Desc, @Type)";
-                    oleDbCommand = new OleDbCommand(querry, connection);
-                    oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
-                    oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = comboBox1.Text;
-                    oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = comboBox2.Text;
-                }
-                // Cria Querry com o comando para update
-                else
-                {
-                    querry = "UPDATE tab_agend  SET IDEquipa = @IDEquipa, IDTask = @IDTask where ID = " + maskedTextBox1.Text;
-                    oleDbCommand = new OleDbCommand(querry, connection);
-                    oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = comboBox1.Text;
-                    oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = comboBox2.Text;
-                }
-                // Executa comando e envia feedback para o utilizador
+                // querry para adicionar dados
+                string querry = "INSERT INTO tab_subtasks (ID, IDTask, Desc, Type)" +
+                         "VALUES (@ID, @IDTask, @Desc, @Type)";
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
+                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox1.Text;
+                oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+                oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
+                // tenta executar o comando e envia mensagem de sucesso / erro
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
@@ -138,24 +129,51 @@ namespace Software_Base_de_Dados
                 catch (Exception ex)
                 {
                     MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
-                        "Error",
-                        MessageBoxButtons.OK,
+                        "Error", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     return;
                 }
                 MessageBox.Show("Dados adicionados com sucesso", "",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-                maskedTextBox1.Text = "";
-                comboBox1.Text = "";
-                comboBox2.Text = "";
-                this.Close();
             }
+            else
+            {
+
+                // string para atualizar dados
+                string querry = "UPDATE tab_subtasks IDTask = @IDTask, Desc = @Desc, Type = @Type" +
+                         "WHERE ID =" + maskedTextBox1.Text;
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox1.Text;
+                oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+                oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
+                // tenta executar o comando e envia mensagem de erro / sucesso
+                try
+                {
+                    oleDbCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
+                        "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Dados adicionados com sucesso", "",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+
         }
 
-        private void ToolStripButton1_MouseLeave(object sender, EventArgs e)
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            sfToolTip1.Hide();
+            button1.Select();
+        }
+
+        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button1.Select();
         }
     }
 }
