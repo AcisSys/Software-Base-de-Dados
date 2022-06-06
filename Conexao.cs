@@ -11,8 +11,7 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        string key = "b14ca5898a4e4133bbce2ea2315a1916";
-        string text;
+       
         string Provid;
         string DSource;
         string Password;
@@ -36,12 +35,12 @@ namespace Software_Base_de_Dados
                     Provid = textBox1.Text;
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
-                    var encryptedString = AesOperation.EncryptString(key, Provid);
+                    //var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provid = " + Provid + ";");
-                    encryptedString = AesOperation.EncryptString(key, DSource);
+                    //encryptedString = AesOperation.EncryptString(key, DSource);
                     sw.WriteLine("Data Source = " + DSource + ";");
 
-                    encryptedString = AesOperation.EncryptString(key, Password);
+                    //encryptedString = AesOperation.EncryptString(key, Password);
                     sw.WriteLine("Jet OLEDB:Database Password = " + Password);
                 }
             }
@@ -53,12 +52,12 @@ namespace Software_Base_de_Dados
                     Provid = textBox1.Text;
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
-                    var encryptedString = AesOperation.EncryptString(key, Provid);
-                    sw.WriteLine("Provid = " + Provid + ";");
-                    encryptedString = AesOperation.EncryptString(key, DSource);
+                    //var encryptedString = AesOperation.EncryptString(key, Provid);
+                    sw.WriteLine("Provider = " + Provid + ";");
+                    //encryptedString = AesOperation.EncryptString(key, DSource);
                     sw.WriteLine("Data Source = " + DSource + ";");
 
-                    encryptedString = AesOperation.EncryptString(key, Password);
+                    //encryptedString = AesOperation.EncryptString(key, Password);
                     sw.WriteLine("Jet OLEDB:Database Password = " + Password);
                 }
             }
