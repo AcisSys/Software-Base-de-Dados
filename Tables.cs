@@ -139,6 +139,8 @@ namespace Software_Base_de_Dados
                 }
             }
             // Para cada tabela executa o Form 
+            Modify_Button.Enabled = false;
+            Remove_Button.Enabled = false;
             if (Tabela == "tab_agend")
             {
                 agend.Tipo = "Add";
