@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
@@ -80,7 +81,10 @@ namespace Software_Base_de_Dados
 
         private void Conexao_Load(object sender, EventArgs e)
         {
-
+            if (File.Exists("ChaveConexao.txt")) ;
+            {
+                
+            }
         }
     }
 }
