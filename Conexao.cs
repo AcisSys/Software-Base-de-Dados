@@ -20,7 +20,7 @@ namespace Software_Base_de_Dados
         private void Button1_Click(object sender, EventArgs e)
         {
             // verifica se o campo esta vazio
-            /*if (textBox1.Text == "")
+            if (textBox1.Text == "")
             {
                 sfToolTip1.Show("Introduza a chave de conexão antes de continuar");
                 return;
@@ -37,7 +37,7 @@ namespace Software_Base_de_Dados
             {
                 MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }*/
+            }
 
             if (!File.Exists("ChaveConexao.txt")) // If file does not exists
             {
@@ -87,7 +87,6 @@ namespace Software_Base_de_Dados
             if (!File.Exists("ChaveConexao.txt")) // If file does not exists
             {
                 File.Create("ChaveConexao.txt").Close(); // Create file
-                MessageBox.Show("Não foi configurada nenhuma conexão, configure a conexão.");
             }
             else // If file already exists
             {

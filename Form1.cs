@@ -99,16 +99,25 @@ namespace Software_Base_de_Dados
         private void Form1_Load(object sender, EventArgs e)
         {
             // Vai buscar a chave de conexao e verifica se a mesma é válida
-            Tables.Caminho = File.ReadAllText("ChaveConexao.txt");
-            try
+            if (!File.Exists("ChaveConexao.txt")) // If file does not exists
             {
-                OleDbConnection connection = new OleDbConnection(Tables.Caminho);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Conexao inválida, verifique a chave de conexao.\n" + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Não existe uma conexão, configure uma", "Erro de Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexao.ShowDialog();
             }
+            else
+            {
+                try
+                {
+                    OleDbConnection connection = new OleDbConnection(Tables.Caminho);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Conexao inválida, verifique a chave de conexao.\n" + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    conexao.ShowDialog();
+                }
+            }
+                Tables.Caminho = File.ReadAllText("ChaveConexao.txt");
+            
         }
     }
 }
