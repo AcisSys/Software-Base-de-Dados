@@ -30,17 +30,22 @@ namespace Software_Base_de_Dados
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Subtasks));
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.sfComboBox1 = new Syncfusion.WinForms.ListView.SfComboBox();
             this.sfComboBox2 = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.sfToolTip1 = new Syncfusion.Windows.Forms.SfToolTip(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.button1 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // maskedTextBox1
@@ -97,16 +102,6 @@ namespace Software_Base_de_Dados
             this.label4.TabIndex = 7;
             this.label4.Text = "Type:";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(104, 151);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 40);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
             // sfComboBox1
             // 
             this.sfComboBox1.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
@@ -125,14 +120,37 @@ namespace Software_Base_de_Dados
             this.sfComboBox2.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.sfComboBox2.TabIndex = 10;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.button1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 178);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(328, 25);
+            this.toolStrip1.TabIndex = 11;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // button1
+            // 
+            this.button1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.button1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(23, 22);
+            this.button1.Text = "toolStripButton1";
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+            // 
             // Subtasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(328, 203);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.sfComboBox2);
             this.Controls.Add(this.sfComboBox1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -148,6 +166,8 @@ namespace Software_Base_de_Dados
             this.Load += new System.EventHandler(this.Subtasks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,8 +181,10 @@ namespace Software_Base_de_Dados
         private Label label2;
         private Label label3;
         private Label label4;
-        private Button button1;
         private Syncfusion.WinForms.ListView.SfComboBox sfComboBox1;
         private Syncfusion.WinForms.ListView.SfComboBox sfComboBox2;
+        private Syncfusion.Windows.Forms.SfToolTip sfToolTip1;
+        private ToolStrip toolStrip1;
+        private ToolStripButton button1;
     }
 }

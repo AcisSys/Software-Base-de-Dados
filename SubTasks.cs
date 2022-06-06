@@ -63,7 +63,7 @@ namespace Software_Base_de_Dados
                 // ID é automatico
 
 
-                
+
 
                 // Disable campo ID
 
@@ -102,7 +102,7 @@ namespace Software_Base_de_Dados
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
-                sfComboBox2.DataSource = dataTable;
+            sfComboBox2.DataSource = dataTable;
             sfComboBox2.DisplayMember = "Type";
 
             button1.Select();
@@ -111,58 +111,35 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (Tipo == "Add")
+            if (sfComboBox1.Text == "" || maskedTextBox2.Text == "" || sfComboBox2.Text == "")
             {
-                // querry para adicionar dados
-                string querry = "INSERT INTO tab_subtasks (ID, IDTask, Desc, Type)" +
-                         "VALUES (@ID, @IDTask, @Desc, @Type)";
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
-                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox1.Text;
-                oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
-                // tenta executar o comando e envia mensagem de sucesso / erro
-                try
-                {
-                    oleDbCommand.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
-                        "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    return;
-                }
-                MessageBox.Show("Dados adicionados com sucesso", "",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                sfToolTip1.Show("Verifique todos os campos antes de modificar dados.");
+                return;
             }
-            else
-            {
 
-                // string para atualizar dados
-                string querry = "UPDATE tab_subtasks IDTask = @IDTask, Desc = @Desc, Type = @Type" +
-                         "WHERE ID =" + maskedTextBox1.Text;
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox1.Text;
-                oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
-                oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
-                // tenta executar o comando e envia mensagem de erro / sucesso
-                try
-                {
-                    oleDbCommand.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
-                        "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    return;
-                }
-                MessageBox.Show("Dados adicionados com sucesso", "",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+            // string para atualizar dados
+            string querry = "UPDATE tab_subtasks IDTask = @IDTask, Desc = @Desc, Type = @Type" +
+                     "WHERE ID =" + maskedTextBox1.Text;
+            OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+            oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox1.Text;
+            oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+            oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
+            // tenta executar o comando e envia mensagem de erro / sucesso
+            try
+            {
+                oleDbCommand.ExecuteNonQuery();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+            MessageBox.Show("Dados adicionados com sucesso", "",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
 
         }
 
@@ -174,6 +151,11 @@ namespace Software_Base_de_Dados
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             button1.Select();
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            sfToolTip1.Hide();
         }
     }
 }
