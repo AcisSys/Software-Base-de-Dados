@@ -323,7 +323,6 @@ namespace Software_Base_de_Dados
                 }
                 subtasks.IDTask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-
             }
         }
         // Botão de Exportar do outro projeto
