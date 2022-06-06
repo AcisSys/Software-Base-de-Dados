@@ -47,7 +47,7 @@ namespace Software_Base_de_Dados
             // 
             this.maskedTextBox1.Location = new System.Drawing.Point(85, 19);
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(86, 20);
+            this.maskedTextBox1.Size = new System.Drawing.Size(220, 20);
             this.maskedTextBox1.TabIndex = 0;
             // 
             // maskedTextBox2
@@ -112,7 +112,7 @@ namespace Software_Base_de_Dados
             this.sfComboBox1.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
             this.sfComboBox1.Location = new System.Drawing.Point(85, 45);
             this.sfComboBox1.Name = "sfComboBox1";
-            this.sfComboBox1.Size = new System.Drawing.Size(105, 21);
+            this.sfComboBox1.Size = new System.Drawing.Size(220, 21);
             this.sfComboBox1.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.sfComboBox1.TabIndex = 9;
             // 
@@ -121,7 +121,7 @@ namespace Software_Base_de_Dados
             this.sfComboBox2.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
             this.sfComboBox2.Location = new System.Drawing.Point(85, 98);
             this.sfComboBox2.Name = "sfComboBox2";
-            this.sfComboBox2.Size = new System.Drawing.Size(105, 21);
+            this.sfComboBox2.Size = new System.Drawing.Size(220, 21);
             this.sfComboBox2.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.sfComboBox2.TabIndex = 10;
             // 

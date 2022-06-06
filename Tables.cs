@@ -366,9 +366,22 @@ namespace Software_Base_de_Dados
             }
         }
 
-        private void sfDataGrid1_DoubleClick(object sender, EventArgs e)
+        private void SfDataGrid1_DoubleClick(object sender, EventArgs e)
         {
+            if (Tabela == "tab_tasks")
+            {
+                Subtasks subtasks = new Subtasks();
+                subtasks.ShowDialog();
+            }
+        }
 
+        private void sfDataGrid1_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
+        {
+            if (Tabela == "tab_tasks")
+            {
+                Subtasks subtasks = new Subtasks();
+                subtasks.ShowDialog();
+            }
         }
     }
 }

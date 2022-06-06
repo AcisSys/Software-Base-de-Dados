@@ -63,11 +63,7 @@ namespace Software_Base_de_Dados
                 // ID é automatico
 
 
-                string comand = "SELECT MAX (ID) FROM tab_tasks";
-                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
-                int maxid = (int)oleDbCommand.ExecuteScalar();
-                int currentid = maxid + 1;
-                maskedTextBox1.Text = currentid.ToString();
+                
 
                 // Disable campo ID
 
@@ -88,7 +84,11 @@ namespace Software_Base_de_Dados
                 maskedTextBox1.Enabled = false;
             }
 
-
+            string comand = "SELECT MAX (ID) FROM tab_subtasks";
+            OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
+            int maxid = (int)oleDbCommand.ExecuteScalar();
+            int currentid = maxid + 1;
+            maskedTextBox1.Text = currentid.ToString();
             // Dados para ComboBox1
             string querry = "SELECT * FROM tab_tasks";
             adapter = new OleDbDataAdapter(querry, connection);
