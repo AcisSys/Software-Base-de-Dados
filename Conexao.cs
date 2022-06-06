@@ -33,13 +33,12 @@ namespace Software_Base_de_Dados
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
                     // encrypt
-                    var encryptedString = AesOperation.EncryptString(key, Provid);  
-
+                    var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provider = " + encryptedString + ";");
-                    encryptedString = AesOperation.EncryptString(key, DSource);
-                    sw.WriteLine("Data Source = " + DSource + ";");
-                    encryptedString = AesOperation.EncryptString(key, Password);
-                    sw.WriteLine("Jet OLEDB:Database Password = " + Password);
+                    var encryptedString2 = AesOperation.EncryptString(key, DSource);
+                    sw.WriteLine("Data Source = " + encryptedString2 + ";");
+                    var encryptedString3 = AesOperation.EncryptString(key, Password);
+                    sw.WriteLine("Jet OLEDB:Database Password = " + encryptedString3);
                 }
             }
             else
@@ -51,26 +50,29 @@ namespace Software_Base_de_Dados
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
                     // encrypt
+
+
+                    try
+                    {
+                        Tables.Caminho = "Provider = " + Provid + "; Data Source = " + DSource + "; Jet OLEDB:Database Password = " + Password;
+                        OleDbConnection con = new OleDbConnection(Tables.Caminho);
+                        con.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provider = " + encryptedString + ";");
-                    encryptedString = AesOperation.EncryptString(key, DSource);
-                    sw.WriteLine("Data Source = " + encryptedString + ";");
-                    encryptedString = AesOperation.EncryptString(key, Password);
-                    sw.WriteLine("Jet OLEDB:Database Password = " + Password);
+                    var encryptedString2 = AesOperation.EncryptString(key, DSource);
+                    sw.WriteLine("Data Source = " + encryptedString2 + ";");
+                    var encryptedString3 = AesOperation.EncryptString(key, Password);
+                    sw.WriteLine("Jet OLEDB:Database Password = " + encryptedString3);
                 }
             }
             // verifica se o valor do campo é uma chave válida
-            try
-            {
-                Tables.Caminho = File.ReadAllText("ChaveConexao.txt");
-                OleDbConnection con = new OleDbConnection(Tables.Caminho);
-                con.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            /**/
             this.Close();
         }
 
@@ -94,12 +96,15 @@ namespace Software_Base_de_Dados
                 if (Provid != null)
                 {
                     // Mostra o texto ao user
+                    string Providsub = Provid.Substring(11, Provid.Length - 12);
+                    string DSourcesub = DSource.Substring(14, DSource.Length - 15);
+                    string Passwordsub = Password.Substring(30, Password.Length - 31);
                     var decryptedString = AesOperation.DecryptString(key, Provid.Substring(11, Provid.Length - 12));
                     textBox1.Text = decryptedString;
-                     //decryptedString = AesOperation.DecryptString(key, DSource.Substring(11, Provid.Length - 20));
-                    //textBox2.Text = decryptedString.Substring(14, decryptedString.Length - 15);
-                     //decryptedString = AesOperation.DecryptString(key, Password.Substring(11, Provid.Length - 12));
-                    //textBox3.Text = decryptedString.Substring(30, decryptedString.Length - 30);
+                    var decryptedString2 = AesOperation.DecryptString(key, DSource.Substring(14, DSource.Length - 15));
+                    textBox2.Text = decryptedString2;
+                    var decryptedString3 = AesOperation.DecryptString(key, Password.Substring(30, Password.Length - 31));
+                    textBox3.Text = decryptedString3;
                 }
             }
         }
