@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
@@ -33,6 +32,9 @@ namespace Software_Base_de_Dados
                     Provid = textBox1.Text;
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
+
+                    // encrypt
+
                     //var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provider = " + Provid + ";");
                     //encryptedString = AesOperation.EncryptString(key, DSource);
@@ -49,6 +51,9 @@ namespace Software_Base_de_Dados
                     Provid = textBox1.Text;
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
+
+                    // encrypt
+
                     //var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provider = " + Provid + ";");
                     //encryptedString = AesOperation.EncryptString(key, DSource);
@@ -81,11 +86,14 @@ namespace Software_Base_de_Dados
         {
             if (File.Exists("ChaveConexao.txt"))
             {
-                using(var reader = new StreamReader("ChaveConexao.txt"))
+                using (var reader = new StreamReader("ChaveConexao.txt"))
                 {
                     Provid = reader.ReadLine();
                     DSource = reader.ReadLine();
                     Password = reader.ReadLine();
+
+                    //decrypt 
+
                     textBox1.Text = Provid.Substring(11, Provid.Length - 12);
                     textBox2.Text = DSource.Substring(14, DSource.Length - 15);
                     textBox3.Text = Password.Substring(30, Password.Length - 30);
