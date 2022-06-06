@@ -118,9 +118,9 @@ namespace Software_Base_de_Dados
                 {
                     active = "Não";
                 }
+                // querry para adicionar dados a tabela
                 if (Tipo == "Add")
                 {
-                    // querry para adicionar dados a tabela
                     querry = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +
                             "VALUES (@ID, @Descricao, @IDPlace, @Active, @RefTag)";
                     oleDbCommand = new OleDbCommand(querry, connection);
@@ -131,6 +131,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
 
                 }
+                // querry para modificar dados
                 else
                 {
                     querry = "UPDATE tab_tasks  Descricao = @Descricao, IDPlace = @IDPlace, Active = @Active, RefTag = @RefTag" +
