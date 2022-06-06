@@ -143,6 +143,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
                 }
                 // Executa o Comando
+                // Envia mensagem de erro / sucesso
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
@@ -157,7 +158,6 @@ namespace Software_Base_de_Dados
                 OleDbCommand ole = new OleDbCommand(querry, connection);
                 ole.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Sim";
                 ole.ExecuteNonQuery();
-                // FeedBack de sucesso ou erro
                 MessageBox.Show("Dados modificados com sucesso", "",
                     MessageBoxButtons.OK
                     , MessageBoxIcon.Information);

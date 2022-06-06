@@ -64,6 +64,7 @@ namespace Software_Base_de_Dados
         {
             if (connection.State == ConnectionState.Closed)
             {
+                // Verifica conexao
                 try
                 {
                     connection.ConnectionString = Caminho;
@@ -74,6 +75,10 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
+
+            // Para cada tabela:
+            // vai buscar os dados, e mostra a tabela
+            // Tabelas compostas caso necessário são criadas no DataSet1.xsd
             DataSet dset = new DataSet();
             if (Tabela == "tab_tasks")
             {
@@ -120,6 +125,7 @@ namespace Software_Base_de_Dados
 
         private void Add_Button_Click(object sender, EventArgs e)
         {
+            // verifica conexao
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -131,6 +137,7 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
+            // Para cada tabela executa o Form 
             if (Tabela == "tab_agend")
             {
                 agend.Tipo = "Add";
@@ -218,6 +225,7 @@ namespace Software_Base_de_Dados
             OleDbCommand oleDbCommand;
             if (connection.State == ConnectionState.Closed)
             {
+                // Verifica conexao
                 try
                 {
                     connection.Open();
@@ -274,6 +282,7 @@ namespace Software_Base_de_Dados
         }
         private void SfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
+            // Selecionar um campo da tabela, para modificar ou apagar
             Modify_Button.Enabled = true;
             Remove_Button.Enabled = true;
             DataSet ds = new DataSet();

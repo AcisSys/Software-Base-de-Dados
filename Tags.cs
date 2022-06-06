@@ -86,6 +86,7 @@ namespace Software_Base_de_Dados
                 }
                 else
                 {
+                    // querry para apagar dados
                     querry = "UPDATE tab_tags  SET Ref = @Ref," +
                        " taken = @taken where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
