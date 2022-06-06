@@ -106,6 +106,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
+                Tables.Caminho = File.ReadAllText("ChaveConexao.txt");
                 try
                 {
                     OleDbConnection connection = new OleDbConnection(Tables.Caminho);
@@ -116,7 +117,7 @@ namespace Software_Base_de_Dados
                     conexao.ShowDialog();
                 }
             }
-                Tables.Caminho = File.ReadAllText("ChaveConexao.txt");
+                
             
         }
     }

@@ -26,18 +26,7 @@ namespace Software_Base_de_Dados
                 return;
             }
 
-            try
-            {
-                // verifica se o valor do campo é uma chave válida
-                OleDbConnection con = new OleDbConnection(textBox1.Text);
-                con.Open();
-                Tables.Caminho = textBox1.Text;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            
 
             if (!File.Exists("ChaveConexao.txt"))
             {
@@ -72,6 +61,18 @@ namespace Software_Base_de_Dados
                     encryptedString = AesOperation.EncryptString(key, Password);
                     sw.WriteLine("Jet OLEDB:Database Password = " + Password);
                 }
+            }
+            try
+            {
+                // verifica se o valor do campo é uma chave válida
+                Tables.Caminho = File.ReadAllText("ChaveConexao.txt");
+                OleDbConnection con = new OleDbConnection(Tables.Caminho);
+                con.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             this.Close();
         }
