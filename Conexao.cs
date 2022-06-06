@@ -83,7 +83,12 @@ namespace Software_Base_de_Dados
         {
             if (File.Exists("ChaveConexao.txt"))
             {
-                ;
+                using(var reader = new StreamReader("ChaveConexao.txt"))
+{
+                    textBox1.Text = reader.ReadLine();
+                    textBox2.Text = reader.ReadLine();
+                    textBox3.Text = reader.ReadLine();
+                }
             }
         }
     }
