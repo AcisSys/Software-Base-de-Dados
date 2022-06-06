@@ -11,7 +11,7 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-
+        static string key = "bbce2ea2315a1916";
         string Provid;
         string DSource;
         string Password;
@@ -35,7 +35,7 @@ namespace Software_Base_de_Dados
 
                     // encrypt
 
-                    //var encryptedString = AesOperation.EncryptString(key, Provid);
+                    var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provider = " + Provid + ";");
                     //encryptedString = AesOperation.EncryptString(key, DSource);
                     sw.WriteLine("Data Source = " + DSource + ";");
@@ -54,7 +54,7 @@ namespace Software_Base_de_Dados
 
                     // encrypt
 
-                    //var encryptedString = AesOperation.EncryptString(key, Provid);
+                    var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provider = " + Provid + ";");
                     //encryptedString = AesOperation.EncryptString(key, DSource);
                     sw.WriteLine("Data Source = " + DSource + ";");
@@ -91,9 +91,9 @@ namespace Software_Base_de_Dados
                     Provid = reader.ReadLine();
                     DSource = reader.ReadLine();
                     Password = reader.ReadLine();
-
-                    //decrypt 
-
+                }
+                if (Provid != null)
+                {
                     textBox1.Text = Provid.Substring(11, Provid.Length - 12);
                     textBox2.Text = DSource.Substring(14, DSource.Length - 15);
                     textBox3.Text = Password.Substring(30, Password.Length - 30);
