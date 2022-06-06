@@ -84,18 +84,7 @@ namespace Software_Base_de_Dados
 
         private void Conexao_Load(object sender, EventArgs e)
         {
-            // Ao carregar o FORM, verifica se já existe um ficheiro e caso exista, vai buscar o texto atual do mesmo
-            if (!File.Exists("ChaveConexao.txt")) // If file does not exists
-            {
-                File.Create("ChaveConexao.txt").Close(); // Create file
-            }
-            else // If file already exists
-            {
-                
-
-                button1.Select();
-
-            }
+            
         }
     }
 }
