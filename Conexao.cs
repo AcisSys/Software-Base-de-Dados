@@ -11,7 +11,7 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-       
+
         string Provid;
         string DSource;
         string Password;
@@ -25,7 +25,7 @@ namespace Software_Base_de_Dados
                 return;
             }
 
-            
+
 
             if (!File.Exists("ChaveConexao.txt"))
             {
@@ -84,7 +84,7 @@ namespace Software_Base_de_Dados
 
         private void Conexao_Load(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

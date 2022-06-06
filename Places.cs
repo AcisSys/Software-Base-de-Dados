@@ -57,7 +57,7 @@ namespace Software_Base_de_Dados
                 }
             }
             if (Tipo == "Add")
-                // Querry para adicionar dados
+            // Querry para adicionar dados
             {
                 querry = "SELECT MAX (ID) FROM tab_places";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
