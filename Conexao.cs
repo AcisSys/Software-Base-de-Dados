@@ -34,7 +34,7 @@ namespace Software_Base_de_Dados
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
                     //var encryptedString = AesOperation.EncryptString(key, Provid);
-                    sw.WriteLine("Provid = " + Provid + ";");
+                    sw.WriteLine("Provider = " + Provid + ";");
                     //encryptedString = AesOperation.EncryptString(key, DSource);
                     sw.WriteLine("Data Source = " + DSource + ";");
 
@@ -85,7 +85,7 @@ namespace Software_Base_de_Dados
             {
                 using(var reader = new StreamReader("ChaveConexao.txt"))
 {
-                    textBox1.Text = reader.ReadLine();
+                    textBox1.Text = reader.ReadLine().Substring(11);
                     textBox2.Text = reader.ReadLine();
                     textBox3.Text = reader.ReadLine();
                 }
