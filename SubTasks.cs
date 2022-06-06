@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Software_Base_de_Dados
@@ -102,12 +96,12 @@ namespace Software_Base_de_Dados
             comboBox2.Text = type;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
             // Verifica se todos os campos foram preenchidos
             if (comboBox1.SelectedItem == null || comboBox1.SelectedItem == null)
             {
-                sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
+                // sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
 
             }
             else
@@ -151,7 +145,6 @@ namespace Software_Base_de_Dados
                 MessageBox.Show("Dados adicionados com sucesso", "",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-                // limpa todos os campos e fecha  a janela de introdução de dados
                 maskedTextBox1.Text = "";
                 comboBox1.Text = "";
                 comboBox2.Text = "";
