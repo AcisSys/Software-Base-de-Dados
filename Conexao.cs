@@ -20,7 +20,7 @@ namespace Software_Base_de_Dados
         private void Button1_Click(object sender, EventArgs e)
         {
             // verifica se o campo esta vazio
-            if (textBox1.Text == "")
+            /*if (textBox1.Text == "")
             {
                 sfToolTip1.Show("Introduza a chave de conexão antes de continuar");
                 return;
@@ -37,7 +37,7 @@ namespace Software_Base_de_Dados
             {
                 MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
+            }*/
 
             if (!File.Exists("ChaveConexao.txt")) // If file does not exists
             {
@@ -65,7 +65,7 @@ namespace Software_Base_de_Dados
                     text = textBox1.Text;
                     text1 = textBox1.Text.ToString().Substring(0, 62);
                     int a = textBox1.TextLength;
-                    text2 = textBox1.Text.ToString().Substring(62, 45);
+                    text2 = textBox1.Text.ToString().Substring(62, 41);
                     var encryptedString = AesOperation.EncryptString(key, text1);
                     var encryptedString2 = AesOperation.EncryptString(key, text2);
                     sw.WriteLine(encryptedString + encryptedString2); // Write text to .txt file
@@ -91,7 +91,7 @@ namespace Software_Base_de_Dados
             }
             else // If file already exists
             {
-                text = File.ReadAllText("ChaveConexao.txt");
+                /*text = File.ReadAllText("ChaveConexao.txt");
                 //Desencript Text
                 text1 = text.Substring(0, 64);
                 text2 = text.Substring(65, 64);
@@ -102,7 +102,7 @@ namespace Software_Base_de_Dados
 
                 textBox1.Text = decryptedString1 + decryptedString2 + decryptedString3;
 
-                button1.Select();
+                button1.Select();*/
 
             }
         }
