@@ -365,5 +365,10 @@ namespace Software_Base_de_Dados
                     e.Style.BackColor = Color.White;
             }
         }
+
+        private void sfDataGrid1_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
