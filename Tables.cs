@@ -297,12 +297,6 @@ namespace Software_Base_de_Dados
                 subtasks.ID = oleDbCommand.ExecuteNonQuery();
 
 
-
-                
-
-
-
-
                 //------------------------
                 
             }
