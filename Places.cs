@@ -10,29 +10,9 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-
-        // String do caminho do ficheiro
-
         static readonly string caminho = Tables.Caminho;
-
-        // Conexão
-
         public readonly OleDbConnection connection = new OleDbConnection(caminho);
-
-        // DataSet para as tabelas
-
-
-
-        // Adaptador para o DataSet
-
-
-
-
-        // String publica para dar a conhecer a table que está a ser visualisada
-
         public string Tipo { get; set; }
-
-        // Int / String para cada campo da tabela
         public int ID { get; set; }
         public string Localizacao { get; set; }
         public string X { get; set; }

@@ -115,7 +115,7 @@ namespace Software_Base_de_Dados
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.button1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 178);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 147);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(328, 25);
             this.toolStrip1.TabIndex = 11;
@@ -144,7 +144,7 @@ namespace Software_Base_de_Dados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 203);
+            this.ClientSize = new System.Drawing.Size(328, 172);
             this.Controls.Add(this.maskedTextBox3);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.sfComboBox2);

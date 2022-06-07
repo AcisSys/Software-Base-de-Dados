@@ -139,7 +139,7 @@ namespace Software_Base_de_Dados
             this.Button1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 192);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(373, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(410, 25);
             this.toolStrip1.TabIndex = 13;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -160,7 +160,7 @@ namespace Software_Base_de_Dados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 217);
+            this.ClientSize = new System.Drawing.Size(410, 217);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.sfComboBox2);
             this.Controls.Add(this.sfComboBox1);
