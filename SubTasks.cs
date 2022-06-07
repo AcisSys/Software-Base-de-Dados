@@ -11,15 +11,11 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        static readonly string caminho = @"Provider = Microsoft.ACE.OLEDB.12.0;
-                        Data Source = WORK2GOData.accdb;
-        Jet OLEDB:Database Password = ogednom ";
+        static readonly string caminho = Tables.Caminho;
         public readonly OleDbConnection connection = new OleDbConnection(caminho);
-        // DataSet para as tabelas
         DataSet dset = new DataSet();
         OleDbDataAdapter adapter = new OleDbDataAdapter();
         public string Tipo { get; set; }
-        // String / Int para cada campo da tabela
         public int ID { get; set; }
         public int IDTask { get; set; }
         public string Desc { get; set; }
