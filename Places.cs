@@ -110,7 +110,6 @@ namespace Software_Base_de_Dados
             }
         }
 
-
         private void ToolStripButton1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();
