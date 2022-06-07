@@ -30,7 +30,6 @@ namespace Software_Base_de_Dados
                     Provid = textBox1.Text;
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
-                    // encrypt
                     var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provider = " + encryptedString + ";");
                     var encryptedString2 = AesOperation.EncryptString(key, DSource);
