@@ -56,10 +56,6 @@ namespace Software_Base_de_Dados
             maskedTextBox1.ReadOnly = true;
             maskedTextBox2.Select();
             maskedTextBox1.Enabled = false;
-            // Dados para ComboBox1
-            //string querry = "SELECT tab_workers.IDEquipa, tab_teams.Descricao FROM tab_teams INNER JOIN tab_workers ON tab_teams.ID = tab_workers.IDEquipa;";
-           
-            DataTable dataTable;
         }
         private void Button1_Click(object sender, EventArgs e)
         {
