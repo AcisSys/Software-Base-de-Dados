@@ -57,57 +57,40 @@ namespace Software_Base_de_Dados
             }
             button1.Text = "Modificar";
             maskedTextBox1.Text = ID.ToString();
-            sfComboBox1.Text = IDTask;
+           
             maskedTextBox2.Text = Desc;
             sfComboBox2.Text = Type;
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
-           sfComboBox1.Enabled = false;
-
-
-
-
-
-            /*string comand = "SELECT MAX (ID) FROM tab_subtasks";
-            OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
-            int maxid = (int)oleDbCommand.ExecuteScalar();
-            int currentid = maxid + 1;
-            maskedTextBox1.Text = currentid.ToString();*/
-
-
-
-
+            maskedTextBox3.Enabled = false;
 
             // Dados para ComboBox1
-            string querry = "SELECT * FROM tab_tasks";
-            adapter = new OleDbDataAdapter(querry, connection);
-            adapter.Fill(dset, "idtask");
-            DataTable dataTable = dset.Tables["idtask"];
-            sfComboBox1.DataSource = dataTable;
-            sfComboBox1.DisplayMember = "ID";
+            string querry;
+            DataTable dataTable;
+            
+            
             // Dados para ComboBox2
             querry = "SELECT DISTINCT Type FROM tab_subtasks";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
-            sfComboBox2.DataSource = dataTable;
-            sfComboBox2.DisplayMember = "Type";
+            maskedTextBox3.Text = IDTask;
             button1.Select();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (sfComboBox1.Text == "" || maskedTextBox2.Text == "" || sfComboBox2.Text == "")
+            if ( maskedTextBox2.Text == "" || sfComboBox2.Text == "")
             {
                 sfToolTip1.Show("Verifique todos os campos antes de modificar dados.");
                 return;
             }
 
             // string para atualizar dados
-            string querry = "UPDATE tab_subtasks IDTask = @IDTask, Desc = @Desc, Type = @Type" +
+            string querry = "UPDATE tab_subtasks VALUES IDTask = @IDTask, Desc = @Desc, Type = @Type" +
                      "WHERE ID =" + maskedTextBox1.Text;
             OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-            oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox1.Text;
+            oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
             oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
             oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
             // tenta executar o comando e envia mensagem de erro / sucesso
