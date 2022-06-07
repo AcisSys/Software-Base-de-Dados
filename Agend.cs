@@ -11,39 +11,17 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-
-        // DataSet para as tabelas
-
         DataSet dset = new DataSet();
-
-        // Adaptador para o DataSet
-
         OleDbDataAdapter adapter = new OleDbDataAdapter();
-
-        // String do caminho do ficheiro
-
         static readonly string caminho = Tables.Caminho;
-
-        // String do comando enviado para a base de dados
-
         string querry;
-
-        // Conexão
-
         public readonly OleDbConnection connection = new OleDbConnection(caminho);
-
-
-
         public string Tipo { get; set; }
-
-        // String / Int para cada campo da tabela, ao modificar vai buscar o valor dos campos
-
         public int Id { get; set; }
         public string Idequipa { get; set; }
         public string Idtask { get; set; }
         private void Agend_Load(object sender, EventArgs e)
         {
-
             // Abre a conexao se a mesma estiver fechada
             if (connection.State == System.Data.ConnectionState.Closed)
             {
