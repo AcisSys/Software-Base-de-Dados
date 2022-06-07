@@ -63,12 +63,8 @@ namespace Software_Base_de_Dados
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Enabled = false;
-
-            // Dados para ComboBox1
             string querry;
             DataTable dataTable;
-            
-            
             // Dados para ComboBox2
             querry = "SELECT DISTINCT Type FROM tab_subtasks";
             adapter = new OleDbDataAdapter(querry, connection);
