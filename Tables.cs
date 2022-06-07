@@ -36,7 +36,6 @@ namespace Software_Base_de_Dados
         {
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
-
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -289,6 +288,23 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_tasks")
             {
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+
+                //------------------------
+
+                string querry;
+                querry = "SELECT ID FROM tab_subtasks WHERE IDTask = " + tasks.ID + " AND Desc = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                subtasks.ID = oleDbCommand.ExecuteNonQuery();
+
+
+
+                
+
+
+
+
+                //------------------------
+                
             }
             else if (Tabela == "tab_workers")
             {
@@ -373,7 +389,7 @@ namespace Software_Base_de_Dados
         {
             if (Tabela == "tab_tasks")
             {
-                Subtasks subtasks = new Subtasks();
+                
                 subtasks.ShowDialog();
             }
         }
