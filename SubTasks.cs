@@ -11,30 +11,14 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-
-        // String do caminho do ficheiro
-
         static readonly string caminho = @"Provider = Microsoft.ACE.OLEDB.12.0;
                         Data Source = WORK2GOData.accdb;
         Jet OLEDB:Database Password = ogednom ";
-
-        // Conexão
-
         public readonly OleDbConnection connection = new OleDbConnection(caminho);
-
         // DataSet para as tabelas
-
         DataSet dset = new DataSet();
-
-        // Adaptador para o DataSet
-
         OleDbDataAdapter adapter = new OleDbDataAdapter();
-
-
-        // String publica para dar a conhecer a table que está a ser visualisada
-
         public string Tipo { get; set; }
-
         // String / Int para cada campo da tabela
         public int ID { get; set; }
         public string IDTask { get; set; }
@@ -57,7 +41,6 @@ namespace Software_Base_de_Dados
             }
             button1.Text = "Modificar";
             maskedTextBox1.Text = ID.ToString();
-           
             maskedTextBox2.Text = Desc;
             sfComboBox2.Text = Type;
             maskedTextBox1.ReadOnly = true;
