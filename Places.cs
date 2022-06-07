@@ -18,7 +18,6 @@ namespace Software_Base_de_Dados
         public string X { get; set; }
         public string Y { get; set; }
         string querry;
-
         private void Places_Load(object sender, EventArgs e)
         {
             // verifica conexao
@@ -62,7 +61,6 @@ namespace Software_Base_de_Dados
             if (maskedTextBox2.Text == "" || maskedTextBox3.Text == "" || maskedTextBox4.Text == "")
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
-
             }
             else
             {
