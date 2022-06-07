@@ -383,7 +383,6 @@ namespace Software_Base_de_Dados
                     subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                     subtasks.Type = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
                 }
-
                 subtasks.ShowDialog();
             }
         }
