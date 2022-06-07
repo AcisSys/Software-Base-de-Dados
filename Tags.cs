@@ -79,7 +79,14 @@ namespace Software_Base_de_Dados
                        " taken = @taken where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
-                    oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
+                    if (Taken == true)
+                    {
+                        oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Sim";
+                    }
+                    else
+                    {
+                        oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
+                    }
                 }
                 // tenta executar o comando e envia mensagem de erro / sucesso
                 try

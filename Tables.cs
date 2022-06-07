@@ -305,7 +305,7 @@ namespace Software_Base_de_Dados
                 {
                     tags.Taken = true;
                 }
-                else
+                else if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] == "Não")
                 {
                     tags.Taken = false;
                 }
