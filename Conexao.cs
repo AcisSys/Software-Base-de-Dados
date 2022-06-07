@@ -17,13 +17,11 @@ namespace Software_Base_de_Dados
         string Password;
         private void Button1_Click(object sender, EventArgs e)
         {
-            // verifica se o campo esta vazio
             if (textBox1.Text == "")
             {
                 sfToolTip1.Show("Introduza a chave de conexão antes de continuar");
                 return;
             }
-
             if (!File.Exists("ChaveConexao.txt"))
             {
                 File.Create("ChaveConexao.txt").Close();
@@ -49,8 +47,6 @@ namespace Software_Base_de_Dados
                     Provid = textBox1.Text;
                     DSource = textBox2.Text;
                     Password = textBox3.Text;
-                    // encrypt
-
                     try
                     {
                         Tables.Caminho = "Provider = " + Provid + "; Data Source = " + DSource + "; Jet OLEDB:Database Password = " + Password;
@@ -73,12 +69,10 @@ namespace Software_Base_de_Dados
             // verifica se o valor do campo é uma chave válida
             this.Close();
         }
-
         private void Button1_MouseLeave_1(object sender, EventArgs e)
         {
             sfToolTip1.Hide();
         }
-
         private void Conexao_Load(object sender, EventArgs e)
         {
             // Verifica se o ficheiro existe
