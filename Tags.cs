@@ -10,25 +10,13 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-
-        // String do caminho do ficheiro
-
         static readonly string caminho = Tables.Caminho;
-
-        // Conexão
-
         public readonly OleDbConnection connection = new OleDbConnection(caminho);
-
-
-
-        // String publica para dar a conhecer a table que está a ser visualisada
-
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Ref { get; set; }
         public bool Taken { get; set; }
         string querry;
-
         private void Tags_Load(object sender, EventArgs e)
         {// Verifica conexao
             if (connection.State == System.Data.ConnectionState.Closed)
