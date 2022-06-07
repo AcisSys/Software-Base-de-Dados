@@ -309,7 +309,7 @@ namespace Software_Base_de_Dados
                 {
                     tags.Taken = false;
                 }
-                subtasks.IDTask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                subtasks.IDTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
             }
         }
@@ -374,16 +374,16 @@ namespace Software_Base_de_Dados
             {
                 // Command and Values for the SubTasks Modification
                 string querry;
-                if ((string) ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] != "")
+                if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] != "")
                 {
                     querry = "SELECT ID FROM tab_subtasks WHERE IDTask = " + tasks.ID + " AND Desc = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
                     OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                     subtasks.ID = (int)oleDbCommand.ExecuteScalar();
-                    subtasks.IDTask = tasks.ID.ToString();
+                    subtasks.IDTask = tasks.ID;
                     subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                     subtasks.Type = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
                 }
-               
+
                 subtasks.ShowDialog();
             }
         }

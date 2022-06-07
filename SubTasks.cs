@@ -21,7 +21,7 @@ namespace Software_Base_de_Dados
         public string Tipo { get; set; }
         // String / Int para cada campo da tabela
         public int ID { get; set; }
-        public string IDTask { get; set; }
+        public int IDTask { get; set; }
         public string Desc { get; set; }
         public string Type { get; set; }
         private void Subtasks_Load(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace Software_Base_de_Dados
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
-            maskedTextBox3.Text = IDTask;
+            maskedTextBox3.Text = IDTask.ToString();
             button1.Select();
         }
 
