@@ -19,7 +19,6 @@ namespace Software_Base_de_Dados
         public string Y { get; set; }
         string querry;
 
-
         private void Places_Load(object sender, EventArgs e)
         {
             // verifica conexao
