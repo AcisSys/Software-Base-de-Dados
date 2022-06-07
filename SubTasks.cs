@@ -62,6 +62,7 @@ namespace Software_Base_de_Dados
             sfComboBox2.Text = Type;
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
+           sfComboBox1.Enabled = false;
 
 
 
