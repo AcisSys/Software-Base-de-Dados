@@ -22,7 +22,6 @@ namespace Software_Base_de_Dados
         public string Img { get; set; }
         public string Cod { get; set; }
         string querry;
-
         private void Workers_Load(object sender, EventArgs e)
         {
             // verifica conexao
