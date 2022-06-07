@@ -51,7 +51,6 @@ namespace Software_Base_de_Dados
                     Password = textBox3.Text;
                     // encrypt
 
-
                     try
                     {
                         Tables.Caminho = "Provider = " + Provid + "; Data Source = " + DSource + "; Jet OLEDB:Database Password = " + Password;
@@ -72,7 +71,6 @@ namespace Software_Base_de_Dados
                 }
             }
             // verifica se o valor do campo é uma chave válida
-            /**/
             this.Close();
         }
 
