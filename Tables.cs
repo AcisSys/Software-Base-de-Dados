@@ -16,9 +16,7 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-
         // String do caminho do ficheiro
-
         public static string Caminho { get; set; } /*= @"Provider = Microsoft.ACE.OLEDB.12.0;
                         Data Source = WORK2GOData.accdb;
         Jet OLEDB:Database Password = ogednom ";*/
@@ -31,7 +29,6 @@ namespace Software_Base_de_Dados
         Teams teams = new Teams();
         Workers workers = new Workers();
         Subtasks subtasks = new Subtasks();
-
         // String publica para dar a conhecer a table que está a ser visualisada
         public string Tabela { get; set; }
         string querry;
