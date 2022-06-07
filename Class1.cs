@@ -7,6 +7,7 @@ namespace Software_Base_de_Dados
 {
     public class AesOperation
     {
+        // Gets the key and sting to encript
         public static string EncryptString(string key, string plainText)
         {
             byte[] iv = new byte[16];
