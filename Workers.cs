@@ -11,26 +11,10 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-
-        // String do caminho do ficheiro
-
         static readonly string caminho = Tables.Caminho;
-
-        // Conexão
-
         public readonly OleDbConnection connection = new OleDbConnection(caminho);
-
-        // DataSet para as tabelas
-
         DataSet dset = new DataSet();
-
-        // Adaptador para o DataSet
-
         OleDbDataAdapter adapter = new OleDbDataAdapter();
-
-
-        // String publica para dar a conhecer a table que está a ser visualisada
-
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Nome { get; set; }
@@ -57,7 +41,6 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-
                 // ID é automatico
                 querry = "SELECT MAX (ID) FROM tab_workers";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
@@ -67,8 +50,6 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                // id automatico
-
                 maskedTextBox1.Text = ID.ToString();
                 maskedTextBox4.Text = Img;
                 maskedTextBox5.Text = Cod;
@@ -76,11 +57,9 @@ namespace Software_Base_de_Dados
             maskedTextBox1.ReadOnly = true;
             maskedTextBox2.Select();
             maskedTextBox1.Enabled = false;
-
             // Dados para ComboBox1
             //string querry = "SELECT tab_workers.IDEquipa, tab_teams.Descricao FROM tab_teams INNER JOIN tab_workers ON tab_teams.ID = tab_workers.IDEquipa;";
             querry = "SELECT tab_workers.IDEquipa, tab_teams.Descricao FROM tab_teams, tab_workers WHERE tab_workers.IDEquipa = '3';";
-
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
             DataTable dataTable = dset.Tables["idtask"];
@@ -88,8 +67,6 @@ namespace Software_Base_de_Dados
             sfComboBox1.DisplayMember = "ID";
             sfComboBox1.Text = IDEquipa;
         }
-
-
         private void Button1_Click(object sender, EventArgs e)
         {
             // Verifica o preenchimento de todos os campos
@@ -112,7 +89,6 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
                     oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;
                     oleDbCommand.Parameters.Add("@Cod", OleDbType.Integer).Value = maskedTextBox5.Text;
-
                 }
                 else
                 {
@@ -125,7 +101,6 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;
                     oleDbCommand.Parameters.Add("@Cod", OleDbType.Integer).Value = maskedTextBox5.Text;
                 }
-
                 // Executa Comando e envia feedback ao utilizador (erro ou sucesso)
                 try
                 {
@@ -140,7 +115,6 @@ namespace Software_Base_de_Dados
                 MessageBox.Show("Dados atualizados com sucesso", "", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
-
         }
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
