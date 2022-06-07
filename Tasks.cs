@@ -47,7 +47,6 @@ namespace Software_Base_de_Dados
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
-
             }
             else
             {
@@ -62,7 +61,6 @@ namespace Software_Base_de_Dados
                     checkBox1.Checked = false;
                 }
             }
-
             // Dados para ComboBox1
             querry = "SELECT * FROM tab_places";
             adapter = new OleDbDataAdapter(querry, connection);
@@ -70,7 +68,6 @@ namespace Software_Base_de_Dados
             DataTable dataTable = dset.Tables["idtask"];
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
-
             // Dados para ComboBox2
             querry = "SELECT Ref FROM tab_tags WHERE taken = 'Não'";
             adapter = new OleDbDataAdapter(querry, connection);
@@ -114,7 +111,6 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
                     oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
                     oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
-
                 }
                 // querry para modificar dados
                 else
