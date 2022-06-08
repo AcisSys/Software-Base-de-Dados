@@ -14,7 +14,7 @@ namespace Software_Base_de_Dados
         static readonly string caminho = Tables.Caminho;
         public readonly OleDbConnection connection = new OleDbConnection(caminho);
         DataSet dset = new DataSet();
-        OleDbDataAdapter adapter = new OleDbDataAdapter();
+        OleDbDataAdapter adapter;
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Nome { get; set; }

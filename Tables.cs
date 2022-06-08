@@ -24,6 +24,7 @@ namespace Software_Base_de_Dados
         Teams teams = new Teams();
         Workers workers = new Workers();
         Subtasks subtasks = new Subtasks();
+        OleDbDataAdapter adapter;
         public string Tabela { get; set; }
         string querry;
         private void Tables_Load(object sender, EventArgs e)
@@ -94,7 +95,7 @@ namespace Software_Base_de_Dados
             {
                 querry = "SELECT * FROM " + Tabela;
                 dset.Reset();
-                OleDbDataAdapter adapter = new OleDbDataAdapter(querry, connection);
+                adapter  = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
             }

@@ -11,7 +11,7 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
         DataSet dset = new DataSet();
-        OleDbDataAdapter adapter = new OleDbDataAdapter();
+        OleDbDataAdapter adapter;
         static readonly string caminho = Tables.Caminho;
         string querry;
         public readonly OleDbConnection connection = new OleDbConnection(caminho);
