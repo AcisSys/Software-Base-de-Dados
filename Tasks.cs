@@ -108,10 +108,10 @@ namespace Software_Base_de_Dados
                 }
                 else
                 {
-                    querry = "UPDATE tab_tasks  Descricao = @Descricao, IDPlace = @IDPlace, Active = @Active, RefTag = @RefTag" +
+                    querry = "UPDATE tab_tasks VALUES  Descricao = @Descricao, IDPlace = @IDPlace, Active = @Active, RefTag = @RefTag" +
                        " WHERE ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
-                    oleDbCommand.Parameters.Add("@Descricao", OleDbType.Integer).Value = int.Parse(maskedTextBox2.Text);
+                    oleDbCommand.Parameters.Add("@Descricao", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = int.Parse(sfComboBox1.Text);
                     oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
                     oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = int.Parse(sfComboBox2.Text);
