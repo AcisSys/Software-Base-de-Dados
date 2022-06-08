@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.OleDb;
 using System.Windows.Forms;
-
 namespace Software_Base_de_Dados
 {
     public partial class Teams : Form
@@ -18,7 +17,6 @@ namespace Software_Base_de_Dados
         string querry;
         private void Teams_Load(object sender, EventArgs e)
         {
-            // Verifica conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -35,7 +33,6 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             {
                 button1.Text = "Guardar";
-                // ID é automatico
                 querry = "SELECT MAX (ID) FROM tab_teams";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
@@ -52,7 +49,6 @@ namespace Software_Base_de_Dados
             maskedTextBox2.Select();
             maskedTextBox1.Enabled = false;
         }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             if (maskedTextBox2.Text == "")
@@ -70,7 +66,6 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Descricao",
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text;
-
                 }
                 else
                 {
@@ -100,7 +95,6 @@ namespace Software_Base_de_Dados
                 this.Close();
             }
         }
-
         private void Button1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();

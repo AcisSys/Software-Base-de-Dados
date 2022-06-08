@@ -2,7 +2,6 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-
 namespace Software_Base_de_Dados
 {
     public partial class Tasks : Form
@@ -22,7 +21,6 @@ namespace Software_Base_de_Dados
         public bool Active { get; set; }
         public string RefTag { get; set; }
         string querry;
-
         private void Tasks_Load(object sender, EventArgs e)
         {
             if (connection.State == ConnectionState.Closed)
@@ -139,7 +137,6 @@ namespace Software_Base_de_Dados
                 this.Close();
             }
         }
-
         private void Button1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();

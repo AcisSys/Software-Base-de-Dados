@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.OleDb;
 using System.Windows.Forms;
-
 namespace Software_Base_de_Dados
 {
     public partial class Tags : Form
@@ -49,7 +48,6 @@ namespace Software_Base_de_Dados
             maskedTextBox1.Enabled = false;
             button1.Select();
         }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             if (int.TryParse(maskedTextBox2.Text, out _) == false)
@@ -101,7 +99,6 @@ namespace Software_Base_de_Dados
                 this.Close();
             }
         }
-
         private void Button1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();

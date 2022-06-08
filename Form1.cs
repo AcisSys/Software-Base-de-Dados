@@ -2,13 +2,10 @@ using System;
 using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
-
 namespace Software_Base_de_Dados
 {
     public partial class Form1 : Form
     {
-
-        // Inicia os UserControls
         readonly Title title = new Title();
         readonly Tables table = new Tables();
         Conexao conexao = new Conexao();
@@ -23,7 +20,6 @@ namespace Software_Base_de_Dados
             panel1.Controls.Add(title);
             title.Dock = DockStyle.Fill;
         }
-
         private void Agend_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_agend";
@@ -33,7 +29,6 @@ namespace Software_Base_de_Dados
             panel1.Controls.Add(table);
             table.Dock = DockStyle.Fill;
         }
-
         private void Places_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_places";
@@ -43,7 +38,6 @@ namespace Software_Base_de_Dados
             panel1.Controls.Add(table);
             table.Dock = DockStyle.Fill;
         }
-
         private void Tags_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_tags";
@@ -53,7 +47,6 @@ namespace Software_Base_de_Dados
             panel1.Controls.Add(table);
             table.Dock = DockStyle.Fill;
         }
-
         private void Workers_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_workers";
@@ -63,7 +56,6 @@ namespace Software_Base_de_Dados
             panel1.Controls.Add(table);
             table.Dock = DockStyle.Fill;
         }
-
         private void Teams_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_teams";
@@ -73,7 +65,6 @@ namespace Software_Base_de_Dados
             panel1.Controls.Add(table);
             table.Dock = DockStyle.Fill;
         }
-
         private void Tasks_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_tasks";
@@ -83,7 +74,6 @@ namespace Software_Base_de_Dados
             panel1.Controls.Add(table);
             table.Dock = DockStyle.Fill;
         }
-
         private void SubTasks_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_subtasks";
@@ -93,17 +83,13 @@ namespace Software_Base_de_Dados
             panel1.Controls.Add(table);
             table.Dock = DockStyle.Fill;
         }
-
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {
-
             conexao.ShowDialog();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Vai buscar a chave de conexao e verifica se a mesma é válida
-            if (!File.Exists("ChaveConexao.txt")) // If file does not exists
+            if (!File.Exists("ChaveConexao.txt"))
             {
                 MessageBox.Show("Não existe uma conexão, configure uma", "Erro de Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexao.ShowDialog();
@@ -116,10 +102,8 @@ namespace Software_Base_de_Dados
                     DSource = reader.ReadLine();
                     Password = reader.ReadLine();
                 }
-                // Verifica se contem texto
                 if (Provid != null)
                 {
-                    // Mostra o texto ao user
                     var decryptedString = AesOperation.DecryptString(key, Provid.Substring(11, Provid.Length - 12));
                     string prov = decryptedString;
                     var decryptedString2 = AesOperation.DecryptString(key, DSource.Substring(14, DSource.Length - 15));
@@ -137,11 +121,8 @@ namespace Software_Base_de_Dados
                         MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
                 }
             }
-
-
         }
     }
 }

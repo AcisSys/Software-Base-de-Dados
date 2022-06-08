@@ -2,9 +2,8 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-
 namespace Software_Base_de_Dados
-{
+{ 
     public partial class Agend : Form
     {
         public Agend()
@@ -64,13 +63,11 @@ namespace Software_Base_de_Dados
             sfComboBox1.Text = Idequipa;
             sfComboBox2.Text = Idtask;
         }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             if (sfComboBox1.SelectedItem == null || sfComboBox2.SelectedItem == null)
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
-
             }
             else
             {
@@ -116,7 +113,6 @@ namespace Software_Base_de_Dados
                 this.Close();
             }
         }
-
         private void ToolStripButton1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();

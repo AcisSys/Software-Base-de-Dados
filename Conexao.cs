@@ -2,7 +2,6 @@
 using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
-
 namespace Software_Base_de_Dados
 {
     public partial class Conexao : Form
@@ -65,7 +64,6 @@ namespace Software_Base_de_Dados
                     sw.WriteLine("Jet OLEDB:Database Password = " + encryptedString3);
                 }
             }
-            // verifica se o valor do campo é uma chave válida
             this.Close();
         }
         private void Button1_MouseLeave_1(object sender, EventArgs e)
@@ -74,7 +72,6 @@ namespace Software_Base_de_Dados
         }
         private void Conexao_Load(object sender, EventArgs e)
         {
-            // Verifica se o ficheiro existe
             if (File.Exists("ChaveConexao.txt"))
             {
                 using (var reader = new StreamReader("ChaveConexao.txt"))
@@ -83,10 +80,8 @@ namespace Software_Base_de_Dados
                     DSource = reader.ReadLine();
                     Password = reader.ReadLine();
                 }
-                // Verifica se contem texto
                 if (Provid != null)
                 {
-                    // Mostra o texto ao user
                     var decryptedString = AesOperation.DecryptString(key, Provid.Substring(11, Provid.Length - 12));
                     textBox1.Text = decryptedString;
                     var decryptedString2 = AesOperation.DecryptString(key, DSource.Substring(14, DSource.Length - 15));

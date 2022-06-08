@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.OleDb;
 using System.Windows.Forms;
-
 namespace Software_Base_de_Dados
 {
     public partial class Places : Form
@@ -52,7 +51,6 @@ namespace Software_Base_de_Dados
             maskedTextBox2.Select();
             maskedTextBox1.Enabled = false;
         }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             if (maskedTextBox2.Text == "" || maskedTextBox3.Text == "" || maskedTextBox4.Text == "")
@@ -103,7 +101,6 @@ namespace Software_Base_de_Dados
                 this.Close();
             }
         }
-
         private void ToolStripButton1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();

@@ -7,7 +7,6 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-
 namespace Software_Base_de_Dados
 {
     public partial class Tables : UserControl
@@ -101,7 +100,6 @@ namespace Software_Base_de_Dados
             }
             sfDataGrid1.Update();
         }
-
         private void Add_Button_Click(object sender, EventArgs e)
         {
             if (connection.State == ConnectionState.Closed)
@@ -196,7 +194,6 @@ namespace Software_Base_de_Dados
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
         }
-
         private void Remove_Button_Click(object sender, EventArgs e)
         {
             OleDbCommand oleDbCommand;
@@ -335,7 +332,6 @@ namespace Software_Base_de_Dados
                     e.Style.BackColor = Color.White;
             }
         }
-
         private void SfDataGrid1_DoubleClick(object sender, EventArgs e)
         {
             if (Tabela == "tab_tasks")
@@ -360,6 +356,10 @@ namespace Software_Base_de_Dados
                 }
                 subtasks.ShowDialog();
             }
+        }
+        private void Tables_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

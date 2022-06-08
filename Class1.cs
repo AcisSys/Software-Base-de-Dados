@@ -2,24 +2,19 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-
 namespace Software_Base_de_Dados
 {
     public class AesOperation
     {
-        // Gets the key and sting to encript
         public static string EncryptString(string key, string plainText)
         {
             byte[] iv = new byte[16];
             byte[] array;
-
             using (Aes aes = Aes.Create())
             {
                 aes.Key = Encoding.UTF8.GetBytes(key);
                 aes.IV = iv;
-
                 ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-
                 using (MemoryStream memoryStream = new MemoryStream())
                 {
                     using (CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
@@ -32,21 +27,17 @@ namespace Software_Base_de_Dados
                     }
                 }
             }
-
             return Convert.ToBase64String(array);
         }
-
         public static string DecryptString(string key, string cipherText)
         {
             byte[] iv = new byte[16];
             byte[] buffer = Convert.FromBase64String(cipherText);
-
             using (Aes aes = Aes.Create())
             {
                 aes.Key = Encoding.UTF8.GetBytes(key);
                 aes.IV = iv;
                 ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-
                 using (MemoryStream memoryStream = new MemoryStream(buffer))
                 {
                     using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
