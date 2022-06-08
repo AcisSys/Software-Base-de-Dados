@@ -16,9 +16,7 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        public static string Caminho { get; set; } /*= @"Provider = Microsoft.ACE.OLEDB.12.0;
-                        Data Source = WORK2GOData.accdb;
-        Jet OLEDB:Database Password = ogednom ";*/
+        public static string Caminho { get; set; }
         public readonly OleDbConnection connection = new OleDbConnection(Caminho);
         Agend agend = new Agend();
         Places places = new Places();
@@ -46,12 +44,10 @@ namespace Software_Base_de_Dados
                 }
             }
         }
-        // Função para atualizar as tabelas
         public void UpdateTable()
         {
             if (connection.State == ConnectionState.Closed)
             {
-                // Verifica conexao
                 try
                 {
                     connection.ConnectionString = Caminho;
@@ -62,9 +58,6 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            // Para cada tabela:
-            // vai buscar os dados, e mostra a tabela
-            // Tabelas compostas caso necessário são criadas no DataSet1.xsd
             DataSet dset = new DataSet();
             if (Tabela == "tab_tasks")
             {
@@ -111,7 +104,6 @@ namespace Software_Base_de_Dados
 
         private void Add_Button_Click(object sender, EventArgs e)
         {
-            // verifica conexao
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -123,7 +115,6 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            // Para cada tabela executa o Form 
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
             if (Tabela == "tab_agend")
@@ -160,7 +151,6 @@ namespace Software_Base_de_Dados
         }
         private void Modify_Button_Click(object sender, EventArgs e)
         {
-            // verifica conexao
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -172,7 +162,6 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            // chama a form para modificar campos da tabela
             if (Tabela == "tab_agend")
             {
                 agend.Tipo = "";
@@ -203,7 +192,6 @@ namespace Software_Base_de_Dados
                 workers.Tipo = "";
                 workers.ShowDialog();
             }
-            // Update á tabela quando retorna ao usercontrol
             UpdateTable();
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
@@ -212,7 +200,6 @@ namespace Software_Base_de_Dados
         private void Remove_Button_Click(object sender, EventArgs e)
         {
             OleDbCommand oleDbCommand;
-            // Verifica conexao
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -224,12 +211,10 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            // Pede Confirmação para apagar dados
             DialogResult response = MessageBox.Show("Tem a certeza?", "Apagar?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
-            // String com comando para apagar dados
             if (Tabela == "tab_tasks")
             {
                 querry = "UPDATE tab_tasks SET Active = 'Não' WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
@@ -239,7 +224,6 @@ namespace Software_Base_de_Dados
             {
                 querry = "DELETE ROW FROM " + Tabela + " WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 oleDbCommand = new OleDbCommand(querry, connection);
-                // se confirmado, apaga / tenta apagar dados
             }
             if (response == DialogResult.Yes)
             {
@@ -256,20 +240,17 @@ namespace Software_Base_de_Dados
                     return;
                 }
             }
-            // Se não for confirmado, indica ao utilizador que foi cancelado
             else
             {
                 MessageBox.Show("Cancelado", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            // Atualiza tabela
             UpdateTable();
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
         }
         private void SfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
-            // Selecionar um campo da tabela, para modificar ou apagar
             Modify_Button.Enabled = true;
             Remove_Button.Enabled = true;
             DataSet ds = new DataSet();
@@ -310,7 +291,6 @@ namespace Software_Base_de_Dados
                 subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
             }
         }
-        // Botão de Exportar do outro projeto
         private void Exportar_Click(object sender, EventArgs e)
         {
             var options = new ExcelExportingOptions
@@ -364,12 +344,10 @@ namespace Software_Base_de_Dados
                 subtasks.ShowDialog();
             }
         }
-
         private void sfDataGrid1_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
         {
             if (Tabela == "tab_tasks")
             {
-                // Command and Values for the SubTasks Modification
                 string querry;
                 if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] != "")
                 {
