@@ -21,7 +21,7 @@ namespace Software_Base_de_Dados
         public string Idtask { get; set; }
         private void Agend_Load(object sender, EventArgs e)
         {
-            if (connection.State == System.Data.ConnectionState.Closed)
+            if (connection.State == ConnectionState.Closed)
             {
                 try
                 {
