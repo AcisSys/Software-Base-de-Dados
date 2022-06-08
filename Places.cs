@@ -9,8 +9,8 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        static readonly string caminho = Tables.Caminho;
-        public readonly OleDbConnection connection = new OleDbConnection(caminho);
+        public readonly OleDbConnection connection;
+        OleDbCommand oleDbCommand;
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Localizacao { get; set; }
@@ -35,7 +35,7 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             {
                 querry = "SELECT MAX (ID) FROM tab_places";
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                 oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
@@ -59,7 +59,6 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
                 {
                     querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +

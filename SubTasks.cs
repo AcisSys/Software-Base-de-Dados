@@ -10,10 +10,13 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        static readonly string caminho = Tables.Caminho;
-        public readonly OleDbConnection connection = new OleDbConnection(caminho);
+        
+        public readonly OleDbConnection connection;
+        OleDbCommand oleDbCommand;
         DataSet dset = new DataSet();
         OleDbDataAdapter adapter;
+        string querry;
+        
         public string Tipo { get; set; }
         public int ID { get; set; }
         public int IDTask { get; set; }
@@ -40,12 +43,11 @@ namespace Software_Base_de_Dados
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Enabled = false;
-            string querry;
-            DataTable dataTable;
+
             querry = "SELECT DISTINCT Type FROM tab_subtasks";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
-            dataTable = dset.Tables["type"];
+            
             maskedTextBox3.Text = IDTask.ToString();
             button1.Select();
         }
@@ -58,7 +60,7 @@ namespace Software_Base_de_Dados
             }
             string querry = "UPDATE tab_subtasks VALUES IDTask = @IDTask, Desc = @Desc, Type = @Type" +
                      "WHERE ID =" + maskedTextBox1.Text;
-            OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+             oleDbCommand = new OleDbCommand(querry, connection);
             oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
             oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
             oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
