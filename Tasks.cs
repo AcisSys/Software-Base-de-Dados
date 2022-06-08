@@ -26,7 +26,7 @@ namespace Software_Base_de_Dados
         private void Tasks_Load(object sender, EventArgs e)
         {
             // Verifica a conexao
-            if (connection.State == System.Data.ConnectionState.Closed)
+            if (connection.State == ConnectionState.Closed)
             {
                 try
                 {
@@ -68,7 +68,6 @@ namespace Software_Base_de_Dados
             DataTable dataTable = dset.Tables["idtask"];
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
-            // Dados para ComboBox2
             querry = "SELECT Ref FROM tab_tags WHERE taken = 'Não'";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
@@ -89,7 +88,6 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                // Verifica o valor do campo active
                 OleDbCommand oleDbCommand;
                 string active;
                 if (checkBox1.Checked == true)
