@@ -98,6 +98,8 @@ namespace Software_Base_de_Dados
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
             }
+            Modify_Button.Enabled = false;
+            Remove_Button.Enabled = false;
             sfDataGrid1.Update();
         }
         private void Add_Button_Click(object sender, EventArgs e)
