@@ -28,7 +28,6 @@ namespace Software_Base_de_Dados
                         {
                             streamWriter.Write(plainText);
                         }
-
                         array = memoryStream.ToArray();
                     }
                 }

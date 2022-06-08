@@ -116,7 +116,7 @@ namespace Software_Base_de_Dados
                 else
                 {
                     querry = "UPDATE tab_tasks  Descricao = @Descricao, IDPlace = @IDPlace, Active = @Active, RefTag = @RefTag" +
-                       " where ID = " + maskedTextBox1.Text;
+                       "WHERE ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     // Recebe os dados
                     oleDbCommand.Parameters.Add("@Descricao", OleDbType.Integer).Value = maskedTextBox2.Text;
