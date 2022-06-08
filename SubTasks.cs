@@ -79,7 +79,6 @@ namespace Software_Base_de_Dados
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
-
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             button1.Select();
