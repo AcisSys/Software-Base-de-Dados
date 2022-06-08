@@ -105,7 +105,7 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.Text = "sfDataGrid1";
             this.sfDataGrid1.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.SfDataGrid1_QueryRowStyle);
             this.sfDataGrid1.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.SfDataGrid1_SelectionChanged);
-            this.sfDataGrid1.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.sfDataGrid1_CellDoubleClick);
+            this.sfDataGrid1.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.SfDataGrid1_CellDoubleClick);
             this.sfDataGrid1.DoubleClick += new System.EventHandler(this.SfDataGrid1_DoubleClick);
             // 
             // Exportar

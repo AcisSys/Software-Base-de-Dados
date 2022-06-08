@@ -344,7 +344,7 @@ namespace Software_Base_de_Dados
                 subtasks.ShowDialog();
             }
         }
-        private void sfDataGrid1_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
+        private void SfDataGrid1_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
         {
             if (Tabela == "tab_tasks")
             {
