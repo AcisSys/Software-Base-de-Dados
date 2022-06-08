@@ -315,11 +315,9 @@ namespace Software_Base_de_Dados
                         workBook.Version = ExcelVersion.Excel2013;
                     workBook.SaveAs(stream);
                 }
-                //Message box confirmation to view the created workbook.
                 if (MessageBox.Show(this.sfDataGrid1, "Quer guardar esta exportação?", "Exportação Excel",
                                     MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    //Launching the Excel file using the default Application.[MS Excel Or Free ExcelViewer]
                     System.Diagnostics.Process.Start(saveFilterDialog.FileName);
                 }
             }
