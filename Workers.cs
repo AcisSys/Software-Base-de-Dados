@@ -24,7 +24,6 @@ namespace Software_Base_de_Dados
         string querry;
         private void Workers_Load(object sender, EventArgs e)
         {
-            // verifica conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -40,7 +39,6 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-                // ID é automatico
                 querry = "SELECT MAX (ID) FROM tab_workers";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
@@ -59,7 +57,6 @@ namespace Software_Base_de_Dados
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            // Verifica o preenchimento de todos os campos
             if (maskedTextBox2.Text == null || maskedTextBox4.Text == null || sfComboBox1.SelectedItem == null
                 || maskedTextBox5.Text == null)
             {
@@ -69,7 +66,6 @@ namespace Software_Base_de_Dados
             {
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
-                // querry e parametros para adicionar dados
                 {
                     querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod)" +
                            "VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
@@ -82,7 +78,6 @@ namespace Software_Base_de_Dados
                 }
                 else
                 {
-                    // querry e parametros para modificar dados
                     querry = "UPDATE tab_workers  SET Nome = @Nome," +
                            " IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
@@ -91,7 +86,6 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;
                     oleDbCommand.Parameters.Add("@Cod", OleDbType.Integer).Value = maskedTextBox5.Text;
                 }
-                // Executa Comando e envia feedback ao utilizador (erro ou sucesso)
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();

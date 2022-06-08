@@ -55,7 +55,6 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            // Verifica a conexao de todos os campos
             if (maskedTextBox2.Text == "")
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
@@ -63,7 +62,6 @@ namespace Software_Base_de_Dados
             else
             {
                 OleDbCommand oleDbCommand;
-                // Querry e parametros para adicionar dados
                 if (Tipo == "Add")
                 {
                     querry = "INSERT INTO tab_teams (ID, Descricao)" +
@@ -74,7 +72,6 @@ namespace Software_Base_de_Dados
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text;
 
                 }
-                // Querry e parametros para modificar dados
                 else
                 {
                     querry = "UPDATE tab_teams  SET Descricao = @Descricao where ID = "
@@ -85,7 +82,6 @@ namespace Software_Base_de_Dados
                 }
                 try
                 {
-                    //Executa comando e envia feedback ao user
                     oleDbCommand.ExecuteNonQuery();
                 }
                 catch (Exception ex)

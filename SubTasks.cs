@@ -58,14 +58,12 @@ namespace Software_Base_de_Dados
                 sfToolTip1.Show("Verifique todos os campos antes de modificar dados.");
                 return;
             }
-            // string para atualizar dados
             string querry = "UPDATE tab_subtasks VALUES IDTask = @IDTask, Desc = @Desc, Type = @Type" +
                      "WHERE ID =" + maskedTextBox1.Text;
             OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
             oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
             oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
             oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
-            // tenta executar o comando e envia mensagem de erro / sucesso
             try
             {
                 oleDbCommand.ExecuteNonQuery();

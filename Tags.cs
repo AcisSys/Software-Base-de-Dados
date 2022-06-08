@@ -18,7 +18,7 @@ namespace Software_Base_de_Dados
         public bool Taken { get; set; }
         string querry;
         private void Tags_Load(object sender, EventArgs e)
-        {// Verifica conexao
+        {
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -34,7 +34,6 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-                // ID é automatico
                 querry = "SELECT MAX (ID) FROM tab_tags";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
@@ -53,7 +52,6 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            // Verifica o preenchimento de todos os campos
             if (int.TryParse(maskedTextBox2.Text, out _) == false)
             {
                 sfToolTip1.Show("Verifique se todos os campos estão \ncorretos antes de validar dados!");
@@ -61,7 +59,6 @@ namespace Software_Base_de_Dados
             else
             {
                 OleDbCommand oleDbCommand;
-                // querry para inserir dados
                 if (Tipo == "Add")
                 {
                     querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
@@ -72,7 +69,6 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@Taken",
                         OleDbType.LongVarChar).Value = "Não";
                 }
-                // querry para modificar dados
                 else
                 {
                     querry = "UPDATE tab_tags  SET Ref = @Ref," +
@@ -88,7 +84,6 @@ namespace Software_Base_de_Dados
                         oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
                     }
                 }
-                // tenta executar o comando e envia mensagem de erro / sucesso
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
