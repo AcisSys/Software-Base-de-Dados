@@ -20,7 +20,6 @@ namespace Software_Base_de_Dados
         string querry;
         private void Places_Load(object sender, EventArgs e)
         {
-            // verifica conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -35,7 +34,6 @@ namespace Software_Base_de_Dados
                 }
             }
             if (Tipo == "Add")
-            // Querry para adicionar dados
             {
                 querry = "SELECT MAX (ID) FROM tab_places";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
@@ -57,7 +55,6 @@ namespace Software_Base_de_Dados
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            // Verifica o preenchimento de todos os campos
             if (maskedTextBox2.Text == "" || maskedTextBox3.Text == "" || maskedTextBox4.Text == "")
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
@@ -65,7 +62,6 @@ namespace Software_Base_de_Dados
             else
             {
                 OleDbCommand oleDbCommand;
-                // Querry para adicionar dados
                 if (Tipo == "Add")
                 {
                     querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
@@ -77,7 +73,6 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }
-                // Querry para modificar dados
                 else
                 {
                     querry = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
@@ -88,7 +83,6 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }
-                // Tenta executar o comando e envia feedback ao user
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();

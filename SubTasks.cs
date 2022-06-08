@@ -22,7 +22,6 @@ namespace Software_Base_de_Dados
         public string Type { get; set; }
         private void Subtasks_Load(object sender, EventArgs e)
         {
-            // Verifica conexao
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -44,7 +43,6 @@ namespace Software_Base_de_Dados
             maskedTextBox3.Enabled = false;
             string querry;
             DataTable dataTable;
-            // Dados para ComboBox2
             querry = "SELECT DISTINCT Type FROM tab_subtasks";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
