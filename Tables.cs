@@ -303,7 +303,7 @@ namespace Software_Base_de_Dados
                 FilterIndex = 2,
                 Filter = "Excel 97 to 2003 Files(*.xls)|*.xls|Excel 2007 to 2010 Files(*.xlsx)|*.xlsx|Excel 2013 File(*.xlsx)|*.xlsx"
             };
-            if (saveFilterDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (saveFilterDialog.ShowDialog() == DialogResult.OK)
             {
                 using (Stream stream = saveFilterDialog.OpenFile())
                 {
