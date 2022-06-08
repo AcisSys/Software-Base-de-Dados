@@ -116,13 +116,13 @@ namespace Software_Base_de_Dados
                 else
                 {
                     querry = "UPDATE tab_tasks  Descricao = @Descricao, IDPlace = @IDPlace, Active = @Active, RefTag = @RefTag" +
-                       "WHERE ID = " + maskedTextBox1.Text;
+                       " WHERE ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     // Recebe os dados
-                    oleDbCommand.Parameters.Add("@Descricao", OleDbType.Integer).Value = maskedTextBox2.Text;
-                    oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
+                    oleDbCommand.Parameters.Add("@Descricao", OleDbType.Integer).Value = int.Parse(maskedTextBox2.Text);
+                    oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = int.Parse(sfComboBox1.Text);
                     oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
-                    oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
+                    oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = int.Parse(sfComboBox2.Text);
                 }
                 // Executa o Comando
                 // Envia mensagem de erro / sucesso
