@@ -10,7 +10,7 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        readonly OleDbConnection connection;
+        OleDbConnection connection= new OleDbConnection(Tables.Caminho);
         OleDbCommand oleDbCommand;
         DataSet dset = new DataSet();
         OleDbDataAdapter adapter;
@@ -26,6 +26,7 @@ namespace Software_Base_de_Dados
             {
                 try
                 {
+                    connection.ConnectionString = Tables.Caminho;
                     connection.Open();
                 }
                 catch (Exception ex)
