@@ -43,11 +43,9 @@ namespace Software_Base_de_Dados
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Enabled = false;
-
             querry = "SELECT DISTINCT Type FROM tab_subtasks";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
-            
             maskedTextBox3.Text = IDTask.ToString();
             button1.Select();
         }
