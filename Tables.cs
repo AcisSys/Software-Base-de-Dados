@@ -282,7 +282,6 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                
                 subtasks.IDTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
             }
