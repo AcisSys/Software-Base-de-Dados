@@ -15,6 +15,7 @@ namespace Software_Base_de_Dados
         string Provid;
         string DSource;
         string Password;
+        string decryptedString3;
         private void Button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == "")
@@ -29,6 +30,7 @@ namespace Software_Base_de_Dados
                 {
                     Provid = textBox1.Text;
                     DSource = textBox2.Text;
+                    textBox3.Text = decryptedString3;
                     Password = textBox3.Text;
                     var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provider = " + encryptedString + ";");
@@ -87,7 +89,7 @@ namespace Software_Base_de_Dados
                     textBox1.Text = decryptedString;
                     var decryptedString2 = AesOperation.DecryptString(key, DSource.Substring(14, DSource.Length - 15));
                     textBox2.Text = decryptedString2;
-                    var decryptedString3 = AesOperation.DecryptString(key, Password.Substring(30, Password.Length - 30));
+                     decryptedString3 = AesOperation.DecryptString(key, Password.Substring(30, Password.Length - 30));
                     textBox3.Text = decryptedString3;
                 }
             }
