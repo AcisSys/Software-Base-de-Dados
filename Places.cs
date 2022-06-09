@@ -9,7 +9,7 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        public readonly OleDbConnection connection;
+        readonly OleDbConnection connection;
         OleDbCommand oleDbCommand;
         public string Tipo { get; set; }
         public int ID { get; set; }

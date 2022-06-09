@@ -116,5 +116,10 @@ namespace Software_Base_de_Dados
         {
             sfToolTip1.Hide();
         }
+
+        private void ToolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

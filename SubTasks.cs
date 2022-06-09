@@ -10,7 +10,7 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        public readonly OleDbConnection connection;
+        readonly OleDbConnection connection;
         OleDbCommand oleDbCommand;
         DataSet dset = new DataSet();
         OleDbDataAdapter adapter;
