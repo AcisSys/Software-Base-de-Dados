@@ -84,13 +84,13 @@ namespace Software_Base_de_Dados
                     querry = "SELECT ID FROM tab_tasks WHERE RefTag = " + maskedTextBox2.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     string taken = Convert.ToString (oleDbCommand.ExecuteScalar());
-                    if (taken != null)
+                    if (taken != "")
                     {
-                        taken = "Não";
+                        taken = "Sim";
                     }
                     else
                     {
-                        taken = "sim";
+                        taken = "Não";
                     }
 
 
