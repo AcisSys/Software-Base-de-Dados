@@ -13,7 +13,7 @@ namespace Software_Base_de_Dados
          readonly OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         public string Tipo { get; set; }
         public int ID { get; set; }
-        public string Ref { get; set; }
+        public int Ref { get; set; }
         public bool Taken { get; set; }
         string querry;
         private void Tags_Load(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace Software_Base_de_Dados
             else
             {
                 maskedTextBox1.Text = ID.ToString();
-                maskedTextBox2.Text = Ref;
+                maskedTextBox2.Text = Ref.ToString();
             }
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;

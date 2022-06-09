@@ -277,20 +277,12 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tags")
             {
-                tags.Ref = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                tags.Ref = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
             }
             else
             {
-                tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                tags.Ref = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].ToString();
-                if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] == "Sim")
-                {
-                    tags.Taken = true;
-                }
-                else if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] == "Não")
-                {
-                    tags.Taken = false;
-                }
+                
                 subtasks.IDTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
             }
