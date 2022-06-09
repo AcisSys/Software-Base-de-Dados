@@ -13,7 +13,7 @@ namespace Software_Base_de_Dados
          readonly OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         public string Tipo { get; set; }
         public int ID { get; set; }
-        public int Ref { get; set; }
+        public float Ref { get; set; }
         public bool Taken { get; set; }
         string querry;
         private void Tags_Load(object sender, EventArgs e)
@@ -81,9 +81,9 @@ namespace Software_Base_de_Dados
 
                     //-----------------------------------------
 
-                    querry = "SELECT * FROM tab_tasks WHERE RefTag = '" + Ref + "'";
+                    querry = "SELECT ID FROM tab_tasks WHERE RefTag = " + maskedTextBox2.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
-                    string taken = (string)oleDbCommand.ExecuteScalar();
+                    string taken = Convert.ToString (oleDbCommand.ExecuteScalar());
                     if (taken != null)
                     {
                         taken = "Não";

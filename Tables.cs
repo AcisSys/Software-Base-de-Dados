@@ -278,7 +278,7 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_tags")
             {
                 tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                tags.Ref = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                tags.Ref = Convert.ToInt32(((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1]);
             }
             else
             {
