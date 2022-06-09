@@ -53,21 +53,6 @@ namespace Software_Base_de_Dados
 
 
 
-            //-----------------------------------------
-
-
-
-
-            //--------------------------------------
-
-
-
-
-
-
-
-
-
             if (int.TryParse(maskedTextBox2.Text, out _) == false)
             {
                 sfToolTip1.Show("Verifique se todos os campos estão \ncorretos antes de validar dados!");
@@ -87,6 +72,27 @@ namespace Software_Base_de_Dados
                 }
                 else
                 {
+
+
+
+
+
+
+
+                    //-----------------------------------------
+
+                    querry = "SELECT * FROM tab_tasks WHERE RefTag = ";
+
+
+                    //--------------------------------------
+
+
+
+
+
+
+
+
                     querry = "UPDATE tab_tags  SET Ref = @Ref," +
                        " taken = @taken where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
