@@ -275,6 +275,10 @@ namespace Software_Base_de_Dados
             {
                 teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             }
+            else if (Tabela == "tab_tags")
+            {
+                tags.Ref = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+            }
             else
             {
                 tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
@@ -363,7 +367,7 @@ namespace Software_Base_de_Dados
 
         }
 
-        private void sfDataGrid1_Click(object sender, EventArgs e)
+        private void SfDataGrid1_Click(object sender, EventArgs e)
         {
 
         }

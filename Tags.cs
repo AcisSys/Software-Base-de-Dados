@@ -81,7 +81,17 @@ namespace Software_Base_de_Dados
 
                     //-----------------------------------------
 
-                    querry = "SELECT * FROM tab_tasks WHERE RefTag = ";
+                    querry = "SELECT * FROM tab_tasks WHERE RefTag = '" + Ref + "'";
+                    oleDbCommand = new OleDbCommand(querry, connection);
+                    string taken = (string)oleDbCommand.ExecuteScalar();
+                    if (taken != null)
+                    {
+                        taken = "Não";
+                    }
+                    else
+                    {
+                        taken = "sim";
+                    }
 
 
                     //--------------------------------------
@@ -99,11 +109,11 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
                     if (Taken == true)
                     {
-                        oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Sim";
+                        oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = taken;
                     }
                     else
                     {
-                        oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
+                        oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = taken;
                     }
                 }
                 try
