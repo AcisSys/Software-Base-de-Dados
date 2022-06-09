@@ -35,7 +35,7 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             {
                 querry = "SELECT MAX (ID) FROM tab_places";
-                 oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();

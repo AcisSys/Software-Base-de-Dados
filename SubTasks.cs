@@ -10,13 +10,11 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        
         public readonly OleDbConnection connection;
         OleDbCommand oleDbCommand;
         DataSet dset = new DataSet();
         OleDbDataAdapter adapter;
         string querry;
-        
         public string Tipo { get; set; }
         public int ID { get; set; }
         public int IDTask { get; set; }
@@ -58,7 +56,7 @@ namespace Software_Base_de_Dados
             }
             string querry = "UPDATE tab_subtasks VALUES IDTask = @IDTask, Desc = @Desc, Type = @Type" +
                      "WHERE ID =" + maskedTextBox1.Text;
-             oleDbCommand = new OleDbCommand(querry, connection);
+            oleDbCommand = new OleDbCommand(querry, connection);
             oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
             oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
             oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;

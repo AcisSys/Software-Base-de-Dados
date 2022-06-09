@@ -95,7 +95,7 @@ namespace Software_Base_de_Dados
             {
                 querry = "SELECT * FROM " + Tabela;
                 dset.Reset();
-                adapter  = new OleDbDataAdapter(querry, connection);
+                adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
             }
