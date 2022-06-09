@@ -20,7 +20,7 @@ namespace Software_Base_de_Dados
         string querry;
         private void Workers_Load(object sender, EventArgs e)
         {
-            if (connection.State == ConnectionState.Closed)
+            if (connection.State == ConnectionState.Closed) // Erro aqui
             {
                 try
                 {
