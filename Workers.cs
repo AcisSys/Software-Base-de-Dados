@@ -44,6 +44,7 @@ namespace Software_Base_de_Dados
             else
             {
                 maskedTextBox1.Text = ID.ToString();
+                maskedTextBox2.Text = Name;
                 maskedTextBox4.Text = Img;
                 maskedTextBox5.Text = Cod;
             }
