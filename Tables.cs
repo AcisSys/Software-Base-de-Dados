@@ -277,11 +277,13 @@ namespace Software_Base_de_Dados
                 places.X = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
                 places.Y = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
+            
             else if (Tabela == "tab_tasks")
             {
+            /*
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
-                /*
+               
             if ()
             string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
             querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
@@ -297,7 +299,7 @@ namespace Software_Base_de_Dados
                 
                  * FALTA IDEquipa e IMAGEM
                  
-                 */
+            */
                 workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
             else if (Tabela == "tab_teams")
