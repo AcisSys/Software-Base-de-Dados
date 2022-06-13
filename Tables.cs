@@ -15,6 +15,16 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
+        private void SfDataGrid1_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
+        {
+            if (e.RowType == RowType.DefaultRow)
+            {
+                if (e.RowIndex % 2 == 0)
+                    e.Style.BackColor = Color.WhiteSmoke;
+                else
+                    e.Style.BackColor = Color.White;
+            }
+        }
         public static string Caminho { get; set; }
         public readonly OleDbConnection connection = new OleDbConnection(Caminho);
         Agend agend = new Agend();
@@ -277,8 +287,8 @@ namespace Software_Base_de_Dados
                                 querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
                                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                                 tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
-                //tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
-                // tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
+                tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
+                 tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
             }
             else if (Tabela == "tab_workers")
             {
@@ -339,16 +349,7 @@ namespace Software_Base_de_Dados
                 }
             }
         }
-        private void SfDataGrid1_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
-        {
-            if (e.RowType == RowType.DefaultRow)
-            {
-                if (e.RowIndex % 2 == 0)
-                    e.Style.BackColor = Color.WhiteSmoke;
-                else
-                    e.Style.BackColor = Color.White;
-            }
-        }
+       
         private void SfDataGrid1_DoubleClick(object sender, EventArgs e)
         {
             if (Tabela == "tab_tasks")

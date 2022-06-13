@@ -51,8 +51,6 @@ namespace Software_Base_de_Dados
         private void Button1_Click(object sender, EventArgs e)
         {
 
-
-
             if (int.TryParse(maskedTextBox2.Text, out _) == false)
             {
                 sfToolTip1.Show("Verifique se todos os campos estão \ncorretos antes de validar dados!");
@@ -72,15 +70,6 @@ namespace Software_Base_de_Dados
                 }
                 else
                 {
-
-
-
-
-
-
-
-                    //-----------------------------------------
-
                     querry = "SELECT ID FROM tab_tasks WHERE RefTag = " + maskedTextBox2.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     string taken = Convert.ToString(oleDbCommand.ExecuteScalar());
@@ -92,17 +81,6 @@ namespace Software_Base_de_Dados
                     {
                         taken = "Não";
                     }
-
-
-                    //--------------------------------------
-
-
-
-
-
-
-
-
                     querry = "UPDATE tab_tags  SET Ref = @Ref," +
                        " taken = @taken where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
