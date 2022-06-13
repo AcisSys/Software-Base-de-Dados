@@ -97,7 +97,6 @@ namespace Software_Base_de_Dados
                     MessageBoxIcon.Information);
             }
         }
-
         private void Button1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();
