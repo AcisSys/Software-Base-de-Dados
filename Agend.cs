@@ -45,13 +45,13 @@ namespace Software_Base_de_Dados
             else
             {
                 maskedTextBox1.Text = Id.ToString();
-                querry = "SELECT * FROM tab_teams";
+                querry = "SELECT ID FROM tab_teams";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset, "idteam");
                 DataTable dataTable = dset.Tables["idteam"];
                 sfComboBox1.DataSource = dataTable;
                 sfComboBox1.DisplayMember = "ID";
-                querry = "SELECT * FROM tab_tasks";
+                querry = "SELECT ID FROM tab_tasks";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset, "idtask");
                 dataTable = dset.Tables["idtask"];

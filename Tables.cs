@@ -272,6 +272,8 @@ namespace Software_Base_de_Dados
             if (Tabela == "tab_agend")
             {
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                agend.Idequipa = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0].ToString();
+                agend.Idtask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0].ToString();
             }
             else if (Tabela == "tab_places")
             {
