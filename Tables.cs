@@ -92,6 +92,9 @@ namespace Software_Base_de_Dados
                 dadapter.Fill(dt);
                 sfDataGrid1.DataSource = null;
                 sfDataGrid1.DataSource = dt;
+
+
+
             }
             else if (Tabela == "tab_tags")
             {
@@ -291,11 +294,6 @@ namespace Software_Base_de_Dados
             tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
             tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
             }
-            else if (Tabela == "tab_workers")
-            {
-                workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                 * FALTA IDEquipa e IMAGEM
             */
                 workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
@@ -308,6 +306,15 @@ namespace Software_Base_de_Dados
             {
                 tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 tags.Ref = Convert.ToInt32(((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1]);
+            }
+            else if (Tabela == "tab_workers")
+            {
+                workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4] + "'";
+                //workers.Cod = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
+                OleDbCommand command = new OleDbCommand(querry, connection);
+                workers.IDEquipa = command.ExecuteScalar().ToString();
             }
             else
             {
