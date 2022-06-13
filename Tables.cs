@@ -275,7 +275,7 @@ namespace Software_Base_de_Dados
                 querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1] + "'";
                 OleDbCommand command = new OleDbCommand(querry, connection);
                 agend.Idequipa = command.ExecuteScalar().ToString();
-               querry = "SELECT ID FROM tab_tasks WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
+                querry = "SELECT ID FROM tab_tasks WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
                 OleDbCommand ocommand = new OleDbCommand(querry, connection);
                 agend.Idtask = ocommand.ExecuteScalar().ToString();
             }
@@ -288,19 +288,20 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tasks")
             {
-                /*
-                    tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                    tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
 
-                if ()
-                string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
+                tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
+                tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
+                /*
+                if not null 
+                    string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
-                tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
-                tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
-                }
-                */
+                
+            }
+            */
             }
             else if (Tabela == "tab_teams")
             {
