@@ -112,7 +112,7 @@ namespace Software_Base_de_Dados
             this.toolStrip1.Size = new System.Drawing.Size(345, 25);
             this.toolStrip1.TabIndex = 11;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolStrip1_ItemClicked);
+           
             // 
             // toolStripButton1
             // 
