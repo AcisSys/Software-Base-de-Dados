@@ -70,13 +70,36 @@ namespace Software_Base_de_Dados
                 sfComboBox1.DataSource = dtClone;
                 sfComboBox1.DisplayMember = "ID";
                 sfComboBox1.Text = Idequipa;
-                DataTable dataTable1;
+
+
+                /*
+                 * 
+                 */
+
                 querry = "SELECT ID FROM tab_tasks";
                 adapter = new OleDbDataAdapter(querry, connection);
-                adapter.Fill(dset, "type");
-                dataTable1 = dset.Tables["type"];
-                sfComboBox2.DataSource = dataTable1;
-                sfComboBox2.DisplayMember = "Type";
+                adapter.Fill(dset, "idtas");
+                DataTable dataTable1 = dset.Tables["idtas"];
+                /*
+                * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
+                */
+                DataTable dtClone1 = dataTable1.Clone(); //just copy structure, no data
+                for (int a = 0; a < dtClone.Columns.Count; a++)
+                {
+                    if (dtClone1.Columns[a].DataType != typeof(string))
+                        dtClone1.Columns[a].DataType = typeof(string);
+                }
+
+                foreach (DataRow dr in dataTable1.Rows)
+                {
+                    dtClone1.ImportRow(dr);
+                }
+                /*
+                 * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
+                 */
+                
+                sfComboBox2.DataSource = dtClone1;
+                sfComboBox2.DisplayMember = "idtas";
                 sfComboBox2.Text = Idtask;
             }
             maskedTextBox1.Enabled = false;
