@@ -220,7 +220,6 @@ namespace Software_Base_de_Dados
                 //querry = "UPDATE tab_tasks SET Active = 'Não' WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 //oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand = new OleDbCommand();
-
             }
             else
             {
@@ -275,29 +274,9 @@ namespace Software_Base_de_Dados
                 /*
                                 if ()
                                     string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-
-
-
-
-
-
                                 querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
                                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                                 tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
-
-
-
-
-
-
-
-
-
-
-                                */
-
-
-
                 //tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
                 // tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
             }
@@ -305,35 +284,11 @@ namespace Software_Base_de_Dados
             {
                 workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-
-
-
-
-
-
-
-
-
-
-
-
+                */
                 /*
                  * FALTA IDEquipa e IMAGEM
                  * 
                  */
-
-
-
-
-
-
-
-
-
-
-
-
-
                 workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
             else if (Tabela == "tab_teams")
@@ -418,15 +373,6 @@ namespace Software_Base_de_Dados
                 }
                 subtasks.ShowDialog();
             }
-        }
-        private void Tables_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SfDataGrid1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
