@@ -38,16 +38,17 @@ namespace Software_Base_de_Dados
             button1.Text = "Modificar";
             maskedTextBox1.Text = ID.ToString();
             maskedTextBox2.Text = Desc;
-            sfComboBox2.Text = Type;
+            
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Enabled = false;
             querry = "SELECT DISTINCT Type FROM tab_subtasks";
-            DataTable dataTable;
+            
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
-            dataTable = dset.Tables["type"];
+            DataTable dataTable = dset.Tables["type"];
             sfComboBox2.DataSource = dataTable;
+            sfComboBox2.DisplayMember = Type;
             maskedTextBox3.Text = IDTask.ToString();
             button1.Select();
         }
