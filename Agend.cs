@@ -45,11 +45,22 @@ namespace Software_Base_de_Dados
             else
             {
                 maskedTextBox1.Text = Id.ToString();
-                querry = "SELECT ID FROM tab_teams" ;
+                querry = "SELECT ID FROM tab_teams";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset, "idteam");
                 DataTable dataTable = dset.Tables["idteam"];
-                sfComboBox1.DataSource = dataTable;
+                DataTable dtClone = dataTable.Clone(); //just copy structure, no data
+                for (int i = 0; i < dtClone.Columns.Count; i++)
+                {
+                    if (dtClone.Columns[i].DataType != typeof(string))
+                        dtClone.Columns[i].DataType = typeof(string);
+                }
+
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    dtClone.ImportRow(dr);
+                }
+                sfComboBox1.DataSource = dtClone;
                 sfComboBox1.DisplayMember = "ID";
                 sfComboBox1.Text = Idequipa;
                 DataTable dataTable1;
@@ -57,6 +68,7 @@ namespace Software_Base_de_Dados
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset, "type");
                 dataTable1 = dset.Tables["type"];
+
                 sfComboBox2.DataSource = dataTable1;
                 sfComboBox2.DisplayMember = "Type";
                 sfComboBox2.Text = Idtask;
