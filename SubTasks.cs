@@ -43,8 +43,11 @@ namespace Software_Base_de_Dados
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Enabled = false;
             querry = "SELECT DISTINCT Type FROM tab_subtasks";
+            DataTable dataTable;
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
+            dataTable = dset.Tables["type"];
+            sfComboBox2.DataSource = dataTable;
             maskedTextBox3.Text = IDTask.ToString();
             button1.Select();
         }

@@ -71,7 +71,7 @@ namespace Software_Base_de_Dados
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(215, 36);
+            this.label3.Location = new System.Drawing.Point(215, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 21);
             this.label3.TabIndex = 6;
@@ -81,7 +81,7 @@ namespace Software_Base_de_Dados
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(297, 34);
+            this.label4.Location = new System.Drawing.Point(297, 38);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(22, 21);
             this.label4.TabIndex = 7;
@@ -103,14 +103,14 @@ namespace Software_Base_de_Dados
             // 
             // maskedTextBox3
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(243, 36);
+            this.maskedTextBox3.Location = new System.Drawing.Point(243, 38);
             this.maskedTextBox3.Name = "maskedTextBox3";
             this.maskedTextBox3.Size = new System.Drawing.Size(48, 20);
             this.maskedTextBox3.TabIndex = 10;
             // 
             // maskedTextBox4
             // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(325, 39);
+            this.maskedTextBox4.Location = new System.Drawing.Point(325, 38);
             this.maskedTextBox4.Name = "maskedTextBox4";
             this.maskedTextBox4.Size = new System.Drawing.Size(64, 20);
             this.maskedTextBox4.TabIndex = 11;

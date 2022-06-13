@@ -262,6 +262,9 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_places")
             {
                 places.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                places.Localizacao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                places.X = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
+                places.Y = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
             else if (Tabela == "tab_tasks")
             {
@@ -343,7 +346,7 @@ namespace Software_Base_de_Dados
                 string querry;
                 if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] != "")
                 {
-                    querry = "SELECT ID FROM tab_subtasks WHERE IDTask = " + tasks.ID + " AND Desc = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
+                    querry = "SELECT ID FROM tab_subtasks WHERE IDTask = " + tasks.ID + " AND Desc = \"" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "\"";
                     OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                     subtasks.ID = (int)oleDbCommand.ExecuteScalar();
                     subtasks.IDTask = tasks.ID;
