@@ -47,7 +47,6 @@ namespace Software_Base_de_Dados
             else
             {
                 maskedTextBox1.Text = ID.ToString();
-
             }
             maskedTextBox1.ReadOnly = true;
             maskedTextBox2.Text = Name;
@@ -68,7 +67,6 @@ namespace Software_Base_de_Dados
                 if (dtClone.Columns[i].DataType != typeof(string))
                     dtClone.Columns[i].DataType = typeof(string);
             }
-
             foreach (DataRow dr in dataTable.Rows)
             {
                 dtClone.ImportRow(dr);
