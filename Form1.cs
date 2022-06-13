@@ -6,7 +6,7 @@ namespace Software_Base_de_Dados
 {
     public partial class Form1 : Form
     {
-        // Nao alterar a chave ou qualquer código relacionado
+        // Nao alterar a chave ou qualquer código relacionado á encriptação de dados
         readonly Title title = new Title();
         readonly Tables table = new Tables();
         Conexao conexao = new Conexao();
