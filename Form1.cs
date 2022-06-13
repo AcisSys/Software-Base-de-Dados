@@ -75,15 +75,6 @@ namespace Software_Base_de_Dados
             panel1.Controls.Add(table);
             table.Dock = DockStyle.Fill;
         }
-        private void SubTasks_Button_Click(object sender, EventArgs e)
-        {
-            tabela = "tab_subtasks";
-            table.Tabela = tabela;
-            table.UpdateTable();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(table);
-            table.Dock = DockStyle.Fill;
-        }
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {
             conexao.ShowDialog();
