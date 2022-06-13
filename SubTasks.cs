@@ -49,15 +49,14 @@ namespace Software_Base_de_Dados
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
             /*
-                * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
-                */
+            * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
+            */
             DataTable dtClone = dataTable.Clone(); //just copy structure, no data
             for (int i = 0; i < dtClone.Columns.Count; i++)
             {
                 if (dtClone.Columns[i].DataType != typeof(string))
                     dtClone.Columns[i].DataType = typeof(string);
             }
-
             foreach (DataRow dr in dataTable.Rows)
             {
                 dtClone.ImportRow(dr);
@@ -68,7 +67,6 @@ namespace Software_Base_de_Dados
             sfComboBox2.DataSource = dtClone;
             sfComboBox2.DisplayMember = "Type";
             sfComboBox2.Text = Type;
-
         }
         private void Button1_Click(object sender, EventArgs e)
         {
