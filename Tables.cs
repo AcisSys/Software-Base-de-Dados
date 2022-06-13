@@ -263,8 +263,8 @@ namespace Software_Base_de_Dados
             {
                 places.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 places.Localizacao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                places.X = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
-                places.Y = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
+                places.X = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
+                places.Y = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
             else if (Tabela == "tab_tasks")
             {

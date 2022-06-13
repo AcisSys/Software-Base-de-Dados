@@ -9,8 +9,8 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-       
-         readonly OleDbConnection connection = new OleDbConnection(Tables.Caminho);
+
+        readonly OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         public string Tipo { get; set; }
         public int ID { get; set; }
         public float Ref { get; set; }
@@ -83,7 +83,7 @@ namespace Software_Base_de_Dados
 
                     querry = "SELECT ID FROM tab_tasks WHERE RefTag = " + maskedTextBox2.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
-                    string taken = Convert.ToString (oleDbCommand.ExecuteScalar());
+                    string taken = Convert.ToString(oleDbCommand.ExecuteScalar());
                     if (taken != "")
                     {
                         taken = "Sim";
@@ -117,7 +117,7 @@ namespace Software_Base_de_Dados
                     }
                 }
                 try
-                 {
+                {
                     oleDbCommand.ExecuteNonQuery();
                 }
                 catch (Exception ex)

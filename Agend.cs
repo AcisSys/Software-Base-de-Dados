@@ -13,7 +13,7 @@ namespace Software_Base_de_Dados
         DataSet dset = new DataSet();
         OleDbDataAdapter adapter;
         string querry;
-        public readonly OleDbConnection connection;
+        OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         public string Tipo { get; set; }
         public int Id { get; set; }
         public string Idequipa { get; set; }

@@ -10,8 +10,8 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        
-         readonly OleDbConnection connection = new OleDbConnection(Tables.Caminho);
+
+        OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         DataSet dset = new DataSet();
         OleDbDataAdapter adapter;
         public string Tipo { get; set; }

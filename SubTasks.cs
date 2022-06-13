@@ -10,7 +10,7 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        OleDbConnection connection= new OleDbConnection(Tables.Caminho);
+        OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         OleDbCommand oleDbCommand;
         DataSet dset = new DataSet();
         OleDbDataAdapter adapter;
