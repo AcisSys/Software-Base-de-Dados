@@ -290,9 +290,17 @@ namespace Software_Base_de_Dados
                 tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
                 tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
                 tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
+                string checkc = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
+                if (checkc == "System.DBNull")
+                {
+                    string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                    querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
+                    OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                    tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
+                }
                 /*
                 if not null 
-                    string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
