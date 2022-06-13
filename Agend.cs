@@ -62,8 +62,6 @@ namespace Software_Base_de_Dados
             }
             maskedTextBox1.Enabled = false;
             maskedTextBox1.ReadOnly = true;
-           
-            
         }
         private void Button1_Click(object sender, EventArgs e)
         {
