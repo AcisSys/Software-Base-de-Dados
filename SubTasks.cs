@@ -42,15 +42,16 @@ namespace Software_Base_de_Dados
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Enabled = false;
-            querry = "SELECT DISTINCT Type FROM tab_subtasks";
             
-            adapter = new OleDbDataAdapter(querry, connection);
-            adapter.Fill(dset, "type");
-            DataTable dataTable = dset.Tables["type"];
-            sfComboBox2.DataSource = dataTable;
-            sfComboBox2.DisplayMember = Type;
             maskedTextBox3.Text = IDTask.ToString();
             button1.Select();
+            DataTable dataTable;
+            querry = "SELECT DISTINCT Type FROM tab_subtasks";
+            adapter = new OleDbDataAdapter(querry, connection);
+            adapter.Fill(dset, "type");
+            dataTable = dset.Tables["type"];
+            sfComboBox2.DataSource = dataTable;
+            sfComboBox2.DisplayMember = "Type";
         }
         private void Button1_Click(object sender, EventArgs e)
         {
