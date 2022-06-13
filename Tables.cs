@@ -272,8 +272,14 @@ namespace Software_Base_de_Dados
             if (Tabela == "tab_agend")
             {
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                agend.Idequipa = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].ToString();
-                agend.Idtask = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
+                querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4] + "'";
+                OleDbCommand command = new OleDbCommand(querry, connection);
+                agend.Idequipa = command.ExecuteScalar().ToString();
+                querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
+                 command = new OleDbCommand(querry, connection);
+                agend.Idtask = command.ExecuteScalar().ToString();
+
+
             }
             else if (Tabela == "tab_places")
             {
@@ -314,7 +320,6 @@ namespace Software_Base_de_Dados
                 workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
                 querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4] + "'";
-                //workers.Cod = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
                 OleDbCommand command = new OleDbCommand(querry, connection);
                 workers.IDEquipa = command.ExecuteScalar().ToString();
             }
