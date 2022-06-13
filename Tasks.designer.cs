@@ -176,7 +176,7 @@ namespace Software_Base_de_Dados
             this.MinimizeBox = false;
             this.Name = "Tasks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Adicionar / Remover Tarefas";
+            this.Text = "Adicionar / Modificar Tarefas";
             this.Load += new System.EventHandler(this.Tasks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).EndInit();

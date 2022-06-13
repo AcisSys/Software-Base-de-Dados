@@ -181,7 +181,7 @@ namespace Software_Base_de_Dados
             this.MinimizeBox = false;
             this.Name = "Workers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Adicionar / Remover Operadores";
+            this.Text = "Adicionar / Modificar Operadores";
             this.Load += new System.EventHandler(this.Workers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
             this.toolStrip1.ResumeLayout(false);

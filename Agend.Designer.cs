@@ -112,7 +112,6 @@ namespace Software_Base_de_Dados
             this.toolStrip1.Size = new System.Drawing.Size(345, 25);
             this.toolStrip1.TabIndex = 11;
             this.toolStrip1.Text = "toolStrip1";
-           
             // 
             // toolStripButton1
             // 
@@ -144,7 +143,7 @@ namespace Software_Base_de_Dados
             this.MinimizeBox = false;
             this.Name = "Agend";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Adicionar / Remover Programas";
+            this.Text = "Adicionar / Modificar Programas";
             this.Load += new System.EventHandler(this.Agend_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).EndInit();

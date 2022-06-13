@@ -115,7 +115,7 @@ namespace Software_Base_de_Dados
             this.MinimizeBox = false;
             this.Name = "Tags";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Adicionar / Remover Etiquetas";
+            this.Text = "Adicionar / Modificar Etiquetas";
             this.Load += new System.EventHandler(this.Tags_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

@@ -115,7 +115,7 @@ namespace Software_Base_de_Dados
             this.MinimizeBox = false;
             this.Name = "Teams";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Adicionar / Remover Equipas";
+            this.Text = "Adicionar / Modificar Equipas";
             this.Load += new System.EventHandler(this.Teams_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
