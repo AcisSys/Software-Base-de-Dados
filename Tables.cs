@@ -277,7 +277,6 @@ namespace Software_Base_de_Dados
                 places.X = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
                 places.Y = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
-            
             else if (Tabela == "tab_tasks")
             {
             /*
@@ -296,9 +295,7 @@ namespace Software_Base_de_Dados
             {
                 workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                
                  * FALTA IDEquipa e IMAGEM
-                 
             */
                 workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
