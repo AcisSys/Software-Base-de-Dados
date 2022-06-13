@@ -297,7 +297,6 @@ namespace Software_Base_de_Dados
                 tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
                 }
                 */
-                
             }
             else if (Tabela == "tab_teams")
             {
