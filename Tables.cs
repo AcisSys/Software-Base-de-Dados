@@ -298,14 +298,6 @@ namespace Software_Base_de_Dados
                     OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                     tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
                 }
-                /*
-                if not null 
-                string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
-            }
-            */
             }
             else if (Tabela == "tab_teams")
             {
