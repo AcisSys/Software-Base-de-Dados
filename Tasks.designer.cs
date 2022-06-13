@@ -75,9 +75,9 @@ namespace Software_Base_de_Dados
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label3.Location = new System.Drawing.Point(12, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 21);
+            this.label3.Size = new System.Drawing.Size(111, 21);
             this.label3.TabIndex = 2;
-            this.label3.Text = "ID Localizacao";
+            this.label3.Text = "ID Localizacao:";
             // 
             // label5
             // 
