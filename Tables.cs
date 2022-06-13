@@ -272,16 +272,16 @@ namespace Software_Base_de_Dados
                 tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
 
                 if ()
-                string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                    string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
 
 
 
 
 
 
-                querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc  + "\"";
+                querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                tasks.IDPlace = (string)oleDbCommand.ExecuteScalar().ToString();
+                tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
 
 
 
