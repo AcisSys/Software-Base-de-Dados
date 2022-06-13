@@ -38,11 +38,9 @@ namespace Software_Base_de_Dados
             button1.Text = "Modificar";
             maskedTextBox1.Text = ID.ToString();
             maskedTextBox2.Text = Desc;
-            
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Enabled = false;
-            
             maskedTextBox3.Text = IDTask.ToString();
             button1.Select();
             DataTable dataTable;
