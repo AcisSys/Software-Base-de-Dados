@@ -297,7 +297,7 @@ namespace Software_Base_de_Dados
                 tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
                 }
                 */
-                workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
+                
             }
             else if (Tabela == "tab_teams")
             {
@@ -313,6 +313,7 @@ namespace Software_Base_de_Dados
             {
                 workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
                 querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4] + "'";
                 //workers.Cod = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
                 OleDbCommand command = new OleDbCommand(querry, connection);
