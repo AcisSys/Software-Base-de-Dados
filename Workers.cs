@@ -11,6 +11,9 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
+        DataSet dset = new DataSet();
+        DataTable dataTable;
+        OleDbDataAdapter adapter;
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Nome { get; set; }
@@ -44,8 +47,6 @@ namespace Software_Base_de_Dados
             else
             {
                 maskedTextBox1.Text = ID.ToString();
-                
-                
 
             }
             maskedTextBox1.ReadOnly = true;
@@ -53,10 +54,9 @@ namespace Software_Base_de_Dados
             maskedTextBox4.Text = Img;
             maskedTextBox5.Text = Cod;
             maskedTextBox1.Enabled = false;
-            DataTable dataTable;
-            DataSet dset = new DataSet();
+            button1.Select();
             querry = "SELECT ID FROM tab_workers";
-            OleDbDataAdapter adapter = new OleDbDataAdapter(querry, connection);
+            adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
             sfComboBox1.DataSource = dataTable;
