@@ -10,7 +10,7 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        public readonly OleDbConnection connection;
+        readonly OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Nome { get; set; }
@@ -20,7 +20,7 @@ namespace Software_Base_de_Dados
         string querry;
         private void Workers_Load(object sender, EventArgs e)
         {
-            if (connection.State == ConnectionState.Closed) // Erro aqui
+            if (connection.State == ConnectionState.Closed)
             {
                 try
                 {
@@ -48,7 +48,7 @@ namespace Software_Base_de_Dados
                 maskedTextBox5.Text = Cod;
             }
             maskedTextBox1.ReadOnly = true;
-            maskedTextBox2.Select();
+            maskedTextBox2.Select(); // FALTA COMBOBOX PARA IDEQUIPA E RECEBAR DADOS
             maskedTextBox1.Enabled = false;
         }
         private void Button1_Click(object sender, EventArgs e)
