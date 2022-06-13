@@ -53,7 +53,7 @@ namespace Software_Base_de_Dados
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label1.Location = new System.Drawing.Point(88, 31);
+            this.label1.Location = new System.Drawing.Point(12, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 21);
             this.label1.TabIndex = 0;
@@ -63,7 +63,7 @@ namespace Software_Base_de_Dados
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(88, 57);
+            this.label2.Location = new System.Drawing.Point(12, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 21);
             this.label2.TabIndex = 1;
@@ -73,7 +73,7 @@ namespace Software_Base_de_Dados
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(88, 83);
+            this.label3.Location = new System.Drawing.Point(12, 83);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 21);
             this.label3.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace Software_Base_de_Dados
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label5.Location = new System.Drawing.Point(88, 108);
+            this.label5.Location = new System.Drawing.Point(239, 83);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 21);
             this.label5.TabIndex = 4;
@@ -91,23 +91,23 @@ namespace Software_Base_de_Dados
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(215, 31);
+            this.maskedTextBox1.Location = new System.Drawing.Point(126, 31);
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(107, 20);
+            this.maskedTextBox1.Size = new System.Drawing.Size(292, 20);
             this.maskedTextBox1.TabIndex = 5;
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(215, 57);
+            this.maskedTextBox2.Location = new System.Drawing.Point(126, 56);
             this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(107, 20);
+            this.maskedTextBox2.Size = new System.Drawing.Size(292, 20);
             this.maskedTextBox2.TabIndex = 6;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(215, 135);
+            this.checkBox1.Location = new System.Drawing.Point(126, 110);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(71, 25);
             this.checkBox1.TabIndex = 8;
@@ -117,7 +117,7 @@ namespace Software_Base_de_Dados
             // sfComboBox1
             // 
             this.sfComboBox1.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
-            this.sfComboBox1.Location = new System.Drawing.Point(215, 83);
+            this.sfComboBox1.Location = new System.Drawing.Point(126, 83);
             this.sfComboBox1.Name = "sfComboBox1";
             this.sfComboBox1.Size = new System.Drawing.Size(107, 21);
             this.sfComboBox1.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -126,7 +126,7 @@ namespace Software_Base_de_Dados
             // sfComboBox2
             // 
             this.sfComboBox2.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
-            this.sfComboBox2.Location = new System.Drawing.Point(215, 107);
+            this.sfComboBox2.Location = new System.Drawing.Point(311, 83);
             this.sfComboBox2.Name = "sfComboBox2";
             this.sfComboBox2.Size = new System.Drawing.Size(107, 22);
             this.sfComboBox2.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -137,9 +137,9 @@ namespace Software_Base_de_Dados
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Button1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 192);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 152);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(410, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(445, 25);
             this.toolStrip1.TabIndex = 13;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -160,7 +160,7 @@ namespace Software_Base_de_Dados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 217);
+            this.ClientSize = new System.Drawing.Size(445, 177);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.sfComboBox2);
             this.Controls.Add(this.sfComboBox1);
