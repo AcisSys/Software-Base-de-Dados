@@ -49,8 +49,8 @@ namespace Software_Base_de_Dados
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
             /*
-            * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
-            */
+             * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
+             */
             DataTable dtClone = dataTable.Clone(); //just copy structure, no data
             for (int i = 0; i < dtClone.Columns.Count; i++)
             {
