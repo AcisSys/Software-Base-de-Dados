@@ -349,7 +349,7 @@ namespace Software_Base_de_Dados
                 }
             }
         }
-       
+
         private void SfDataGrid1_DoubleClick(object sender, EventArgs e)
         {
             if (Tabela == "tab_tasks")
