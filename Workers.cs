@@ -44,26 +44,23 @@ namespace Software_Base_de_Dados
             else
             {
                 maskedTextBox1.Text = ID.ToString();
-                DataTable dataTable;
-                DataSet dset = new DataSet();
-                querry = "SELECT DISTINCT Type FROM tab_subtasks";
-                OleDbDataAdapter adapter = new OleDbDataAdapter(querry, connection);
-                adapter.Fill(dset, "type");
-                dataTable = dset.Tables["type"];
-                sfComboBox1.DataSource = dataTable;
-                sfComboBox1.DisplayMember = "Type";
-                sfComboBox1.Text = IDEquipa;
+                
+                
 
             }
             maskedTextBox1.ReadOnly = true;
             maskedTextBox2.Text = Name;
-            
             maskedTextBox4.Text = Img;
             maskedTextBox5.Text = Cod;
-            sfComboBox1.DisplayMember = IDEquipa;
-
-
             maskedTextBox1.Enabled = false;
+            DataTable dataTable;
+            DataSet dset = new DataSet();
+            querry = "SELECT ID FROM tab_workers";
+            OleDbDataAdapter adapter = new OleDbDataAdapter(querry, connection);
+            adapter.Fill(dset, "type");
+            dataTable = dset.Tables["type"];
+            sfComboBox1.DataSource = dataTable;
+            sfComboBox1.DisplayMember = "Type";
         }
         private void Button1_Click(object sender, EventArgs e)
         {
