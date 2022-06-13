@@ -96,7 +96,7 @@ namespace Software_Base_de_Dados
                 /*
                  * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
                  */
-                
+
                 sfComboBox2.DataSource = dtClone1;
                 sfComboBox2.Text = Idtask;
             }
