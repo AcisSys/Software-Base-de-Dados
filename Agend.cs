@@ -45,19 +45,20 @@ namespace Software_Base_de_Dados
             else
             {
                 maskedTextBox1.Text = Id.ToString();
-                querry = "SELECT ID FROM tab_teams";
+                querry = "SELECT ID FROM tab_teams" ;
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset, "idteam");
                 DataTable dataTable = dset.Tables["idteam"];
                 sfComboBox1.DataSource = dataTable;
                 sfComboBox1.DisplayMember = "ID";
+                sfComboBox1.Text = Idequipa;
+                DataTable dataTable1;
                 querry = "SELECT ID FROM tab_tasks";
                 adapter = new OleDbDataAdapter(querry, connection);
-                adapter.Fill(dset, "idtask");
-                dataTable = dset.Tables["idtask"];
-                sfComboBox2.DataSource = dataTable;
-                sfComboBox2.DisplayMember = "ID";
-                sfComboBox1.Text = Idequipa;
+                adapter.Fill(dset, "type");
+                dataTable1 = dset.Tables["type"];
+                sfComboBox2.DataSource = dataTable1;
+                sfComboBox2.DisplayMember = "Type";
                 sfComboBox2.Text = Idtask;
             }
             maskedTextBox1.Enabled = false;
