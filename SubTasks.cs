@@ -51,7 +51,7 @@ namespace Software_Base_de_Dados
             sfComboBox2.DataSource = dataTable;
             sfComboBox2.DisplayMember = "Type";
             sfComboBox2.Text = Type;
-           
+
         }
         private void Button1_Click(object sender, EventArgs e)
         {

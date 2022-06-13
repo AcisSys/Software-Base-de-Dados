@@ -272,8 +272,8 @@ namespace Software_Base_de_Dados
             if (Tabela == "tab_agend")
             {
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                agend.Idequipa = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0].ToString();
-                agend.Idtask = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0].ToString();
+                agend.Idequipa = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0].ToString();
+                agend.Idtask = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0].ToString();
             }
             else if (Tabela == "tab_places")
             {
@@ -284,19 +284,19 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tasks")
             {
-            /*
-                tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
-               
-            if ()
-            string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-            querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
-            OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-            tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
-            tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
-            tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
-            }
-            */
+                /*
+                    tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                    tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
+
+                if ()
+                string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
+                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
+                tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
+                tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
+                }
+                */
                 workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
             else if (Tabela == "tab_teams")
