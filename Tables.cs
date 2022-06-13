@@ -220,7 +220,7 @@ namespace Software_Base_de_Dados
                 //querry = "UPDATE tab_tasks SET Active = 'Não' WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 //oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand = new OleDbCommand();
-                ;
+
             }
             else
             {
@@ -272,18 +272,18 @@ namespace Software_Base_de_Dados
             {
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
-/*
-                if ()
-                    string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                /*
+                                if ()
+                                    string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
 
 
 
 
 
 
-                querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
+                                querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
+                                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                                tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
 
 
 
@@ -294,12 +294,12 @@ namespace Software_Base_de_Dados
 
 
 
-                */
+                                */
 
 
 
                 //tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
-               // tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
+                // tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
             }
             else if (Tabela == "tab_workers")
             {
@@ -334,7 +334,7 @@ namespace Software_Base_de_Dados
 
 
 
-                workers.Cod = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
+                workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
             else if (Tabela == "tab_teams")
             {

@@ -20,6 +20,7 @@ namespace Software_Base_de_Dados
         public string Idtask { get; set; }
         private void Agend_Load(object sender, EventArgs e)
         {
+            // verifica conexao
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -44,23 +45,25 @@ namespace Software_Base_de_Dados
             else
             {
                 maskedTextBox1.Text = Id.ToString();
+                querry = "SELECT * FROM tab_teams";
+                adapter = new OleDbDataAdapter(querry, connection);
+                adapter.Fill(dset, "idteam");
+                DataTable dataTable = dset.Tables["idteam"];
+                sfComboBox1.DataSource = dataTable;
+                sfComboBox1.DisplayMember = "ID";
+                querry = "SELECT * FROM tab_tasks";
+                adapter = new OleDbDataAdapter(querry, connection);
+                adapter.Fill(dset, "idtask");
+                dataTable = dset.Tables["idtask"];
+                sfComboBox2.DataSource = dataTable;
+                sfComboBox2.DisplayMember = "ID";
+                sfComboBox1.Text = Idequipa;
+                sfComboBox2.Text = Idtask;
             }
-            maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
-            querry = "SELECT * FROM tab_teams";
-            adapter = new OleDbDataAdapter(querry, connection);
-            adapter.Fill(dset, "idteam");
-            DataTable dataTable = dset.Tables["idteam"];
-            sfComboBox1.DataSource = dataTable;
-            sfComboBox1.DisplayMember = "ID";
-            querry = "SELECT * FROM tab_tasks";
-            adapter = new OleDbDataAdapter(querry, connection);
-            adapter.Fill(dset, "idtask");
-            dataTable = dset.Tables["idtask"];
-            sfComboBox2.DataSource = dataTable;
-            sfComboBox2.DisplayMember = "ID";
-            sfComboBox1.Text = Idequipa;
-            sfComboBox2.Text = Idtask;
+            maskedTextBox1.ReadOnly = true;
+           
+            
         }
         private void Button1_Click(object sender, EventArgs e)
         {
