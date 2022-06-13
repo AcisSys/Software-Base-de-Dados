@@ -217,8 +217,10 @@ namespace Software_Base_de_Dados
                 MessageBoxDefaultButton.Button2);
             if (Tabela == "tab_tasks")
             {
-                querry = "UPDATE tab_tasks SET Active = 'Não' WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                oleDbCommand = new OleDbCommand(querry, connection);
+                //querry = "UPDATE tab_tasks SET Active = 'Não' WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                //oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand();
+                ;
             }
             else
             {
