@@ -58,7 +58,7 @@ namespace Software_Base_de_Dados
                 sfToolTip1.Show("Verifique todos os campos antes de modificar dados.");
                 return;
             }
-            string querry = "UPDATE tab_subtasks VALUES IDTask = @IDTask, Desc = @Desc, Type = @Type" +
+            string querry = "UPDATE tab_subtasks SET IDTask = @IDTask, Desc = @Desc, Type = @Type" +
                      "WHERE ID =" + maskedTextBox1.Text;
             oleDbCommand = new OleDbCommand(querry, connection);
             oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
