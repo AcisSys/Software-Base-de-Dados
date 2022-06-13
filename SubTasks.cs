@@ -55,7 +55,9 @@ namespace Software_Base_de_Dados
             for (int i = 0; i < dtClone.Columns.Count; i++)
             {
                 if (dtClone.Columns[i].DataType != typeof(string))
+                {
                     dtClone.Columns[i].DataType = typeof(string);
+                }
             }
             foreach (DataRow dr in dataTable.Rows)
             {
