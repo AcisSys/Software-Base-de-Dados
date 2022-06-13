@@ -92,9 +92,6 @@ namespace Software_Base_de_Dados
                 dadapter.Fill(dt);
                 sfDataGrid1.DataSource = null;
                 sfDataGrid1.DataSource = dt;
-
-
-
             }
             else if (Tabela == "tab_tags")
             {
@@ -299,7 +296,6 @@ namespace Software_Base_de_Dados
                 querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
-                
             }
             */
             }
