@@ -68,14 +68,13 @@ namespace Software_Base_de_Dados
                  * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
                  */
                 sfComboBox1.DataSource = dtClone;
-                sfComboBox1.DisplayMember = "ID";
                 sfComboBox1.Text = Idequipa;
 
 
                 /*
                  * 
                  */
-
+                dset.Reset();
                 querry = "SELECT ID FROM tab_tasks";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset, "idtas");
@@ -90,16 +89,15 @@ namespace Software_Base_de_Dados
                         dtClone1.Columns[a].DataType = typeof(string);
                 }
 
-                foreach (DataRow dr in dataTable1.Rows)
+                foreach (DataRow da in dataTable1.Rows)
                 {
-                    dtClone1.ImportRow(dr);
+                    dtClone1.ImportRow(da);
                 }
                 /*
                  * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
                  */
                 
                 sfComboBox2.DataSource = dtClone1;
-                sfComboBox2.DisplayMember = "idtas";
                 sfComboBox2.Text = Idtask;
             }
             maskedTextBox1.Enabled = false;
