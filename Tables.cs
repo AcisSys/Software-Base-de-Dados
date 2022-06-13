@@ -282,22 +282,21 @@ namespace Software_Base_de_Dados
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
                 /*
-                                if ()
-                                    string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                                querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
-                                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                                tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
-                tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
-                 tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
+            if ()
+            string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+            querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
+            OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+            tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
+            tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
+            tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
             }
             else if (Tabela == "tab_workers")
             {
                 workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                */
-                /*
+                
                  * FALTA IDEquipa e IMAGEM
-                 * 
+                 
                  */
                 workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
@@ -349,7 +348,6 @@ namespace Software_Base_de_Dados
                 }
             }
         }
-
         private void SfDataGrid1_DoubleClick(object sender, EventArgs e)
         {
             if (Tabela == "tab_tasks")
