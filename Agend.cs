@@ -80,8 +80,8 @@ namespace Software_Base_de_Dados
                 adapter.Fill(dset, "idtas");
                 DataTable dataTable1 = dset.Tables["idtas"];
                 /*
-                * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
-                */
+                 * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
+                 */
                 DataTable dtClone1 = dataTable1.Clone(); //just copy structure, no data
                 for (int a = 0; a < dtClone.Columns.Count; a++)
                 {
