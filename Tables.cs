@@ -276,10 +276,8 @@ namespace Software_Base_de_Dados
                 OleDbCommand command = new OleDbCommand(querry, connection);
                 agend.Idequipa = command.ExecuteScalar().ToString();
                 querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
-                 command = new OleDbCommand(querry, connection);
+                command = new OleDbCommand(querry, connection);
                 agend.Idtask = command.ExecuteScalar().ToString();
-
-
             }
             else if (Tabela == "tab_places")
             {
