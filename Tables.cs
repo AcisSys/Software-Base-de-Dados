@@ -339,7 +339,6 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_teams")
             {
                 teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-
                 // needs check if null
                 teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
             }
