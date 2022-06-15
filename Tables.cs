@@ -1,5 +1,4 @@
-﻿using Syncfusion.WinForms.DataGrid;
-using Syncfusion.WinForms.DataGrid.Enums;
+﻿using Syncfusion.WinForms.DataGrid.Enums;
 using Syncfusion.WinForms.DataGridConverter;
 using Syncfusion.XlsIO;
 using System;
@@ -77,7 +76,7 @@ namespace Software_Base_de_Dados
                 dadapter.Fill(dt);
                 sfDataGrid1.DataSource = null;
                 sfDataGrid1.DataSource = dt;
-               // sfDataGrid1.Columns.Add(new GridButtonColumn() { MappingName = "Adicionar SubTarefa", });
+                // sfDataGrid1.Columns.Add(new GridButtonColumn() { MappingName = "Adicionar SubTarefa", });
             }
             else if (Tabela == "tab_agend")
             {
@@ -229,17 +228,10 @@ namespace Software_Base_de_Dados
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
-            if (Tabela == "tab_tasks")
-            {
-                querry = "UPDATE tab_tasks SET Active = 'Não' WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand = new OleDbCommand();
-            }
-            else
-            {
-                querry = "DELETE ROW FROM " + Tabela + " WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                oleDbCommand = new OleDbCommand(querry, connection);
-            }
+
+            querry = "DELETE ROW FROM " + Tabela + " WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+            oleDbCommand = new OleDbCommand(querry, connection);
+
             if (response == DialogResult.Yes)
             {
                 try
