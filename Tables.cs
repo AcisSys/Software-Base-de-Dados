@@ -312,6 +312,7 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_tasks")
             {
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                // needs check if null
                 tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
                 string ActiveCheck = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5].ToString();
                 if (ActiveCheck == "Não")
