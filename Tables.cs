@@ -231,7 +231,6 @@ namespace Software_Base_de_Dados
 
             querry = "DELETE ROW FROM " + Tabela + " WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             oleDbCommand = new OleDbCommand(querry, connection);
-
             if (response == DialogResult.Yes)
             {
                 try
@@ -409,6 +408,22 @@ namespace Software_Base_de_Dados
                 }
                 subtasks.ShowDialog();
             }
+        }
+
+        private void Subtbtn_Click(object sender, EventArgs e)
+        {
+            if (Tabela == "tab_tasks")
+            {
+                subtasks.Tipo = "Add";
+                subtasks.Text = "Adicionar SubTarefas";
+                subtasks.ShowDialog();
+                UpdateTable();
+            }
+        }
+
+        private void sfDataGrid1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

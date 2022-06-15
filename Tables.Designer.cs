@@ -36,6 +36,7 @@ namespace Software_Base_de_Dados
             this.Remove_Button = new System.Windows.Forms.Button();
             this.sfDataGrid1 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.Exportar = new System.Windows.Forms.Button();
+            this.Subtbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +47,7 @@ namespace Software_Base_de_Dados
             this.Add_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Add_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Add_Button.Image = ((System.Drawing.Image)(resources.GetObject("Add_Button.Image")));
-            this.Add_Button.Location = new System.Drawing.Point(809, 386);
+            this.Add_Button.Location = new System.Drawing.Point(809, 392);
             this.Add_Button.Name = "Add_Button";
             this.Add_Button.Size = new System.Drawing.Size(164, 65);
             this.Add_Button.TabIndex = 1;
@@ -61,7 +62,7 @@ namespace Software_Base_de_Dados
             this.Modify_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Modify_Button.Enabled = false;
             this.Modify_Button.Image = ((System.Drawing.Image)(resources.GetObject("Modify_Button.Image")));
-            this.Modify_Button.Location = new System.Drawing.Point(809, 456);
+            this.Modify_Button.Location = new System.Drawing.Point(809, 462);
             this.Modify_Button.Name = "Modify_Button";
             this.Modify_Button.Size = new System.Drawing.Size(164, 65);
             this.Modify_Button.TabIndex = 2;
@@ -78,7 +79,7 @@ namespace Software_Base_de_Dados
             this.Remove_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Remove_Button.Enabled = false;
             this.Remove_Button.Image = ((System.Drawing.Image)(resources.GetObject("Remove_Button.Image")));
-            this.Remove_Button.Location = new System.Drawing.Point(809, 526);
+            this.Remove_Button.Location = new System.Drawing.Point(809, 532);
             this.Remove_Button.Name = "Remove_Button";
             this.Remove_Button.Size = new System.Drawing.Size(164, 65);
             this.Remove_Button.TabIndex = 3;
@@ -97,7 +98,7 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
             this.sfDataGrid1.Location = new System.Drawing.Point(3, 0);
             this.sfDataGrid1.Name = "sfDataGrid1";
-            this.sfDataGrid1.Size = new System.Drawing.Size(804, 591);
+            this.sfDataGrid1.Size = new System.Drawing.Size(804, 597);
             this.sfDataGrid1.Style.AddNewRowStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.sfDataGrid1.Style.HeaderStyle.Font.Bold = true;
             this.sfDataGrid1.Style.HeaderStyle.Font.Size = 11F;
@@ -106,6 +107,7 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.SfDataGrid1_QueryRowStyle);
             this.sfDataGrid1.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.SfDataGrid1_SelectionChanged);
             this.sfDataGrid1.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.SfDataGrid1_CellDoubleClick);
+            this.sfDataGrid1.Click += new System.EventHandler(this.sfDataGrid1_Click);
             this.sfDataGrid1.DoubleClick += new System.EventHandler(this.SfDataGrid1_DoubleClick);
             // 
             // Exportar
@@ -121,18 +123,31 @@ namespace Software_Base_de_Dados
             this.Exportar.UseVisualStyleBackColor = true;
             this.Exportar.Click += new System.EventHandler(this.Exportar_Click);
             // 
+            // Subtbtn
+            // 
+            this.Subtbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Subtbtn.Location = new System.Drawing.Point(728, 574);
+            this.Subtbtn.Name = "Subtbtn";
+            this.Subtbtn.Size = new System.Drawing.Size(75, 23);
+            this.Subtbtn.TabIndex = 7;
+            this.Subtbtn.UseVisualStyleBackColor = true;
+            this.Subtbtn.Click += new System.EventHandler(this.Subtbtn_Click);
+            // 
             // Tables
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.Subtbtn);
             this.Controls.Add(this.Exportar);
             this.Controls.Add(this.sfDataGrid1);
             this.Controls.Add(this.Remove_Button);
             this.Controls.Add(this.Modify_Button);
             this.Controls.Add(this.Add_Button);
             this.Name = "Tables";
-            this.Size = new System.Drawing.Size(975, 594);
+            this.Size = new System.Drawing.Size(975, 600);
             this.Load += new System.EventHandler(this.Tables_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).EndInit();
             this.ResumeLayout(false);
@@ -145,5 +160,6 @@ namespace Software_Base_de_Dados
         private Button Remove_Button;
         private Syncfusion.WinForms.DataGrid.SfDataGrid sfDataGrid1;
         private Button Exportar;
+        private Button Subtbtn;
     }
 }

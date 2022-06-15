@@ -35,12 +35,24 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            button1.Text = "Modificar";
-            maskedTextBox1.Text = ID.ToString();
+            if (Tipo == "Add")
+            {
+                string comand = "SELECT MAX (ID) FROM tab_subtasks";
+                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
+                int maxid = (int)oleDbCommand.ExecuteScalar();
+                int currentid = maxid + 1;
+                maskedTextBox1.Text = currentid.ToString();
+                
+            }
+            else
+            {
+                maskedTextBox1.Text = ID.ToString();
+            }
+  
             maskedTextBox2.Text = Desc;
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
-            maskedTextBox3.Enabled = false;
+            maskedTextBox3.Enabled = true;
             maskedTextBox3.Text = IDTask.ToString();
             button1.Select();
             DataTable dataTable;
@@ -77,7 +89,17 @@ namespace Software_Base_de_Dados
                 sfToolTip1.Show("Verifique todos os campos antes de modificar dados.");
                 return;
             }
-            string querry = "UPDATE tab_subtasks SET IDTask = @IDTask, Desc = @Desc, Type = @Type" +
+            if (Tipo == "Add")
+            {
+                 querry = "INSERT INTO tab_subtasks (ID, IDTask, Desc, Type) VALUES (@ID , @IDTask, @Desc, @Type)";
+                oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
+                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
+                oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+                oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
+            }
+            
+             querry = "UPDATE tab_subtasks SET IDTask = @IDTask, Desc = @Desc, Type = @Type" +
                      "WHERE ID =" + maskedTextBox1.Text;
             oleDbCommand = new OleDbCommand(querry, connection);
             oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
