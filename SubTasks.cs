@@ -42,13 +42,11 @@ namespace Software_Base_de_Dados
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
-                
             }
             else
             {
                 maskedTextBox1.Text = ID.ToString();
             }
-  
             maskedTextBox2.Text = Desc;
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
@@ -108,7 +106,6 @@ namespace Software_Base_de_Dados
                 oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
             }
-            
             try
             {
                 oleDbCommand.ExecuteNonQuery();
@@ -136,7 +133,6 @@ namespace Software_Base_de_Dados
         {
             sfToolTip1.Hide();
         }
-
         private void Subtasks_FormClosed(object sender, FormClosedEventArgs e)
         {
             
