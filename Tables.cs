@@ -224,11 +224,15 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
+            // Ask for Confirmation
             DialogResult response = MessageBox.Show("Tem a certeza?", "Apagar?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
+            // ID of the row
             int deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+
+            // Tabela is the name of the table 
             querry = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
             oleDbCommand = new OleDbCommand(querry, connection);
             if (response == DialogResult.Yes)
@@ -236,11 +240,13 @@ namespace Software_Base_de_Dados
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
+                    // Says that data was deleted
                     MessageBox.Show("Dados apagados com sucesso", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
+                    // Gives Error Message
                     MessageBox.Show("Não foi possivel apagar os dados.\n " + ex.Message,
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -248,9 +254,12 @@ namespace Software_Base_de_Dados
             }
             else
             {
+                // Cancels the Action
                 MessageBox.Show("Cancelado", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            // Updates the DataGridView
             UpdateTable();
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
