@@ -290,7 +290,6 @@ namespace Software_Base_de_Dados
                     OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                     agend.Idequipa = oleDbCommand.ExecuteScalar().ToString();
                 }
-
                 string IdTasksCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].GetType().ToString();
                 if (IdTasksCheck != "System.DBNull")
                 {
