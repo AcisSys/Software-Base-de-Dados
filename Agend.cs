@@ -46,9 +46,6 @@ namespace Software_Base_de_Dados
             else
             {
                 maskedTextBox1.Text = Id.ToString();
-
-
-
                 querry = "SELECT ID, Descricao FROM tab_teams";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset, "idteam");
@@ -56,8 +53,6 @@ namespace Software_Base_de_Dados
                 sfComboBox1.DataSource = dataTable;
                 sfComboBox1.DisplayMember = "ID";
                 sfComboBox1.Text = Idequipa;
-
-
                 querry = "SELECT ID, Descricao FROM tab_tasks";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "idtask");
