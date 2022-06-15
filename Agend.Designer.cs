@@ -32,8 +32,8 @@ namespace Software_Base_de_Dados
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agend));
+            Syncfusion.Windows.Forms.MetroColorTable metroColorTable3 = new Syncfusion.Windows.Forms.MetroColorTable();
             Syncfusion.Windows.Forms.MetroColorTable metroColorTable1 = new Syncfusion.Windows.Forms.MetroColorTable();
-            Syncfusion.Windows.Forms.MetroColorTable metroColorTable2 = new Syncfusion.Windows.Forms.MetroColorTable();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,9 +72,9 @@ namespace Software_Base_de_Dados
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label2.Location = new System.Drawing.Point(12, 77);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 21);
+            this.label2.Size = new System.Drawing.Size(60, 21);
             this.label2.TabIndex = 4;
-            this.label2.Text = "ID Equipa:";
+            this.label2.Text = "Equipa:";
             // 
             // label3
             // 
@@ -82,9 +82,9 @@ namespace Software_Base_de_Dados
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label3.Location = new System.Drawing.Point(12, 117);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 21);
+            this.label3.Size = new System.Drawing.Size(54, 21);
             this.label3.TabIndex = 5;
-            this.label3.Text = "ID Tarefa:";
+            this.label3.Text = "Tarefa:";
             // 
             // toolStrip1
             // 
@@ -118,7 +118,7 @@ namespace Software_Base_de_Dados
             this.sfComboBox1.Location = new System.Drawing.Point(97, 77);
             this.sfComboBox1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
             this.sfComboBox1.Name = "sfComboBox1";
-            this.sfComboBox1.ScrollMetroColorTable = metroColorTable1;
+            this.sfComboBox1.ScrollMetroColorTable = metroColorTable3;
             this.sfComboBox1.Size = new System.Drawing.Size(238, 21);
             this.sfComboBox1.TabIndex = 12;
             this.sfComboBox1.Text = "multiColumnComboBox1";
@@ -131,7 +131,7 @@ namespace Software_Base_de_Dados
             this.sfComboBox2.Location = new System.Drawing.Point(97, 117);
             this.sfComboBox2.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
             this.sfComboBox2.Name = "sfComboBox2";
-            this.sfComboBox2.ScrollMetroColorTable = metroColorTable2;
+            this.sfComboBox2.ScrollMetroColorTable = metroColorTable1;
             this.sfComboBox2.Size = new System.Drawing.Size(238, 21);
             this.sfComboBox2.TabIndex = 13;
             this.sfComboBox2.Text = "multiColumnComboBox1";

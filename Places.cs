@@ -65,7 +65,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Localizacao",
-                        OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+                        OleDbType.LongVarChar).Value = maskedTextBox2.Text.ToUpper();
                     oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }

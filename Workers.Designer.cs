@@ -32,6 +32,7 @@ namespace Software_Base_de_Dados
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Workers));
+            Syncfusion.Windows.Forms.MetroColorTable metroColorTable1 = new Syncfusion.Windows.Forms.MetroColorTable();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,12 +42,12 @@ namespace Software_Base_de_Dados
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
-            this.sfComboBox1 = new Syncfusion.WinForms.ListView.SfComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.button1 = new System.Windows.Forms.ToolStripButton();
             this.sfToolTip1 = new Syncfusion.Windows.Forms.SfToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).BeginInit();
+            this.sfComboBox1 = new Syncfusion.Windows.Forms.Tools.MultiColumnComboBox();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -75,9 +76,9 @@ namespace Software_Base_de_Dados
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label3.Location = new System.Drawing.Point(34, 96);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 21);
+            this.label3.Size = new System.Drawing.Size(60, 21);
             this.label3.TabIndex = 2;
-            this.label3.Text = "ID Equipa:";
+            this.label3.Text = "Equipa:";
             // 
             // label4
             // 
@@ -103,38 +104,29 @@ namespace Software_Base_de_Dados
             // 
             this.maskedTextBox1.Location = new System.Drawing.Point(136, 31);
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(104, 20);
+            this.maskedTextBox1.Size = new System.Drawing.Size(177, 20);
             this.maskedTextBox1.TabIndex = 5;
             // 
             // maskedTextBox2
             // 
             this.maskedTextBox2.Location = new System.Drawing.Point(136, 64);
             this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(104, 20);
+            this.maskedTextBox2.Size = new System.Drawing.Size(177, 20);
             this.maskedTextBox2.TabIndex = 6;
             // 
             // maskedTextBox4
             // 
             this.maskedTextBox4.Location = new System.Drawing.Point(136, 133);
             this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(104, 20);
+            this.maskedTextBox4.Size = new System.Drawing.Size(177, 20);
             this.maskedTextBox4.TabIndex = 8;
             // 
             // maskedTextBox5
             // 
             this.maskedTextBox5.Location = new System.Drawing.Point(136, 165);
             this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.Size = new System.Drawing.Size(104, 20);
+            this.maskedTextBox5.Size = new System.Drawing.Size(177, 20);
             this.maskedTextBox5.TabIndex = 9;
-            // 
-            // sfComboBox1
-            // 
-            this.sfComboBox1.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
-            this.sfComboBox1.Location = new System.Drawing.Point(136, 97);
-            this.sfComboBox1.Name = "sfComboBox1";
-            this.sfComboBox1.Size = new System.Drawing.Size(104, 20);
-            this.sfComboBox1.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.sfComboBox1.TabIndex = 11;
             // 
             // toolStrip1
             // 
@@ -143,7 +135,7 @@ namespace Software_Base_de_Dados
             this.button1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 224);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(285, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(344, 25);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -160,13 +152,26 @@ namespace Software_Base_de_Dados
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             this.button1.MouseLeave += new System.EventHandler(this.Button1_MouseLeave);
             // 
+            // sfComboBox1
+            // 
+            this.sfComboBox1.AllowFiltering = false;
+            this.sfComboBox1.BeforeTouchSize = new System.Drawing.Size(177, 21);
+            this.sfComboBox1.Filter = null;
+            this.sfComboBox1.Location = new System.Drawing.Point(136, 96);
+            this.sfComboBox1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.sfComboBox1.Name = "sfComboBox1";
+            this.sfComboBox1.ScrollMetroColorTable = metroColorTable1;
+            this.sfComboBox1.Size = new System.Drawing.Size(177, 21);
+            this.sfComboBox1.TabIndex = 13;
+            this.sfComboBox1.Text = "multiColumnComboBox1";
+            // 
             // Workers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 249);
-            this.Controls.Add(this.toolStrip1);
+            this.ClientSize = new System.Drawing.Size(344, 249);
             this.Controls.Add(this.sfComboBox1);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.maskedTextBox5);
             this.Controls.Add(this.maskedTextBox4);
             this.Controls.Add(this.maskedTextBox2);
@@ -183,9 +188,9 @@ namespace Software_Base_de_Dados
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar / Modificar Operadores";
             this.Load += new System.EventHandler(this.Workers_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,9 +207,9 @@ namespace Software_Base_de_Dados
         private MaskedTextBox maskedTextBox2;
         private MaskedTextBox maskedTextBox4;
         private MaskedTextBox maskedTextBox5;
-        private Syncfusion.WinForms.ListView.SfComboBox sfComboBox1;
         private ToolStrip toolStrip1;
         private ToolStripButton button1;
         private Syncfusion.Windows.Forms.SfToolTip sfToolTip1;
+        private Syncfusion.Windows.Forms.Tools.MultiColumnComboBox sfComboBox1;
     }
 }

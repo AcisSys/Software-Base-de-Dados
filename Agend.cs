@@ -49,7 +49,7 @@ namespace Software_Base_de_Dados
 
 
 
-                querry = "SELECT * FROM tab_teams";
+                querry = "SELECT ID, Descricao FROM tab_teams";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset, "idteam");
                 DataTable dataTable = dset.Tables["idteam"];
@@ -58,7 +58,7 @@ namespace Software_Base_de_Dados
                 sfComboBox1.Text = Idequipa;
 
 
-                querry = "SELECT * FROM tab_tasks";
+                querry = "SELECT ID, Descricao FROM tab_tasks";
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(ds, "idtask");
                 DataTable dataTable1 = ds.Tables["idtask"];
@@ -66,37 +66,6 @@ namespace Software_Base_de_Dados
                 sfComboBox2.DisplayMember = "ID";
                 sfComboBox2.Text = Idtask;
 
-                /*
-                 * 
-                
-                dset.Reset();
-                querry = "SELECT * FROM tab_tasks";
-                adapter = new OleDbDataAdapter(querry, connection);
-                adapter.Fill(dset, "idtas");
-                DataTable dataTable1 = dset.Tables["idtas"];
-
-
-
-                /*
-                 * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
-                 
-                DataTable dtClone1 = dataTable1.Clone(); //just copy structure, no data
-                for (int a = 0; a < dtClone.Columns.Count; a++)
-                {
-                    if (dtClone1.Columns[a].DataType != typeof(string))
-                        dtClone1.Columns[a].DataType = typeof(string);
-                }
-
-                foreach (DataRow da in dataTable1.Rows)
-                {
-                    dtClone1.ImportRow(da);
-                }
-                
-
-                sfComboBox2.DataSource = dtClone1;
-                sfComboBox2.Text = Idtask;
-                 * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
-                 */
             }
             maskedTextBox1.Enabled = false;
             maskedTextBox1.ReadOnly = true;

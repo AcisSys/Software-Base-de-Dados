@@ -60,7 +60,7 @@ namespace Software_Base_de_Dados
                     checkBox1.Checked = false;
                 }
             }
-            querry = "SELECT * FROM tab_places";
+            querry = "SELECT ID, Localizacao FROM tab_places";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
             DataTable dataTable = dset.Tables["idtask"];

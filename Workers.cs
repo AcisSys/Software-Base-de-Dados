@@ -53,7 +53,7 @@ namespace Software_Base_de_Dados
             maskedTextBox5.Text = Cod;
             maskedTextBox1.Enabled = false;
             button1.Select();
-            querry = "SELECT * FROM tab_teams";
+            querry = "SELECT ID, Descricao FROM tab_teams";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idteam");
             DataTable dataTable = dset.Tables["idteam"];

@@ -32,6 +32,7 @@ namespace Software_Base_de_Dados
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tasks));
+            Syncfusion.Windows.Forms.MetroColorTable metroColorTable2 = new Syncfusion.Windows.Forms.MetroColorTable();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@ namespace Software_Base_de_Dados
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.sfComboBox1 = new Syncfusion.WinForms.ListView.SfComboBox();
             this.sfComboBox2 = new Syncfusion.WinForms.ListView.SfComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Button1 = new System.Windows.Forms.ToolStripButton();
@@ -47,11 +47,12 @@ namespace Software_Base_de_Dados
             this.wORK2GODataDataSet = new Software_Base_de_Dados.WORK2GODataDataSet();
             this.tabplacesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tab_placesTableAdapter = new Software_Base_de_Dados.WORK2GODataDataSetTableAdapters.tab_placesTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).BeginInit();
+            this.sfComboBox1 = new Syncfusion.Windows.Forms.Tools.MultiColumnComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wORK2GODataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabplacesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -80,9 +81,9 @@ namespace Software_Base_de_Dados
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label3.Location = new System.Drawing.Point(12, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 21);
+            this.label3.Size = new System.Drawing.Size(92, 21);
             this.label3.TabIndex = 2;
-            this.label3.Text = "ID Localizacao:";
+            this.label3.Text = "Localizacao:";
             // 
             // label5
             // 
@@ -118,16 +119,6 @@ namespace Software_Base_de_Dados
             this.checkBox1.TabIndex = 8;
             this.checkBox1.Text = "Active";
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // sfComboBox1
-            // 
-            this.sfComboBox1.DisplayMember = "(none)";
-            this.sfComboBox1.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
-            this.sfComboBox1.Location = new System.Drawing.Point(126, 83);
-            this.sfComboBox1.Name = "sfComboBox1";
-            this.sfComboBox1.Size = new System.Drawing.Size(107, 21);
-            this.sfComboBox1.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.sfComboBox1.TabIndex = 11;
             // 
             // sfComboBox2
             // 
@@ -176,14 +167,27 @@ namespace Software_Base_de_Dados
             // 
             this.tab_placesTableAdapter.ClearBeforeFill = true;
             // 
+            // sfComboBox1
+            // 
+            this.sfComboBox1.AllowFiltering = false;
+            this.sfComboBox1.BeforeTouchSize = new System.Drawing.Size(107, 21);
+            this.sfComboBox1.Filter = null;
+            this.sfComboBox1.Location = new System.Drawing.Point(126, 84);
+            this.sfComboBox1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.sfComboBox1.Name = "sfComboBox1";
+            this.sfComboBox1.ScrollMetroColorTable = metroColorTable2;
+            this.sfComboBox1.Size = new System.Drawing.Size(107, 21);
+            this.sfComboBox1.TabIndex = 14;
+            this.sfComboBox1.Text = "multiColumnComboBox1";
+            // 
             // Tasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(445, 177);
+            this.Controls.Add(this.sfComboBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.sfComboBox2);
-            this.Controls.Add(this.sfComboBox1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.maskedTextBox2);
             this.Controls.Add(this.maskedTextBox1);
@@ -198,12 +202,12 @@ namespace Software_Base_de_Dados
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar / Modificar Tarefas";
             this.Load += new System.EventHandler(this.Tasks_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wORK2GODataDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabplacesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,7 +222,6 @@ namespace Software_Base_de_Dados
         private MaskedTextBox maskedTextBox1;
         private MaskedTextBox maskedTextBox2;
         private CheckBox checkBox1;
-        private Syncfusion.WinForms.ListView.SfComboBox sfComboBox1;
         private Syncfusion.WinForms.ListView.SfComboBox sfComboBox2;
         private ToolStrip toolStrip1;
         private ToolStripButton Button1;
@@ -226,5 +229,6 @@ namespace Software_Base_de_Dados
         private WORK2GODataDataSet wORK2GODataDataSet;
         private BindingSource tabplacesBindingSource;
         private WORK2GODataDataSetTableAdapters.tab_placesTableAdapter tab_placesTableAdapter;
+        private Syncfusion.Windows.Forms.Tools.MultiColumnComboBox sfComboBox1;
     }
 }
