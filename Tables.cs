@@ -76,7 +76,6 @@ namespace Software_Base_de_Dados
                 dadapter.Fill(dt);
                 sfDataGrid1.DataSource = null;
                 sfDataGrid1.DataSource = dt;
-                // sfDataGrid1.Columns.Add(new GridButtonColumn() { MappingName = "Adicionar SubTarefa", });
             }
             else if (Tabela == "tab_agend")
             {
