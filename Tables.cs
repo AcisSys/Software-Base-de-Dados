@@ -287,13 +287,21 @@ namespace Software_Base_de_Dados
             {
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
-                //tasks.Active = (bool)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5];
-                //tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
-                string checkc = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
-                if (checkc == "System.DBNull")
+                string ActiveCheck = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5].ToString();
+                if (ActiveCheck == "Não")
                 {
-                    string loc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                    querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + loc + "\"";
+                    tasks.Active = false;
+                }
+                else
+                {
+                    tasks.Active = true;
+                }
+                //tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
+                string IdPlaceCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
+                if (IdPlaceCheck != "System.DBNull")
+                {
+                    string location = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                    querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + location + "\"";
                     OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                     tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
                 }

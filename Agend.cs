@@ -55,9 +55,7 @@ namespace Software_Base_de_Dados
                 DataTable dataTable = dset.Tables["idteam"];
                 sfComboBox1.DataSource = dataTable;
                 sfComboBox1.DisplayMember = "ID";
-
-
-
+                sfComboBox1.Text = Idequipa;
 
 
                 querry = "SELECT * FROM tab_tasks";
@@ -66,6 +64,7 @@ namespace Software_Base_de_Dados
                 DataTable dataTable1 = ds.Tables["idtask"];
                 sfComboBox2.DataSource = dataTable1;
                 sfComboBox2.DisplayMember = "ID";
+                sfComboBox2.Text = Idtask;
 
                 /*
                  * 
