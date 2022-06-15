@@ -130,9 +130,10 @@ namespace Software_Base_de_Dados
 
                 if (oldref != sfComboBox2.Text)
                 {
-                    querry = "UPDATE tab_tags set takken = @taken WHERE Ref = " + oldref;
+                    querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + oldref;
                     OleDbCommand oleDb = new OleDbCommand(querry, connection);
                     oleDb.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
+                    oleDb.ExecuteNonQuery();
                 }
                 querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + sfComboBox2.Text;
                 OleDbCommand ole = new OleDbCommand(querry, connection);
