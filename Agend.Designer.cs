@@ -32,18 +32,20 @@ namespace Software_Base_de_Dados
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agend));
+            Syncfusion.Windows.Forms.MetroColorTable metroColorTable1 = new Syncfusion.Windows.Forms.MetroColorTable();
+            Syncfusion.Windows.Forms.MetroColorTable metroColorTable2 = new Syncfusion.Windows.Forms.MetroColorTable();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.sfComboBox1 = new Syncfusion.WinForms.ListView.SfComboBox();
-            this.sfComboBox2 = new Syncfusion.WinForms.ListView.SfComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.sfToolTip1 = new Syncfusion.Windows.Forms.SfToolTip(this.components);
+            this.sfComboBox1 = new Syncfusion.Windows.Forms.Tools.MultiColumnComboBox();
+            this.sfComboBox2 = new Syncfusion.Windows.Forms.Tools.MultiColumnComboBox();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // maskedTextBox1
@@ -84,24 +86,6 @@ namespace Software_Base_de_Dados
             this.label3.TabIndex = 5;
             this.label3.Text = "ID Tarefa:";
             // 
-            // sfComboBox1
-            // 
-            this.sfComboBox1.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
-            this.sfComboBox1.Location = new System.Drawing.Point(95, 77);
-            this.sfComboBox1.Name = "sfComboBox1";
-            this.sfComboBox1.Size = new System.Drawing.Size(238, 21);
-            this.sfComboBox1.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.sfComboBox1.TabIndex = 9;
-            // 
-            // sfComboBox2
-            // 
-            this.sfComboBox2.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
-            this.sfComboBox2.Location = new System.Drawing.Point(95, 117);
-            this.sfComboBox2.Name = "sfComboBox2";
-            this.sfComboBox2.Size = new System.Drawing.Size(238, 21);
-            this.sfComboBox2.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.sfComboBox2.TabIndex = 10;
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -126,14 +110,40 @@ namespace Software_Base_de_Dados
             this.toolStripButton1.Click += new System.EventHandler(this.Button1_Click);
             this.toolStripButton1.MouseLeave += new System.EventHandler(this.ToolStripButton1_MouseLeave);
             // 
+            // sfComboBox1
+            // 
+            this.sfComboBox1.AllowFiltering = false;
+            this.sfComboBox1.BeforeTouchSize = new System.Drawing.Size(238, 21);
+            this.sfComboBox1.Filter = null;
+            this.sfComboBox1.Location = new System.Drawing.Point(97, 77);
+            this.sfComboBox1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.sfComboBox1.Name = "sfComboBox1";
+            this.sfComboBox1.ScrollMetroColorTable = metroColorTable1;
+            this.sfComboBox1.Size = new System.Drawing.Size(238, 21);
+            this.sfComboBox1.TabIndex = 12;
+            this.sfComboBox1.Text = "multiColumnComboBox1";
+            // 
+            // sfComboBox2
+            // 
+            this.sfComboBox2.AllowFiltering = false;
+            this.sfComboBox2.BeforeTouchSize = new System.Drawing.Size(238, 21);
+            this.sfComboBox2.Filter = null;
+            this.sfComboBox2.Location = new System.Drawing.Point(97, 117);
+            this.sfComboBox2.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.sfComboBox2.Name = "sfComboBox2";
+            this.sfComboBox2.ScrollMetroColorTable = metroColorTable2;
+            this.sfComboBox2.Size = new System.Drawing.Size(238, 21);
+            this.sfComboBox2.TabIndex = 13;
+            this.sfComboBox2.Text = "multiColumnComboBox1";
+            // 
             // Agend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 201);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.sfComboBox2);
             this.Controls.Add(this.sfComboBox1);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -145,10 +155,10 @@ namespace Software_Base_de_Dados
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar / Modificar Programas";
             this.Load += new System.EventHandler(this.Agend_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,10 +170,10 @@ namespace Software_Base_de_Dados
         private Label label1;
         private Label label2;
         private Label label3;
-        private Syncfusion.WinForms.ListView.SfComboBox sfComboBox1;
-        private Syncfusion.WinForms.ListView.SfComboBox sfComboBox2;
         private ToolStrip toolStrip1;
         private ToolStripButton toolStripButton1;
         private Syncfusion.Windows.Forms.SfToolTip sfToolTip1;
+        private Syncfusion.Windows.Forms.Tools.MultiColumnComboBox sfComboBox1;
+        private Syncfusion.Windows.Forms.Tools.MultiColumnComboBox sfComboBox2;
     }
 }
