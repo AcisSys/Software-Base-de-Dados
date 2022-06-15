@@ -55,32 +55,12 @@ namespace Software_Base_de_Dados
             maskedTextBox3.Enabled = true;
             maskedTextBox3.Text = IDTask.ToString();
             button1.Select();
-            DataTable dataTable;
             querry = "SELECT DISTINCT Type FROM tab_subtasks";
             adapter = new OleDbDataAdapter(querry, connection);
-            adapter.Fill(dset, "type");
-            dataTable = dset.Tables["type"];
-            /*
-             * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
-             */
-            DataTable dtClone = dataTable.Clone(); //just copy structure, no data
-            for (int i = 0; i < dtClone.Columns.Count; i++)
-            {
-                if (dtClone.Columns[i].DataType != typeof(string))
-                {
-                    dtClone.Columns[i].DataType = typeof(string);
-                }
-            }
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                dtClone.ImportRow(dr);
-            }
-            /*
-             * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
-             */
-            sfComboBox2.DataSource = dtClone;
-            sfComboBox2.DisplayMember = "Type";
-            sfComboBox2.Text = Type;
+            adapter.Fill(dset, "idtask");
+            DataTable dataTable = dset.Tables["idtask"];
+            sfComboBox2.DataSource = dataTable;
+            sfComboBox2.DisplayMember = "ID";
         }
         private void Button1_Click(object sender, EventArgs e)
         {
