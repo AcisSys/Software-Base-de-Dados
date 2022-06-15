@@ -73,8 +73,7 @@ namespace Software_Base_de_Dados
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
                 {
-                    querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod)" +
-                           "VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
+                    querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod) VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
@@ -84,8 +83,7 @@ namespace Software_Base_de_Dados
                 }
                 else
                 {
-                    querry = "UPDATE tab_workers  SET Nome = @Nome," +
-                           " IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = " + maskedTextBox1.Text;
+                    querry = "UPDATE tab_workers  SET Nome = @Nome, IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
                     oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
