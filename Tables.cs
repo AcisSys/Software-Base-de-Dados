@@ -427,10 +427,5 @@ namespace Software_Base_de_Dados
                 UpdateTable();
             }
         }
-
-        private void sfDataGrid1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
