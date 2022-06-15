@@ -12,7 +12,6 @@ namespace Software_Base_de_Dados
         }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         DataSet dset = new DataSet();
-        DataTable dataTable;
         OleDbDataAdapter adapter;
         public string Tipo { get; set; }
         public int ID { get; set; }

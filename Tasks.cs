@@ -18,6 +18,7 @@ namespace Software_Base_de_Dados
         public string Descricao { get; set; }
         public string IDPlace { get; set; }
         public bool Active { get; set; }
+        string oldref;
         public string RefTag { get; set; }
         string querry;
         private void Tasks_Load(object sender, EventArgs e)
@@ -70,6 +71,7 @@ namespace Software_Base_de_Dados
             sfComboBox2.DisplayMember = "Ref";
             sfComboBox1.Text = IDPlace;
             sfComboBox2.Text = RefTag;
+            oldref = RefTag;
             maskedTextBox1.ReadOnly = true;
             Button1.Select();
             maskedTextBox1.Enabled = false;
@@ -126,6 +128,12 @@ namespace Software_Base_de_Dados
 
                 // FALTA CONDIÇÂO
 
+                if (oldref != sfComboBox2.Text)
+                {
+                    querry = "UPDATE tab_tags set takken = @taken WHERE Ref = " + oldref;
+                    OleDbCommand oleDb = new OleDbCommand(querry, connection);
+                    oleDb.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
+                }
                 querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + sfComboBox2.Text;
                 OleDbCommand ole = new OleDbCommand(querry, connection);
                 ole.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Sim";
