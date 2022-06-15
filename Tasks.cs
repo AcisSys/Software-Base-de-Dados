@@ -117,7 +117,19 @@ namespace Software_Base_de_Dados
                 }
                 try
                 {
+
                     oleDbCommand.ExecuteNonQuery();
+                    if (oldref != sfComboBox2.Text)
+                    {
+                        querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + oldref;
+                        OleDbCommand oleDb = new OleDbCommand(querry, connection);
+                        oleDb.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
+                        oleDb.ExecuteNonQuery();
+                    }
+                    querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + sfComboBox2.Text;
+                    OleDbCommand ole = new OleDbCommand(querry, connection);
+                    ole.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Sim";
+                    ole.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -128,17 +140,6 @@ namespace Software_Base_de_Dados
 
                 // FALTA CONDIÇÂO
 
-                if (oldref != sfComboBox2.Text)
-                {
-                    querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + oldref;
-                    OleDbCommand oleDb = new OleDbCommand(querry, connection);
-                    oleDb.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
-                    oleDb.ExecuteNonQuery();
-                }
-                querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + sfComboBox2.Text;
-                OleDbCommand ole = new OleDbCommand(querry, connection);
-                ole.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Sim";
-                ole.ExecuteNonQuery();
                 MessageBox.Show("Dados modificados com sucesso", "",
                     MessageBoxButtons.OK
                     , MessageBoxIcon.Information);

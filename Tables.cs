@@ -26,7 +26,7 @@ namespace Software_Base_de_Dados
             }
         }
         public static string Caminho { get; set; }
-        public readonly OleDbConnection connection = new OleDbConnection(Caminho);
+        OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         Agend agend = new Agend();
         Places places = new Places();
         Tags tags = new Tags();
@@ -112,6 +112,7 @@ namespace Software_Base_de_Dados
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
             sfDataGrid1.Update();
+            connection.Close();
         }
         private void Add_Button_Click(object sender, EventArgs e)
         {
@@ -214,6 +215,7 @@ namespace Software_Base_de_Dados
             {
                 try
                 {
+                    connection.ConnectionString = Tables.Caminho;
                     connection.Open();
                 }
                 catch (Exception ex)
@@ -227,8 +229,8 @@ namespace Software_Base_de_Dados
                 MessageBoxDefaultButton.Button2);
             if (Tabela == "tab_tasks")
             {
-                //querry = "UPDATE tab_tasks SET Active = 'Não' WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                //oleDbCommand = new OleDbCommand(querry, connection);
+                querry = "UPDATE tab_tasks SET Active = 'Não' WHERE ID = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand = new OleDbCommand();
             }
             else
