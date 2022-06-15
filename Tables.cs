@@ -264,6 +264,17 @@ namespace Software_Base_de_Dados
         }
         private void SfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             Modify_Button.Enabled = true;
             Remove_Button.Enabled = true;
             DataSet ds = new DataSet();
