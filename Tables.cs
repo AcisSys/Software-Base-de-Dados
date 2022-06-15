@@ -251,6 +251,7 @@ namespace Software_Base_de_Dados
                 MessageBox.Show("Cancelado", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            connection.Close();
             UpdateTable();
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
