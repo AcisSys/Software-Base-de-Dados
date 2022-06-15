@@ -296,7 +296,11 @@ namespace Software_Base_de_Dados
                 {
                     tasks.Active = true;
                 }
-                //tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6];
+                string IdRefCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6].GetType().ToString();
+                if (IdRefCheck != "System.DBNull")
+                {
+                    tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6].ToString();
+                }
                 string IdPlaceCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (IdPlaceCheck != "System.DBNull")
                 {
