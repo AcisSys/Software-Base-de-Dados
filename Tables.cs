@@ -15,16 +15,6 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        private void SfDataGrid1_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
-        {
-            if (e.RowType == RowType.DefaultRow)
-            {
-                if (e.RowIndex % 2 == 0)
-                    e.Style.BackColor = Color.WhiteSmoke;
-                else
-                    e.Style.BackColor = Color.White;
-            }
-        }
         public static string Caminho { get; set; }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         Agend agend = new Agend();
