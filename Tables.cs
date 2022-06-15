@@ -229,7 +229,7 @@ namespace Software_Base_de_Dados
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
             int deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-            querry = "DELETE * FROM " + Tabela + " WHERE ID = " + deleteid;
+            querry = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
             oleDbCommand = new OleDbCommand(querry, connection);
             if (response == DialogResult.Yes)
             {
