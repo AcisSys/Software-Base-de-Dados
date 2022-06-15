@@ -286,12 +286,10 @@ namespace Software_Base_de_Dados
                 if (IdTeamsCheck != "System.DBNull")
                 {
                     string location = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                    querry = "SELECT ID FROM tab_teams WHERE Localizacao =  \"" + location + "\"";
+                    querry = "SELECT ID FROM tab_teams WHERE Descricao =  \"" + location + "\"";
                     OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                    tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
+                    agend.Idequipa = oleDbCommand.ExecuteScalar().ToString();
                 }
-                OleDbCommand command = new OleDbCommand(querry, connection);
-                agend.Idequipa = command.ExecuteScalar().ToString();
                 querry = "SELECT ID FROM tab_tasks WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
                 OleDbCommand ocommand = new OleDbCommand(querry, connection);
                 agend.Idtask = ocommand.ExecuteScalar().ToString();
