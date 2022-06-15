@@ -32,7 +32,7 @@ namespace Software_Base_de_Dados
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tasks));
-            Syncfusion.Windows.Forms.MetroColorTable metroColorTable2 = new Syncfusion.Windows.Forms.MetroColorTable();
+            Syncfusion.Windows.Forms.MetroColorTable metroColorTable1 = new Syncfusion.Windows.Forms.MetroColorTable();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -175,7 +175,7 @@ namespace Software_Base_de_Dados
             this.sfComboBox1.Location = new System.Drawing.Point(126, 84);
             this.sfComboBox1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
             this.sfComboBox1.Name = "sfComboBox1";
-            this.sfComboBox1.ScrollMetroColorTable = metroColorTable2;
+            this.sfComboBox1.ScrollMetroColorTable = metroColorTable1;
             this.sfComboBox1.Size = new System.Drawing.Size(107, 21);
             this.sfComboBox1.TabIndex = 14;
             this.sfComboBox1.Text = "multiColumnComboBox1";
@@ -201,6 +201,7 @@ namespace Software_Base_de_Dados
             this.Name = "Tasks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar / Modificar Tarefas";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Tasks_FormClosed);
             this.Load += new System.EventHandler(this.Tasks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).EndInit();
             this.toolStrip1.ResumeLayout(false);

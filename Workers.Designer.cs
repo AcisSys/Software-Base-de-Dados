@@ -187,6 +187,7 @@ namespace Software_Base_de_Dados
             this.Name = "Workers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar / Modificar Operadores";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Workers_FormClosed);
             this.Load += new System.EventHandler(this.Workers_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
