@@ -139,9 +139,6 @@ namespace Software_Base_de_Dados
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                // FALTA CONDIÇÂO
-
                 MessageBox.Show("Dados modificados com sucesso", "",
                     MessageBoxButtons.OK
                     , MessageBoxIcon.Information);
