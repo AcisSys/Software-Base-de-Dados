@@ -393,7 +393,8 @@ namespace Software_Base_de_Dados
             if (Tabela == "tab_tasks")
             {
                 string querry;
-                if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] != "")
+                string OtherCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].GetType().ToString();
+                if (OtherCheck != "System.DBNull")
                 {
                     querry = "SELECT ID FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + " AND Desc = \"" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "\"";
                     OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);

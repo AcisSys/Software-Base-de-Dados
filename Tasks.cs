@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using Syncfusion.Windows.Forms.Tools;
 namespace Software_Base_de_Dados
 {
     public partial class Tasks : Form
@@ -77,6 +78,13 @@ namespace Software_Base_de_Dados
             maskedTextBox1.ReadOnly = true;
             Button1.Select();
             maskedTextBox1.Enabled = false;
+
+
+
+
+
+
+
         }
         private void Button1_Click(object sender, EventArgs e)
         {
