@@ -91,20 +91,24 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-                 querry = "INSERT INTO tab_subtasks (ID, IDTask, Desc, Type) VALUES (@ID , @IDTask, @Desc, @Type)";
+                 querry = "INSERT INTO tab_subtasks (ID, IDTask, Desc, Type)" + 
+                    "VALUES (@ID , @IDTask, @Desc, @Type)";
                 oleDbCommand = new OleDbCommand(querry, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
                 oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
             }
+            else 
+            {
+                querry = "UPDATE tab_subtasks SET IDTask = @IDTask, Desc = @Desc, Type = @Type " +
+                    "WHERE ID =" + maskedTextBox1.Text;
+                oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
+                oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+                oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
+            }
             
-             querry = "UPDATE tab_subtasks SET IDTask = @IDTask, Desc = @Desc, Type = @Type" +
-                     "WHERE ID =" + maskedTextBox1.Text;
-            oleDbCommand = new OleDbCommand(querry, connection);
-            oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
-            oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
-            oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
             try
             {
                 oleDbCommand.ExecuteNonQuery();
