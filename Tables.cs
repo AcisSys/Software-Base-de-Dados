@@ -238,7 +238,7 @@ namespace Software_Base_de_Dados
             {
                 try
                 {
-                    int rowsChanged = oleDbCommand.ExecuteNonQuery();
+                    oleDbCommand.ExecuteNonQuery();
                     // Says that data was deleted
                     MessageBox.Show("Dados apagados com sucesso", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -257,7 +257,6 @@ namespace Software_Base_de_Dados
                 MessageBox.Show("Cancelado", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             // Updates the DataGridView
             UpdateTable();
             Modify_Button.Enabled = false;
@@ -303,8 +302,11 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_places")
             {
                 places.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                // needs check if null
                 places.Localizacao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                // needs check if null
                 places.X = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
+                // needs check if null
                 places.Y = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
             else if (Tabela == "tab_tasks")
@@ -337,18 +339,24 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_teams")
             {
                 teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+
+                // needs check if null
                 teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
             }
             else if (Tabela == "tab_tags")
             {
                 tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                // needs check if null
                 tags.Ref = Convert.ToInt32(((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1]);
             }
             else if (Tabela == "tab_workers")
             {
                 workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                // needs check if null
                 workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                // needs check if null
                 workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
+                // needs check if null
                 querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4] + "'";
                 OleDbCommand command = new OleDbCommand(querry, connection);
                 workers.IDEquipa = command.ExecuteScalar().ToString();
@@ -356,6 +364,7 @@ namespace Software_Base_de_Dados
             else
             {
                 subtasks.IDTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                // needs check if null
                 subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
             }
         }
