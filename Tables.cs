@@ -240,6 +240,7 @@ namespace Software_Base_de_Dados
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
+                    int rowsChanged = oleDbCommand.ExecuteNonQuery();
                     // Says that data was deleted
                     MessageBox.Show("Dados apagados com sucesso", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
