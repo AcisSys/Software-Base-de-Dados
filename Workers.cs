@@ -54,12 +54,6 @@ namespace Software_Base_de_Dados
             maskedTextBox5.Text = Cod;
             maskedTextBox1.Enabled = false;
             button1.Select();
-
-
-
-
-
-
             querry = "SELECT * FROM tab_teams";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idteam");
@@ -67,10 +61,6 @@ namespace Software_Base_de_Dados
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
             sfComboBox1.Text = IDEquipa;
-
-
-
-
         }
         private void Button1_Click(object sender, EventArgs e)
         {

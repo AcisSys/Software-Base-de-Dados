@@ -123,6 +123,9 @@ namespace Software_Base_de_Dados
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
+                // FALTA CONDIÇÂO
+
                 querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + sfComboBox2.Text;
                 OleDbCommand ole = new OleDbCommand(querry, connection);
                 ole.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Sim";
