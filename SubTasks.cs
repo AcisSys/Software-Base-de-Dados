@@ -110,5 +110,10 @@ namespace Software_Base_de_Dados
         {
             sfToolTip1.Hide();
         }
+
+        private void Subtasks_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
     }
 }
