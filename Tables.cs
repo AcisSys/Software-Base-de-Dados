@@ -230,8 +230,18 @@ namespace Software_Base_de_Dados
             int deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
 
             // Tabela is the name of the table 
-            querry = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
-            oleDbCommand = new OleDbCommand(querry, connection);
+            if (Tabela == "tab_tasks")
+            {
+                deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                querry = "UPDATE tab_tasks SET [Active] = @Active WHERE [ID] = " + deleteid;
+                oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = "Não";
+            }
+            else
+            {
+                querry = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
+                oleDbCommand = new OleDbCommand(querry, connection);
+            }
             if (response == DialogResult.Yes)
             {
                 try
