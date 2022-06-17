@@ -25,6 +25,7 @@ namespace Software_Base_de_Dados
         {
             // TODO: This line of code loads data into the 'wORK2GODataDataSet.tab_places' table. You can move, or remove it, as needed.
             this.tab_placesTableAdapter.Fill(this.wORK2GODataDataSet.tab_places);
+            // check connection
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -39,6 +40,7 @@ namespace Software_Base_de_Dados
                 }
             }
             if (Tipo == "Add")
+                // add data
             {
                 string comand = "SELECT MAX (ID) FROM tab_tasks";
                 OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
@@ -47,6 +49,7 @@ namespace Software_Base_de_Dados
                 maskedTextBox1.Text = currentid.ToString();
             }
             else
+            // modify data
             {
                 maskedTextBox1.Text = ID.ToString();
                 maskedTextBox2.Text = Descricao;
@@ -80,6 +83,7 @@ namespace Software_Base_de_Dados
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            // verifies entries
             if (maskedTextBox2.Text == "" || sfComboBox1.SelectedItem == null)
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
@@ -96,6 +100,7 @@ namespace Software_Base_de_Dados
                 {
                     active = "Não";
                 }
+                // add data
                 if (Tipo == "Add")
                 {
                     querry = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +
@@ -108,6 +113,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = sfComboBox2.Text;
                 }
                 else
+                // modify data
                 {
                     querry = "UPDATE tab_tasks SET  Descricao = @Descricao, IDPlace = @IDPlace , Active = @Active , RefTag = @RefTag" +
                        " WHERE ID = " + maskedTextBox1.Text;
@@ -119,6 +125,8 @@ namespace Software_Base_de_Dados
                 }
                 try
                 {
+                    // changes TAG TAKEN if needed on tab_tags
+                    // execute commands
                     oleDbCommand.ExecuteNonQuery();
                     if (oldref != sfComboBox2.Text)
                     {

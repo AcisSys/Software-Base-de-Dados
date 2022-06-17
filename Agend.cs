@@ -21,7 +21,7 @@ namespace Software_Base_de_Dados
         public string Idtask { get; set; }
         private void Agend_Load(object sender, EventArgs e)
         {
-            // verifica conexao
+            // verify connection
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -35,6 +35,7 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            // Condition ADD Data
             if (Tipo == "Add")
             {
                 string comand = "SELECT MAX (ID) FROM tab_agend";
@@ -43,6 +44,7 @@ namespace Software_Base_de_Dados
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
             }
+            // Condition MODIFY Data
             else
             {
                 maskedTextBox1.Text = Id.ToString();
@@ -67,6 +69,7 @@ namespace Software_Base_de_Dados
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            // check if all fields are used
             if (sfComboBox1.SelectedItem == null || sfComboBox2.SelectedItem == null)
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
@@ -78,6 +81,7 @@ namespace Software_Base_de_Dados
                     toolStripButton1.ToolTipText = "Verifique o preenchimento de todos os campos antes de validar dados";
                 }
                 OleDbCommand oleDbCommand;
+                // Condition ADD data
                 if (Tipo == "Add")
                 {
                     querry = "INSERT INTO tab_agend (ID, IDEquipa, IDTask)" +
@@ -87,6 +91,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
                     oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
                 }
+                // Condition MODIFY data
                 else
                 {
                     querry = "UPDATE tab_agend  SET IDEquipa = @IDEquipa, IDTask = @IDTask where ID = " + maskedTextBox1.Text;
@@ -95,6 +100,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
                 }
                 try
+                    // Execute command
                 {
                     oleDbCommand.ExecuteNonQuery();
                 }

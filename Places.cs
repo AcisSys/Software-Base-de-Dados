@@ -19,6 +19,7 @@ namespace Software_Base_de_Dados
         string querry;
         private void Places_Load(object sender, EventArgs e)
         {
+            // check connection
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -32,6 +33,7 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //condition add data
             if (Tipo == "Add")
             {
                 querry = "SELECT MAX (ID) FROM tab_places";
@@ -41,6 +43,7 @@ namespace Software_Base_de_Dados
                 maskedTextBox1.Text = currentid.ToString();
             }
             else
+            // condition modify data
             {
                 maskedTextBox1.Text = ID.ToString();
                 maskedTextBox2.Text = Localizacao;
@@ -52,12 +55,14 @@ namespace Software_Base_de_Dados
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            // check if all fields are used
             if (maskedTextBox2.Text == "" || maskedTextBox3.Text == "" || maskedTextBox4.Text == "")
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
             }
             else
             {
+                // querry to add data
                 if (Tipo == "Add")
                 {
                     querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
@@ -70,6 +75,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }
                 else
+                // querry to update data
                 {
                     querry = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
                         " Y = @Y where ID = " + maskedTextBox1.Text;
@@ -79,6 +85,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }
+                // execute command
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();

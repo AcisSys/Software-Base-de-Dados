@@ -82,12 +82,14 @@ namespace Software_Base_de_Dados
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            // check all fields
             if (maskedTextBox2.Text == "" || sfComboBox2.Text == "")
             {
                 sfToolTip1.Show("Verifique todos os campos antes de modificar dados.");
                 return;
             }
             if (Tipo == "Add")
+                // add data
             {
                 querry = "INSERT INTO tab_subtasks ([ID], [IDTask], [Desc], [Type])" +
                    "VALUES (@ID, @IDTask, @Desc, @Type)";
@@ -99,6 +101,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
+                // modify data
                 querry = "UPDATE tab_subtasks SET [IDTask] = @IDTask, [Desc] = @Desc, [Type] = @Type " +
                     "WHERE [ID] =" + maskedTextBox1.Text;
                 oleDbCommand = new OleDbCommand(querry, connection);
@@ -107,6 +110,7 @@ namespace Software_Base_de_Dados
                 oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
             }
             try
+                //execute command
             {
                 oleDbCommand.ExecuteNonQuery();
             }

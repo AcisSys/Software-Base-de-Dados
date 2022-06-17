@@ -18,6 +18,7 @@ namespace Software_Base_de_Dados
         string querry;
         private void Tags_Load(object sender, EventArgs e)
         {
+            // check connection
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -32,7 +33,7 @@ namespace Software_Base_de_Dados
                 }
             }
             if (Tipo == "Add")
-            {
+            {// add data
                 querry = "SELECT MAX (ID) FROM tab_tags";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
@@ -41,6 +42,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
+                //change data
                 maskedTextBox1.Text = ID.ToString();
                 maskedTextBox2.Text = Ref.ToString();
             }
@@ -58,6 +60,7 @@ namespace Software_Base_de_Dados
             {
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
+                    //add data
                 {
                     querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
                                "VALUES (@ID, @IDEquipa, @IDTask)";
@@ -68,6 +71,7 @@ namespace Software_Base_de_Dados
                         OleDbType.LongVarChar).Value = "Não";
                 }
                 else
+                // change data
                 {
                     querry = "SELECT ID FROM tab_tasks WHERE RefTag = " + maskedTextBox2.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
@@ -83,6 +87,7 @@ namespace Software_Base_de_Dados
                     querry = "UPDATE tab_tags  SET Ref = @Ref," +
                        " taken = @taken where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
+                    // check REF taken or not taken
                     oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
                     if (Taken == true)
                     {
@@ -93,6 +98,7 @@ namespace Software_Base_de_Dados
                         oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = taken;
                     }
                 }
+                // execute command
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
