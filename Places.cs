@@ -63,6 +63,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
+                // Checks if values are INT or not
                 bool b = int.TryParse(maskedTextBox3.Text, out int maskedbox3);
                 bool c = int.TryParse(maskedTextBox4.Text, out int maskedbox4);
                 if ( b != true || c != true)

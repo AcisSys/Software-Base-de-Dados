@@ -81,6 +81,7 @@ namespace Software_Base_de_Dados
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Gets Connection String and Unencrypt it
             if (!File.Exists("ChaveConexao.txt"))
             {
                 MessageBox.Show("Não existe uma conexão, configure uma", "Erro de Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -110,6 +111,7 @@ namespace Software_Base_de_Dados
                     }
                     catch (Exception ex)
                     {
+                        // Error in bad connection
                         MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }

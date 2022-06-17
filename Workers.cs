@@ -73,7 +73,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                // check type of fields 
+                // check data type
                 bool a = int.TryParse(maskedTextBox5.Text, out int maskedbox5);
                 if (a != true)
                 {

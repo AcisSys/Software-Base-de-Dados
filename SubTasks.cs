@@ -90,6 +90,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
+                // Checks data type
                 bool a = int.TryParse(maskedTextBox3.Text, out int maskedbox2);
                 if (a != true)
                 {
