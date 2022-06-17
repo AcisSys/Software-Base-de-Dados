@@ -1,10 +1,8 @@
-﻿using Syncfusion.WinForms.DataGrid.Enums;
-using Syncfusion.WinForms.DataGridConverter;
+﻿using Syncfusion.WinForms.DataGridConverter;
 using Syncfusion.XlsIO;
 using System;
 using System.Data;
 using System.Data.OleDb;
-using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 namespace Software_Base_de_Dados
@@ -455,8 +453,9 @@ namespace Software_Base_de_Dados
             }
         }
         private void Subtbtn_Click(object sender, EventArgs e)
-        {// on button click (tasks only)
-         // adds a subtask
+        {
+            // on button click (tasks only)
+            // adds a subtask
             if (Tabela == "tab_tasks")
             {
                 subtasks.Tipo = "Add";
