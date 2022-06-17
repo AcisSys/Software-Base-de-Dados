@@ -62,36 +62,58 @@ namespace Software_Base_de_Dados
             DataSet dset = new DataSet();
             if (Tabela == "tab_tasks")
             {
-                
-                DataSet1TableAdapters.DataTable1TableAdapter dadapter = new DataSet1TableAdapters.DataTable1TableAdapter();
-                DataSet1.DataTable1DataTable dt = new DataSet1.DataTable1DataTable();
-                dadapter.Fill(dt);
-                sfDataGrid1.DataSource = null;
-                sfDataGrid1.DataSource = dt;
+
+                querry = "SELECT tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa, tab_places.Localizacao, tab_subtasks.Type AS Tipo,  tab_tasks.Active AS Ativo, tab_tasks.RefTag as Referencia " +
+                         " FROM((tab_tasks LEFT OUTER JOIN " +
+                         " tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT OUTER JOIN " +
+                         " tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask) ";
+                dset.Reset();
+                adapter = new OleDbDataAdapter(querry, connection);
+                adapter.Fill(dset);
+                sfDataGrid1.DataSource = dset;
+
+
+
+
+
+
+
             }
             else if (Tabela == "tab_agend")
             {
-                DataSet1TableAdapters.DataTable2TableAdapter dadapter = new DataSet1TableAdapters.DataTable2TableAdapter();
-                DataSet1.DataTable2DataTable dt = new DataSet1.DataTable2DataTable();
-                dadapter.Fill(dt);
-                sfDataGrid1.DataSource = null;
-                sfDataGrid1.DataSource = dt;
+
+                querry = "SELECT tab_agend.ID, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa " +
+                         " FROM((tab_agend LEFT JOIN " +
+                         " tab_tasks ON tab_agend.idtask = tab_tasks.ID) LEFT JOIN " +
+                         " tab_teams ON tab_agend.idequipa = tab_teams.ID) ";
+                dset.Reset();
+                adapter = new OleDbDataAdapter(querry, connection);
+                adapter.Fill(dset);
+                sfDataGrid1.DataSource = dset;
+
+
             }
             else if (Tabela == "tab_workers")
             {
-                DataSet1TableAdapters.DataTable3TableAdapter dadapter = new DataSet1TableAdapters.DataTable3TableAdapter();
-                DataSet1.DataTable3DataTable dt = new DataSet1.DataTable3DataTable();
-                dadapter.Fill(dt);
-                sfDataGrid1.DataSource = null;
-                sfDataGrid1.DataSource = dt;
+                querry = " SELECT tab_workers.ID, tab_workers.Nome, tab_teams.Descricao AS Equipa, tab_workers.img, tab_workers.Cod " +
+                            " FROM(tab_workers INNER JOIN " +
+                            " tab_teams ON tab_workers.IDEquipa = tab_teams.ID) ";
+                dset.Reset();
+                adapter = new OleDbDataAdapter(querry, connection);
+                adapter.Fill(dset);
+                sfDataGrid1.DataSource = dset;
+
+
+
+
             }
             else if (Tabela == "tab_tags")
             {
-                DataSet1TableAdapters.tab_tagsTableAdapter dadapter = new DataSet1TableAdapters.tab_tagsTableAdapter();
-                DataSet1.tab_tagsDataTable dt = new DataSet1.tab_tagsDataTable();
-                dadapter.Fill(dt);
-                sfDataGrid1.DataSource = null;
-                sfDataGrid1.DataSource = dt;
+                querry = "SELECT ID, Ref AS Referencia, taken AS Utilizado FROM tab_tags";
+                dset.Reset();
+                adapter = new OleDbDataAdapter(querry, connection);
+                adapter.Fill(dset);
+                sfDataGrid1.DataSource = dset;
             }
             else
             {
@@ -347,7 +369,7 @@ namespace Software_Base_de_Dados
                     string location = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                     querry = "SELECT ID FROM tab_places WHERE Localizacao =  \"" + location + "\"";
                     OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                    tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
+                    //tasks.IDPlace = oleDbCommand.ExecuteScalar().ToString();
                 }
             }
             else if (Tabela == "tab_teams")
