@@ -448,14 +448,20 @@ namespace Software_Base_de_Dados
             {
                 string querry;
                 string OtherCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].GetType().ToString();
-                if (OtherCheck != "System.DBNull")
+                string checktype = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].GetType().ToString();
+                if (checktype != "Syste,.DBNull")
                 {
-                    querry = "SELECT ID FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + " AND Desc = \"" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "\"";
-                    OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                    subtasks.ID = (int)oleDbCommand.ExecuteScalar();
-                    subtasks.IDTask = tasks.ID;
-                    subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-                    subtasks.Type = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
+
+
+                    if (OtherCheck != "System.DBNull")
+                    {
+                        querry = "SELECT ID FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + " AND Desc = \"" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "\"";
+                        OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                        subtasks.ID = (int)oleDbCommand.ExecuteScalar();
+                        subtasks.IDTask = tasks.ID;
+                        subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+                        subtasks.Type = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
+                    }
                 }
                 subtasks.ShowDialog();
             }
