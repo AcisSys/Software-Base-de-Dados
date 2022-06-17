@@ -31,6 +31,7 @@ namespace Software_Base_de_Dados
         {
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
+            // Check connection
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -46,6 +47,8 @@ namespace Software_Base_de_Dados
         }
         public void UpdateTable()
         {
+            // Check connection
+            // Gets Table for the table to be shown accordingly
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -106,6 +109,8 @@ namespace Software_Base_de_Dados
         }
         private void Add_Button_Click(object sender, EventArgs e)
         {
+            // check connection
+            // specify action (add data) and shows window
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -153,6 +158,8 @@ namespace Software_Base_de_Dados
         }
         private void Modify_Button_Click(object sender, EventArgs e)
         {
+            // check connection
+            // specify action (modify data) and shows window
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -200,6 +207,7 @@ namespace Software_Base_de_Dados
         }
         private void Remove_Button_Click(object sender, EventArgs e)
         {
+            // check connection
             OleDbCommand oleDbCommand;
             if (connection.State == ConnectionState.Closed)
             {
@@ -254,6 +262,8 @@ namespace Software_Base_de_Dados
         }
         private void SfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
+            // check connection
+            // checks if values are null or not, and gets data from the row of the according table
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -375,6 +385,7 @@ namespace Software_Base_de_Dados
         }
         private void Exportar_Click(object sender, EventArgs e)
         {
+            // exoport current shown table
             var options = new ExcelExportingOptions
             {
                 ExcelVersion = ExcelVersion.Excel2013
@@ -407,6 +418,8 @@ namespace Software_Base_de_Dados
         }
         private void SfDataGrid1_DoubleClick(object sender, EventArgs e)
         {
+            // On Double click (tasks only)
+            // Shows subtasks modify window
             if (Tabela == "tab_tasks")
             {
                 Subtasks subtasks = new Subtasks();
@@ -431,9 +444,9 @@ namespace Software_Base_de_Dados
                 subtasks.ShowDialog();
             }
         }
-
         private void Subtbtn_Click(object sender, EventArgs e)
-        {
+        {// on button click (tasks only)
+         // adds a subtask
             if (Tabela == "tab_tasks")
             {
                 subtasks.Tipo = "Add";
