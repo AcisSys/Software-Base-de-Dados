@@ -73,7 +73,6 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_agend")
             {
-
                 querry = "SELECT tab_agend.ID, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa " +
                          " FROM((tab_agend LEFT JOIN " +
                          " tab_tasks ON tab_agend.idtask = tab_tasks.ID) LEFT JOIN " +
