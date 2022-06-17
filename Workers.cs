@@ -65,6 +65,7 @@ namespace Software_Base_de_Dados
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            // Check if all fields are written
             if (maskedTextBox2.Text == null || maskedTextBox4.Text == null || sfComboBox1.SelectedItem == null
                 || maskedTextBox5.Text == null)
             {
@@ -72,14 +73,17 @@ namespace Software_Base_de_Dados
             }
             else
             {
+                // check type of fields 
                 bool a = int.TryParse(maskedTextBox5.Text, out int maskedbox5);
                 if (a != true)
                 {
+                    // return if not int / a number
                     sfToolTip1.Show("Foram detetados dados incorretos\n verifique os dados introduzidos");
                     return;
                 }
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
+                    //add data
                 {
                     querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod) VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
                     oleDbCommand = new OleDbCommand(querry, connection);
@@ -90,6 +94,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@Cod", OleDbType.Integer).Value = maskedTextBox5.Text;
                 }
                 else
+                // modify data
                 {
                     querry = "UPDATE tab_workers  SET Nome = @Nome, IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
@@ -100,6 +105,7 @@ namespace Software_Base_de_Dados
                 }
                 try
                 {
+                    // execute command
                     oleDbCommand.ExecuteNonQuery();
                 }
                 catch (Exception ex)
