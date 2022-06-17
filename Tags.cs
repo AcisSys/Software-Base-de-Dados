@@ -32,7 +32,8 @@ namespace Software_Base_de_Dados
                 }
             }
             if (Tipo == "Add")
-            {// add data
+            {
+                // add data
                 querry = "SELECT MAX (ID) FROM tab_tags";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
