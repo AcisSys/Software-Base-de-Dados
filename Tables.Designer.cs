@@ -123,10 +123,8 @@ namespace Software_Base_de_Dados
             // 
             // Subtbtn
             // 
-            this.Subtbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Subtbtn.Location = new System.Drawing.Point(728, 574);
+            this.Subtbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Subtbtn.Location = new System.Drawing.Point(897, 363);
             this.Subtbtn.Name = "Subtbtn";
             this.Subtbtn.Size = new System.Drawing.Size(75, 23);
             this.Subtbtn.TabIndex = 7;
