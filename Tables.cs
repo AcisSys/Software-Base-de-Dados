@@ -451,8 +451,6 @@ namespace Software_Base_de_Dados
                 string checktype = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].GetType().ToString();
                 if (checktype != "Syste,.DBNull")
                 {
-
-
                     if (OtherCheck != "System.DBNull")
                     {
                         querry = "SELECT ID FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + " AND Desc = \"" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "\"";
