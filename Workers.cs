@@ -70,6 +70,12 @@ namespace Software_Base_de_Dados
             }
             else
             {
+                bool a = int.TryParse(maskedTextBox5.Text, out int maskedbox5);
+                if (a != true)
+                {
+                    sfToolTip1.Show("Foram detetados dados incorretos\n verifique os dados introduzidos");
+                    return;
+                }
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
                 {

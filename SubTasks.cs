@@ -83,10 +83,19 @@ namespace Software_Base_de_Dados
         private void Button1_Click(object sender, EventArgs e)
         {
             // check all fields
-            if (maskedTextBox2.Text == "" || sfComboBox2.Text == "")
+            if (maskedTextBox2.Text == "" || maskedTextBox3.Text == "")
             {
                 sfToolTip1.Show("Verifique todos os campos antes de modificar dados.");
                 return;
+            }
+            else
+            {
+                bool a = int.TryParse(maskedTextBox3.Text, out int maskedbox2);
+                if (a != true)
+                {
+                    sfToolTip1.Show("Foram detetados dados incorretos\n verifique os dados introduzidos");
+                    return;
+                }
             }
             if (Tipo == "Add")
                 // add data
