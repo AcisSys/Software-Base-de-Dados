@@ -292,18 +292,23 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_places")
             {
                 places.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                // needs check if null
-                places.Localizacao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                // needs check if null
-                places.X = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
-                // needs check if null
-                places.Y = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
+                string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
+                if (CheckNull != "System.DBNull")
+                {
+                    places.Localizacao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                    places.X = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
+                    places.Y = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
+                }
             }
             else if (Tabela == "tab_tasks")
             {
                 tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                // needs check if null
-                tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
+                string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].GetType().ToString();
+
+                if (CheckNull != "Sytem.DBNull")
+                {
+                    tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
+                }
                 string ActiveCheck = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5].ToString();
                 if (ActiveCheck == "Não")
                 {
@@ -330,32 +335,42 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_teams")
             {
                 teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                // needs check if null
-                teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
+                if (CheckNull != "Systyem.DBNull")
+                {
+                    teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                }
             }
             else if (Tabela == "tab_tags")
             {
                 tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                // needs check if null
-                tags.Ref = Convert.ToInt32(((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1]);
+                string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
+                if (CheckNull != "System.DBNull")
+                {
+                    tags.Ref = Convert.ToInt32(((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1]);
+                }
             }
             else if (Tabela == "tab_workers")
             {
                 workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                // needs check if null
-                workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                // needs check if null
-                workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
-                // needs check if null
-                querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4] + "'";
-                OleDbCommand command = new OleDbCommand(querry, connection);
-                workers.IDEquipa = command.ExecuteScalar().ToString();
+                string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
+                if (CheckNull != "System.DBNull")
+                {
+                    workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                    workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
+                    querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4] + "'";
+                    OleDbCommand command = new OleDbCommand(querry, connection);
+                    workers.IDEquipa = command.ExecuteScalar().ToString();
+                }
             }
             else
             {
                 subtasks.IDTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                // needs check if null
-                subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+                string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].GetType().ToString();
+                if (CheckNull != "Sytem.DBNull")
+                {
+                    subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
+                }
             }
         }
         private void Exportar_Click(object sender, EventArgs e)
