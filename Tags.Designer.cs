@@ -44,16 +44,16 @@ namespace Software_Base_de_Dados
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(145, 32);
+            this.maskedTextBox1.Location = new System.Drawing.Point(54, 9);
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(86, 20);
+            this.maskedTextBox1.Size = new System.Drawing.Size(178, 20);
             this.maskedTextBox1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label1.Location = new System.Drawing.Point(51, 32);
+            this.label1.Location = new System.Drawing.Point(20, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 21);
             this.label1.TabIndex = 3;
@@ -63,7 +63,7 @@ namespace Software_Base_de_Dados
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(51, 75);
+            this.label2.Location = new System.Drawing.Point(12, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 21);
             this.label2.TabIndex = 4;
@@ -71,9 +71,9 @@ namespace Software_Base_de_Dados
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(145, 75);
+            this.maskedTextBox2.Location = new System.Drawing.Point(54, 35);
             this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(86, 20);
+            this.maskedTextBox2.Size = new System.Drawing.Size(178, 20);
             this.maskedTextBox2.TabIndex = 9;
             // 
             // toolStrip1
@@ -81,9 +81,9 @@ namespace Software_Base_de_Dados
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.button1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 137);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 65);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(305, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(244, 25);
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -104,7 +104,7 @@ namespace Software_Base_de_Dados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 162);
+            this.ClientSize = new System.Drawing.Size(244, 90);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.maskedTextBox2);
             this.Controls.Add(this.label2);
