@@ -36,6 +36,7 @@ namespace Software_Base_de_Dados
             //condition add data
             if (Tipo == "Add")
             {
+                // Get New ID
                 querry = "SELECT MAX (ID) FROM tab_places";
                 oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
@@ -58,8 +59,7 @@ namespace Software_Base_de_Dados
             // check if all fields are used
             if (maskedTextBox2.Text == "" || maskedTextBox3.Text == "" || maskedTextBox4.Text == "")
             {
-                sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
-                
+                sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");  
             }
             else
             {

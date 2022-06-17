@@ -20,6 +20,7 @@ namespace Software_Base_de_Dados
         public string Type { get; set; }
         private void Subtasks_Load(object sender, EventArgs e)
         {
+            // Check Connection
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -33,6 +34,7 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            // Add new Data
             if (Tipo == "Add")
             {
                 string comand = "SELECT MAX (ID) FROM tab_subtasks";
@@ -41,6 +43,7 @@ namespace Software_Base_de_Dados
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
             }
+            // Change existent Data
             else
             {
                 maskedTextBox1.Text = ID.ToString();
@@ -71,7 +74,7 @@ namespace Software_Base_de_Dados
             }
             foreach (DataRow dr in dataTable.Rows)
             {
-                dtClone.ImportRow(dr);
+                dtClone.ImportRow(dr); // Imports all rows from DataTable to the clone (with String type on every column)
             }
             /*
              * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string

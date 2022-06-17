@@ -63,6 +63,7 @@ namespace Software_Base_de_Dados
                 sfComboBox2.DisplayMember = "ID";
                 sfComboBox2.Text = Idtask;
             }
+            // ID can never be changed by user
             maskedTextBox1.Enabled = false;
             maskedTextBox1.ReadOnly = true;
         }

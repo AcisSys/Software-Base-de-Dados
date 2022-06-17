@@ -35,8 +35,10 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            // Add Data
             if (Tipo == "Add")
             {
+                // Get new ID
                 querry = "SELECT MAX (ID) FROM tab_workers";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
@@ -44,6 +46,7 @@ namespace Software_Base_de_Dados
                 maskedTextBox1.Text = currentid.ToString();
             }
             else
+            // Modify data
             {
                 maskedTextBox1.Text = ID.ToString();
             }
