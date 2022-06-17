@@ -62,6 +62,7 @@ namespace Software_Base_de_Dados
             DataSet dset = new DataSet();
             if (Tabela == "tab_tasks")
             {
+                
                 DataSet1TableAdapters.DataTable1TableAdapter dadapter = new DataSet1TableAdapters.DataTable1TableAdapter();
                 DataSet1.DataTable1DataTable dt = new DataSet1.DataTable1DataTable();
                 dadapter.Fill(dt);
