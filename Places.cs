@@ -59,9 +59,17 @@ namespace Software_Base_de_Dados
             if (maskedTextBox2.Text == "" || maskedTextBox3.Text == "" || maskedTextBox4.Text == "")
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
+                
             }
             else
             {
+                bool b = int.TryParse(maskedTextBox3.Text, out int maskedbox3);
+                bool c = int.TryParse(maskedTextBox4.Text, out int maskedbox4);
+                if ( b != true || c != true)
+                {
+                    sfToolTip1.Show("Foram detetados dados incorretos\n verifique os dados introduzidos");
+                    return;
+                }
                 // querry to add data
                 if (Tipo == "Add")
                 {
