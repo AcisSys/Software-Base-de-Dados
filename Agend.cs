@@ -10,8 +10,8 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        DataSet dset = new DataSet();
-        DataSet ds = new DataSet();
+        
+        
         OleDbDataAdapter adapter;
         string querry;
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
@@ -47,6 +47,8 @@ namespace Software_Base_de_Dados
             // Condition MODIFY Data
             else
             {
+                DataSet ds = new DataSet();
+                DataSet dset = new DataSet();
                 maskedTextBox1.Text = Id.ToString();
                 querry = "SELECT ID, Descricao FROM tab_teams";
                 adapter = new OleDbDataAdapter(querry, connection);

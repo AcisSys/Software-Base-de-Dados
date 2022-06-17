@@ -11,8 +11,7 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
-        DataSet dset = new DataSet();
-        OleDbDataAdapter adapter;
+
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Nome { get; set; }
@@ -48,6 +47,8 @@ namespace Software_Base_de_Dados
             {
                 maskedTextBox1.Text = ID.ToString();
             }
+            DataSet dset = new DataSet();
+            OleDbDataAdapter adapter;
             maskedTextBox1.ReadOnly = true;
             maskedTextBox2.Text = Name;
             maskedTextBox4.Text = Img;

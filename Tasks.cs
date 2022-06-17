@@ -11,8 +11,7 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
-        DataSet dset = new DataSet();
-        OleDbDataAdapter adapter;
+        
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Descricao { get; set; }
@@ -62,6 +61,8 @@ namespace Software_Base_de_Dados
                     checkBox1.Checked = false;
                 }
             }
+            DataSet dset = new DataSet();
+            OleDbDataAdapter adapter;
             querry = "SELECT ID, Localizacao FROM tab_places";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset, "idtask");
