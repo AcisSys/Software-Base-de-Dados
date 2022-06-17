@@ -11,7 +11,6 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
-        
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Descricao { get; set; }
@@ -39,7 +38,7 @@ namespace Software_Base_de_Dados
                 }
             }
             if (Tipo == "Add")
-                // add data
+            // add data
             {
                 string comand = "SELECT MAX (ID) FROM tab_tasks";
                 OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);

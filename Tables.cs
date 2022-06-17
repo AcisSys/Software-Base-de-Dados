@@ -62,7 +62,6 @@ namespace Software_Base_de_Dados
             DataSet dset = new DataSet();
             if (Tabela == "tab_tasks")
             {
-
                 querry = "SELECT tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa, tab_places.Localizacao, tab_subtasks.Type AS Tipo,  tab_tasks.Active AS Ativo, tab_tasks.RefTag as Referencia " +
                          " FROM((tab_tasks LEFT OUTER JOIN " +
                          " tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT OUTER JOIN " +
@@ -71,13 +70,6 @@ namespace Software_Base_de_Dados
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
-
-
-
-
-
-
-
             }
             else if (Tabela == "tab_agend")
             {
@@ -90,8 +82,6 @@ namespace Software_Base_de_Dados
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
-
-
             }
             else if (Tabela == "tab_workers")
             {
@@ -102,10 +92,6 @@ namespace Software_Base_de_Dados
                 adapter = new OleDbDataAdapter(querry, connection);
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
-
-
-
-
             }
             else if (Tabela == "tab_tags")
             {
