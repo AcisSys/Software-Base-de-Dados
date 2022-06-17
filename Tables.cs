@@ -226,7 +226,6 @@ namespace Software_Base_de_Dados
                 MessageBoxDefaultButton.Button2);
             // ID of the row
             int deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-
             // Tabela is the name of the table 
             if (Tabela == "tab_tasks")
             {

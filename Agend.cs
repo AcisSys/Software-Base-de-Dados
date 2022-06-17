@@ -10,8 +10,6 @@ namespace Software_Base_de_Dados
         {
             InitializeComponent();
         }
-        
-        
         OleDbDataAdapter adapter;
         string querry;
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
@@ -64,7 +62,6 @@ namespace Software_Base_de_Dados
                 sfComboBox2.DataSource = dataTable1;
                 sfComboBox2.DisplayMember = "ID";
                 sfComboBox2.Text = Idtask;
-
             }
             maskedTextBox1.Enabled = false;
             maskedTextBox1.ReadOnly = true;
