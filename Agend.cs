@@ -34,20 +34,6 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            // Condition ADD Data
-            if (Tipo == "Add")
-            {
-                string comand = "SELECT MAX (ID) FROM tab_agend";
-                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
-                int maxid = (int)oleDbCommand.ExecuteScalar();
-                int currentid = maxid + 1;
-                maskedTextBox1.Text = currentid.ToString();
-            }
-            // Condition MODIFY Data
-            else
-            {
-                maskedTextBox1.Text = Id.ToString();   
-            }
             DataSet ds = new DataSet();
             DataSet dset = new DataSet();
             querry = "SELECT ID, Descricao FROM tab_teams";
@@ -64,6 +50,21 @@ namespace Software_Base_de_Dados
             sfComboBox2.DataSource = dataTable1;
             sfComboBox2.DisplayMember = "ID";
             sfComboBox2.Text = Idtask;
+            // Condition ADD Data
+            if (Tipo == "Add")
+            {
+                string comand = "SELECT MAX (ID) FROM tab_agend";
+                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
+                int maxid = (int)oleDbCommand.ExecuteScalar();
+                int currentid = maxid + 1;
+                maskedTextBox1.Text = currentid.ToString();
+            }
+            // Condition MODIFY Data
+            else
+            {
+                maskedTextBox1.Text = Id.ToString();   
+            }
+            
             // ID can never be changed by user
             maskedTextBox1.Enabled = false;
             maskedTextBox1.ReadOnly = true;
