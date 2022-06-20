@@ -21,7 +21,6 @@ namespace Software_Base_de_Dados
         string querry;
         private void Tasks_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'wORK2GODataDataSet.tab_places' table. You can move, or remove it, as needed.
             this.tab_placesTableAdapter.Fill(this.wORK2GODataDataSet.tab_places);
             // check connection
             if (connection.State == ConnectionState.Closed)
