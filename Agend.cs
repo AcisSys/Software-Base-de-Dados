@@ -16,6 +16,7 @@ namespace Software_Base_de_Dados
         public string Tipo { get; set; }
         public int Id { get; set; }
         public string Idequipa { get; set; }
+        
         public string Idtask { get; set; }
         private void Agend_Load(object sender, EventArgs e)
         {
