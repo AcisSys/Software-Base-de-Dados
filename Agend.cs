@@ -45,9 +45,7 @@ namespace Software_Base_de_Dados
             // Condition MODIFY Data
             else
             {
-                
-                maskedTextBox1.Text = Id.ToString();
-                
+                maskedTextBox1.Text = Id.ToString();   
             }
             DataSet ds = new DataSet();
             DataSet dset = new DataSet();
