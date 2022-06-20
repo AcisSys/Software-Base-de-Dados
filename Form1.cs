@@ -125,5 +125,10 @@ namespace Software_Base_de_Dados
                 }
             }
         }
+
+        private void Form1_LocationChanged(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
+        }
     }
 }
