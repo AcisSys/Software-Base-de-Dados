@@ -15,7 +15,7 @@ namespace Software_Base_de_Dados
         string DSource;
         string Password;
         static readonly string key = "bbce2ea2315a1916";
-        System.Drawing.Point loc;
+        
         public Form1()
         {
             InitializeComponent();
@@ -84,7 +84,6 @@ namespace Software_Base_de_Dados
         {
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
-            loc = this.Location;
 
             // Gets Connection String and Unencrypt it
             if (!File.Exists("ChaveConexao.txt"))
@@ -126,7 +125,7 @@ namespace Software_Base_de_Dados
 
         private void Form1_LocationChanged(object sender, EventArgs e)
         {
-            this.Location = loc;
+            this.CenterToScreen();
         }
     }
 }
