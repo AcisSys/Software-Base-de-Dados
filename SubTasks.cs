@@ -138,14 +138,6 @@ namespace Software_Base_de_Dados
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            button1.Select();
-        }
-        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            button1.Select();
-        }
         private void Button1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();
