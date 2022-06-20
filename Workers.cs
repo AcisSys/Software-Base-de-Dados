@@ -86,7 +86,7 @@ namespace Software_Base_de_Dados
                 }
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
-                    //add data
+                //add data
                 {
                     querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod) VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
                     oleDbCommand = new OleDbCommand(querry, connection);

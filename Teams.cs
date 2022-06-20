@@ -60,7 +60,7 @@ namespace Software_Base_de_Dados
             {
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
-                    // Add Data
+                // Add Data
                 {
                     querry = "INSERT INTO tab_teams (ID, Descricao)" +
                            "VALUES (@ID, @Descricao)";
@@ -79,7 +79,7 @@ namespace Software_Base_de_Dados
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 }
                 try
-                    // execute command
+                // execute command
                 {
                     oleDbCommand.ExecuteNonQuery();
                 }

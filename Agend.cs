@@ -16,7 +16,7 @@ namespace Software_Base_de_Dados
         public string Tipo { get; set; }
         public int Id { get; set; }
         public string Idequipa { get; set; }
-        
+
         public string Idtask { get; set; }
         private void Agend_Load(object sender, EventArgs e)
         {
@@ -49,7 +49,7 @@ namespace Software_Base_de_Dados
             DataTable dataTable1 = ds.Tables["idtask"];
             sfComboBox2.DataSource = dataTable1;
             sfComboBox2.DisplayMember = "ID";
-            sfComboBox2.Text = Idtask; 
+            sfComboBox2.Text = Idtask;
             // Condition ADD Data
             if (Tipo == "Add")
             {
@@ -62,9 +62,8 @@ namespace Software_Base_de_Dados
             // Condition MODIFY Data
             else
             {
-                maskedTextBox1.Text = Id.ToString();   
+                maskedTextBox1.Text = Id.ToString();
             }
-            
             // ID can never be changed by user
             maskedTextBox1.Enabled = false;
             maskedTextBox1.ReadOnly = true;
@@ -102,7 +101,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
                 }
                 try
-                    // Execute command
+                // Execute command
                 {
                     oleDbCommand.ExecuteNonQuery();
                 }

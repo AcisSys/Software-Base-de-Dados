@@ -11,7 +11,7 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
-        OleDbCommand oleDbCommand;        
+        OleDbCommand oleDbCommand;
         string querry;
         public string Tipo { get; set; }
         public int ID { get; set; }
@@ -102,7 +102,7 @@ namespace Software_Base_de_Dados
                 }
             }
             if (Tipo == "Add")
-                // add data
+            // add data
             {
                 querry = "INSERT INTO tab_subtasks ([ID], [IDTask], [Desc], [Type])" +
                    "VALUES (@ID, @IDTask, @Desc, @Type)";
@@ -123,7 +123,7 @@ namespace Software_Base_de_Dados
                 oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
             }
             try
-                //execute command
+            //execute command
             {
                 oleDbCommand.ExecuteNonQuery();
             }

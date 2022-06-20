@@ -61,7 +61,7 @@ namespace Software_Base_de_Dados
             {
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
-                    //add data
+                //add data
                 {
                     querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
                                "VALUES (@ID, @IDEquipa, @IDTask)";

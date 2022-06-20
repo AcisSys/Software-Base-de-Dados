@@ -62,10 +62,10 @@ namespace Software_Base_de_Dados
             DataSet dset = new DataSet();
             if (Tabela == "tab_tasks")
             {
-                querry = "SELECT tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa, tab_places.Localizacao," 
-                    + " tab_subtasks.Type AS Tipo,  tab_tasks.Active AS Ativo, tab_tasks.RefTag as Referencia " 
-                    + " FROM((tab_tasks LEFT OUTER JOIN " 
-                    + " tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT OUTER JOIN " 
+                querry = "SELECT tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa, tab_places.Localizacao,"
+                    + " tab_subtasks.Type AS Tipo,  tab_tasks.Active AS Ativo, tab_tasks.RefTag as Referencia "
+                    + " FROM((tab_tasks LEFT OUTER JOIN "
+                    + " tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT OUTER JOIN "
                     + " tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask) ";
                 dset.Reset();
                 adapter = new OleDbDataAdapter(querry, connection);
@@ -74,9 +74,9 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_agend")
             {
-                querry = "SELECT tab_agend.ID, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa " 
-                    + " FROM((tab_agend LEFT JOIN " 
-                    + " tab_tasks ON tab_agend.idtask = tab_tasks.ID) LEFT JOIN " 
+                querry = "SELECT tab_agend.ID, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa "
+                    + " FROM((tab_agend LEFT JOIN "
+                    + " tab_tasks ON tab_agend.idtask = tab_tasks.ID) LEFT JOIN "
                     + " tab_teams ON tab_agend.idequipa = tab_teams.ID) ";
                 dset.Reset();
                 adapter = new OleDbDataAdapter(querry, connection);
@@ -85,8 +85,8 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_workers")
             {
-                querry = " SELECT tab_workers.ID, tab_workers.Nome, tab_teams.Descricao AS Equipa, tab_workers.img, tab_workers.Cod " 
-                    + " FROM(tab_workers INNER JOIN " 
+                querry = " SELECT tab_workers.ID, tab_workers.Nome, tab_teams.Descricao AS Equipa, tab_workers.img, tab_workers.Cod "
+                    + " FROM(tab_workers INNER JOIN "
                     + " tab_teams ON tab_workers.IDEquipa = tab_teams.ID) ";
                 dset.Reset();
                 adapter = new OleDbDataAdapter(querry, connection);
