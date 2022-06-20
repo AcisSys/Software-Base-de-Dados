@@ -190,7 +190,6 @@ namespace Software_Base_de_Dados
             this.Text = "Software verificação rotinas de manutenção";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.LocationChanged += new System.EventHandler(this.Form1_LocationChanged);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
