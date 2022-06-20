@@ -182,7 +182,7 @@ namespace Software_Base_de_Dados
             this.ClientSize = new System.Drawing.Size(975, 649);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
