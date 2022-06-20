@@ -20,7 +20,9 @@ namespace Software_Base_de_Dados
             InitializeComponent();
             panel1.Controls.Add(title);
             title.Dock = DockStyle.Fill;
+
         }
+
         private void Agend_Button_Click(object sender, EventArgs e)
         {
             tabela = "tab_agend";
@@ -81,6 +83,11 @@ namespace Software_Base_de_Dados
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+            
+
             // Gets Connection String and Unencrypt it
             if (!File.Exists("ChaveConexao.txt"))
             {

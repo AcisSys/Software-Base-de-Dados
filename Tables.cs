@@ -447,7 +447,7 @@ namespace Software_Base_de_Dados
             {
                 string querry;
                 string OtherCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].GetType().ToString();
-                string checktype = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].GetType().ToString();
+                string checktype = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].GetType().ToString();
                 if (checktype != "Syste,.DBNull")
                 {
                     if (OtherCheck != "System.DBNull")
@@ -457,7 +457,7 @@ namespace Software_Base_de_Dados
                         subtasks.ID = (int)oleDbCommand.ExecuteScalar();
                         subtasks.IDTask = tasks.ID;
                         subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-                        subtasks.Type = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3];
+                        subtasks.Type = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
                     }
                 }
                 subtasks.ShowDialog();

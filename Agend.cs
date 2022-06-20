@@ -45,24 +45,26 @@ namespace Software_Base_de_Dados
             // Condition MODIFY Data
             else
             {
-                DataSet ds = new DataSet();
-                DataSet dset = new DataSet();
+                
                 maskedTextBox1.Text = Id.ToString();
-                querry = "SELECT ID, Descricao FROM tab_teams";
-                adapter = new OleDbDataAdapter(querry, connection);
-                adapter.Fill(dset, "idteam");
-                DataTable dataTable = dset.Tables["idteam"];
-                sfComboBox1.DataSource = dataTable;
-                sfComboBox1.DisplayMember = "ID";
-                sfComboBox1.Text = Idequipa;
-                querry = "SELECT ID, Descricao FROM tab_tasks";
-                adapter = new OleDbDataAdapter(querry, connection);
-                adapter.Fill(ds, "idtask");
-                DataTable dataTable1 = ds.Tables["idtask"];
-                sfComboBox2.DataSource = dataTable1;
-                sfComboBox2.DisplayMember = "ID";
-                sfComboBox2.Text = Idtask;
+                
             }
+            DataSet ds = new DataSet();
+            DataSet dset = new DataSet();
+            querry = "SELECT ID, Descricao FROM tab_teams";
+            adapter = new OleDbDataAdapter(querry, connection);
+            adapter.Fill(dset, "idteam");
+            DataTable dataTable = dset.Tables["idteam"];
+            sfComboBox1.DataSource = dataTable;
+            sfComboBox1.DisplayMember = "ID";
+            sfComboBox1.Text = Idequipa;
+            querry = "SELECT ID, Descricao FROM tab_tasks";
+            adapter = new OleDbDataAdapter(querry, connection);
+            adapter.Fill(ds, "idtask");
+            DataTable dataTable1 = ds.Tables["idtask"];
+            sfComboBox2.DataSource = dataTable1;
+            sfComboBox2.DisplayMember = "ID";
+            sfComboBox2.Text = Idtask;
             // ID can never be changed by user
             maskedTextBox1.Enabled = false;
             maskedTextBox1.ReadOnly = true;
