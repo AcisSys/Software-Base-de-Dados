@@ -82,6 +82,7 @@ namespace Software_Base_de_Dados
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+
             // Gets Connection String and Unencrypt it
             if (!File.Exists("ChaveConexao.txt"))
             {
@@ -119,6 +120,5 @@ namespace Software_Base_de_Dados
                 }
             }
         }
-
     }
 }

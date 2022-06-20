@@ -104,6 +104,7 @@ namespace Software_Base_de_Dados
             // sfComboBox2
             // 
             this.sfComboBox2.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.sfComboBox2.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             this.sfComboBox2.Location = new System.Drawing.Point(85, 98);
             this.sfComboBox2.Name = "sfComboBox2";
             this.sfComboBox2.Size = new System.Drawing.Size(220, 21);

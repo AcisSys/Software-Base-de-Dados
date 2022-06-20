@@ -32,8 +32,8 @@ namespace Software_Base_de_Dados
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agend));
-            Syncfusion.Windows.Forms.MetroColorTable metroColorTable3 = new Syncfusion.Windows.Forms.MetroColorTable();
             Syncfusion.Windows.Forms.MetroColorTable metroColorTable1 = new Syncfusion.Windows.Forms.MetroColorTable();
+            Syncfusion.Windows.Forms.MetroColorTable metroColorTable2 = new Syncfusion.Windows.Forms.MetroColorTable();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -114,27 +114,27 @@ namespace Software_Base_de_Dados
             // 
             this.sfComboBox1.AllowFiltering = false;
             this.sfComboBox1.BeforeTouchSize = new System.Drawing.Size(238, 21);
+            this.sfComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sfComboBox1.Filter = null;
             this.sfComboBox1.Location = new System.Drawing.Point(97, 77);
             this.sfComboBox1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
             this.sfComboBox1.Name = "sfComboBox1";
-            this.sfComboBox1.ScrollMetroColorTable = metroColorTable3;
+            this.sfComboBox1.ScrollMetroColorTable = metroColorTable1;
             this.sfComboBox1.Size = new System.Drawing.Size(238, 21);
             this.sfComboBox1.TabIndex = 12;
-            this.sfComboBox1.Text = "multiColumnComboBox1";
             // 
             // sfComboBox2
             // 
             this.sfComboBox2.AllowFiltering = false;
             this.sfComboBox2.BeforeTouchSize = new System.Drawing.Size(238, 21);
+            this.sfComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sfComboBox2.Filter = null;
             this.sfComboBox2.Location = new System.Drawing.Point(97, 117);
             this.sfComboBox2.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
             this.sfComboBox2.Name = "sfComboBox2";
-            this.sfComboBox2.ScrollMetroColorTable = metroColorTable1;
+            this.sfComboBox2.ScrollMetroColorTable = metroColorTable2;
             this.sfComboBox2.Size = new System.Drawing.Size(238, 21);
             this.sfComboBox2.TabIndex = 13;
-            this.sfComboBox2.Text = "multiColumnComboBox1";
             // 
             // Agend
             // 

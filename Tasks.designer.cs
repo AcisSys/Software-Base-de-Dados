@@ -123,6 +123,7 @@ namespace Software_Base_de_Dados
             // sfComboBox2
             // 
             this.sfComboBox2.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.sfComboBox2.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             this.sfComboBox2.Location = new System.Drawing.Point(311, 83);
             this.sfComboBox2.Name = "sfComboBox2";
             this.sfComboBox2.Size = new System.Drawing.Size(107, 22);
@@ -171,6 +172,7 @@ namespace Software_Base_de_Dados
             // 
             this.sfComboBox1.AllowFiltering = false;
             this.sfComboBox1.BeforeTouchSize = new System.Drawing.Size(107, 21);
+            this.sfComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sfComboBox1.Filter = null;
             this.sfComboBox1.Location = new System.Drawing.Point(126, 84);
             this.sfComboBox1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
@@ -178,7 +180,6 @@ namespace Software_Base_de_Dados
             this.sfComboBox1.ScrollMetroColorTable = metroColorTable1;
             this.sfComboBox1.Size = new System.Drawing.Size(107, 21);
             this.sfComboBox1.TabIndex = 14;
-            this.sfComboBox1.Text = "multiColumnComboBox1";
             // 
             // Tasks
             // 
