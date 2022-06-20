@@ -21,7 +21,7 @@ namespace Software_Base_de_Dados
         string querry;
         private void Tasks_Load(object sender, EventArgs e)
         {
-            this.tab_placesTableAdapter.Fill(this.wORK2GODataDataSet.tab_places);
+            //this.tab_placesTableAdapter.Fill(this.wORK2GODataDataSet.tab_places);
             // check connection
             if (connection.State == ConnectionState.Closed)
             {
