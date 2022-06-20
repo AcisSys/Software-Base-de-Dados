@@ -382,8 +382,8 @@ namespace Software_Base_de_Dados
                 if (CheckNull != "System.DBNull")
                 {
                     workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                    workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
-                    querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4] + "'";
+                    workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
+                    querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
                     OleDbCommand command = new OleDbCommand(querry, connection);
                     workers.IDEquipa = command.ExecuteScalar().ToString();
                 }
