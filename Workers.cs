@@ -11,7 +11,6 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
-
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Nome { get; set; }
