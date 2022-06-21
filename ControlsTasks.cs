@@ -116,7 +116,6 @@ namespace Software_Base_de_Dados
             }
             else if (currentT == "subtasks")
             {
-
                 subtasks.ShowDialog();
                 UpdateSubTasks();
                 Add_Button.Enabled = false;
@@ -126,7 +125,6 @@ namespace Software_Base_de_Dados
         {
             if (currentT == "tasks")
             {
-
                 tasks.Tipo = "";
                 tasks.ShowDialog();
                 UpdateTable();
@@ -173,7 +171,6 @@ namespace Software_Base_de_Dados
             {
                 excelEngine = sfDataGrid2.ExportToExcel(sfDataGrid2.View, options);
             }
-
             var workBook = excelEngine.Excel.Workbooks[0];
             SaveFileDialog saveFilterDialog = new SaveFileDialog
             {
