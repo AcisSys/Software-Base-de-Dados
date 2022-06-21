@@ -309,7 +309,7 @@ namespace Software_Base_de_Dados
                     places.X = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
                     places.Y = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
                 }
-            
+
             }
             else if (Tabela == "tab_teams")
             {

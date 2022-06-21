@@ -80,7 +80,7 @@ namespace Software_Base_de_Dados
             Remove_Button.Enabled = false;
             Exportar.Enabled = false;
             Modify_Button.Enabled = false;
-            
+
             // Check connection
             if (connection.State == ConnectionState.Closed)
             {
@@ -178,11 +178,11 @@ namespace Software_Base_de_Dados
             };
             if (currentT == "tasks")
             {
-                 excelEngine = sfDataGrid1.ExportToExcel(sfDataGrid1.View, options);
+                excelEngine = sfDataGrid1.ExportToExcel(sfDataGrid1.View, options);
             }
             else
             {
-                 excelEngine = sfDataGrid2.ExportToExcel(sfDataGrid2.View, options);
+                excelEngine = sfDataGrid2.ExportToExcel(sfDataGrid2.View, options);
             }
 
             var workBook = excelEngine.Excel.Workbooks[0];
