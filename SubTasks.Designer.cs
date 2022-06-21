@@ -161,7 +161,6 @@ namespace Software_Base_de_Dados
             this.Name = "Subtasks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar SubTarefas";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Subtasks_FormClosed);
             this.Load += new System.EventHandler(this.Subtasks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).EndInit();
             this.toolStrip1.ResumeLayout(false);
