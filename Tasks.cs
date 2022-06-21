@@ -21,7 +21,7 @@ namespace Software_Base_de_Dados
         string querry;
         private void Tasks_Load(object sender, EventArgs e)
         {
-            
+
             // Check connection.
             if (connection.State == ConnectionState.Closed)
             {
