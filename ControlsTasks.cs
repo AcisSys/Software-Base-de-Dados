@@ -97,6 +97,7 @@ namespace Software_Base_de_Dados
             UpdateSubTasks();
             Add_Button.Enabled = true;
             Modify_Button.Enabled = true;
+            Remove_Button.Enabled = true;
             currentT = "tasks";
 
 
@@ -123,6 +124,7 @@ namespace Software_Base_de_Dados
         {
             if (currentT == "tasks")
             {
+
                 tasks.Tipo = "";
                 tasks.ShowDialog();
                 UpdateTable();
@@ -154,11 +156,82 @@ namespace Software_Base_de_Dados
         {
             Modify_Button.Enabled = true;
             Add_Button.Enabled = true;
+            Remove_Button.Enabled = true;
+            currentT = "subtasks";
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+
+        private void Exportar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Remove_Button_Click(object sender, EventArgs e)
+        {
+            // check connection
+            OleDbCommand oleDbCommand;
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.ConnectionString = Tables.Caminho;
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            // Ask for Confirmation
+            DialogResult response = MessageBox.Show("Tem a certeza?", "Apagar?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+            // ID of the row
+            int deleteid;
+            // Tabela is the name of the table 
+            if (currentT == "tasks")
+            {
+                deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                querry = "UPDATE tab_tasks SET [Active] = @Active WHERE [ID] = " + deleteid;
+                oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = "Não";
+            }
+            else
+            {
+                deleteid = (int)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[0];
+                querry = "DELETE FROM tab_subtasks WHERE ID = " + deleteid;
+                oleDbCommand = new OleDbCommand(querry, connection);
+            }
+            if (response == DialogResult.Yes)
+            {
+                try
+                {
+                    oleDbCommand.ExecuteNonQuery();
+                    // Says that data was deleted
+                    MessageBox.Show("Dados apagados com sucesso", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    // Gives error message.
+                    MessageBox.Show("Não foi possivel apagar os dados.\n " + ex.Message,
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else
+            {
+                // Cancels the action.
+                MessageBox.Show("Cancelado", "",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            // Updates the DataGridView.
+            UpdateTable();
+            sfDataGrid2.DataSource = null;
+            Modify_Button.Enabled = false;
+            Remove_Button.Enabled = false;
         }
     }
 }
