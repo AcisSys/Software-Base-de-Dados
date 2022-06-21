@@ -297,16 +297,15 @@ namespace Software_Base_de_Dados
             ds.Reset();
             if (Tabela == "tab_agend")
             {
-                agend.Idequipa = "0";
-                agend.Idtask = "0";
+               
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 string IdTeamsCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (IdTeamsCheck != "System.DBNull")
                 {
-                    string location = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+                    string location = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].ToString();
                     querry = "SELECT ID FROM tab_teams WHERE Descricao =  \"" + location + "\"";
                     OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                    agend.Idequipa = oleDbCommand.ExecuteScalar().ToString();
+                    //agend.Idequipa = oleDbCommand.ExecuteScalar().ToString();
                 }
                 string IdTasksCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].GetType().ToString();
                 if (IdTasksCheck != "System.DBNull")
@@ -314,7 +313,7 @@ namespace Software_Base_de_Dados
                     string location = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                     querry = "SELECT ID FROM tab_tasks WHERE Descricao = \"" + location + "\"";
                     OleDbCommand ocommand = new OleDbCommand(querry, connection);
-                    agend.Idtask = ocommand.ExecuteScalar().ToString();
+                   // agend.Idtask = ocommand.ExecuteScalar().ToString();
                 }
             }
             else if (Tabela == "tab_places")
