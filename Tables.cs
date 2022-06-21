@@ -313,10 +313,10 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_tasks")
             {
                 tasks.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].GetType().ToString();
+                string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "Sytem.DBNull")
                 {
-                    tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
+                    tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 }
                 string ActiveCheck = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5].ToString();
                 if (ActiveCheck == "Não")

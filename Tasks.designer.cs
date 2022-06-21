@@ -44,13 +44,10 @@ namespace Software_Base_de_Dados
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Button1 = new System.Windows.Forms.ToolStripButton();
             this.sfToolTip1 = new Syncfusion.Windows.Forms.SfToolTip(this.components);
-            this.wORK2GODataDataSet = new Software_Base_de_Dados.WORK2GODataDataSet();
             this.tabplacesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tab_placesTableAdapter = new Software_Base_de_Dados.WORK2GODataDataSetTableAdapters.tab_placesTableAdapter();
             this.sfComboBox1 = new Syncfusion.Windows.Forms.Tools.MultiColumnComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wORK2GODataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabplacesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).BeginInit();
             this.SuspendLayout();
@@ -156,17 +153,16 @@ namespace Software_Base_de_Dados
             // 
             // wORK2GODataDataSet
             // 
-            this.wORK2GODataDataSet.DataSetName = "WORK2GODataDataSet";
-            this.wORK2GODataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+
             // 
             // tabplacesBindingSource
             // 
             this.tabplacesBindingSource.DataMember = "tab_places";
-            this.tabplacesBindingSource.DataSource = this.wORK2GODataDataSet;
+            
             // 
             // tab_placesTableAdapter
             // 
-            this.tab_placesTableAdapter.ClearBeforeFill = true;
+            
             // 
             // sfComboBox1
             // 
@@ -207,7 +203,7 @@ namespace Software_Base_de_Dados
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wORK2GODataDataSet)).EndInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.tabplacesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
             this.ResumeLayout(false);
@@ -228,9 +224,7 @@ namespace Software_Base_de_Dados
         private ToolStrip toolStrip1;
         private ToolStripButton Button1;
         private Syncfusion.Windows.Forms.SfToolTip sfToolTip1;
-        private WORK2GODataDataSet wORK2GODataDataSet;
         private BindingSource tabplacesBindingSource;
-        private WORK2GODataDataSetTableAdapters.tab_placesTableAdapter tab_placesTableAdapter;
         private Syncfusion.Windows.Forms.Tools.MultiColumnComboBox sfComboBox1;
     }
 }
