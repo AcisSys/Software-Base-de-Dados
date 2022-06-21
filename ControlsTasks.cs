@@ -80,7 +80,6 @@ namespace Software_Base_de_Dados
             Remove_Button.Enabled = false;
             Exportar.Enabled = false;
             Modify_Button.Enabled = false;
-
             // Check connection
             if (connection.State == ConnectionState.Closed)
             {
