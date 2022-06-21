@@ -50,19 +50,20 @@
             this.sfDataGrid1.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
             this.sfDataGrid1.Location = new System.Drawing.Point(3, 3);
             this.sfDataGrid1.Name = "sfDataGrid1";
-            this.sfDataGrid1.Size = new System.Drawing.Size(804, 447);
+            this.sfDataGrid1.Size = new System.Drawing.Size(804, 452);
             this.sfDataGrid1.Style.AddNewRowStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.sfDataGrid1.Style.HeaderStyle.Font.Bold = true;
             this.sfDataGrid1.Style.HeaderStyle.Font.Size = 11F;
             this.sfDataGrid1.TabIndex = 5;
             this.sfDataGrid1.Text = "sfDataGrid1";
+            this.sfDataGrid1.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.sfDataGrid1_SelectionChanged);
             // 
             // Add_Button
             // 
             this.Add_Button.AccessibleDescription = "Button to add Entries to the Data Chart";
             this.Add_Button.AccessibleName = " Add Entries";
             this.Add_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.Add_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Add_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Add_Button.Image = ((System.Drawing.Image)(resources.GetObject("Add_Button.Image")));
             this.Add_Button.Location = new System.Drawing.Point(808, 74);
             this.Add_Button.Name = "Add_Button";
@@ -75,7 +76,7 @@
             // Modify_Button
             // 
             this.Modify_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.Modify_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Modify_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Modify_Button.Enabled = false;
             this.Modify_Button.Image = ((System.Drawing.Image)(resources.GetObject("Modify_Button.Image")));
             this.Modify_Button.Location = new System.Drawing.Point(808, 145);
@@ -106,9 +107,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sfDataGrid2.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            this.sfDataGrid2.Location = new System.Drawing.Point(3, 456);
+            this.sfDataGrid2.Location = new System.Drawing.Point(3, 461);
             this.sfDataGrid2.Name = "sfDataGrid2";
-            this.sfDataGrid2.Size = new System.Drawing.Size(804, 144);
+            this.sfDataGrid2.Size = new System.Drawing.Size(804, 139);
             this.sfDataGrid2.Style.AddNewRowStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.sfDataGrid2.Style.HeaderStyle.Font.Bold = true;
             this.sfDataGrid2.Style.HeaderStyle.Font.Size = 11F;
