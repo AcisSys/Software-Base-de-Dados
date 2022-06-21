@@ -6,7 +6,7 @@ namespace Software_Base_de_Dados
 {
     public partial class Form1 : Form
     {
-        // Nao alterar a chave ou qualquer código relacionado á encriptação de dados
+        // Nao alterar a chave ou qualquer código relacionado á encriptação de dados.
         readonly Title title = new Title();
         readonly Tables table = new Tables();
         Conexao conexao = new Conexao();
@@ -83,7 +83,7 @@ namespace Software_Base_de_Dados
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            // Gets Connection String and Unencrypt it
+            // Gets connection string and unencrypt it.
             if (!File.Exists("ChaveConexao.txt"))
             {
                 MessageBox.Show("Não existe uma conexão, configure uma", "Erro de Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -113,7 +113,7 @@ namespace Software_Base_de_Dados
                     }
                     catch (Exception ex)
                     {
-                        // Error in bad connection
+                        // Error in bad connection.
                         MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }

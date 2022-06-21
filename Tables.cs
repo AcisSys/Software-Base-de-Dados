@@ -259,7 +259,7 @@ namespace Software_Base_de_Dados
                 }
                 catch (Exception ex)
                 {
-                    // Gives Error Message
+                    // Gives error message.
                     MessageBox.Show("Não foi possivel apagar os dados.\n " + ex.Message,
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -267,19 +267,19 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                // Cancels the Action
+                // Cancels the action.
                 MessageBox.Show("Cancelado", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            // Updates the DataGridView
+            // Updates the DataGridView.
             UpdateTable();
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
         }
         private void SfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
-            // check connection
-            // checks if values are null or not, and gets data from the row of the according table
+            // Check connection.
+            // Checks if values are null or not, and gets data from the row of the according table.
             if (connection.State == ConnectionState.Closed)
             {
                 try

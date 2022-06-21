@@ -29,7 +29,7 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            // Add Data
+            // Add data.
             if (Tipo == "Add")
             {
                 button1.Text = "Guardar";
@@ -40,7 +40,7 @@ namespace Software_Base_de_Dados
                 maskedTextBox1.Text = currentid.ToString();
             }
             else
-            // Modify Data
+            // Modify data.
             {
                 button1.Text = "Modificar";
                 maskedTextBox1.Text = ID.ToString();
@@ -60,7 +60,7 @@ namespace Software_Base_de_Dados
             {
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
-                // Add Data
+                // Add data.
                 {
                     querry = "INSERT INTO tab_teams (ID, Descricao)" +
                            "VALUES (@ID, @Descricao)";
@@ -70,7 +70,7 @@ namespace Software_Base_de_Dados
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 }
                 else
-                // Modify Data
+                // Modify data.
                 {
                     querry = "UPDATE tab_teams  SET Descricao = @Descricao where ID = "
                        + maskedTextBox1.Text;
@@ -79,7 +79,7 @@ namespace Software_Base_de_Dados
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 }
                 try
-                // execute command
+                // Execute command.
                 {
                     oleDbCommand.ExecuteNonQuery();
                 }

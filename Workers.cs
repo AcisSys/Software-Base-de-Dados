@@ -21,7 +21,7 @@ namespace Software_Base_de_Dados
         string querry;
         private void Workers_Load(object sender, EventArgs e)
         {
-            // check connection 
+            // Check connection .
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -35,10 +35,10 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            // Add Data
+            // Add data.
             if (Tipo == "Add")
             {
-                // Get new ID
+                // Get new Id.
                 querry = "SELECT MAX (ID) FROM tab_workers";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
@@ -46,7 +46,7 @@ namespace Software_Base_de_Dados
                 maskedTextBox1.Text = currentid.ToString();
             }
             else
-            // Modify data
+            // Modify data.
             {
                 maskedTextBox1.Text = ID.ToString();
             }
@@ -68,7 +68,7 @@ namespace Software_Base_de_Dados
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            // Check if all fields are written
+            // Check if all fields are written.
             if ((maskedTextBox2.Text == null) || (maskedTextBox4.Text == null) || (sfComboBox1.SelectedItem == null)
                 || (maskedTextBox5.Text == null))
             {
@@ -76,17 +76,17 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                // check data type
+                // Check data type.
                 bool a = int.TryParse(maskedTextBox5.Text, out int maskedbox5);
                 if (a != true)
                 {
-                    // return if not int / a number
+                    // Return if not int / a number.
                     sfToolTip1.Show("Foram detetados dados incorretos\n verifique os dados introduzidos");
                     return;
                 }
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
-                //add data
+                // Add data.
                 {
                     querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod) VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
                     oleDbCommand = new OleDbCommand(querry, connection);
@@ -97,7 +97,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@Cod", OleDbType.Integer).Value = maskedTextBox5.Text;
                 }
                 else
-                // modify data
+                // Modify data.
                 {
                     querry = "UPDATE tab_workers  SET Nome = @Nome, IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = "
                         + maskedTextBox1.Text;
@@ -109,7 +109,7 @@ namespace Software_Base_de_Dados
                 }
                 try
                 {
-                    // execute command
+                    // Execute command.
                     oleDbCommand.ExecuteNonQuery();
                 }
                 catch (Exception ex)

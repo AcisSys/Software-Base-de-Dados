@@ -19,7 +19,7 @@ namespace Software_Base_de_Dados
         string querry;
         private void Places_Load(object sender, EventArgs e)
         {
-            // check connection
+            // Check connection.
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -33,10 +33,10 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            //condition add data
+            // Condition add data.
             if (Tipo == "Add")
             {
-                // Get New ID
+                // Get New Id.
                 querry = "SELECT MAX (ID) FROM tab_places";
                 oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
@@ -44,7 +44,7 @@ namespace Software_Base_de_Dados
                 maskedTextBox1.Text = currentid.ToString();
             }
             else
-            // condition modify data
+            // Condition modify data.
             {
                 maskedTextBox1.Text = Id.ToString();
                 maskedTextBox2.Text = Localizacao;
@@ -56,14 +56,14 @@ namespace Software_Base_de_Dados
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            // check if all fields are used
+            // Check if all fields are used.
             if ((maskedTextBox2.Text == "") ||  (maskedTextBox3.Text == "") || (maskedTextBox4.Text == ""))
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
             }
             else
             {
-                // Checks if values are INT or not
+                // Checks if values are integer or not.
                 bool b = int.TryParse(maskedTextBox3.Text, out int maskedbox3);
                 bool c = int.TryParse(maskedTextBox4.Text, out int maskedbox4);
                 if ((b != true) || (c != true))
@@ -71,7 +71,7 @@ namespace Software_Base_de_Dados
                     sfToolTip1.Show("Foram detetados dados incorretos\n verifique os dados introduzidos");
                     return;
                 }
-                // querry to add data
+                // Querry to add data.
                 if (Tipo == "Add")
                 {
                     querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
@@ -84,7 +84,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }
                 else
-                // querry to update data
+                // Querry to update data.
                 {
                     querry = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
                         " Y = @Y where ID = " + maskedTextBox1.Text;
@@ -94,7 +94,7 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }
-                // execute command
+                // Execute command.
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();

@@ -17,7 +17,7 @@ namespace Software_Base_de_Dados
         string querry;
         private void Tags_Load(object sender, EventArgs e)
         {
-            // check connection
+            // Check connection.
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -33,7 +33,7 @@ namespace Software_Base_de_Dados
             }
             if (Tipo == "Add")
             {
-                // add data
+                // Add data.
                 querry = "SELECT MAX (ID) FROM tab_tags";
                 OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
@@ -42,7 +42,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                //change data
+                // Change data.
                 maskedTextBox1.Text = Id.ToString();
                 maskedTextBox2.Text = Ref.ToString();
             }
@@ -52,7 +52,7 @@ namespace Software_Base_de_Dados
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            // checks data type
+            // Checks data type.
             if (int.TryParse(maskedTextBox2.Text, out _) == false)
             {
                 sfToolTip1.Show("Verifique se todos os campos estão \ncorretos antes de validar dados!");
@@ -61,7 +61,7 @@ namespace Software_Base_de_Dados
             {
                 OleDbCommand oleDbCommand;
                 if (Tipo == "Add")
-                //add data
+                // Add data.
                 {
                     querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
                                "VALUES (@ID, @IDEquipa, @IDTask)";
@@ -72,7 +72,7 @@ namespace Software_Base_de_Dados
                         OleDbType.LongVarChar).Value = "Não";
                 }
                 else
-                // change data
+                // Change data.
                 {
                     querry = "SELECT ID FROM tab_tasks WHERE RefTag = " + maskedTextBox2.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
@@ -88,7 +88,7 @@ namespace Software_Base_de_Dados
                     querry = "UPDATE tab_tags  SET Ref = @Ref," +
                        " taken = @taken where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(querry, connection);
-                    // check REF taken or not taken
+                    // Check REF taken or not taken.
                     oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
                     if (Taken == true)
                     {
@@ -99,7 +99,7 @@ namespace Software_Base_de_Dados
                         oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = taken;
                     }
                 }
-                // execute command
+                // Execute command.
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();

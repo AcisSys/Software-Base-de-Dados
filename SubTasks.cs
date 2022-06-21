@@ -20,7 +20,7 @@ namespace Software_Base_de_Dados
         public string Type { get; set; }
         private void Subtasks_Load(object sender, EventArgs e)
         {
-            // Check Connection
+            // Check connection.
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -34,7 +34,7 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            // Add new Data
+            // Add new data.
             if (Tipo == "Add")
             {
                 string comand = "SELECT MAX (ID) FROM tab_subtasks";
@@ -43,7 +43,7 @@ namespace Software_Base_de_Dados
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
             }
-            // Change existent Data
+            // Change existent data.
             else
             {
                 maskedTextBox1.Text = Id.ToString();
@@ -74,7 +74,7 @@ namespace Software_Base_de_Dados
             }
             foreach (DataRow dr in dataTable.Rows)
             {
-                dtClone.ImportRow(dr); // Imports all rows from DataTable to the clone (with String type on every column)
+                dtClone.ImportRow(dr); // Imports all rows from DataTable to the clone (with String type on every column).
             }
             /*
              * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
@@ -85,7 +85,7 @@ namespace Software_Base_de_Dados
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            // check all fields
+            // Check all fields.
             if ((maskedTextBox2.Text == "") || (maskedTextBox3.Text == ""))
             {
                 sfToolTip1.Show("Verifique todos os campos antes de modificar dados.");
@@ -93,7 +93,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                // Checks data type
+                // Checks data type.
                 bool a = int.TryParse(maskedTextBox3.Text, out int maskedbox2);
                 if (a != true)
                 {
@@ -102,7 +102,7 @@ namespace Software_Base_de_Dados
                 }
             }
             if (Tipo == "Add")
-            // add data
+            // Add data.
             {
                 querry = "INSERT INTO tab_subtasks ([ID], [IDTask], [Desc], [Type])" +
                    "VALUES (@ID, @IDTask, @Desc, @Type)";
@@ -114,7 +114,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
-                // modify data
+                // Modify data.
                 querry = "UPDATE tab_subtasks SET [IDTask] = @IDTask, [Desc] = @Desc, [Type] = @Type " +
                     "WHERE [ID] =" + maskedTextBox1.Text;
                 oleDbCommand = new OleDbCommand(querry, connection);
@@ -123,7 +123,7 @@ namespace Software_Base_de_Dados
                 oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;
             }
             try
-            //execute command
+            // Execute command.
             {
                 oleDbCommand.ExecuteNonQuery();
             }
