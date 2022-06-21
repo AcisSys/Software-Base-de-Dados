@@ -16,9 +16,10 @@ namespace Software_Base_de_Dados
         DataSet dataSet = new DataSet();
         OleDbDataAdapter adapter;
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
-        private void ControlsTasks_Load(object sender, EventArgs e)
+        Tasks tasks = new Tasks();
+
+        void UpdateTable()
         {
-            // Check connection
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -40,16 +41,55 @@ namespace Software_Base_de_Dados
             dset.Reset();
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dset);
+            sfDataGrid1.DataSource = null;
             sfDataGrid1.DataSource = dset;
+            Modify_Button.Enabled = false;
+            sfDataGrid1.Update();
+            connection.Close();
         }
-
+        private void ControlsTasks_Load(object sender, EventArgs e)
+        {
+            // Check connection
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.ConnectionString = Tables.Caminho;
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            UpdateTable();
+        }
         private void sfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
+            Modify_Button.Enabled = true;
             querry = "SELECT ID , [Desc] AS Descrição, [Type] AS Tipo FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             dataSet.Reset();
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(dataSet);
+            sfDataGrid2.DataSource = null;
             sfDataGrid2.DataSource = dataSet;
+
+
+            sfDataGrid2.Update();
+            connection.Close();
+        }
+        private void Add_Button_Click(object sender, EventArgs e)
+        {
+            tasks.Tipo = "Add";
+            tasks.ShowDialog();
+            UpdateTable();
+        }
+
+        private void Modify_Button_Click(object sender, EventArgs e)
+        {
+            tasks.Tipo = "";
+            tasks.ShowDialog();
+            UpdateTable();
         }
     }
 }

@@ -72,6 +72,7 @@
             this.Add_Button.Text = "Adicionar";
             this.Add_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Add_Button.UseVisualStyleBackColor = true;
+            this.Add_Button.Click += new System.EventHandler(this.Add_Button_Click);
             // 
             // Modify_Button
             // 
@@ -86,6 +87,7 @@
             this.Modify_Button.Text = "Modificar";
             this.Modify_Button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Modify_Button.UseVisualStyleBackColor = true;
+            this.Modify_Button.Click += new System.EventHandler(this.Modify_Button_Click);
             // 
             // Exportar
             // 
