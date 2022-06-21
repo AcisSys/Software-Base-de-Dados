@@ -104,8 +104,6 @@ namespace Software_Base_de_Dados
             Remove_Button.Enabled = true;
             Exportar.Enabled = true;
             currentT = "tasks";
-
-
         }
         private void Add_Button_Click(object sender, EventArgs e)
         {
@@ -124,7 +122,6 @@ namespace Software_Base_de_Dados
                 Add_Button.Enabled = false;
             }
         }
-
         private void Modify_Button_Click(object sender, EventArgs e)
         {
             if (currentT == "tasks")
@@ -134,9 +131,6 @@ namespace Software_Base_de_Dados
                 tasks.ShowDialog();
                 UpdateTable();
             }
-
-
-
             else if (currentT == "subtasks")
             {
                 subtasks.Id = (int)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[0];
@@ -147,7 +141,6 @@ namespace Software_Base_de_Dados
             }
             Modify_Button.Enabled = false;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             subtasks.Tipo = "Add";
@@ -156,7 +149,6 @@ namespace Software_Base_de_Dados
             subtasks.ShowDialog();
             UpdateTable();
         }
-
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
             Modify_Button.Enabled = true;
@@ -165,9 +157,6 @@ namespace Software_Base_de_Dados
             Exportar.Enabled = true;
             currentT = "subtasks";
         }
-
-
-
         private void Exportar_Click(object sender, EventArgs e)
         {
             var excelEngine = new ExcelEngine();
@@ -211,7 +200,6 @@ namespace Software_Base_de_Dados
             }
             Exportar.Enabled = false;
         }
-
         private void Remove_Button_Click(object sender, EventArgs e)
         {
             // check connection
