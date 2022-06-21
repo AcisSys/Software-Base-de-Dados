@@ -87,9 +87,9 @@ namespace Software_Base_de_Dados
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label3.Location = new System.Drawing.Point(12, 70);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 21);
+            this.label3.Size = new System.Drawing.Size(85, 21);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Subtarefa:";
+            this.label3.Text = "Sub Tarefa:";
             // 
             // label4
             // 

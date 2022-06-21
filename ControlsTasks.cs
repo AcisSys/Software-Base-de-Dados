@@ -17,6 +17,8 @@ namespace Software_Base_de_Dados
         OleDbDataAdapter adapter;
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         Tasks tasks = new Tasks();
+        string currentT;
+        Subtasks subtasks = new Subtasks();
 
         void UpdateTable()
         {
@@ -46,9 +48,35 @@ namespace Software_Base_de_Dados
             Modify_Button.Enabled = false;
             sfDataGrid1.Update();
             connection.Close();
+
+        }
+        void UpdateSubTasks()
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.ConnectionString = Tables.Caminho;
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            querry = "SELECT ID , [Desc] AS Descrição, [Type] AS Tipo FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+            dataSet.Reset();
+            adapter = new OleDbDataAdapter(querry, connection);
+            adapter.Fill(dataSet);
+            sfDataGrid2.DataSource = null;
+            sfDataGrid2.DataSource = dataSet;
+            sfDataGrid2.Update();
+            connection.Close();
         }
         private void ControlsTasks_Load(object sender, EventArgs e)
         {
+            Add_Button.Enabled = false;
+            Modify_Button.Enabled = false;
             // Check connection
             if (connection.State == ConnectionState.Closed)
             {
@@ -66,30 +94,71 @@ namespace Software_Base_de_Dados
         }
         private void sfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
+            UpdateSubTasks();
+            Add_Button.Enabled = true;
             Modify_Button.Enabled = true;
-            querry = "SELECT ID , [Desc] AS Descrição, [Type] AS Tipo FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-            dataSet.Reset();
-            adapter = new OleDbDataAdapter(querry, connection);
-            adapter.Fill(dataSet);
-            sfDataGrid2.DataSource = null;
-            sfDataGrid2.DataSource = dataSet;
+            currentT = "tasks";
 
 
-            sfDataGrid2.Update();
-            connection.Close();
         }
         private void Add_Button_Click(object sender, EventArgs e)
         {
-            tasks.Tipo = "Add";
-            tasks.ShowDialog();
-            UpdateTable();
+            if (currentT == "tasks")
+            {
+                tasks.Tipo = "Add";
+                tasks.ShowDialog();
+                UpdateTable();
+                Add_Button.Enabled = false;
+            }
+            else if (currentT == "subtasks")
+            {
+
+                subtasks.ShowDialog();
+                UpdateSubTasks();
+                Add_Button.Enabled = false;
+            }
         }
 
         private void Modify_Button_Click(object sender, EventArgs e)
         {
-            tasks.Tipo = "";
-            tasks.ShowDialog();
+            if (currentT == "tasks")
+            {
+                tasks.Tipo = "";
+                tasks.ShowDialog();
+                UpdateTable();
+            }
+
+
+
+            else if (currentT == "subtasks")
+            {
+                subtasks.Id = (int)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[0];
+                subtasks.Tipo = "add";
+                subtasks.Text = "Modificar SubTarefas";
+                subtasks.ShowDialog();
+                UpdateSubTasks();
+            }
+            Modify_Button.Enabled = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            subtasks.Tipo = "Add";
+            subtasks.Text = "Adicionar SubTarefas";
+            subtasks.IdTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+            subtasks.ShowDialog();
             UpdateTable();
+        }
+
+        private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
+        {
+            Modify_Button.Enabled = true;
+            Add_Button.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

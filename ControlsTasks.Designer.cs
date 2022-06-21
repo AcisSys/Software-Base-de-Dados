@@ -34,8 +34,6 @@
             this.Modify_Button = new System.Windows.Forms.Button();
             this.Exportar = new System.Windows.Forms.Button();
             this.sfDataGrid2 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid2)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +63,7 @@
             this.Add_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Add_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Add_Button.Image = ((System.Drawing.Image)(resources.GetObject("Add_Button.Image")));
-            this.Add_Button.Location = new System.Drawing.Point(808, 74);
+            this.Add_Button.Location = new System.Drawing.Point(808, 402);
             this.Add_Button.Name = "Add_Button";
             this.Add_Button.Size = new System.Drawing.Size(164, 65);
             this.Add_Button.TabIndex = 6;
@@ -80,7 +78,7 @@
             this.Modify_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Modify_Button.Enabled = false;
             this.Modify_Button.Image = ((System.Drawing.Image)(resources.GetObject("Modify_Button.Image")));
-            this.Modify_Button.Location = new System.Drawing.Point(808, 145);
+            this.Modify_Button.Location = new System.Drawing.Point(808, 473);
             this.Modify_Button.Name = "Modify_Button";
             this.Modify_Button.Size = new System.Drawing.Size(164, 65);
             this.Modify_Button.TabIndex = 7;
@@ -117,43 +115,13 @@
             this.sfDataGrid2.Style.HeaderStyle.Font.Size = 11F;
             this.sfDataGrid2.TabIndex = 10;
             this.sfDataGrid2.Text = "sfDataGrid2";
-            // 
-            // button1
-            // 
-            this.button1.AccessibleDescription = "Button to add Entries to the Data Chart";
-            this.button1.AccessibleName = " Add Entries";
-            this.button1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(808, 461);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 65);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Adicionar";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Enabled = false;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(808, 532);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(164, 65);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Modificar";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
+            this.sfDataGrid2.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.sfDataGrid2_SelectionChanged);
             // 
             // ControlsTasks
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.sfDataGrid2);
             this.Controls.Add(this.Exportar);
             this.Controls.Add(this.Modify_Button);
@@ -175,7 +143,5 @@
         private System.Windows.Forms.Button Modify_Button;
         private System.Windows.Forms.Button Exportar;
         private Syncfusion.WinForms.DataGrid.SfDataGrid sfDataGrid2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }

@@ -42,18 +42,20 @@ namespace Software_Base_de_Dados
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
+                maskedTextBox3.Enabled = false;
             }
             // Change existent data.
             else
             {
                 maskedTextBox1.Text = Id.ToString();
+                maskedTextBox3.Enabled = true;
             }
             OleDbDataAdapter adapter;
             DataSet dset = new DataSet();
             maskedTextBox2.Text = Desc;
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
-            maskedTextBox3.Enabled = true;
+
             maskedTextBox3.Text = IdTask.ToString();
             button1.Select();
             DataTable dataTable;
