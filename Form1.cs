@@ -9,6 +9,7 @@ namespace Software_Base_de_Dados
         // Nao alterar a chave ou qualquer código relacionado á encriptação de dados.
         readonly Title title = new Title();
         readonly Tables table = new Tables();
+        ControlsTasks controlTasks = new ControlsTasks();
         Conexao conexao = new Conexao();
         string tabela = "";
         string Provid;
@@ -73,8 +74,8 @@ namespace Software_Base_de_Dados
             table.Tabela = tabela;
             table.UpdateTable();
             panel1.Controls.Clear();
-            panel1.Controls.Add(table);
-            table.Dock = DockStyle.Fill;
+            panel1.Controls.Add(controlTasks);
+            controlTasks.Dock = DockStyle.Fill;
         }
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {
