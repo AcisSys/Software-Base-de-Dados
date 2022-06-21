@@ -309,29 +309,7 @@ namespace Software_Base_de_Dados
                     places.X = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
                     places.Y = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
                 }
-            }
-            else if (Tabela == "tab_tasks")
-            {
-                tasks.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
-                if (CheckNull != "Sytem.DBNull")
-                {
-                    tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-                }
-                string ActiveCheck = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[5].ToString();
-                if (ActiveCheck == "Não")
-                {
-                    tasks.Active = false;
-                }
-                else
-                {
-                    tasks.Active = true;
-                }
-                string IdRefCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6].GetType().ToString();
-                if (IdRefCheck != "System.DBNull")
-                {
-                    tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[6].ToString();
-                }
+            
             }
             else if (Tabela == "tab_teams")
             {
@@ -405,50 +383,6 @@ namespace Software_Base_de_Dados
                 {
                     System.Diagnostics.Process.Start(saveFilterDialog.FileName);
                 }
-            }
-        }
-        private void SfDataGrid1_DoubleClick(object sender, EventArgs e)
-        {
-            // On Double click (tasks only)
-            // Shows subtasks modify window
-            if (Tabela == "tab_tasks")
-            {
-                Subtasks subtasks = new Subtasks();
-                subtasks.ShowDialog();
-            }
-        }
-        private void SfDataGrid1_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
-        {
-            if (Tabela == "tab_tasks")
-            {
-                string querry;
-                string OtherCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].GetType().ToString();
-                string checktype = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].GetType().ToString();
-                if (checktype != "Syste,.DBNull")
-                {
-                    if (OtherCheck != "System.DBNull")
-                    {
-                        querry = "SELECT ID FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + " AND Desc = \"" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "\"";
-                        OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                        subtasks.Id = (int)oleDbCommand.ExecuteScalar();
-                        subtasks.IdTask = tasks.Id;
-                        subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-                        subtasks.Type = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
-                    }
-                }
-                subtasks.ShowDialog();
-            }
-        }
-        private void Subtbtn_Click(object sender, EventArgs e)
-        {
-            // on button click (tasks only)
-            // adds a subtask
-            if (Tabela == "tab_tasks")
-            {
-                subtasks.Tipo = "Add";
-                subtasks.Text = "Adicionar SubTarefas";
-                subtasks.ShowDialog();
-                UpdateTable();
             }
         }
     }

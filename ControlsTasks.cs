@@ -22,7 +22,6 @@ namespace Software_Base_de_Dados
         Tasks tasks = new Tasks();
         string currentT;
         Subtasks subtasks = new Subtasks();
-
         void UpdateTable()
         {
             if (connection.State == ConnectionState.Closed)
@@ -51,7 +50,6 @@ namespace Software_Base_de_Dados
             Modify_Button.Enabled = false;
             sfDataGrid1.Update();
             connection.Close();
-
         }
         void UpdateSubTasks()
         {

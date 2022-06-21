@@ -105,8 +105,6 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.TabIndex = 4;
             this.sfDataGrid1.Text = "sfDataGrid1";
             this.sfDataGrid1.SelectionChanged += new Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventHandler(this.SfDataGrid1_SelectionChanged);
-            this.sfDataGrid1.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.SfDataGrid1_CellDoubleClick);
-            this.sfDataGrid1.DoubleClick += new System.EventHandler(this.SfDataGrid1_DoubleClick);
             // 
             // Exportar
             // 
@@ -129,7 +127,7 @@ namespace Software_Base_de_Dados
             this.Subtbtn.Size = new System.Drawing.Size(75, 23);
             this.Subtbtn.TabIndex = 7;
             this.Subtbtn.UseVisualStyleBackColor = true;
-            this.Subtbtn.Click += new System.EventHandler(this.Subtbtn_Click);
+            
             // 
             // Tables
             // 
