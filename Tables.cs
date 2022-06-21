@@ -297,6 +297,8 @@ namespace Software_Base_de_Dados
             ds.Reset();
             if (Tabela == "tab_agend")
             {
+                agend.Idequipa = "0";
+                agend.Idtask = "0";
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 string IdTeamsCheck = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (IdTeamsCheck != "System.DBNull")

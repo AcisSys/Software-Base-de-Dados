@@ -41,13 +41,14 @@ namespace Software_Base_de_Dados
             DataTable dataTable = dset.Tables["idteam"];
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
-            sfComboBox1.Text = Idequipa;
             querry = "SELECT ID, Descricao FROM tab_tasks";
             adapter = new OleDbDataAdapter(querry, connection);
             adapter.Fill(ds, "idtask");
             DataTable dataTable1 = ds.Tables["idtask"];
             sfComboBox2.DataSource = dataTable1;
             sfComboBox2.DisplayMember = "ID";
+
+            sfComboBox1.Text = Idequipa;
             sfComboBox2.Text = Idtask;
             // Condition ADD Data
             if (Tipo == "Add")
