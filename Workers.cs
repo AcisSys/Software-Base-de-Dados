@@ -15,7 +15,7 @@ namespace Software_Base_de_Dados
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Nome { get; set; }
-        public string IDEquipa { get; set; }
+        public string IdEquipa { get; set; }
         public string Img { get; set; }
         public string Cod { get; set; }
         string querry;
@@ -64,13 +64,13 @@ namespace Software_Base_de_Dados
             DataTable dataTable = dset.Tables["idteam"];
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
-            sfComboBox1.Text = IDEquipa;
+            sfComboBox1.Text = IdEquipa;
         }
         private void Button1_Click(object sender, EventArgs e)
         {
             // Check if all fields are written
-            if (maskedTextBox2.Text == null || maskedTextBox4.Text == null || sfComboBox1.SelectedItem == null
-                || maskedTextBox5.Text == null)
+            if ((maskedTextBox2.Text == null) || (maskedTextBox4.Text == null) || (sfComboBox1.SelectedItem == null)
+                || (maskedTextBox5.Text == null))
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
             }

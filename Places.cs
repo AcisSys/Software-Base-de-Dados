@@ -12,7 +12,7 @@ namespace Software_Base_de_Dados
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         OleDbCommand oleDbCommand;
         public string Tipo { get; set; }
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Localizacao { get; set; }
         public string X { get; set; }
         public string Y { get; set; }
@@ -46,7 +46,7 @@ namespace Software_Base_de_Dados
             else
             // condition modify data
             {
-                maskedTextBox1.Text = ID.ToString();
+                maskedTextBox1.Text = Id.ToString();
                 maskedTextBox2.Text = Localizacao;
                 maskedTextBox3.Text = X;
                 maskedTextBox4.Text = Y;
@@ -57,7 +57,7 @@ namespace Software_Base_de_Dados
         private void Button1_Click(object sender, EventArgs e)
         {
             // check if all fields are used
-            if (maskedTextBox2.Text == "" || maskedTextBox3.Text == "" || maskedTextBox4.Text == "")
+            if ((maskedTextBox2.Text == "") ||  (maskedTextBox3.Text == "") || (maskedTextBox4.Text == ""))
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
             }
@@ -66,7 +66,7 @@ namespace Software_Base_de_Dados
                 // Checks if values are INT or not
                 bool b = int.TryParse(maskedTextBox3.Text, out int maskedbox3);
                 bool c = int.TryParse(maskedTextBox4.Text, out int maskedbox4);
-                if (b != true || c != true)
+                if ((b != true) || (c != true))
                 {
                     sfToolTip1.Show("Foram detetados dados incorretos\n verifique os dados introduzidos");
                     return;

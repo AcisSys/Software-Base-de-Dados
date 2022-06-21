@@ -71,7 +71,7 @@ namespace Software_Base_de_Dados
         private void Button1_Click(object sender, EventArgs e)
         {
             // check if all fields are used
-            if (sfComboBox1.SelectedItem == null || sfComboBox2.SelectedItem == null)
+            if ((sfComboBox1.SelectedItem == null) || (sfComboBox2.SelectedItem == null))
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
             }

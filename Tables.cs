@@ -301,7 +301,7 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_places")
             {
-                places.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                places.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "System.DBNull")
                 {
@@ -312,7 +312,7 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tasks")
             {
-                tasks.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                tasks.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].GetType().ToString();
                 if (CheckNull != "Sytem.DBNull")
                 {
@@ -344,7 +344,7 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tags")
             {
-                tags.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                tags.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "System.DBNull")
                 {
@@ -361,12 +361,12 @@ namespace Software_Base_de_Dados
                     workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
                     querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
                     OleDbCommand command = new OleDbCommand(querry, connection);
-                    workers.IDEquipa = command.ExecuteScalar().ToString();
+                    workers.IdEquipa = command.ExecuteScalar().ToString();
                 }
             }
             else
             {
-                subtasks.IDTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                subtasks.IdTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].GetType().ToString();
                 if (CheckNull != "Sytem.DBNull")
                 {
@@ -430,8 +430,8 @@ namespace Software_Base_de_Dados
                     {
                         querry = "SELECT ID FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0] + " AND Desc = \"" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "\"";
                         OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
-                        subtasks.ID = (int)oleDbCommand.ExecuteScalar();
-                        subtasks.IDTask = tasks.ID;
+                        subtasks.Id = (int)oleDbCommand.ExecuteScalar();
+                        subtasks.IdTask = tasks.Id;
                         subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
                         subtasks.Type = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4];
                     }

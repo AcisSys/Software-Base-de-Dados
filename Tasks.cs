@@ -12,9 +12,9 @@ namespace Software_Base_de_Dados
         }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         public string Tipo { get; set; }
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Descricao { get; set; }
-        public string IDPlace { get; set; }
+        public string IdPlace { get; set; }
         public bool Active { get; set; }
         string oldref;
         public string RefTag { get; set; }
@@ -48,7 +48,7 @@ namespace Software_Base_de_Dados
             else
             // modify data
             {
-                maskedTextBox1.Text = ID.ToString();
+                maskedTextBox1.Text = Id.ToString();
                 maskedTextBox2.Text = Descricao;
                 if (Active == true)
                 {
@@ -73,7 +73,7 @@ namespace Software_Base_de_Dados
             dataTable = dset.Tables["type"];
             sfComboBox2.DataSource = dataTable;
             sfComboBox2.DisplayMember = "Ref";
-            sfComboBox1.Text = IDPlace;
+            sfComboBox1.Text = IdPlace;
             sfComboBox2.Text = RefTag;
             oldref = RefTag;
             maskedTextBox1.ReadOnly = true;
@@ -83,7 +83,7 @@ namespace Software_Base_de_Dados
         private void Button1_Click(object sender, EventArgs e)
         {
             // verifies entries
-            if (maskedTextBox2.Text == "" || sfComboBox1.SelectedItem == null)
+            if ((maskedTextBox2.Text == "") || (sfComboBox1.SelectedItem == null))
             {
                 sfToolTip1.Show("Verifique o preenchimento de todos os campos antes de validar dados!");
             }

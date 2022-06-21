@@ -14,8 +14,8 @@ namespace Software_Base_de_Dados
         OleDbCommand oleDbCommand;
         string querry;
         public string Tipo { get; set; }
-        public int ID { get; set; }
-        public int IDTask { get; set; }
+        public int Id { get; set; }
+        public int IdTask { get; set; }
         public string Desc { get; set; }
         public string Type { get; set; }
         private void Subtasks_Load(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace Software_Base_de_Dados
             // Change existent Data
             else
             {
-                maskedTextBox1.Text = ID.ToString();
+                maskedTextBox1.Text = Id.ToString();
             }
             OleDbDataAdapter adapter;
             DataSet dset = new DataSet();
@@ -54,7 +54,7 @@ namespace Software_Base_de_Dados
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Enabled = true;
-            maskedTextBox3.Text = IDTask.ToString();
+            maskedTextBox3.Text = IdTask.ToString();
             button1.Select();
             DataTable dataTable;
             querry = "SELECT DISTINCT Type FROM tab_subtasks";
@@ -86,7 +86,7 @@ namespace Software_Base_de_Dados
         private void Button1_Click(object sender, EventArgs e)
         {
             // check all fields
-            if (maskedTextBox2.Text == "" || maskedTextBox3.Text == "")
+            if ((maskedTextBox2.Text == "") || (maskedTextBox3.Text == ""))
             {
                 sfToolTip1.Show("Verifique todos os campos antes de modificar dados.");
                 return;

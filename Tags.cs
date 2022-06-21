@@ -11,7 +11,7 @@ namespace Software_Base_de_Dados
         }
         readonly OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         public string Tipo { get; set; }
-        public int ID { get; set; }
+        public int Id { get; set; }
         public float Ref { get; set; }
         public bool Taken { get; set; }
         string querry;
@@ -43,7 +43,7 @@ namespace Software_Base_de_Dados
             else
             {
                 //change data
-                maskedTextBox1.Text = ID.ToString();
+                maskedTextBox1.Text = Id.ToString();
                 maskedTextBox2.Text = Ref.ToString();
             }
             maskedTextBox1.ReadOnly = true;
