@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Syncfusion.WinForms.DataGridConverter;
+using Syncfusion.XlsIO;
+using System;
 using System.Data;
 using System.Data.OleDb;
+using System.IO;
 using System.Windows.Forms;
 namespace Software_Base_de_Dados
 {
@@ -76,7 +79,10 @@ namespace Software_Base_de_Dados
         private void ControlsTasks_Load(object sender, EventArgs e)
         {
             Add_Button.Enabled = false;
+            Remove_Button.Enabled = false;
+            Exportar.Enabled = false;
             Modify_Button.Enabled = false;
+            
             // Check connection
             if (connection.State == ConnectionState.Closed)
             {
@@ -98,6 +104,7 @@ namespace Software_Base_de_Dados
             Add_Button.Enabled = true;
             Modify_Button.Enabled = true;
             Remove_Button.Enabled = true;
+            Exportar.Enabled = true;
             currentT = "tasks";
 
 
@@ -157,6 +164,7 @@ namespace Software_Base_de_Dados
             Modify_Button.Enabled = true;
             Add_Button.Enabled = true;
             Remove_Button.Enabled = true;
+            Exportar.Enabled = true;
             currentT = "subtasks";
         }
 
@@ -164,7 +172,46 @@ namespace Software_Base_de_Dados
 
         private void Exportar_Click(object sender, EventArgs e)
         {
+            var excelEngine = new ExcelEngine();
+            // exoport current shown table
+            var options = new ExcelExportingOptions
+            {
+                ExcelVersion = ExcelVersion.Excel2013
+            };
+            if (currentT == "tasks")
+            {
+                 excelEngine = sfDataGrid1.ExportToExcel(sfDataGrid1.View, options);
+            }
+            else
+            {
+                 excelEngine = sfDataGrid2.ExportToExcel(sfDataGrid2.View, options);
+            }
 
+            var workBook = excelEngine.Excel.Workbooks[0];
+            SaveFileDialog saveFilterDialog = new SaveFileDialog
+            {
+                FilterIndex = 2,
+                Filter = "Excel 97 to 2003 Files(*.xls)|*.xls|Excel 2007 to 2010 Files(*.xlsx)|*.xlsx|Excel 2013 File(*.xlsx)|*.xlsx"
+            };
+            if (saveFilterDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (Stream stream = saveFilterDialog.OpenFile())
+                {
+                    if (saveFilterDialog.FilterIndex == 1)
+                        workBook.Version = ExcelVersion.Excel97to2003;
+                    else if (saveFilterDialog.FilterIndex == 2)
+                        workBook.Version = ExcelVersion.Excel2010;
+                    else
+                        workBook.Version = ExcelVersion.Excel2013;
+                    workBook.SaveAs(stream);
+                }
+                if (MessageBox.Show(this.sfDataGrid1, "Quer guardar esta exportação?", "Exportação Excel",
+                                    MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    System.Diagnostics.Process.Start(saveFilterDialog.FileName);
+                }
+            }
+            Exportar.Enabled = false;
         }
 
         private void Remove_Button_Click(object sender, EventArgs e)
