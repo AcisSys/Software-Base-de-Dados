@@ -120,6 +120,7 @@ namespace Software_Base_de_Dados
                 MessageBox.Show("Dados atualizados com sucesso", "", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
+            this.Close();
         }
         private void Button1_MouseLeave(object sender, EventArgs e)
         {

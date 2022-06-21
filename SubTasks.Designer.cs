@@ -49,16 +49,16 @@ namespace Software_Base_de_Dados
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(85, 19);
+            this.maskedTextBox1.Location = new System.Drawing.Point(95, 19);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(220, 20);
             this.maskedTextBox1.TabIndex = 0;
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(84, 72);
+            this.maskedTextBox2.Location = new System.Drawing.Point(98, 71);
             this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(221, 20);
+            this.maskedTextBox2.Size = new System.Drawing.Size(217, 20);
             this.maskedTextBox2.TabIndex = 2;
             // 
             // label1
@@ -77,19 +77,19 @@ namespace Software_Base_de_Dados
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label2.Location = new System.Drawing.Point(12, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 21);
+            this.label2.Size = new System.Drawing.Size(73, 21);
             this.label2.TabIndex = 5;
-            this.label2.Text = "IDTask:";
+            this.label2.Text = "ID Tarefa:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(12, 72);
+            this.label3.Location = new System.Drawing.Point(12, 70);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 21);
+            this.label3.Size = new System.Drawing.Size(80, 21);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Desc:";
+            this.label3.Text = "Subtarefa:";
             // 
             // label4
             // 
@@ -105,7 +105,7 @@ namespace Software_Base_de_Dados
             // 
             this.sfComboBox2.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
             this.sfComboBox2.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            this.sfComboBox2.Location = new System.Drawing.Point(85, 98);
+            this.sfComboBox2.Location = new System.Drawing.Point(95, 98);
             this.sfComboBox2.Name = "sfComboBox2";
             this.sfComboBox2.Size = new System.Drawing.Size(220, 21);
             this.sfComboBox2.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -136,7 +136,7 @@ namespace Software_Base_de_Dados
             // 
             // maskedTextBox3
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(85, 45);
+            this.maskedTextBox3.Location = new System.Drawing.Point(95, 45);
             this.maskedTextBox3.Name = "maskedTextBox3";
             this.maskedTextBox3.Size = new System.Drawing.Size(220, 20);
             this.maskedTextBox3.TabIndex = 12;
