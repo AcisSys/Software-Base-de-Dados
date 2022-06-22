@@ -174,6 +174,7 @@ namespace Software_Base_de_Dados
             }
             else if (currentT == "subtasks")
             {
+                subtasks.Tipo = "Add";
                 subtasks.ShowDialog();
                 UpdateSubTasks();
                 Add_Button.Enabled = false;
