@@ -97,7 +97,6 @@ namespace Software_Base_de_Dados
                 }
             }
             UpdateTable();
-            
         }
         private void sfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
@@ -151,7 +150,6 @@ namespace Software_Base_de_Dados
             UpdateTable();
             Modify_Button.Enabled = false;
         }
-
         private void Exportar_Click(object sender, EventArgs e)
         {
             var excelEngine = new ExcelEngine();
