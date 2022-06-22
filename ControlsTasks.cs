@@ -22,6 +22,7 @@ namespace Software_Base_de_Dados
         Tasks tasks = new Tasks();
         string currentT;
         Subtasks subtasks = new Subtasks();
+        int entries;
         void UpdateTable()
         {
             if (connection.State == ConnectionState.Closed)
@@ -75,6 +76,7 @@ namespace Software_Base_de_Dados
             sfDataGrid2.DataSource = null;
             sfDataGrid2.DataSource = dataSet;
             sfDataGrid2.Update();
+            entries = sfDataGrid2.RowCount;
             connection.Close();
         }
         private void ControlsTasks_Load(object sender, EventArgs e)
@@ -122,6 +124,7 @@ namespace Software_Base_de_Dados
             {
                 tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
             }
+
         }
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
@@ -139,8 +142,29 @@ namespace Software_Base_de_Dados
         {
             if (currentT == "tasks")
             {
-                tasks.Tipo = "Add";
-                tasks.ShowDialog();
+                
+                if (entries <= 1)
+                {
+                    askwhereadd askwhereadd = new askwhereadd();
+                    askwhereadd.ShowDialog();
+                    if (askwhereadd.answer == 1)
+                    {
+                        tasks.Tipo = "Add";
+                        tasks.ShowDialog();
+                    }
+                    else if (askwhereadd.answer == 2)
+                    {
+                        subtasks.ShowDialog();
+                        UpdateSubTasks();
+                        Add_Button.Enabled = false;
+                    }
+                }
+                else
+                {
+                    tasks.Tipo = "Add";
+                    tasks.ShowDialog();
+                }
+                
                 
                 Add_Button.Enabled = false;
             }
