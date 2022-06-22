@@ -17,7 +17,7 @@ namespace Software_Base_de_Dados
         public string IdEquipa { get; set; }
         public string Img { get; set; }
         public string Cod { get; set; }
-        string querry;
+        string query;
         private void Workers_Load(object sender, EventArgs e)
         {
             // Check connection.
@@ -38,8 +38,8 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             {
                 // Get new Id.
-                querry = "SELECT MAX (ID) FROM tab_workers";
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                query = "SELECT MAX (ID) FROM tab_workers";
+                OleDbCommand oleDbCommand = new OleDbCommand(query, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
@@ -57,8 +57,8 @@ namespace Software_Base_de_Dados
             maskedTextBox5.Text = Cod;
             maskedTextBox1.Enabled = false;
             button1.Select();
-            querry = "SELECT ID, Descricao FROM tab_teams";
-            adapter = new OleDbDataAdapter(querry, connection);
+            query = "SELECT ID, Descricao FROM tab_teams";
+            adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "idteam");
             DataTable dataTable = dset.Tables["idteam"];
             sfComboBox1.DataSource = dataTable;
@@ -87,8 +87,8 @@ namespace Software_Base_de_Dados
                 if (Tipo == "Add")
                 // Add data.
                 {
-                    querry = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod) VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    query = "INSERT INTO tab_workers (ID, Nome, IDEquipa, img, Cod) VALUES (@ID, @Nome, @IDEquipa, @img, @Cod)";
+                    oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
@@ -98,9 +98,9 @@ namespace Software_Base_de_Dados
                 else
                 // Modify data.
                 {
-                    querry = "UPDATE tab_workers  SET Nome = @Nome, IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = "
+                    query = "UPDATE tab_workers  SET Nome = @Nome, IDEquipa = @IDEequipa, img = @img, Cod = @Cod where ID = "
                         + maskedTextBox1.Text;
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@Nome", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
                     oleDbCommand.Parameters.Add("@img", OleDbType.LongVarChar).Value = maskedTextBox4.Text;

@@ -12,7 +12,7 @@ namespace Software_Base_de_Dados
         }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         OleDbCommand oleDbCommand;
-        string querry;
+        string query;
         public string Tipo { get; set; }
         public int Id { get; set; }
         public int IdTask { get; set; }
@@ -61,8 +61,8 @@ namespace Software_Base_de_Dados
             maskedTextBox3.Text = IdTask.ToString();
             button1.Select();
             DataTable dataTable;
-            querry = "SELECT DISTINCT Type FROM tab_subtasks";
-            adapter = new OleDbDataAdapter(querry, connection);
+            query = "SELECT DISTINCT Type FROM tab_subtasks";
+            adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
             /*
@@ -108,9 +108,9 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             // Add data.
             {
-                querry = "INSERT INTO tab_subtasks ([ID], [IDTask], [Desc], [Type])" +
+                query = "INSERT INTO tab_subtasks ([ID], [IDTask], [Desc], [Type])" +
                    "VALUES (@ID, @IDTask, @Desc, @Type)";
-                oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand(query, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
                 oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
@@ -119,9 +119,9 @@ namespace Software_Base_de_Dados
             else
             {
                 // Modify data.
-                querry = "UPDATE tab_subtasks SET [IDTask] = @IDTask, [Desc] = @Desc, [Type] = @Type " +
+                query = "UPDATE tab_subtasks SET [IDTask] = @IDTask, [Desc] = @Desc, [Type] = @Type " +
                     "WHERE [ID] =" + maskedTextBox1.Text;
-                oleDbCommand = new OleDbCommand(querry, connection);
+                oleDbCommand = new OleDbCommand(query, connection);
                 oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
                 oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 oleDbCommand.Parameters.Add("@Type", OleDbType.LongVarChar).Value = sfComboBox2.Text;

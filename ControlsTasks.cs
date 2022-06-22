@@ -14,7 +14,7 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
         public string Tabela;
-        string querry;
+        string query;
         DataSet dset = new DataSet();
         DataSet dataSet = new DataSet();
         OleDbDataAdapter adapter;
@@ -37,14 +37,14 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            /*querry = "SELECT tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa, tab_places.Localizacao,"
+            /*query = "SELECT tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa, tab_places.Localizacao,"
                     + " tab_subtasks.Type AS Tipo,  tab_tasks.Active AS Ativo, tab_tasks.RefTag as Referencia "
                     + " FROM((tab_tasks LEFT OUTER JOIN "
                     + " tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT OUTER JOIN "
                     + " tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask) ";*/
-            querry = "SELECT * FROM tab_tasks";
+            query = "SELECT * FROM tab_tasks";
             dset.Reset();
-            adapter = new OleDbDataAdapter(querry, connection);
+            adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset);
             sfDataGrid1.DataSource = null;
             sfDataGrid1.DataSource = dset;
@@ -69,9 +69,9 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            querry = "SELECT ID , [Desc] AS Descrição, [Type] AS Tipo FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+            query = "SELECT ID , [Desc] AS Descrição, [Type] AS Tipo FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             dataSet.Reset();
-            adapter = new OleDbDataAdapter(querry, connection);
+            adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dataSet);
             sfDataGrid2.DataSource = null;
             sfDataGrid2.DataSource = dataSet;
@@ -266,15 +266,15 @@ namespace Software_Base_de_Dados
             if (currentT == "tasks")
             {
                 deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                querry = "UPDATE tab_tasks SET [Active] = @Active WHERE [ID] = " + deleteid;
-                oleDbCommand = new OleDbCommand(querry, connection);
+                query = "UPDATE tab_tasks SET [Active] = @Active WHERE [ID] = " + deleteid;
+                oleDbCommand = new OleDbCommand(query, connection);
                 oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = "Não";
             }
             else
             {
                 deleteid = (int)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[0];
-                querry = "DELETE FROM tab_subtasks WHERE ID = " + deleteid;
-                oleDbCommand = new OleDbCommand(querry, connection);
+                query = "DELETE FROM tab_subtasks WHERE ID = " + deleteid;
+                oleDbCommand = new OleDbCommand(query, connection);
             }
             if (response == DialogResult.Yes)
             {

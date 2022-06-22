@@ -18,7 +18,7 @@ namespace Software_Base_de_Dados
         public bool Active { get; set; }
         string oldref;
         public string RefTag { get; set; }
-        string querry;
+        string query;
         private void Tasks_Load(object sender, EventArgs e)
         {
 
@@ -61,14 +61,14 @@ namespace Software_Base_de_Dados
             }
             DataSet dset = new DataSet();
             OleDbDataAdapter adapter;
-            querry = "SELECT ID, Localizacao FROM tab_places";
-            adapter = new OleDbDataAdapter(querry, connection);
+            query = "SELECT ID, Localizacao FROM tab_places";
+            adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "idtask");
             DataTable dataTable = dset.Tables["idtask"];
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
-            querry = "SELECT Ref FROM tab_tags WHERE taken = 'Não'";
-            adapter = new OleDbDataAdapter(querry, connection);
+            query = "SELECT Ref FROM tab_tags WHERE taken = 'Não'";
+            adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
             sfComboBox2.DataSource = dataTable;
@@ -102,9 +102,9 @@ namespace Software_Base_de_Dados
                 // Add data.
                 if (Tipo == "Add")
                 {
-                    querry = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +
+                    query = "INSERT INTO tab_tasks (ID, Descricao, IDPlace, Active, RefTag)" +
                             "VALUES (@ID, @Descricao, @IDPlace, @Active, @RefTag)";
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Descricao", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = sfComboBox1.Text;
@@ -114,9 +114,9 @@ namespace Software_Base_de_Dados
                 else
                 // Modify data.
                 {
-                    querry = "UPDATE tab_tasks SET  Descricao = @Descricao, IDPlace = @IDPlace , Active = @Active , RefTag = @RefTag" +
+                    query = "UPDATE tab_tasks SET  Descricao = @Descricao, IDPlace = @IDPlace , Active = @Active , RefTag = @RefTag" +
                        " WHERE ID = " + maskedTextBox1.Text;
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@Descricao", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = int.Parse(sfComboBox1.Text);
                     oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
@@ -129,13 +129,13 @@ namespace Software_Base_de_Dados
                     oleDbCommand.ExecuteNonQuery();
                     if (oldref != sfComboBox2.Text)
                     {
-                        querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + oldref;
-                        OleDbCommand oleDb = new OleDbCommand(querry, connection);
+                        query = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + oldref;
+                        OleDbCommand oleDb = new OleDbCommand(query, connection);
                         oleDb.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Não";
                         oleDb.ExecuteNonQuery();
                     }
-                    querry = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + sfComboBox2.Text;
-                    OleDbCommand ole = new OleDbCommand(querry, connection);
+                    query = "UPDATE tab_tags SET taken = @taken WHERE Ref = " + sfComboBox2.Text;
+                    OleDbCommand ole = new OleDbCommand(query, connection);
                     ole.Parameters.Add("@taken", OleDbType.LongVarChar).Value = "Sim";
                     ole.ExecuteNonQuery();
                 }

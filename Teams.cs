@@ -13,7 +13,7 @@ namespace Software_Base_de_Dados
         public string Tipo { get; set; }
         public int ID { get; set; }
         public string Descricao { get; set; }
-        string querry;
+        string query;
         private void Teams_Load(object sender, EventArgs e)
         {
             if (connection.State == System.Data.ConnectionState.Closed)
@@ -33,8 +33,8 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             {
                 button1.Text = "Guardar";
-                querry = "SELECT MAX (ID) FROM tab_teams";
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                query = "SELECT MAX (ID) FROM tab_teams";
+                OleDbCommand oleDbCommand = new OleDbCommand(query, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
@@ -62,9 +62,9 @@ namespace Software_Base_de_Dados
                 if (Tipo == "Add")
                 // Add data.
                 {
-                    querry = "INSERT INTO tab_teams (ID, Descricao)" +
+                    query = "INSERT INTO tab_teams (ID, Descricao)" +
                            "VALUES (@ID, @Descricao)";
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Descricao",
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text;
@@ -72,9 +72,9 @@ namespace Software_Base_de_Dados
                 else
                 // Modify data.
                 {
-                    querry = "UPDATE tab_teams  SET Descricao = @Descricao where ID = "
+                    query = "UPDATE tab_teams  SET Descricao = @Descricao where ID = "
                        + maskedTextBox1.Text;
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@Descricao",
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                 }

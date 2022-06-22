@@ -11,7 +11,7 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
         OleDbDataAdapter adapter;
-        string querry;
+        string query;
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         public string Tipo { get; set; }
         public int Id { get; set; }
@@ -35,14 +35,14 @@ namespace Software_Base_de_Dados
             }
             DataSet ds = new DataSet();
             DataSet dset = new DataSet();
-            querry = "SELECT ID, Descricao FROM tab_teams";
-            adapter = new OleDbDataAdapter(querry, connection);
+            query = "SELECT ID, Descricao FROM tab_teams";
+            adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "idteam");
             DataTable dataTable = dset.Tables["idteam"];
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
-            querry = "SELECT ID, Descricao FROM tab_tasks";
-            adapter = new OleDbDataAdapter(querry, connection);
+            query = "SELECT ID, Descricao FROM tab_tasks";
+            adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(ds, "idtask");
             DataTable dataTable1 = ds.Tables["idtask"];
             sfComboBox2.DataSource = dataTable1;
@@ -85,9 +85,9 @@ namespace Software_Base_de_Dados
                 // Condition add data.
                 if (Tipo == "Add")
                 {
-                    querry = "INSERT INTO tab_agend (ID, IDEquipa, IDTask)" +
+                    query = "INSERT INTO tab_agend (ID, IDEquipa, IDTask)" +
                           "VALUES (@ID, @IDEquipa, @IDTask)";
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
                     oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
@@ -95,8 +95,8 @@ namespace Software_Base_de_Dados
                 // Condition modify data.
                 else
                 {
-                    querry = "UPDATE tab_agend  SET IDEquipa = @IDEquipa, IDTask = @IDTask where ID = " + maskedTextBox1.Text;
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    query = "UPDATE tab_agend  SET IDEquipa = @IDEquipa, IDTask = @IDTask where ID = " + maskedTextBox1.Text;
+                    oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@IDEquipa", OleDbType.Integer).Value = sfComboBox1.Text;
                     oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = sfComboBox2.Text;
                 }

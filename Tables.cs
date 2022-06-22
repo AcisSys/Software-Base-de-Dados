@@ -23,7 +23,7 @@ namespace Software_Base_de_Dados
         Subtasks subtasks = new Subtasks();
         OleDbDataAdapter adapter;
         public string Tabela { get; set; }
-        string querry;
+        string query;
         private void Tables_Load(object sender, EventArgs e)
         {
             Modify_Button.Enabled = false;
@@ -61,38 +61,38 @@ namespace Software_Base_de_Dados
             DataSet dset = new DataSet();
             if (Tabela == "tab_agend")
             {
-                querry = "SELECT tab_agend.ID, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa "
+                query = "SELECT tab_agend.ID, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa "
                     + " FROM((tab_agend LEFT JOIN "
                     + " tab_tasks ON tab_agend.idtask = tab_tasks.ID) LEFT JOIN "
                     + " tab_teams ON tab_agend.idequipa = tab_teams.ID) ";
                 dset.Reset();
-                adapter = new OleDbDataAdapter(querry, connection);
+                adapter = new OleDbDataAdapter(query, connection);
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
             }
             else if (Tabela == "tab_workers")
             {
-                querry = " SELECT tab_workers.ID, tab_workers.Nome, tab_teams.Descricao AS Equipa, tab_workers.img, tab_workers.Cod "
+                query = " SELECT tab_workers.ID, tab_workers.Nome, tab_teams.Descricao AS Equipa, tab_workers.img, tab_workers.Cod "
                     + " FROM(tab_workers INNER JOIN "
                     + " tab_teams ON tab_workers.IDEquipa = tab_teams.ID) ";
                 dset.Reset();
-                adapter = new OleDbDataAdapter(querry, connection);
+                adapter = new OleDbDataAdapter(query, connection);
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
             }
             else if (Tabela == "tab_tags")
             {
-                querry = "SELECT ID, Ref AS Referencia, taken AS Utilizado FROM tab_tags";
+                query = "SELECT ID, Ref AS Referencia, taken AS Utilizado FROM tab_tags";
                 dset.Reset();
-                adapter = new OleDbDataAdapter(querry, connection);
+                adapter = new OleDbDataAdapter(query, connection);
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
             }
             else
             {
-                querry = "SELECT * FROM " + Tabela;
+                query = "SELECT * FROM " + Tabela;
                 dset.Reset();
-                adapter = new OleDbDataAdapter(querry, connection);
+                adapter = new OleDbDataAdapter(query, connection);
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
             }
@@ -214,8 +214,8 @@ namespace Software_Base_de_Dados
             int deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             // Tabela is the name of the table 
             
-                querry = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
-                oleDbCommand = new OleDbCommand(querry, connection);
+                query = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
+                oleDbCommand = new OleDbCommand(query, connection);
             
             if (response == DialogResult.Yes)
             {
@@ -306,8 +306,8 @@ namespace Software_Base_de_Dados
                 {
                     workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                     workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
-                    querry = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
-                    OleDbCommand command = new OleDbCommand(querry, connection);
+                    query = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
+                    OleDbCommand command = new OleDbCommand(query, connection);
                     workers.IdEquipa = command.ExecuteScalar().ToString();
                 }
             }

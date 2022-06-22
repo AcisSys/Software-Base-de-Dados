@@ -16,7 +16,7 @@ namespace Software_Base_de_Dados
         public string Localizacao { get; set; }
         public string X { get; set; }
         public string Y { get; set; }
-        string querry;
+        string query;
         private void Places_Load(object sender, EventArgs e)
         {
             // Check connection.
@@ -37,8 +37,8 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             {
                 // Get New Id.
-                querry = "SELECT MAX (ID) FROM tab_places";
-                oleDbCommand = new OleDbCommand(querry, connection);
+                query = "SELECT MAX (ID) FROM tab_places";
+                oleDbCommand = new OleDbCommand(query, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
@@ -71,12 +71,12 @@ namespace Software_Base_de_Dados
                     sfToolTip1.Show("Foram detetados dados incorretos\n verifique os dados introduzidos");
                     return;
                 }
-                // Querry to add data.
+                // query to add data.
                 if (Tipo == "Add")
                 {
-                    querry = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
+                    query = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
                       "VALUES (@ID, @Localizacao, @X, @Y)";
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Localizacao",
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text.ToUpper();
@@ -84,11 +84,11 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }
                 else
-                // Querry to update data.
+                // query to update data.
                 {
-                    querry = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
+                    query = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
                         " Y = @Y where ID = " + maskedTextBox1.Text;
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@Localizacao",
                         OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;

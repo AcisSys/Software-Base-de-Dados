@@ -14,7 +14,7 @@ namespace Software_Base_de_Dados
         public int Id { get; set; }
         public float Ref { get; set; }
         public bool Taken { get; set; }
-        string querry;
+        string query;
         private void Tags_Load(object sender, EventArgs e)
         {
             // Check connection.
@@ -34,8 +34,8 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             {
                 // Add data.
-                querry = "SELECT MAX (ID) FROM tab_tags";
-                OleDbCommand oleDbCommand = new OleDbCommand(querry, connection);
+                query = "SELECT MAX (ID) FROM tab_tags";
+                OleDbCommand oleDbCommand = new OleDbCommand(query, connection);
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
@@ -63,9 +63,9 @@ namespace Software_Base_de_Dados
                 if (Tipo == "Add")
                 // Add data.
                 {
-                    querry = "INSERT INTO tab_tags (ID, Ref, taken) " +
+                    query = "INSERT INTO tab_tags (ID, Ref, taken) " +
                                "VALUES (@ID, @IDEquipa, @IDTask)";
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                     oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@Taken",
@@ -74,8 +74,8 @@ namespace Software_Base_de_Dados
                 else
                 // Change data.
                 {
-                    querry = "SELECT ID FROM tab_tasks WHERE RefTag = " + maskedTextBox2.Text;
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    query = "SELECT ID FROM tab_tasks WHERE RefTag = " + maskedTextBox2.Text;
+                    oleDbCommand = new OleDbCommand(query, connection);
                     string taken = Convert.ToString(oleDbCommand.ExecuteScalar());
                     if (taken != "")
                     {
@@ -85,9 +85,9 @@ namespace Software_Base_de_Dados
                     {
                         taken = "Não";
                     }
-                    querry = "UPDATE tab_tags  SET Ref = @Ref," +
+                    query = "UPDATE tab_tags  SET Ref = @Ref," +
                        " taken = @taken where ID = " + maskedTextBox1.Text;
-                    oleDbCommand = new OleDbCommand(querry, connection);
+                    oleDbCommand = new OleDbCommand(query, connection);
                     // Check REF taken or not taken.
                     oleDbCommand.Parameters.Add("@Ref", OleDbType.Integer).Value = maskedTextBox2.Text;
                     if (Taken == true)
