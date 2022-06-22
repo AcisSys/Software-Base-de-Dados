@@ -48,7 +48,9 @@ namespace Software_Base_de_Dados
             else
             {
                 maskedTextBox1.Text = Id.ToString();
-                maskedTextBox3.Enabled = true;
+                maskedTextBox3.Enabled = false;
+                sfComboBox2.Text = Tipo;
+
             }
             OleDbDataAdapter adapter;
             DataSet dset = new DataSet();

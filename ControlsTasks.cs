@@ -106,6 +106,37 @@ namespace Software_Base_de_Dados
             Remove_Button.Enabled = true;
             Exportar.Enabled = true;
             currentT = "tasks";
+
+
+
+
+
+
+            tasks.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+            tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
+            tasks.IdPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
+            if ( (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3] == "Não")
+            {
+                tasks.Active = false;
+            }
+            else
+            {
+                tasks.Active = true;
+            }
+
+           
+
+
+
+
+            string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].GetType().ToString();
+            if (CheckNull != "Systyem.DBNull")
+            {
+                tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
+            }
+
+
+
         }
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
@@ -114,6 +145,14 @@ namespace Software_Base_de_Dados
             Remove_Button.Enabled = true;
             Exportar.Enabled = true;
             currentT = "subtasks";
+
+
+
+
+            subtasks.Id = (int)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[0];
+            subtasks.Desc = (string)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[1].ToString();
+            subtasks.IdTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+            subtasks.Tipo = (string)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[2].ToString();
         }
         private void Add_Button_Click(object sender, EventArgs e)
         {
@@ -131,6 +170,7 @@ namespace Software_Base_de_Dados
                 Add_Button.Enabled = false;
             }
             UpdateTable();
+            sfDataGrid2.DataSource = null;
         }
         private void Modify_Button_Click(object sender, EventArgs e)
         {
@@ -141,13 +181,13 @@ namespace Software_Base_de_Dados
             }
             else if (currentT == "subtasks")
             {
-                subtasks.Id = (int)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[0];
-                subtasks.Tipo = "add";
+                subtasks.Tipo = "";
                 subtasks.Text = "Modificar SubTarefas";
                 subtasks.ShowDialog();
                 UpdateSubTasks();
             }
             UpdateTable();
+            sfDataGrid2.DataSource = null;
             Modify_Button.Enabled = false;
         }
         private void Exportar_Click(object sender, EventArgs e)
@@ -192,6 +232,7 @@ namespace Software_Base_de_Dados
             }
             Exportar.Enabled = false;
             UpdateTable();
+            sfDataGrid2.DataSource = null;
         }
         private void Remove_Button_Click(object sender, EventArgs e)
         {
