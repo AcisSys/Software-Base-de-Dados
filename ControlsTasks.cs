@@ -130,7 +130,6 @@ namespace Software_Base_de_Dados
             {
                 tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
             }
-
         }
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
@@ -149,7 +148,6 @@ namespace Software_Base_de_Dados
         {
             if (currentT == "tasks")
             {
-                
                 if (entries <= 1)
                 {
                     // check if subtasks exist
@@ -172,8 +170,6 @@ namespace Software_Base_de_Dados
                     tasks.Tipo = "Add";
                     tasks.ShowDialog();
                 }
-                
-                
                 Add_Button.Enabled = false;
             }
             else if (currentT == "subtasks")
