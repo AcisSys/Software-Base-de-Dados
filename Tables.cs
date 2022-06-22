@@ -18,7 +18,6 @@ namespace Software_Base_de_Dados
         Agend agend = new Agend();
         Places places = new Places();
         Tags tags = new Tags();
-        Tasks tasks = new Tasks();
         Teams teams = new Teams();
         Workers workers = new Workers();
         Subtasks subtasks = new Subtasks();
@@ -60,19 +59,7 @@ namespace Software_Base_de_Dados
                 }
             }
             DataSet dset = new DataSet();
-            if (Tabela == "tab_tasks")
-            {
-                querry = "SELECT tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa, tab_places.Localizacao,"
-                    + " tab_subtasks.Type AS Tipo,  tab_tasks.Active AS Ativo, tab_tasks.RefTag as Referencia "
-                    + " FROM((tab_tasks LEFT OUTER JOIN "
-                    + " tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT OUTER JOIN "
-                    + " tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask) ";
-                dset.Reset();
-                adapter = new OleDbDataAdapter(querry, connection);
-                adapter.Fill(dset);
-                sfDataGrid1.DataSource = dset;
-            }
-            else if (Tabela == "tab_agend")
+            if (Tabela == "tab_agend")
             {
                 querry = "SELECT tab_agend.ID, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa "
                     + " FROM((tab_agend LEFT JOIN "
@@ -141,11 +128,6 @@ namespace Software_Base_de_Dados
                 places.Tipo = "Add";
                 places.ShowDialog();
             }
-            else if (Tabela == "tab_tasks")
-            {
-                tasks.Tipo = "Add";
-                tasks.ShowDialog();
-            }
             else if (Tabela == "tab_tags")
             {
                 tags.Tipo = "Add";
@@ -187,11 +169,6 @@ namespace Software_Base_de_Dados
             {
                 places.Tipo = "";
                 places.ShowDialog();
-            }
-            else if (Tabela == "tab_tasks")
-            {
-                tasks.Tipo = "";
-                tasks.ShowDialog();
             }
             else if (Tabela == "tab_tags")
             {
@@ -236,18 +213,10 @@ namespace Software_Base_de_Dados
             // ID of the row
             int deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             // Tabela is the name of the table 
-            if (Tabela == "tab_tasks")
-            {
-                deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                querry = "UPDATE tab_tasks SET [Active] = @Active WHERE [ID] = " + deleteid;
-                oleDbCommand = new OleDbCommand(querry, connection);
-                oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = "Não";
-            }
-            else
-            {
+            
                 querry = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
                 oleDbCommand = new OleDbCommand(querry, connection);
-            }
+            
             if (response == DialogResult.Yes)
             {
                 try
@@ -342,15 +311,7 @@ namespace Software_Base_de_Dados
                     workers.IdEquipa = command.ExecuteScalar().ToString();
                 }
             }
-            else
-            {
-                subtasks.IdTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].GetType().ToString();
-                if (CheckNull != "Sytem.DBNull")
-                {
-                    subtasks.Desc = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2];
-                }
-            }
+            
         }
         private void Exportar_Click(object sender, EventArgs e)
         {
