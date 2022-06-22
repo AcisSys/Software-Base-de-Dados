@@ -108,6 +108,14 @@ namespace Software_Base_de_Dados
             Exportar.Enabled = true;
             currentT = "tasks";
         }
+        private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
+        {
+            Modify_Button.Enabled = true;
+            Add_Button.Enabled = true;
+            Remove_Button.Enabled = true;
+            Exportar.Enabled = true;
+            currentT = "subtasks";
+        }
         private void Add_Button_Click(object sender, EventArgs e)
         {
             if (currentT == "tasks")
@@ -143,14 +151,7 @@ namespace Software_Base_de_Dados
             UpdateTable();
             Modify_Button.Enabled = false;
         }
-        private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
-        {
-            Modify_Button.Enabled = true;
-            Add_Button.Enabled = true;
-            Remove_Button.Enabled = true;
-            Exportar.Enabled = true;
-            currentT = "subtasks";
-        }
+
         private void Exportar_Click(object sender, EventArgs e)
         {
             var excelEngine = new ExcelEngine();
