@@ -48,6 +48,9 @@ namespace Software_Base_de_Dados
             sfDataGrid1.DataSource = null;
             sfDataGrid1.DataSource = dset;
             Modify_Button.Enabled = false;
+            Add_Button.Enabled = false;
+            Remove_Button.Enabled = false;
+            Exportar.Enabled = false;
             sfDataGrid1.Update();
             connection.Close();
         }
@@ -94,6 +97,7 @@ namespace Software_Base_de_Dados
                 }
             }
             UpdateTable();
+            
         }
         private void sfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
@@ -110,7 +114,7 @@ namespace Software_Base_de_Dados
             {
                 tasks.Tipo = "Add";
                 tasks.ShowDialog();
-                UpdateTable();
+                
                 Add_Button.Enabled = false;
             }
             else if (currentT == "subtasks")
@@ -119,6 +123,7 @@ namespace Software_Base_de_Dados
                 UpdateSubTasks();
                 Add_Button.Enabled = false;
             }
+            UpdateTable();
         }
         private void Modify_Button_Click(object sender, EventArgs e)
         {
@@ -126,7 +131,6 @@ namespace Software_Base_de_Dados
             {
                 tasks.Tipo = "";
                 tasks.ShowDialog();
-                UpdateTable();
             }
             else if (currentT == "subtasks")
             {
@@ -136,15 +140,8 @@ namespace Software_Base_de_Dados
                 subtasks.ShowDialog();
                 UpdateSubTasks();
             }
-            Modify_Button.Enabled = false;
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            subtasks.Tipo = "Add";
-            subtasks.Text = "Adicionar SubTarefas";
-            subtasks.IdTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-            subtasks.ShowDialog();
             UpdateTable();
+            Modify_Button.Enabled = false;
         }
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
@@ -195,6 +192,7 @@ namespace Software_Base_de_Dados
                 }
             }
             Exportar.Enabled = false;
+            UpdateTable();
         }
         private void Remove_Button_Click(object sender, EventArgs e)
         {
