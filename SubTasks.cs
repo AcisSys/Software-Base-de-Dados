@@ -50,11 +50,12 @@ namespace Software_Base_de_Dados
                 maskedTextBox1.Text = Id.ToString();
                 maskedTextBox3.Enabled = false;
                 sfComboBox2.Text = Tipo;
+                maskedTextBox2.Text = Desc;
 
             }
             OleDbDataAdapter adapter;
             DataSet dset = new DataSet();
-            maskedTextBox2.Text = Desc;
+            
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
 
