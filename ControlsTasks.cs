@@ -117,7 +117,7 @@ namespace Software_Base_de_Dados
             tasks.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
             tasks.IdPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
-            if ( (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3] == "Não")
+            if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3] == "Não")
             {
                 tasks.Active = false;
             }

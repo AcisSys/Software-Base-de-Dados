@@ -213,10 +213,10 @@ namespace Software_Base_de_Dados
             // ID of the row
             int deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             // Tabela is the name of the table 
-            
-                query = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
-                oleDbCommand = new OleDbCommand(query, connection);
-            
+
+            query = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
+            oleDbCommand = new OleDbCommand(query, connection);
+
             if (response == DialogResult.Yes)
             {
                 try
@@ -311,7 +311,7 @@ namespace Software_Base_de_Dados
                     workers.IdEquipa = command.ExecuteScalar().ToString();
                 }
             }
-            
+
         }
         private void Exportar_Click(object sender, EventArgs e)
         {

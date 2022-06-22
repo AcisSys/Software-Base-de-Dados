@@ -54,10 +54,8 @@ namespace Software_Base_de_Dados
             }
             OleDbDataAdapter adapter;
             DataSet dset = new DataSet();
-            
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
-
             maskedTextBox3.Text = IdTask.ToString();
             button1.Select();
             DataTable dataTable;
