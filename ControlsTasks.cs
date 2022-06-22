@@ -25,6 +25,7 @@ namespace Software_Base_de_Dados
         int entries;
         void UpdateTable()
         {
+            //check connection
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -43,6 +44,7 @@ namespace Software_Base_de_Dados
                     + " tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT OUTER JOIN "
                     + " tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask) ";*/
             query = "SELECT * FROM tab_tasks";
+            // gets table and disables buttons
             dset.Reset();
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset);
@@ -57,6 +59,7 @@ namespace Software_Base_de_Dados
         }
         void UpdateSubTasks()
         {
+            // check connection
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -69,6 +72,7 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
+            // selects fields from subtasks as other names
             query = "SELECT ID , [Desc] AS Descrição, [Type] AS Tipo FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             dataSet.Reset();
             adapter = new OleDbDataAdapter(query, connection);
@@ -102,6 +106,8 @@ namespace Software_Base_de_Dados
         }
         private void sfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
+            // gets subtask table
+            // gets all values of selected row
             UpdateSubTasks();
             Add_Button.Enabled = true;
             Modify_Button.Enabled = true;
@@ -128,6 +134,7 @@ namespace Software_Base_de_Dados
         }
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
+            // gets all values of selected row
             Modify_Button.Enabled = true;
             Add_Button.Enabled = true;
             Remove_Button.Enabled = true;
@@ -145,6 +152,7 @@ namespace Software_Base_de_Dados
                 
                 if (entries <= 1)
                 {
+                    // check if subtasks exist
                     askwhereadd askwhereadd = new askwhereadd();
                     askwhereadd.ShowDialog();
                     if (askwhereadd.answer == 1)

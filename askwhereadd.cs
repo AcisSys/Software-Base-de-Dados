@@ -25,12 +25,6 @@ namespace Software_Base_de_Dados
             answers.Add("subtarefas");
             sfComboBox1.DataSource = answers;
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             if (sfComboBox1.Text == "tarefas")
