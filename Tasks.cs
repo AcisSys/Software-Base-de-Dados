@@ -158,10 +158,5 @@ namespace Software_Base_de_Dados
         {
             sfToolTip1.Hide();
         }
-        private void Tasks_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            sfComboBox1.Text = "";
-            sfComboBox2.Text = "";
-        }
     }
 }

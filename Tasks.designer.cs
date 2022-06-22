@@ -198,7 +198,6 @@ namespace Software_Base_de_Dados
             this.Name = "Tasks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar / Modificar Tarefas";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Tasks_FormClosed);
             this.Load += new System.EventHandler(this.Tasks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox2)).EndInit();
             this.toolStrip1.ResumeLayout(false);
