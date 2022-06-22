@@ -106,12 +106,6 @@ namespace Software_Base_de_Dados
             Remove_Button.Enabled = true;
             Exportar.Enabled = true;
             currentT = "tasks";
-
-
-
-
-
-
             tasks.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
             tasks.IdPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
@@ -123,20 +117,11 @@ namespace Software_Base_de_Dados
             {
                 tasks.Active = true;
             }
-
-           
-
-
-
-
             string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].GetType().ToString();
             if (CheckNull != "Systyem.DBNull")
             {
                 tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
             }
-
-
-
         }
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
@@ -145,10 +130,6 @@ namespace Software_Base_de_Dados
             Remove_Button.Enabled = true;
             Exportar.Enabled = true;
             currentT = "subtasks";
-
-
-
-
             subtasks.Id = (int)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[0];
             subtasks.Desc = (string)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[1].ToString();
             subtasks.IdTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
