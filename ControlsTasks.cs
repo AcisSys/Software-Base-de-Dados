@@ -25,7 +25,12 @@ namespace Software_Base_de_Dados
         int entries;
         void UpdateTable()
         {
-            //check connection
+            /*query = "SELECT tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa, tab_places.Localizacao,"
+            + " tab_subtasks.Type AS Tipo,  tab_tasks.Active AS Ativo, tab_tasks.RefTag as Referencia "
+            + " FROM((tab_tasks LEFT OUTER JOIN "
+            + " tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT OUTER JOIN "
+            + " tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask) ";*/
+            //check connection.
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -38,13 +43,8 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            /*query = "SELECT tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa, tab_places.Localizacao,"
-                    + " tab_subtasks.Type AS Tipo,  tab_tasks.Active AS Ativo, tab_tasks.RefTag as Referencia "
-                    + " FROM((tab_tasks LEFT OUTER JOIN "
-                    + " tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT OUTER JOIN "
-                    + " tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask) ";*/
             query = "SELECT * FROM tab_tasks";
-            // gets table and disables buttons
+            // gets table and disables buttons.
             dset.Reset();
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset);
@@ -59,7 +59,7 @@ namespace Software_Base_de_Dados
         }
         void UpdateSubTasks()
         {
-            // check connection
+            // check connection.
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -72,7 +72,7 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            // selects fields from subtasks as other names
+            // selects fields from subtasks as other names.
             query = "SELECT ID , [Desc] AS Descrição, [Type] AS Tipo FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             dataSet.Reset();
             adapter = new OleDbDataAdapter(query, connection);
@@ -89,7 +89,7 @@ namespace Software_Base_de_Dados
             Remove_Button.Enabled = false;
             Exportar.Enabled = false;
             Modify_Button.Enabled = false;
-            // Check connection
+            // Check connection.
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -106,8 +106,8 @@ namespace Software_Base_de_Dados
         }
         private void sfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
-            // gets subtask table
-            // gets all values of selected row
+            // gets subtask table.
+            // gets all values of selected row.
             UpdateSubTasks();
             Add_Button.Enabled = true;
             Modify_Button.Enabled = true;
@@ -133,7 +133,7 @@ namespace Software_Base_de_Dados
         }
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
-            // gets all values of selected row
+            // gets all values of selected row.
             Modify_Button.Enabled = true;
             Add_Button.Enabled = true;
             Remove_Button.Enabled = true;
@@ -144,13 +144,14 @@ namespace Software_Base_de_Dados
             subtasks.IdTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             subtasks.Tipo = (string)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[2].ToString();
         }
+        // Add Data.
         private void Add_Button_Click(object sender, EventArgs e)
         {
             if (currentT == "tasks")
             {
                 if (entries <= 1)
                 {
-                    // check if subtasks exist
+                    // check if subtasks exist.
                     askwhereadd askwhereadd = new askwhereadd();
                     askwhereadd.ShowDialog();
                     if (askwhereadd.answer == 1)
@@ -182,6 +183,7 @@ namespace Software_Base_de_Dados
             UpdateTable();
             sfDataGrid2.DataSource = null;
         }
+        // Modify data
         private void Modify_Button_Click(object sender, EventArgs e)
         {
             if (currentT == "tasks")
@@ -203,7 +205,7 @@ namespace Software_Base_de_Dados
         private void Exportar_Click(object sender, EventArgs e)
         {
             var excelEngine = new ExcelEngine();
-            // exoport current shown table
+            // exoport current shown table.
             var options = new ExcelExportingOptions
             {
                 ExcelVersion = ExcelVersion.Excel2013
