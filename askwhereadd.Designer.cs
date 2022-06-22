@@ -42,6 +42,7 @@
             // sfComboBox1
             // 
             this.sfComboBox1.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.sfComboBox1.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             this.sfComboBox1.Location = new System.Drawing.Point(16, 32);
             this.sfComboBox1.Name = "sfComboBox1";
             this.sfComboBox1.Size = new System.Drawing.Size(118, 24);
