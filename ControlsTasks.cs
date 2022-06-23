@@ -43,7 +43,7 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            query = "SELECT * FROM tab_tasks";
+            query = "SELECT tab_tasks.ID AS Id, tab_tasks.Descricao AS Descrição, tab_tasks.IDPlace AS Localização , tab_tasks.Active AS Ativo, tab_tasks.RefTag AS Etiqueta FROM tab_tasks";
             // gets table and disables buttons.
             dset.Reset();
             adapter = new OleDbDataAdapter(query, connection);
@@ -73,7 +73,7 @@ namespace Software_Base_de_Dados
                 }
             }
             // selects fields from subtasks as other names.
-            query = "SELECT ID , [Desc] AS Descrição, [Type] AS Tipo FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+            query = "SELECT ID AS Id , [Desc] AS Descrição, [Type] AS Tipo FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             dataSet.Reset();
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dataSet);
