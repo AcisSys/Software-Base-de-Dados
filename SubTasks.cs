@@ -61,6 +61,7 @@ namespace Software_Base_de_Dados
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Text = IdTask.ToString();
             button1.Select();
+            // Gets Data for COMBOBOX
             query = "SELECT DISTINCT Type AS Tipo FROM tab_subtasks";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "type");

@@ -46,6 +46,7 @@ namespace Software_Base_de_Dados
             DataTable dataTable = dset.Tables["idteam"];
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
+            // Gets Data for ComboBox
             query = "SELECT ID AS Id, Descricao AS Descrição FROM tab_tasks";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(ds, "idtask");
