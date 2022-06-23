@@ -40,13 +40,13 @@ namespace Software_Base_de_Dados
             }
             // Vai buscar os Dados para as MultiColumnComboBox
             // Bind dos valores com as ComboBox, e define o valor a ser mostrado
-            query = "SELECT ID, Descricao FROM tab_teams";
+            query = "SELECT ID AS Id, Descricao AS Descrição FROM tab_teams";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "idteam");
             DataTable dataTable = dset.Tables["idteam"];
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
-            query = "SELECT ID, Descricao FROM tab_tasks";
+            query = "SELECT ID AS Id, Descricao AS Descrição FROM tab_tasks";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(ds, "idtask");
             DataTable dataTable1 = ds.Tables["idtask"];

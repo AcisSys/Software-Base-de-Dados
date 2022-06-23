@@ -14,6 +14,7 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
         public static string Caminho { get; set; }
+        public string Tabela { get; set; }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         Agend agend = new Agend();
         Places places = new Places();
@@ -23,7 +24,6 @@ namespace Software_Base_de_Dados
         Subtasks subtasks = new Subtasks();
         OleDbDataAdapter adapter;
         OleDbCommand oleDbCommand;
-        public string Tabela { get; set; }
         string query;
         int deleteid;
         private void Tables_Load(object sender, EventArgs e)

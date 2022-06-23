@@ -61,7 +61,7 @@ namespace Software_Base_de_Dados
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Text = IdTask.ToString();
             button1.Select();
-            query = "SELECT DISTINCT Type FROM tab_subtasks";
+            query = "SELECT DISTINCT Type AS Tipo FROM tab_subtasks";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];

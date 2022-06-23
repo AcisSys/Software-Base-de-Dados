@@ -61,13 +61,13 @@ namespace Software_Base_de_Dados
             }
             DataSet dset = new DataSet();
             OleDbDataAdapter adapter;
-            query = "SELECT ID, Localizacao FROM tab_places";
+            query = "SELECT ID AS Id, Localizacao AS Localização FROM tab_places";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "idtask");
             DataTable dataTable = dset.Tables["idtask"];
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
-            query = "SELECT Ref FROM tab_tags WHERE taken = 'Não'";
+            query = "SELECT Ref AS Etiquetas FROM tab_tags WHERE taken = 'Não'";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
