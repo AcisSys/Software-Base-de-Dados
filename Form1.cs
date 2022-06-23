@@ -16,7 +16,6 @@ namespace Software_Base_de_Dados
         string DSource;
         string Password;
         static readonly string key = "bbce2ea2315a1916";
-
         public Form1()
         {
             InitializeComponent();
@@ -114,7 +113,7 @@ namespace Software_Base_de_Dados
                     }
                     catch (Exception ex)
                     {
-                        // Error in bad connection.
+                        // Conexao nao e valida
                         MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }

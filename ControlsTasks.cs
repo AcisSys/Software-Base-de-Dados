@@ -249,7 +249,6 @@ namespace Software_Base_de_Dados
         private void Remove_Button_Click(object sender, EventArgs e)
         {
             // check connection
-
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -267,8 +266,6 @@ namespace Software_Base_de_Dados
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
-            // ID of the row
-
             // Tabela is the name of the table 
             // Na Tabela Tasks, os campos não sao apagados
             // apenas desativados

@@ -80,19 +80,16 @@ namespace Software_Base_de_Dados
                       "VALUES (@ID, @Localizacao, @X, @Y)";
                     oleDbCommand = new OleDbCommand(query, connection);
                     oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
-                    oleDbCommand.Parameters.Add("@Localizacao",
-                        OleDbType.LongVarChar).Value = maskedTextBox2.Text.ToUpper();
+                    oleDbCommand.Parameters.Add("@Localizacao", OleDbType.LongVarChar).Value = maskedTextBox2.Text.ToUpper();
                     oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }
                 else
                 // query to update data.
                 {
-                    query = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X," +
-                        " Y = @Y where ID = " + maskedTextBox1.Text;
+                    query = "UPDATE tab_places  SET Localizacao = @Localizacao, X = @X, Y = @Y where ID = " + maskedTextBox1.Text;
                     oleDbCommand = new OleDbCommand(query, connection);
-                    oleDbCommand.Parameters.Add("@Localizacao",
-                        OleDbType.LongVarChar).Value = maskedTextBox2.Text;
+                    oleDbCommand.Parameters.Add("@Localizacao", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
                     oleDbCommand.Parameters.Add("@X", OleDbType.Integer).Value = maskedTextBox3.Text;
                     oleDbCommand.Parameters.Add("@Y", OleDbType.Integer).Value = maskedTextBox4.Text;
                 }

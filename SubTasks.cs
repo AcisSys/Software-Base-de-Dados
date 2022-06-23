@@ -57,12 +57,10 @@ namespace Software_Base_de_Dados
                 sfComboBox2.Text = Tipo;
                 maskedTextBox2.Text = Desc;
             }
-
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Text = IdTask.ToString();
             button1.Select();
-
             query = "SELECT DISTINCT Type FROM tab_subtasks";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "type");
@@ -110,8 +108,7 @@ namespace Software_Base_de_Dados
             if (Tipo == "Add")
             // Add data.
             {
-                query = "INSERT INTO tab_subtasks ([ID], [IDTask], [Desc], [Type])" +
-                   "VALUES (@ID, @IDTask, @Desc, @Type)";
+                query = "INSERT INTO tab_subtasks ([ID], [IDTask], [Desc], [Type]) VALUES (@ID, @IDTask, @Desc, @Type)";
                 oleDbCommand = new OleDbCommand(query, connection);
                 oleDbCommand.Parameters.Add("@ID", OleDbType.Integer).Value = maskedTextBox1.Text;
                 oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
@@ -121,8 +118,7 @@ namespace Software_Base_de_Dados
             else
             {
                 // Modify data.
-                query = "UPDATE tab_subtasks SET [IDTask] = @IDTask, [Desc] = @Desc, [Type] = @Type " +
-                    "WHERE [ID] =" + maskedTextBox1.Text;
+                query = "UPDATE tab_subtasks SET [IDTask] = @IDTask, [Desc] = @Desc, [Type] = @Type WHERE [ID] =" + maskedTextBox1.Text;
                 oleDbCommand = new OleDbCommand(query, connection);
                 oleDbCommand.Parameters.Add("@IDTask", OleDbType.Integer).Value = maskedTextBox3.Text;
                 oleDbCommand.Parameters.Add("@Desc", OleDbType.LongVarChar).Value = maskedTextBox2.Text;
