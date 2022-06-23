@@ -49,6 +49,7 @@
             this.sfDataGrid1.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
             this.sfDataGrid1.Location = new System.Drawing.Point(3, 3);
             this.sfDataGrid1.Name = "sfDataGrid1";
+            this.sfDataGrid1.NavigationMode = Syncfusion.WinForms.DataGrid.Enums.NavigationMode.Row;
             this.sfDataGrid1.Size = new System.Drawing.Size(804, 452);
             this.sfDataGrid1.Style.AddNewRowStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.sfDataGrid1.Style.HeaderStyle.Font.Bold = true;
@@ -111,6 +112,7 @@
             this.sfDataGrid2.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
             this.sfDataGrid2.Location = new System.Drawing.Point(3, 461);
             this.sfDataGrid2.Name = "sfDataGrid2";
+            this.sfDataGrid2.NavigationMode = Syncfusion.WinForms.DataGrid.Enums.NavigationMode.Row;
             this.sfDataGrid2.Size = new System.Drawing.Size(804, 139);
             this.sfDataGrid2.Style.AddNewRowStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.sfDataGrid2.Style.HeaderStyle.Font.Bold = true;

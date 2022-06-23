@@ -98,6 +98,7 @@ namespace Software_Base_de_Dados
             this.sfDataGrid1.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
             this.sfDataGrid1.Location = new System.Drawing.Point(3, 0);
             this.sfDataGrid1.Name = "sfDataGrid1";
+            this.sfDataGrid1.NavigationMode = Syncfusion.WinForms.DataGrid.Enums.NavigationMode.Row;
             this.sfDataGrid1.Size = new System.Drawing.Size(804, 597);
             this.sfDataGrid1.Style.AddNewRowStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.sfDataGrid1.Style.HeaderStyle.Font.Bold = true;
@@ -127,7 +128,6 @@ namespace Software_Base_de_Dados
             this.Subtbtn.Size = new System.Drawing.Size(75, 23);
             this.Subtbtn.TabIndex = 7;
             this.Subtbtn.UseVisualStyleBackColor = true;
-            
             // 
             // Tables
             // 
