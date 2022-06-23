@@ -61,7 +61,7 @@ namespace Software_Base_de_Dados
             DataSet dset = new DataSet();
             if (Tabela == "tab_agend")
             {
-                query = "SELECT tab_agend.ID, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa "
+                query = "SELECT tab_agend.ID AS Id, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa "
                     + " FROM((tab_agend LEFT JOIN "
                     + " tab_tasks ON tab_agend.idtask = tab_tasks.ID) LEFT JOIN "
                     + " tab_teams ON tab_agend.idequipa = tab_teams.ID) ";
@@ -72,7 +72,7 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_workers")
             {
-                query = " SELECT tab_workers.ID, tab_workers.Nome, tab_teams.Descricao AS Equipa, tab_workers.img, tab_workers.Cod "
+                query = " SELECT tab_workers.ID AS Id, tab_workers.Nome, tab_teams.Descricao AS Equipa, tab_workers.img AS Imagem, tab_workers.Cod AS Código"
                     + " FROM(tab_workers INNER JOIN "
                     + " tab_teams ON tab_workers.IDEquipa = tab_teams.ID) ";
                 dset.Reset();
@@ -82,7 +82,23 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tags")
             {
-                query = "SELECT ID, Ref AS Referencia, taken AS Utilizado FROM tab_tags";
+                query = "SELECT ID AS Id, Ref AS Referência, taken AS Usado FROM tab_tags";
+                dset.Reset();
+                adapter = new OleDbDataAdapter(query, connection);
+                adapter.Fill(dset);
+                sfDataGrid1.DataSource = dset;
+            }
+            else if (Tabela == "tab_places")
+            {
+                query = "SELECT ID AS Id, LocaLizacao As Localização, X, Y FROM tab_places";
+                    dset.Reset();
+                adapter = new OleDbDataAdapter(query, connection);
+                adapter.Fill(dset);
+                sfDataGrid1.DataSource = dset;
+            }
+            else if (Tabela == "tab_teams")
+            {
+                query = "SELECT ID AS Id, Descricao As Descrição FROM tab_teams";
                 dset.Reset();
                 adapter = new OleDbDataAdapter(query, connection);
                 adapter.Fill(dset);
