@@ -11,8 +11,6 @@ namespace Software_Base_de_Dados
         }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         OleDbCommand oleDbCommand;
-
-
         int maxid;
         int currentid;
         public string Tipo { get; set; }
