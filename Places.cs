@@ -11,6 +11,10 @@ namespace Software_Base_de_Dados
         }
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         OleDbCommand oleDbCommand;
+
+
+        int maxid;
+        int currentid;
         public string Tipo { get; set; }
         public int Id { get; set; }
         public string Localizacao { get; set; }
@@ -39,8 +43,8 @@ namespace Software_Base_de_Dados
                 // Get New Id.
                 query = "SELECT MAX (ID) FROM tab_places";
                 oleDbCommand = new OleDbCommand(query, connection);
-                int maxid = (int)oleDbCommand.ExecuteScalar();
-                int currentid = maxid + 1;
+                maxid = (int)oleDbCommand.ExecuteScalar();
+                currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
             }
             else

@@ -23,6 +23,10 @@ namespace Software_Base_de_Dados
         string currentT;
         Subtasks subtasks = new Subtasks();
         int entries;
+        string CheckNull;
+        askwhereadd askwhereadd = new askwhereadd();
+        OleDbCommand oleDbCommand;
+        int deleteid;
         void UpdateTable()
         {
             /*query = "SELECT tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa, tab_places.Localizacao,"
@@ -43,7 +47,6 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            //query = "SELECT tab_tasks.ID AS Id, tab_tasks.Descricao AS Descrição, tab_tasks.IDPlace AS Localização , tab_tasks.Active AS Ativo, tab_tasks.RefTag AS Etiqueta FROM tab_tasks";
             query = "SELECT tab_tasks.ID AS Id, tab_tasks.Descricao AS Descrição, tab_tasks.Active AS Ativo, tab_tasks.RefTag AS Etiqueta, tab_places.Localizacao AS Localização FROM(tab_places RIGHT JOIN tab_tasks ON tab_places.ID = tab_tasks.IDPlace)";
             // gets table and disables buttons.
             dset.Reset();
@@ -126,7 +129,7 @@ namespace Software_Base_de_Dados
             {
                 tasks.Active = true;
             }
-            string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].GetType().ToString();
+            CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].GetType().ToString();
             if (CheckNull != "Systyem.DBNull")
             {
                 tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
@@ -153,7 +156,6 @@ namespace Software_Base_de_Dados
                 if (entries <= 1)
                 {
                     // check if subtasks exist.
-                    askwhereadd askwhereadd = new askwhereadd();
                     askwhereadd.ShowDialog();
                     if (askwhereadd.answer == 1)
                     {
@@ -206,7 +208,7 @@ namespace Software_Base_de_Dados
         private void Exportar_Click(object sender, EventArgs e)
         {
             var excelEngine = new ExcelEngine();
-            // exoport current shown table.
+            // export current shown table.
             var options = new ExcelExportingOptions
             {
                 ExcelVersion = ExcelVersion.Excel2013
@@ -250,7 +252,7 @@ namespace Software_Base_de_Dados
         private void Remove_Button_Click(object sender, EventArgs e)
         {
             // check connection
-            OleDbCommand oleDbCommand;
+
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -269,7 +271,7 @@ namespace Software_Base_de_Dados
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
             // ID of the row
-            int deleteid;
+
             // Tabela is the name of the table 
             if (currentT == "tasks")
             {

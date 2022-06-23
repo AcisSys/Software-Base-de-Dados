@@ -13,6 +13,11 @@ namespace Software_Base_de_Dados
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         OleDbCommand oleDbCommand;
         string query;
+        OleDbDataAdapter adapter;
+        DataSet dset = new DataSet();
+        DataTable dataTable;
+        int maxid;
+        int currentid;
         public string Tipo { get; set; }
         public int Id { get; set; }
         public int IdTask { get; set; }
@@ -37,10 +42,10 @@ namespace Software_Base_de_Dados
             // Add new data.
             if (Tipo == "Add")
             {
-                string comand = "SELECT MAX (ID) FROM tab_subtasks";
-                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
-                int maxid = (int)oleDbCommand.ExecuteScalar();
-                int currentid = maxid + 1;
+                query = "SELECT MAX (ID) FROM tab_subtasks";
+                OleDbCommand oleDbCommand = new OleDbCommand(query, connection);
+                maxid = (int)oleDbCommand.ExecuteScalar();
+                currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
                 maskedTextBox3.Enabled = false;
             }
@@ -52,13 +57,12 @@ namespace Software_Base_de_Dados
                 sfComboBox2.Text = Tipo;
                 maskedTextBox2.Text = Desc;
             }
-            OleDbDataAdapter adapter;
-            DataSet dset = new DataSet();
+
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Text = IdTask.ToString();
             button1.Select();
-            DataTable dataTable;
+
             query = "SELECT DISTINCT Type FROM tab_subtasks";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "type");

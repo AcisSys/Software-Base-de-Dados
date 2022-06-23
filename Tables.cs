@@ -22,8 +22,10 @@ namespace Software_Base_de_Dados
         Workers workers = new Workers();
         Subtasks subtasks = new Subtasks();
         OleDbDataAdapter adapter;
+        OleDbCommand oleDbCommand;
         public string Tabela { get; set; }
         string query;
+        int deleteid;
         private void Tables_Load(object sender, EventArgs e)
         {
             Modify_Button.Enabled = false;
@@ -91,7 +93,7 @@ namespace Software_Base_de_Dados
             else if (Tabela == "tab_places")
             {
                 query = "SELECT ID AS Id, LocaLizacao As Localização, X, Y FROM tab_places";
-                    dset.Reset();
+                dset.Reset();
                 adapter = new OleDbDataAdapter(query, connection);
                 adapter.Fill(dset);
                 sfDataGrid1.DataSource = dset;
@@ -208,7 +210,7 @@ namespace Software_Base_de_Dados
         private void Remove_Button_Click(object sender, EventArgs e)
         {
             // check connection
-            OleDbCommand oleDbCommand;
+
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -227,7 +229,7 @@ namespace Software_Base_de_Dados
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
             // ID of the row
-            int deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+            deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             // Tabela is the name of the table 
 
             query = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
@@ -323,8 +325,8 @@ namespace Software_Base_de_Dados
                     workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                     workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
                     query = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
-                    OleDbCommand command = new OleDbCommand(query, connection);
-                    workers.IdEquipa = command.ExecuteScalar().ToString();
+                    oleDbCommand = new OleDbCommand(query, connection);
+                    workers.IdEquipa = oleDbCommand.ExecuteScalar().ToString();
                 }
             }
 

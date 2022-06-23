@@ -17,6 +17,11 @@ namespace Software_Base_de_Dados
         public int Id { get; set; }
         public string Idequipa { get; set; }
         public string Idtask { get; set; }
+        DataSet ds = new DataSet();
+        DataSet dset = new DataSet();
+        int maxid;
+        int currentid;
+        OleDbCommand oleDbCommand;
         private void Agend_Load(object sender, EventArgs e)
         {
             // Verify connection.
@@ -33,8 +38,7 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            DataSet ds = new DataSet();
-            DataSet dset = new DataSet();
+
             query = "SELECT ID, Descricao FROM tab_teams";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "idteam");
@@ -53,10 +57,10 @@ namespace Software_Base_de_Dados
             // Condition add data.
             if (Tipo == "Add")
             {
-                string comand = "SELECT MAX (ID) FROM tab_agend";
-                OleDbCommand oleDbCommand = new OleDbCommand(comand, connection);
-                int maxid = (int)oleDbCommand.ExecuteScalar();
-                int currentid = maxid + 1;
+                query = "SELECT MAX (ID) FROM tab_agend";
+                oleDbCommand = new OleDbCommand(query, connection);
+                maxid = (int)oleDbCommand.ExecuteScalar();
+                currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
             }
             // Condition modify data.
@@ -81,7 +85,6 @@ namespace Software_Base_de_Dados
                 {
                     toolStripButton1.ToolTipText = "Verifique o preenchimento de todos os campos antes de validar dados";
                 }
-                OleDbCommand oleDbCommand;
                 // Condition add data.
                 if (Tipo == "Add")
                 {
