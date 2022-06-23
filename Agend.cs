@@ -53,7 +53,6 @@ namespace Software_Base_de_Dados
             DataTable dataTable1 = ds.Tables["idtask"];
             sfComboBox2.DataSource = dataTable1;
             sfComboBox2.DisplayMember = "ID";
-
             sfComboBox1.Text = Idequipa;
             sfComboBox2.Text = Idtask;
             // Condition add data.
