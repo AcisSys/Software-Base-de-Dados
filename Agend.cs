@@ -38,7 +38,8 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
+            // Vai buscar os Dados para as MultiColumnComboBox
+            // Bind dos valores com as ComboBox, e define o valor a ser mostrado
             query = "SELECT ID, Descricao FROM tab_teams";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "idteam");
@@ -68,7 +69,7 @@ namespace Software_Base_de_Dados
             {
                 maskedTextBox1.Text = Id.ToString();
             }
-            // Id can never be changed by user.
+            // Torna o ID Imutável pelo utilizador
             maskedTextBox1.Enabled = false;
             maskedTextBox1.ReadOnly = true;
         }

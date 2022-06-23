@@ -14,6 +14,7 @@ namespace Software_Base_de_Dados
 
         private void askwhereadd_Load(object sender, EventArgs e)
         {
+            // Cria uma lista de entradas para a combobox
             List<string> answers = new List<string>();
             answers.Add("tarefas");
             answers.Add("subtarefas");
@@ -21,6 +22,7 @@ namespace Software_Base_de_Dados
         }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            // Caso (Resposta selecionada na combobox)
             if (sfComboBox1.Text == "tarefas")
             {
                 answer = 1;
@@ -33,6 +35,7 @@ namespace Software_Base_de_Dados
             }
             else
             {
+                // Obriga o utilizar a escolher uma das opções da combobox
                 sfToolTip1.Show("Selecione a tabela na qual deseja adicionar dados");
             }
         }

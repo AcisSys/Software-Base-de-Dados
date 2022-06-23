@@ -29,11 +29,6 @@ namespace Software_Base_de_Dados
         int deleteid;
         void UpdateTable()
         {
-            /*query = "SELECT tab_tasks.ID, tab_tasks.Descricao AS Tarefa, tab_subtasks.[Desc] AS SubTarefa, tab_places.Localizacao,"
-            + " tab_subtasks.Type AS Tipo,  tab_tasks.Active AS Ativo, tab_tasks.RefTag as Referencia "
-            + " FROM((tab_tasks LEFT OUTER JOIN "
-            + " tab_places ON tab_tasks.IDPlace = tab_places.ID) LEFT OUTER JOIN "
-            + " tab_subtasks ON tab_tasks.ID = tab_subtasks.IDTask) ";*/
             //check connection.
             if (connection.State == ConnectionState.Closed)
             {
@@ -76,7 +71,7 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            // selects fields from subtasks as other names.
+            // selects fields from subtasks e set os nomes
             query = "SELECT ID AS Id , [Desc] AS Descrição, [Type] AS Tipo FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             dataSet.Reset();
             adapter = new OleDbDataAdapter(query, connection);
@@ -89,6 +84,7 @@ namespace Software_Base_de_Dados
         }
         private void ControlsTasks_Load(object sender, EventArgs e)
         {
+            // Desativa todos os botões
             Add_Button.Enabled = false;
             Remove_Button.Enabled = false;
             Exportar.Enabled = false;
@@ -111,7 +107,7 @@ namespace Software_Base_de_Dados
         private void sfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
             // gets subtask table.
-            // gets all values of selected row.
+            // gets all values of selected row se eles existirem
             UpdateSubTasks();
             Add_Button.Enabled = true;
             Modify_Button.Enabled = true;
@@ -138,6 +134,7 @@ namespace Software_Base_de_Dados
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
             // gets all values of selected row.
+            // não é necessário verificar se existem pois todos os campos são "cant be null" na tabela
             Modify_Button.Enabled = true;
             Add_Button.Enabled = true;
             Remove_Button.Enabled = true;
@@ -273,6 +270,8 @@ namespace Software_Base_de_Dados
             // ID of the row
 
             // Tabela is the name of the table 
+            // Na Tabela Tasks, os campos não sao apagados
+            // apenas desativados
             if (currentT == "tasks")
             {
                 deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
