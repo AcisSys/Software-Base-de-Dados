@@ -36,7 +36,6 @@ namespace Software_Base_de_Dados
             this.Remove_Button = new System.Windows.Forms.Button();
             this.sfDataGrid1 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.Exportar = new System.Windows.Forms.Button();
-            this.Subtbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,21 +119,11 @@ namespace Software_Base_de_Dados
             this.Exportar.UseVisualStyleBackColor = true;
             this.Exportar.Click += new System.EventHandler(this.Exportar_Click);
             // 
-            // Subtbtn
-            // 
-            this.Subtbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Subtbtn.Location = new System.Drawing.Point(897, 363);
-            this.Subtbtn.Name = "Subtbtn";
-            this.Subtbtn.Size = new System.Drawing.Size(75, 23);
-            this.Subtbtn.TabIndex = 7;
-            this.Subtbtn.UseVisualStyleBackColor = true;
-            // 
             // Tables
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.Controls.Add(this.Subtbtn);
             this.Controls.Add(this.Exportar);
             this.Controls.Add(this.sfDataGrid1);
             this.Controls.Add(this.Remove_Button);
@@ -154,6 +143,5 @@ namespace Software_Base_de_Dados
         private Button Remove_Button;
         private Syncfusion.WinForms.DataGrid.SfDataGrid sfDataGrid1;
         private Button Exportar;
-        private Button Subtbtn;
     }
 }
