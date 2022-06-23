@@ -43,7 +43,8 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            query = "SELECT tab_tasks.ID AS Id, tab_tasks.Descricao AS Descrição, tab_tasks.IDPlace AS Localização , tab_tasks.Active AS Ativo, tab_tasks.RefTag AS Etiqueta FROM tab_tasks";
+            //query = "SELECT tab_tasks.ID AS Id, tab_tasks.Descricao AS Descrição, tab_tasks.IDPlace AS Localização , tab_tasks.Active AS Ativo, tab_tasks.RefTag AS Etiqueta FROM tab_tasks";
+            query = "SELECT tab_tasks.ID AS Id, tab_tasks.Descricao AS Descrição, tab_tasks.Active AS Ativo, tab_tasks.RefTag AS Etiqueta, tab_places.Localizacao AS Localização FROM(tab_places RIGHT JOIN tab_tasks ON tab_places.ID = tab_tasks.IDPlace)";
             // gets table and disables buttons.
             dset.Reset();
             adapter = new OleDbDataAdapter(query, connection);
@@ -116,8 +117,8 @@ namespace Software_Base_de_Dados
             currentT = "tasks";
             tasks.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
-            tasks.IdPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
-            if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3] == "Não")
+            tasks.IdPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
+            if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] == "Não")
             {
                 tasks.Active = false;
             }
@@ -125,10 +126,10 @@ namespace Software_Base_de_Dados
             {
                 tasks.Active = true;
             }
-            string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].GetType().ToString();
+            string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].GetType().ToString();
             if (CheckNull != "Systyem.DBNull")
             {
-                tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
+                tasks.RefTag = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
             }
         }
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
