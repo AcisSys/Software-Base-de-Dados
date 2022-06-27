@@ -48,28 +48,39 @@ namespace Software_Base_de_Dados
         {
             // Check connection
             // Gets Table for the table to be shown accordingly
+            // Complex Querys for Complex tables (left join where) 
             if (connection.State == ConnectionState.Closed)
             {
                 try
                 {
+                    // Open Connection
                     connection.ConnectionString = Caminho;
                     connection.Open();
                 }
                 catch (Exception ex)
                 {
+                    //Throws Error (Case Fail)
                     MessageBox.Show(ex.Message);
                 }
             }
+            // Creates DataSet for Tables
             DataSet dset = new DataSet();
             if (Tabela == "tab_agend")
             {
+                // SQL Command to get actual complex table (mix of 3 tables)
                 query = "SELECT tab_agend.ID AS Id, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa "
                     + " FROM((tab_agend LEFT JOIN "
                     + " tab_tasks ON tab_agend.idtask = tab_tasks.ID) LEFT JOIN "
                     + " tab_teams ON tab_agend.idequipa = tab_teams.ID) ";
+                // resets the DataSet
+                // so it cleans ALL data (resets the variable to null)
                 dset.Reset();
+                // Creates an Adapter to store the Data in the DataTable
                 adapter = new OleDbDataAdapter(query, connection);
+                // Stores the Data in the DataTable
                 adapter.Fill(dset);
+                // Sets the DataSource of Display Object (sfDataGrid1)
+                // Down to next Comment
                 sfDataGrid1.DataSource = dset;
             }
             else if (Tabela == "tab_workers")
@@ -123,6 +134,7 @@ namespace Software_Base_de_Dados
         {
             // check connection
             // specify action (add data) and shows window
+            // Down to next Comment
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -161,12 +173,15 @@ namespace Software_Base_de_Dados
                 workers.Tipo = "Add";
                 workers.ShowDialog();
             }
+            // On Close (New Entry added or not)
+            // Refreshes the current shown Table
             UpdateTable();
         }
         private void Modify_Button_Click(object sender, EventArgs e)
         {
             // check connection
             // specify action (modify data) and shows window
+            // Down to next Comment
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -203,6 +218,8 @@ namespace Software_Base_de_Dados
                 workers.Tipo = "";
                 workers.ShowDialog();
             }
+            // On Close ( Entry modified or not)
+            // Refreshes the current shown Table
             UpdateTable();
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
@@ -223,22 +240,27 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            // Ask for Confirmation
+            // Ask for Confirmation 
+            // for deleting current selected item
             DialogResult response = MessageBox.Show("Tem a certeza?", "Apagar?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
             // ID of the row
+            // its always the first column of the selected row
             deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-            // Tabela is the name of the table 
+            // Tabela is the name of the table
+            // being shown to the user
 
             query = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
             oleDbCommand = new OleDbCommand(query, connection);
 
+            // If the answer to confirmation box is YES
             if (response == DialogResult.Yes)
             {
                 try
                 {
+                    // Execute the Command (Try)
                     oleDbCommand.ExecuteNonQuery();
                     // Says that data was deleted
                     MessageBox.Show("Dados apagados com sucesso", "",
@@ -246,7 +268,7 @@ namespace Software_Base_de_Dados
                 }
                 catch (Exception ex)
                 {
-                    // Gives error message.
+                    // Gives error message (Case Fail).
                     MessageBox.Show("Não foi possivel apagar os dados.\n " + ex.Message,
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -259,6 +281,8 @@ namespace Software_Base_de_Dados
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             // Updates the DataGridView.
+            // After Executing the querry (deleting the entry selected)
+            // or canceling
             UpdateTable();
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
@@ -280,18 +304,23 @@ namespace Software_Base_de_Dados
             }
             Modify_Button.Enabled = true;
             Remove_Button.Enabled = true;
+            // creates a DataSet and Resets it, Cleaning it from any Data
             DataSet ds = new DataSet();
             ds.Reset();
             if (Tabela == "tab_agend")
             {
+                // Gets the ID of the Selected Row for the selected Table
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             }
             else if (Tabela == "tab_places")
             {
+                // Gets the ID of the Selected Row for the selected Table
                 places.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                // Checks if Other Entries are null or not
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "System.DBNull")
                 {
+                    // If not null, gets vallue of all said Entries
                     places.Localizacao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                     places.X = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
                     places.Y = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
@@ -300,10 +329,18 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_teams")
             {
+                // Gets the ID of the Selected Row for the selected Table
                 teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                // Checks if Other Entries are null or not
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "Systyem.DBNull")
                 {
+                    // If not null, gets vallue of all said Entries
+
+
+                    // And so it goes on down to the last condition
+
+
                     teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 }
             }
@@ -331,6 +368,11 @@ namespace Software_Base_de_Dados
             }
 
         }
+
+        // From here to end
+        // TAKEN FROM ANOTHER PROJECT
+        // NOT MINE
+        // DONT CHANGE
         private void Exportar_Click(object sender, EventArgs e)
         {
             // exoport current shown table
