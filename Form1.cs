@@ -18,6 +18,7 @@ namespace Software_Base_de_Dados
         static readonly string key = "bbce2ea2315a1916";
         public Form1()
         {
+            // Mostra o Titulo e o tipo de DockStyle é Fill, Aumentando o tamanho proporcionalmente consoante o tamanho da aplicação
             InitializeComponent();
             panel1.Controls.Add(title);
             title.Dock = DockStyle.Fill;
@@ -86,9 +87,11 @@ namespace Software_Base_de_Dados
             // Gets connection string and unencrypt it.
             if (!File.Exists("ChaveConexao.txt"))
             {
+                // If file doesnt exist, asks to setup a conection
                 MessageBox.Show("Não existe uma conexão, configure uma", "Erro de Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexao.ShowDialog();
             }
+            // if file exists, reads file
             if (File.Exists("ChaveConexao.txt"))
             {
                 using (var reader = new StreamReader("ChaveConexao.txt"))
@@ -99,6 +102,7 @@ namespace Software_Base_de_Dados
                 }
                 if (Provid != null)
                 {
+                    // decrypt text to get connection string
                     var decryptedString = AesOperation.DecryptString(key, Provid.Substring(11, Provid.Length - 12));
                     string prov = decryptedString;
                     var decryptedString2 = AesOperation.DecryptString(key, DSource.Substring(14, DSource.Length - 15));
@@ -107,13 +111,14 @@ namespace Software_Base_de_Dados
                     string pass = decryptedString3;
                     try
                     {
+                        // try opening a connection with the decrypted string
                         Tables.Caminho = "Provider = " + prov + "; Data Source = " + pat + "; Jet OLEDB:Database Password = " + pass;
                         OleDbConnection con = new OleDbConnection(Tables.Caminho);
                         con.Open();
                     }
                     catch (Exception ex)
                     {
-                        // Conexao nao e valida
+                        // Invalid Connection requires the connection to be setup again
                         MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }

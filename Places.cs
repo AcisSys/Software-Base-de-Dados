@@ -76,6 +76,7 @@ namespace Software_Base_de_Dados
                 // query to add data.
                 if (Tipo == "Add")
                 {
+                    //  SQL querry to insert data 
                     query = "INSERT INTO tab_places (ID, Localizacao, X, Y)" +
                       "VALUES (@ID, @Localizacao, @X, @Y)";
                     oleDbCommand = new OleDbCommand(query, connection);
@@ -100,10 +101,13 @@ namespace Software_Base_de_Dados
                 }
                 catch (Exception ex)
                 {
+                    // Mensagem de erro caso fail
                     MessageBox.Show("Não foi possivel inserir dados\n" + ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // stops the run code
                     return;
                 }
+                // success message if completed
                 MessageBox.Show("Dados adicionados com sucesso", "",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
@@ -111,11 +115,13 @@ namespace Software_Base_de_Dados
                 maskedTextBox2.Text = "";
                 maskedTextBox3.Text = "";
                 maskedTextBox4.Text = "";
+                // closes add / modify window
                 this.Close();
             }
         }
         private void ToolStripButton1_MouseLeave(object sender, EventArgs e)
         {
+            // if mouse stops hovering the button, hide the tooltip
             sfToolTip1.Hide();
         }
     }

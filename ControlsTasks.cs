@@ -53,7 +53,9 @@ namespace Software_Base_de_Dados
             Add_Button.Enabled = false;
             Remove_Button.Enabled = false;
             Exportar.Enabled = false;
+            // Updates Object to Show Information
             sfDataGrid1.Update();
+            // Closes Connection
             connection.Close();
         }
         void UpdateSubTasks()
@@ -114,9 +116,13 @@ namespace Software_Base_de_Dados
             Remove_Button.Enabled = true;
             Exportar.Enabled = true;
             currentT = "tasks";
+            // Gets all entry values from table
+            // (After Checking if null or not)
             tasks.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
             tasks.IdPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
+            // check value on tasks
+            // takes value to 
             if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] == "Não")
             {
                 tasks.Active = false;
@@ -133,19 +139,19 @@ namespace Software_Base_de_Dados
         }
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
-            // gets all values of selected row.
-            // não é necessário verificar se existem pois todos os campos são "cant be null" na tabela
+            // Disables buttons
             Modify_Button.Enabled = true;
             Add_Button.Enabled = true;
             Remove_Button.Enabled = true;
             Exportar.Enabled = true;
             currentT = "subtasks";
+            // Gets All Data Entries from Rows
             subtasks.Id = (int)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[0];
             subtasks.Desc = (string)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[1].ToString();
             subtasks.IdTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             subtasks.Tipo = (string)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[2].ToString();
         }
-        // Add Data.
+        // Add Data to table.
         private void Add_Button_Click(object sender, EventArgs e)
         {
             if (currentT == "tasks")
@@ -162,6 +168,7 @@ namespace Software_Base_de_Dados
                     else if (askwhereadd.answer == 2)
                     {
                         subtasks.ShowDialog();
+                        // Updates SubTasks Object to update Table
                         UpdateSubTasks();
                         Add_Button.Enabled = false;
                     }
@@ -180,6 +187,7 @@ namespace Software_Base_de_Dados
                 UpdateSubTasks();
                 Add_Button.Enabled = false;
             }
+            // Updates Object to show Tables
             UpdateTable();
             sfDataGrid2.DataSource = null;
         }
@@ -279,6 +287,7 @@ namespace Software_Base_de_Dados
             else
             {
                 deleteid = (int)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[0];
+                // Permanent delete, cant get back the data after confirmation
                 query = "DELETE FROM tab_subtasks WHERE ID = " + deleteid;
                 oleDbCommand = new OleDbCommand(query, connection);
             }
