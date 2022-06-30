@@ -15,6 +15,7 @@ namespace Software_Base_de_Dados
         }
         public static string Caminho { get; set; }
         public string Tabela { get; set; }
+        
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         Agend agend = new Agend();
         Places places = new Places();
@@ -227,7 +228,6 @@ namespace Software_Base_de_Dados
         private void Remove_Button_Click(object sender, EventArgs e)
         {
             // check connection
-
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -251,10 +251,8 @@ namespace Software_Base_de_Dados
             deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             // Tabela is the name of the table
             // being shown to the user
-
             query = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
             oleDbCommand = new OleDbCommand(query, connection);
-
             // If the answer to confirmation box is YES
             if (response == DialogResult.Yes)
             {
@@ -325,7 +323,6 @@ namespace Software_Base_de_Dados
                     places.X = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
                     places.Y = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
                 }
-
             }
             else if (Tabela == "tab_teams")
             {
@@ -336,11 +333,7 @@ namespace Software_Base_de_Dados
                 if (CheckNull != "Systyem.DBNull")
                 {
                     // If not null, gets vallue of all said Entries
-
-
                     // And so it goes on down to the last condition
-
-
                     teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 }
             }
@@ -375,36 +368,36 @@ namespace Software_Base_de_Dados
         // DONT CHANGE
         private void Exportar_Click(object sender, EventArgs e)
         {
-            // exoport current shown table
-            var options = new ExcelExportingOptions
-            {
-                ExcelVersion = ExcelVersion.Excel2013
-            };
-            var excelEngine = sfDataGrid1.ExportToExcel(sfDataGrid1.View, options);
-            var workBook = excelEngine.Excel.Workbooks[0];
-            SaveFileDialog saveFilterDialog = new SaveFileDialog
-            {
-                FilterIndex = 2,
-                Filter = "Excel 97 to 2003 Files(*.xls)|*.xls|Excel 2007 to 2010 Files(*.xlsx)|*.xlsx|Excel 2013 File(*.xlsx)|*.xlsx"
-            };
-            if (saveFilterDialog.ShowDialog() == DialogResult.OK)
-            {
-                using (Stream stream = saveFilterDialog.OpenFile())
-                {
-                    if (saveFilterDialog.FilterIndex == 1)
-                        workBook.Version = ExcelVersion.Excel97to2003;
-                    else if (saveFilterDialog.FilterIndex == 2)
-                        workBook.Version = ExcelVersion.Excel2010;
-                    else
-                        workBook.Version = ExcelVersion.Excel2013;
-                    workBook.SaveAs(stream);
-                }
-                if (MessageBox.Show(this.sfDataGrid1, "Quer guardar esta exportação?", "Exportação Excel",
-                                    MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    System.Diagnostics.Process.Start(saveFilterDialog.FileName);
-                }
-            }
+             // exoport current shown table
+             var options = new ExcelExportingOptions
+             {
+                 ExcelVersion = ExcelVersion.Excel2013
+             };
+             var excelEngine = sfDataGrid1.ExportToExcel(sfDataGrid1.View, options);
+             var workBook = excelEngine.Excel.Workbooks[0];
+             SaveFileDialog saveFilterDialog = new SaveFileDialog
+             {
+                 FilterIndex = 2,
+                 Filter = "Excel 97 to 2003 Files(*.xls)|*.xls|Excel 2007 to 2010 Files(*.xlsx)|*.xlsx|Excel 2013 File(*.xlsx)|*.xlsx"
+             };
+             if (saveFilterDialog.ShowDialog() == DialogResult.OK)
+             {
+                 using (Stream stream = saveFilterDialog.OpenFile())
+                 {
+                     if (saveFilterDialog.FilterIndex == 1)
+                         workBook.Version = ExcelVersion.Excel97to2003;
+                     else if (saveFilterDialog.FilterIndex == 2)
+                         workBook.Version = ExcelVersion.Excel2010;
+                     else
+                         workBook.Version = ExcelVersion.Excel2013;
+                     workBook.SaveAs(stream);
+                 }
+                 if (MessageBox.Show(this.sfDataGrid1, "Quer guardar esta exportação?", "Exportação Excel",
+                                     MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                 {
+                     System.Diagnostics.Process.Start(saveFilterDialog.FileName);
+                 }
+             }
         }
     }
 }

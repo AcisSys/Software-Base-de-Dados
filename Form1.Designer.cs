@@ -40,6 +40,7 @@ namespace Software_Base_de_Dados
             this.Agend_Button = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ExportData = new System.Windows.Forms.ToolStripButton();
             Workers_Button = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,7 +73,8 @@ namespace Software_Base_de_Dados
             Workers_Button,
             this.Teams_Button,
             this.Agend_Button,
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.ExportData});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(975, 52);
@@ -175,6 +177,20 @@ namespace Software_Base_de_Dados
             this.panel1.Size = new System.Drawing.Size(975, 597);
             this.panel1.TabIndex = 1;
             // 
+            // ExportData
+            // 
+            this.ExportData.AccessibleDescription = "A button leading for the table \"Agend\" from the database";
+            this.ExportData.AccessibleName = "Agend Button";
+            this.ExportData.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.ExportData.AutoSize = false;
+            this.ExportData.Image = ((System.Drawing.Image)(resources.GetObject("ExportData.Image")));
+            this.ExportData.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ExportData.Name = "ExportData";
+            this.ExportData.Size = new System.Drawing.Size(80, 40);
+            this.ExportData.Text = "Exportar ";
+            this.ExportData.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ExportData.Click += new System.EventHandler(this.ExportData_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,5 +223,6 @@ namespace Software_Base_de_Dados
         private ToolStripButton Tasks_Button;
         private Panel panel1;
         private ToolStripButton toolStripButton1;
+        private ToolStripButton ExportData;
     }
 }

@@ -15,6 +15,7 @@ namespace Software_Base_de_Dados
         string Provid;
         string DSource;
         string Password;
+        string camexpo;
         static readonly string key = "bbce2ea2315a1916";
         public Form1()
         {
@@ -114,6 +115,7 @@ namespace Software_Base_de_Dados
                         // try opening a connection with the decrypted string
                         Tables.Caminho = "Provider = " + prov + "; Data Source = " + pat + "; Jet OLEDB:Database Password = " + pass;
                         OleDbConnection con = new OleDbConnection(Tables.Caminho);
+                        camexpo = pat;
                         con.Open();
                     }
                     catch (Exception ex)
@@ -123,6 +125,18 @@ namespace Software_Base_de_Dados
                         return;
                     }
                 }
+            }
+        }
+
+        private void ExportData_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog diag = new FolderBrowserDialog();
+            diag.Description = "Onde deseja guardar a cópia?";
+            if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string folder = diag.SelectedPath;  //selected folder path
+                File.Copy(camexpo, folder + "/WORK2GOData.accdb");
+
             }
         }
     }

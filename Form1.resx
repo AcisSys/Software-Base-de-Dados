@@ -199,6 +199,16 @@
         ZAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="ExportData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADnSURBVEhL5ZTRDcIwDEQ7AiMwAhvDBnQj2AA2AL+qT7Kq
+        JEWk/NCTTkqOcHbiU4dd4xi8Bh8zz8FTcBNgjulrQbRDsBuXIIZjkK4pyBqN37phxxgLCqHdpl0nWgXu
+        0+5LOFgLsPaJ1JtP5EGTwRqNwZESjZ8z3We9OmSMasnIOh1iwnkGazF0tCpMQSkZ6k2DNXjlbOLgYDd+
+        XsDnKCVDveuJ+LO3yHSI7kmTQ86JQ19tgAPcRFPWmEE/D3CZrKxXY/oJbEBD1svE7fxbJJxHKXGbPBGG
+        pcTRfdeQMxysiaNzbvNXGIY3aiSCny86uKwAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
