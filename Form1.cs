@@ -130,12 +130,15 @@ namespace Software_Base_de_Dados
 
         private void ExportData_Click(object sender, EventArgs e)
         {
+            // Creates a Browsing Dialog to select where to store the file copy
             FolderBrowserDialog diag = new FolderBrowserDialog();
             diag.Description = "Onde deseja guardar a cópia?";
+            // ON "OK" pressed, gets the path
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string folder = diag.SelectedPath;  //selected folder path
-                File.Copy(camexpo, folder + "/WORK2GOData.accdb");
+                // Copy the File from old path to new path with the name "WORK2GODataCopy.accdb"
+                File.Copy(camexpo, folder + "/WORK2GODataCopy.accdb");
 
             }
         }
