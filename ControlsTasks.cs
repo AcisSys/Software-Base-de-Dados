@@ -1,10 +1,11 @@
-﻿using Syncfusion.WinForms.DataGridConverter;
-using Syncfusion.XlsIO;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
+using Syncfusion.WinForms.DataGridConverter;
+using Syncfusion.XlsIO;
+
 namespace Software_Base_de_Dados
 {
     public partial class ControlsTasks : UserControl
@@ -15,17 +16,19 @@ namespace Software_Base_de_Dados
         }
         public string Tabela;
         string query;
+        Subtasks subtasks = new Subtasks();
         DataSet dset = new DataSet();
         DataSet dataSet = new DataSet();
         OleDbDataAdapter adapter;
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         Tasks tasks = new Tasks();
-        string currentT;
-        Subtasks subtasks = new Subtasks();
-        int entries;
-        string CheckNull;
         askwhereadd askwhereadd = new askwhereadd();
         OleDbCommand oleDbCommand;
+        string currentT;
+        
+        int entries;
+        string CheckNull;
+
         int deleteid;
         void UpdateTable()
         {
