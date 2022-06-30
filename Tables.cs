@@ -297,19 +297,26 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tags")
             {
+                // Gets the ID of the Selected Row for the selected Table
                 tags.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                // Checks if Other Entrie are null or not
+
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "System.DBNull")
                 {
+                    // If not null, Gets Vallue of said Entries
                     tags.Ref = Convert.ToInt32(((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1]);
                 }
             }
             else if (Tabela == "tab_workers")
             {
+                // Gets the ID of the selected row for the selected table
                 workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
+                // checks if other entries are null or not
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "System.DBNull")
                 {
+                    // if entrie is not null, open connection
                     if (connection.State == ConnectionState.Closed)
                     {
                         try
@@ -323,11 +330,14 @@ namespace Software_Base_de_Dados
                                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                    // gets said entries from tables needed
                     workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                     workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
                     query = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
                     oleDbCommand = new OleDbCommand(query, connection);
+                    // gets the IDEquipa Field where the Description is the one we have
                     workers.IdEquipa = oleDbCommand.ExecuteScalar().ToString();
+                    // Closes the connection
                     connection.Close();
                 }
             }
