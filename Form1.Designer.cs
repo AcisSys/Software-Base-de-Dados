@@ -39,8 +39,8 @@ namespace Software_Base_de_Dados
             this.Teams_Button = new System.Windows.Forms.ToolStripButton();
             this.Agend_Button = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.ExportData = new System.Windows.Forms.ToolStripButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             Workers_Button = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -161,6 +161,21 @@ namespace Software_Base_de_Dados
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
             // 
+            // ExportData
+            // 
+            this.ExportData.AccessibleDescription = "A button leading for the table \"Agend\" from the database";
+            this.ExportData.AccessibleName = "Agend Button";
+            this.ExportData.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.ExportData.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.ExportData.AutoSize = false;
+            this.ExportData.Image = ((System.Drawing.Image)(resources.GetObject("ExportData.Image")));
+            this.ExportData.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ExportData.Name = "ExportData";
+            this.ExportData.Size = new System.Drawing.Size(80, 40);
+            this.ExportData.Text = "Exportar ";
+            this.ExportData.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ExportData.Click += new System.EventHandler(this.ExportData_Click);
+            // 
             // panel1
             // 
             this.panel1.AccessibleDescription = "Panel that changes according to button pressed on the MenuBar";
@@ -176,20 +191,6 @@ namespace Software_Base_de_Dados
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(975, 597);
             this.panel1.TabIndex = 1;
-            // 
-            // ExportData
-            // 
-            this.ExportData.AccessibleDescription = "A button leading for the table \"Agend\" from the database";
-            this.ExportData.AccessibleName = "Agend Button";
-            this.ExportData.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.ExportData.AutoSize = false;
-            this.ExportData.Image = ((System.Drawing.Image)(resources.GetObject("ExportData.Image")));
-            this.ExportData.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ExportData.Name = "ExportData";
-            this.ExportData.Size = new System.Drawing.Size(80, 40);
-            this.ExportData.Text = "Exportar ";
-            this.ExportData.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.ExportData.Click += new System.EventHandler(this.ExportData_Click);
             // 
             // Form1
             // 
