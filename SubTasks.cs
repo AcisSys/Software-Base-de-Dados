@@ -84,12 +84,26 @@ namespace Software_Base_de_Dados
             /*
              * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
              */
+            connection.Close();
             sfComboBox2.DataSource = dtClone;
             sfComboBox2.DisplayMember = "Type";
             sfComboBox2.Text = Type;
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.ConnectionString = Tables.Caminho;
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             // Check all fields.
             if ((maskedTextBox2.Text == "") || (maskedTextBox3.Text == ""))
             {
@@ -140,6 +154,7 @@ namespace Software_Base_de_Dados
             MessageBox.Show("Dados adicionados com sucesso", "",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
+            connection.Close();
             this.Close();
         }
         private void Button1_MouseLeave(object sender, EventArgs e)

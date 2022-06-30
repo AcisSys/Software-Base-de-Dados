@@ -116,6 +116,7 @@ namespace Software_Base_de_Dados
                         OleDbConnection con = new OleDbConnection(Tables.Caminho);
                         camexpo = pat;
                         con.Open();
+                        con.Close();
                     }
                     catch (Exception ex)
                     {

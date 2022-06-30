@@ -65,9 +65,23 @@ namespace Software_Base_de_Dados
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
             sfComboBox1.Text = IdEquipa;
+            connection.Close();
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.ConnectionString = Tables.Caminho;
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             // Check if all fields are written.
             if ((maskedTextBox2.Text == null) || (maskedTextBox4.Text == null) || (sfComboBox1.SelectedItem == null)
                 || (maskedTextBox5.Text == null))
@@ -121,15 +135,12 @@ namespace Software_Base_de_Dados
                 MessageBox.Show("Dados atualizados com sucesso", "", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
+            connection.Close();
             this.Close();
         }
         private void Button1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();
-        }
-        private void Workers_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            sfComboBox1.Text = "";
         }
     }
 }

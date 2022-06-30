@@ -53,12 +53,14 @@ namespace Software_Base_de_Dados
                         Tables.Caminho = "Provider = " + Provid + "; Data Source = " + DSource + "; Jet OLEDB:Database Password = " + Password;
                         OleDbConnection con = new OleDbConnection(Tables.Caminho);
                         con.Open();
+                        con.Close();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    
                     var encryptedString = AesOperation.EncryptString(key, Provid);
                     sw.WriteLine("Provider = " + encryptedString + ";");
                     var encryptedString2 = AesOperation.EncryptString(key, DSource);

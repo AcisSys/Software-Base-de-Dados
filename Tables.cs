@@ -15,7 +15,6 @@ namespace Software_Base_de_Dados
         }
         public static string Caminho { get; set; }
         public string Tabela { get; set; }
-        
         OleDbConnection connection = new OleDbConnection(Tables.Caminho);
         Agend agend = new Agend();
         Places places = new Places();
@@ -32,18 +31,7 @@ namespace Software_Base_de_Dados
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
             // Check connection
-            if (connection.State == ConnectionState.Closed)
-            {
-                try
-                {
-                    connection.ConnectionString = Caminho;
-                    connection.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            
         }
         public void UpdateTable()
         {
@@ -136,17 +124,6 @@ namespace Software_Base_de_Dados
             // check connection
             // specify action (add data) and shows window
             // Down to next Comment
-            if (connection.State == ConnectionState.Closed)
-            {
-                try
-                {
-                    connection.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
             if (Tabela == "tab_agend")
@@ -176,6 +153,8 @@ namespace Software_Base_de_Dados
             }
             // On Close (New Entry added or not)
             // Refreshes the current shown Table
+            Modify_Button.Enabled = false;
+            Remove_Button.Enabled = false;
             UpdateTable();
         }
         private void Modify_Button_Click(object sender, EventArgs e)
@@ -183,17 +162,6 @@ namespace Software_Base_de_Dados
             // check connection
             // specify action (modify data) and shows window
             // Down to next Comment
-            if (connection.State == ConnectionState.Closed)
-            {
-                try
-                {
-                    connection.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
             if (Tabela == "tab_agend")
             {
                 agend.Tipo = "";
@@ -281,6 +249,7 @@ namespace Software_Base_de_Dados
             // Updates the DataGridView.
             // After Executing the querry (deleting the entry selected)
             // or canceling
+            connection.Close();
             UpdateTable();
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
@@ -289,17 +258,7 @@ namespace Software_Base_de_Dados
         {
             // Check connection.
             // Checks if values are null or not, and gets data from the row of the according table.
-            if (connection.State == ConnectionState.Closed)
-            {
-                try
-                {
-                    connection.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            
             Modify_Button.Enabled = true;
             Remove_Button.Enabled = true;
             // creates a DataSet and Resets it, Cleaning it from any Data
@@ -352,11 +311,25 @@ namespace Software_Base_de_Dados
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "System.DBNull")
                 {
+                    if (connection.State == ConnectionState.Closed)
+                    {
+                        try
+                        {
+                            connection.ConnectionString = Tables.Caminho;
+                            connection.Open();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                     workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
                     query = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
                     oleDbCommand = new OleDbCommand(query, connection);
                     workers.IdEquipa = oleDbCommand.ExecuteScalar().ToString();
+                    connection.Close();
                 }
             }
 
@@ -398,6 +371,8 @@ namespace Software_Base_de_Dados
                      System.Diagnostics.Process.Start(saveFilterDialog.FileName);
                  }
              }
+            Modify_Button.Enabled = false;
+            Remove_Button.Enabled = false;
         }
     }
 }

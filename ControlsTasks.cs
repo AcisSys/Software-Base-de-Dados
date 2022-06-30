@@ -92,18 +92,6 @@ namespace Software_Base_de_Dados
             Exportar.Enabled = false;
             Modify_Button.Enabled = false;
             // Check connection.
-            if (connection.State == ConnectionState.Closed)
-            {
-                try
-                {
-                    connection.ConnectionString = Tables.Caminho;
-                    connection.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
             UpdateTable();
         }
         private void sfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
@@ -315,6 +303,7 @@ namespace Software_Base_de_Dados
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             // Updates the DataGridView.
+            connection.Close();
             UpdateTable();
             sfDataGrid2.DataSource = null;
             Modify_Button.Enabled = false;

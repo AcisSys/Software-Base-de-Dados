@@ -24,7 +24,6 @@ namespace Software_Base_de_Dados
         OleDbCommand oleDbCommand;
         private void Agend_Load(object sender, EventArgs e)
         {
-            // Verify connection.
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -72,9 +71,23 @@ namespace Software_Base_de_Dados
             // Torna o ID Imutável pelo utilizador
             maskedTextBox1.Enabled = false;
             maskedTextBox1.ReadOnly = true;
+            connection.Close();
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.ConnectionString = Tables.Caminho;
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             // Check if all fields are used.
             if ((sfComboBox1.SelectedItem == null) || (sfComboBox2.SelectedItem == null))
             {
@@ -123,6 +136,7 @@ namespace Software_Base_de_Dados
                 maskedTextBox1.Text = "";
                 sfComboBox1.Text = "";
                 sfComboBox2.Text = "";
+                connection.Close();
                 this.Close();
             }
         }

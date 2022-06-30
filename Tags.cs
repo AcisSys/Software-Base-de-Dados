@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 namespace Software_Base_de_Dados
@@ -48,10 +49,24 @@ namespace Software_Base_de_Dados
             }
             maskedTextBox1.ReadOnly = true;
             maskedTextBox1.Enabled = false;
+            connection.Close();
             button1.Select();
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.ConnectionString = Tables.Caminho;
+                    connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             // Checks data type.
             if (int.TryParse(maskedTextBox2.Text, out _) == false)
             {
@@ -114,6 +129,7 @@ namespace Software_Base_de_Dados
                     MessageBoxIcon.Information);
                 maskedTextBox1.Text = "";
                 maskedTextBox2.Text = "";
+                connection.Close();
                 this.Close();
             }
         }

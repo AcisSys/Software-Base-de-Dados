@@ -91,6 +91,8 @@ namespace Software_Base_de_Dados
             // 
             this.sfDataGrid1.AccessibleName = "Table";
             this.sfDataGrid1.AllowEditing = false;
+            this.sfDataGrid1.AllowFiltering = true;
+            this.sfDataGrid1.AllowResizingColumns = true;
             this.sfDataGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
