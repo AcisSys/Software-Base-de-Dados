@@ -193,7 +193,6 @@ namespace Software_Base_de_Dados
             ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

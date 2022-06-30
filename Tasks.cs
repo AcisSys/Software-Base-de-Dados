@@ -23,7 +23,6 @@ namespace Software_Base_de_Dados
         string query;
         private void Tasks_Load(object sender, EventArgs e)
         {
-
             // Check connection.
             if (connection.State == ConnectionState.Closed)
             {
@@ -61,7 +60,6 @@ namespace Software_Base_de_Dados
                     checkBox1.Checked = false;
                 }
             }
-
             // Gets Data for ComboBox
             query = "SELECT ID AS Id, Localizacao AS Localização FROM tab_places";
             adapter = new OleDbDataAdapter(query, connection);

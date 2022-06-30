@@ -258,7 +258,6 @@ namespace Software_Base_de_Dados
         {
             // Check connection.
             // Checks if values are null or not, and gets data from the row of the according table.
-
             Modify_Button.Enabled = true;
             Remove_Button.Enabled = true;
             // creates a DataSet and Resets it, Cleaning it from any Data
@@ -334,7 +333,6 @@ namespace Software_Base_de_Dados
             }
 
         }
-
         // From here to end
         // TAKEN FROM ANOTHER PROJECT
         // NOT MINE
