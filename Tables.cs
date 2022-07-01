@@ -31,7 +31,6 @@ namespace Software_Base_de_Dados
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
             // Check connection
-
         }
         public void UpdateTable()
         {
