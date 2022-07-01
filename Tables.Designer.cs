@@ -46,7 +46,7 @@ namespace Software_Base_de_Dados
             this.Add_Button.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.Add_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Add_Button.Image = ((System.Drawing.Image)(resources.GetObject("Add_Button.Image")));
-            this.Add_Button.Location = new System.Drawing.Point(809, 392);
+            this.Add_Button.Location = new System.Drawing.Point(808, 319);
             this.Add_Button.Name = "Add_Button";
             this.Add_Button.Size = new System.Drawing.Size(164, 65);
             this.Add_Button.TabIndex = 1;
@@ -61,7 +61,7 @@ namespace Software_Base_de_Dados
             this.Modify_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Modify_Button.Enabled = false;
             this.Modify_Button.Image = ((System.Drawing.Image)(resources.GetObject("Modify_Button.Image")));
-            this.Modify_Button.Location = new System.Drawing.Point(809, 462);
+            this.Modify_Button.Location = new System.Drawing.Point(808, 390);
             this.Modify_Button.Name = "Modify_Button";
             this.Modify_Button.Size = new System.Drawing.Size(164, 65);
             this.Modify_Button.TabIndex = 2;
@@ -78,7 +78,7 @@ namespace Software_Base_de_Dados
             this.Remove_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Remove_Button.Enabled = false;
             this.Remove_Button.Image = ((System.Drawing.Image)(resources.GetObject("Remove_Button.Image")));
-            this.Remove_Button.Location = new System.Drawing.Point(809, 532);
+            this.Remove_Button.Location = new System.Drawing.Point(808, 461);
             this.Remove_Button.Name = "Remove_Button";
             this.Remove_Button.Size = new System.Drawing.Size(164, 65);
             this.Remove_Button.TabIndex = 3;
@@ -110,13 +110,13 @@ namespace Software_Base_de_Dados
             // 
             // Exportar
             // 
-            this.Exportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Exportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Exportar.Image = ((System.Drawing.Image)(resources.GetObject("Exportar.Image")));
-            this.Exportar.Location = new System.Drawing.Point(808, 3);
+            this.Exportar.Location = new System.Drawing.Point(808, 532);
             this.Exportar.Name = "Exportar";
             this.Exportar.Size = new System.Drawing.Size(164, 65);
             this.Exportar.TabIndex = 6;
-            this.Exportar.Text = "Exportar";
+            this.Exportar.Text = "Exportar Tabela";
             this.Exportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Exportar.UseVisualStyleBackColor = true;
             this.Exportar.Click += new System.EventHandler(this.Exportar_Click);
