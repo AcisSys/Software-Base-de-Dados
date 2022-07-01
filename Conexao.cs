@@ -92,7 +92,7 @@ namespace Software_Base_de_Dados
                     var decryptedString2 = AesOperation.DecryptString(key, DSource.Substring(14, DSource.Length - 15));
                     textBox2.Text = decryptedString2;
                     decryptedString3 = AesOperation.DecryptString(key, Password.Substring(30, Password.Length - 30));
-                    textBox3.Text = decryptedString3;
+                    
                 }
             }
         }
