@@ -297,10 +297,9 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_tags")
             {
-                // Gets the ID of the Selected Row for the selected Table
+                // Gets the ID of the Selected Row for the selected Table.
                 tags.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                // Checks if Other Entrie are null or not
-
+                // Checks if Other Entrie are null or not.
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "System.DBNull")
                 {
@@ -341,7 +340,6 @@ namespace Software_Base_de_Dados
                     connection.Close();
                 }
             }
-
         }
         // From here to end
         // TAKEN FROM ANOTHER PROJECT
