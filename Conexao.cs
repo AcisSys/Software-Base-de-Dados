@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 namespace Software_Base_de_Dados
 {
-    // Security risk on changin connection (password shows if file exists)
+    // Security risk on changin connection (password shows if file exists).
     public partial class Conexao : Form
     {
         public Conexao()

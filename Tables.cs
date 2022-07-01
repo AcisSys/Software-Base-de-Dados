@@ -30,45 +30,45 @@ namespace Software_Base_de_Dados
         {
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
-            // Check connection
+            // Check connection.
         }
         public void UpdateTable()
         {
             // Check connection
-            // Gets Table for the table to be shown accordingly
-            // Complex Querys for Complex tables (left join where) 
+            // Gets Table for the table to be shown accordingly.
+            // Complex Querys for Complex tables (left join where). 
             if (connection.State == ConnectionState.Closed)
             {
                 try
                 {
-                    // Open Connection
+                    // Open Connection.
                     connection.ConnectionString = Caminho;
                     connection.Open();
                 }
                 catch (Exception ex)
                 {
-                    //Throws Error (Case Fail)
+                    //Throws Error (Case Fail).
                     MessageBox.Show(ex.Message);
                 }
             }
-            // Creates DataSet for Tables
+            // Creates DataSet for Tables.
             DataSet dset = new DataSet();
             if (Tabela == "tab_agend")
             {
-                // SQL Command to get actual complex table (mix of 3 tables)
+                // SQL Command to get actual complex table (mix of 3 tables).
                 query = "SELECT tab_agend.ID AS Id, tab_teams.Descricao AS Equipa, tab_tasks.Descricao AS Tarefa "
                     + " FROM((tab_agend LEFT JOIN "
                     + " tab_tasks ON tab_agend.idtask = tab_tasks.ID) LEFT JOIN "
                     + " tab_teams ON tab_agend.idequipa = tab_teams.ID) ";
-                // resets the DataSet
-                // so it cleans ALL data (resets the variable to null)
+                // resets the DataSet.
+                // so it cleans ALL data (resets the variable to null).
                 dset.Reset();
-                // Creates an Adapter to store the Data in the DataTable
+                // Creates an Adapter to store the Data in the DataTable.
                 adapter = new OleDbDataAdapter(query, connection);
-                // Stores the Data in the DataTable
+                // Stores the Data in the DataTable.
                 adapter.Fill(dset);
-                // Sets the DataSource of Display Object (sfDataGrid1)
-                // Down to next Comment
+                // Sets the DataSource of Display Object (sfDataGrid1).
+                // Down to next Comment.
                 sfDataGrid1.DataSource = dset;
             }
             else if (Tabela == "tab_workers")
@@ -120,9 +120,9 @@ namespace Software_Base_de_Dados
         }
         private void Add_Button_Click(object sender, EventArgs e)
         {
-            // check connection
-            // specify action (add data) and shows window
-            // Down to next Comment
+            // check connection.
+            // specify action (add data) and shows window.
+            // Down to next Comment.
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
             if (Tabela == "tab_agend")
@@ -194,7 +194,7 @@ namespace Software_Base_de_Dados
         }
         private void Remove_Button_Click(object sender, EventArgs e)
         {
-            // check connection
+            // check connection.
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -259,23 +259,23 @@ namespace Software_Base_de_Dados
             // Checks if values are null or not, and gets data from the row of the according table.
             Modify_Button.Enabled = true;
             Remove_Button.Enabled = true;
-            // creates a DataSet and Resets it, Cleaning it from any Data
+            // creates a DataSet and Resets it, Cleaning it from any Data.
             DataSet ds = new DataSet();
             ds.Reset();
             if (Tabela == "tab_agend")
             {
-                // Gets the ID of the Selected Row for the selected Table
+                // Gets the ID of the Selected Row for the selected Table.
                 agend.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             }
             else if (Tabela == "tab_places")
             {
-                // Gets the ID of the Selected Row for the selected Table
+                // Gets the ID of the Selected Row for the selected Table.
                 places.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                // Checks if Other Entries are null or not
+                // Checks if Other Entries are null or not.
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "System.DBNull")
                 {
-                    // If not null, gets vallue of all said Entries
+                    // If not null, gets vallue of all said Entries.
                     places.Localizacao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                     places.X = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2].ToString();
                     places.Y = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[3].ToString();
@@ -283,14 +283,14 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_teams")
             {
-                // Gets the ID of the Selected Row for the selected Table
+                // Gets the ID of the Selected Row for the selected Table.
                 teams.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-                // Checks if Other Entries are null or not
+                // Checks if Other Entries are null or not.
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "Systyem.DBNull")
                 {
-                    // If not null, gets vallue of all said Entries
-                    // And so it goes on down to the last condition
+                    // If not null, gets vallue of all said Entries.
+                    // And so it goes on down to the last condition.
                     teams.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                 }
             }
@@ -302,19 +302,19 @@ namespace Software_Base_de_Dados
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "System.DBNull")
                 {
-                    // If not null, Gets Vallue of said Entries
+                    // If not null, Gets Vallue of said Entries.
                     tags.Ref = Convert.ToInt32(((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1]);
                 }
             }
             else if (Tabela == "tab_workers")
             {
-                // Gets the ID of the selected row for the selected table
+                // Gets the ID of the selected row for the selected table.
                 workers.ID = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
                 // checks if other entries are null or not
                 string CheckNull = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1].GetType().ToString();
                 if (CheckNull != "System.DBNull")
                 {
-                    // if entrie is not null, open connection
+                    // if entrie is not null, open connection.
                     if (connection.State == ConnectionState.Closed)
                     {
                         try
@@ -328,25 +328,25 @@ namespace Software_Base_de_Dados
                                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    // gets said entries from tables needed
+                    // gets said entries from tables needed.
                     workers.Name = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
                     workers.Cod = ((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
                     query = "SELECT ID FROM tab_teams WHERE Descricao = '" + (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] + "'";
                     oleDbCommand = new OleDbCommand(query, connection);
-                    // gets the IDEquipa Field where the Description is the one we have
+                    // gets the IDEquipa Field where the Description is the one we have.
                     workers.IdEquipa = oleDbCommand.ExecuteScalar().ToString();
-                    // Closes the connection
+                    // Closes the connection.
                     connection.Close();
                 }
             }
         }
-        // From here to end
-        // TAKEN FROM ANOTHER PROJECT
-        // NOT MINE
-        // DONT CHANGE
+        // From here to end.
+        // TAKEN FROM ANOTHER PROJECT.
+        // NOT MINE.
+        // DONT CHANGE.
         private void Exportar_Click(object sender, EventArgs e)
         {
-            // exoport current shown table
+            // exoport current shown table.
             var options = new ExcelExportingOptions
             {
                 ExcelVersion = ExcelVersion.Excel2013

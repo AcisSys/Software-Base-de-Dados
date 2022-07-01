@@ -57,7 +57,7 @@ namespace Software_Base_de_Dados
             maskedTextBox5.Text = Cod;
             maskedTextBox1.Enabled = false;
             button1.Select();
-            // Gets Data for ComboBox
+            // Gets Data for ComboBox.
             query = "SELECT ID AS Id, Descricao AS Descrição FROM tab_teams";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "idteam");

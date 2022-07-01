@@ -56,9 +56,9 @@ namespace Software_Base_de_Dados
             Add_Button.Enabled = false;
             Remove_Button.Enabled = false;
             Exportar.Enabled = false;
-            // Updates Object to Show Information
+            // Updates Object to Show Information.
             sfDataGrid1.Update();
-            // Closes Connection
+            // Closes Connection.
             connection.Close();
         }
         void UpdateSubTasks()
@@ -76,7 +76,7 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            // selects fields from subtasks e set os nomes
+            // selects fields from subtasks e set os nomes.
             query = "SELECT ID AS Id , [Desc] AS Descrição, [Type] AS Tipo FROM tab_subtasks WHERE IDTask = " + (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             dataSet.Reset();
             adapter = new OleDbDataAdapter(query, connection);
@@ -89,7 +89,7 @@ namespace Software_Base_de_Dados
         }
         private void ControlsTasks_Load(object sender, EventArgs e)
         {
-            // Desativa todos os botões
+            // Desativa todos os botões.
             Add_Button.Enabled = false;
             Remove_Button.Enabled = false;
             Exportar.Enabled = false;
@@ -100,20 +100,20 @@ namespace Software_Base_de_Dados
         private void sfDataGrid1_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
             // gets subtask table.
-            // gets all values of selected row se eles existirem
+            // gets all values of selected row se eles existirem.
             UpdateSubTasks();
             Add_Button.Enabled = true;
             Modify_Button.Enabled = true;
             Remove_Button.Enabled = true;
             Exportar.Enabled = true;
             currentT = "tasks";
-            // Gets all entry values from table
-            // (After Checking if null or not)
+            // Gets all entry values from table.
+            // (After Checking if null or not).
             tasks.Id = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
             tasks.Descricao = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[1];
             tasks.IdPlace = (string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[4].ToString();
-            // check value on tasks
-            // takes value to 
+            // check value on tasks.
+            // takes value to.
             if ((string)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[2] == "Não")
             {
                 tasks.Active = false;
@@ -130,13 +130,13 @@ namespace Software_Base_de_Dados
         }
         private void sfDataGrid2_SelectionChanged(object sender, Syncfusion.WinForms.DataGrid.Events.SelectionChangedEventArgs e)
         {
-            // Disables buttons
+            // Disables buttons.
             Modify_Button.Enabled = true;
             Add_Button.Enabled = true;
             Remove_Button.Enabled = true;
             Exportar.Enabled = true;
             currentT = "subtasks";
-            // Gets All Data Entries from Rows
+            // Gets All Data Entries from Rows.
             subtasks.Id = (int)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[0];
             subtasks.Desc = (string)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[1].ToString();
             subtasks.IdTask = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
@@ -159,7 +159,7 @@ namespace Software_Base_de_Dados
                     else if (askwhereadd.answer == 2)
                     {
                         subtasks.ShowDialog();
-                        // Updates SubTasks Object to update Table
+                        // Updates SubTasks Object to update Table.
                         UpdateSubTasks();
                         Add_Button.Enabled = false;
                     }
@@ -178,7 +178,7 @@ namespace Software_Base_de_Dados
                 UpdateSubTasks();
                 Add_Button.Enabled = false;
             }
-            // Updates Object to show Tables
+            // Updates Object to show Tables.
             UpdateTable();
             sfDataGrid2.DataSource = null;
         }
@@ -247,7 +247,7 @@ namespace Software_Base_de_Dados
         }
         private void Remove_Button_Click(object sender, EventArgs e)
         {
-            // check connection
+            // check connection.
             if (connection.State == ConnectionState.Closed)
             {
                 try
@@ -260,14 +260,14 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            // Ask for Confirmation
+            // Ask for Confirmation.
             DialogResult response = MessageBox.Show("Tem a certeza?", "Apagar?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
-            // Tabela is the name of the table 
-            // Na Tabela Tasks, os campos não sao apagados
-            // apenas desativados
+            // Tabela is the name of the table.
+            // Na Tabela Tasks, os campos não sao apagados.
+            // apenas desativados.
             if (currentT == "tasks")
             {
                 deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
@@ -278,7 +278,7 @@ namespace Software_Base_de_Dados
             else
             {
                 deleteid = (int)((DataRowView)sfDataGrid2.SelectedItem).Row.ItemArray[0];
-                // Permanent delete, cant get back the data after confirmation
+                // Permanent delete, cant get back the data after confirmaion.
                 query = "DELETE FROM tab_subtasks WHERE ID = " + deleteid;
                 oleDbCommand = new OleDbCommand(query, connection);
             }
@@ -287,7 +287,7 @@ namespace Software_Base_de_Dados
                 try
                 {
                     oleDbCommand.ExecuteNonQuery();
-                    // Says that data was deleted
+                    // Says that data was deleted.
                     MessageBox.Show("Dados apagados com sucesso", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

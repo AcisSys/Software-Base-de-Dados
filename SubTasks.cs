@@ -61,15 +61,16 @@ namespace Software_Base_de_Dados
             maskedTextBox1.Enabled = false;
             maskedTextBox3.Text = IdTask.ToString();
             button1.Select();
-            // Gets Data for COMBOBOX
+            // Gets Data for COMBOBOX.
             query = "SELECT DISTINCT Type AS Tipo FROM tab_subtasks";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "type");
             dataTable = dset.Tables["type"];
             /*
-             * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string
+             * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string.
              */
-            DataTable dtClone = dataTable.Clone(); //just copy structure, no data
+            DataTable dtClone = dataTable.Clone();
+            // just copy structure, no data.
             for (int i = 0; i < dtClone.Columns.Count; i++)
             {
                 if (dtClone.Columns[i].DataType != typeof(string))
@@ -79,7 +80,8 @@ namespace Software_Base_de_Dados
             }
             foreach (DataRow dr in dataTable.Rows)
             {
-                dtClone.ImportRow(dr); // Imports all rows from DataTable to the clone (with String type on every column).
+                dtClone.ImportRow(dr);
+                // Imports all rows from DataTable to the clone (with String type on every column).
             }
             /*
              * codigo em https://stackoverflow.com/questions/22970418/copy-c-sharp-datatable-and-convert-all-values-to-string

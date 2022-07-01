@@ -19,7 +19,8 @@ namespace Software_Base_de_Dados
         static readonly string key = "bbce2ea2315a1916";
         public Form1()
         {
-            // Mostra o Titulo e o tipo de DockStyle é Fill, Aumentando o tamanho proporcionalmente consoante o tamanho da aplicação
+            // Mostra o Titulo e o tipo de DockStyle é Fill.
+            // Aumentando o tamanho proporcionalmente consoante o tamanho da aplicação.
             InitializeComponent();
             panel1.Controls.Add(title);
             title.Dock = DockStyle.Fill;
@@ -87,11 +88,11 @@ namespace Software_Base_de_Dados
             // Gets connection string and unencrypt it.
             if (!File.Exists("ChaveConexao.txt"))
             {
-                // If file doesnt exist, asks to setup a conection
+                // If file doesnt exist, asks to setup a conection.
                 MessageBox.Show("Não existe uma conexão, configure uma", "Erro de Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexao.ShowDialog();
             }
-            // if file exists, reads file
+            // if file exists, reads file.
             if (File.Exists("ChaveConexao.txt"))
             {
                 using (var reader = new StreamReader("ChaveConexao.txt"))
@@ -102,7 +103,7 @@ namespace Software_Base_de_Dados
                 }
                 if (Provid != null)
                 {
-                    // decrypt text to get connection string
+                    // decrypt text to get connection string.
                     var decryptedString = AesOperation.DecryptString(key, Provid.Substring(11, Provid.Length - 12));
                     string prov = decryptedString;
                     var decryptedString2 = AesOperation.DecryptString(key, DSource.Substring(14, DSource.Length - 15));
@@ -111,7 +112,7 @@ namespace Software_Base_de_Dados
                     string pass = decryptedString3;
                     try
                     {
-                        // try opening a connection with the decrypted string
+                        // try opening a connection with the decrypted string.
                         Tables.Caminho = "Provider = " + prov + "; Data Source = " + pat + "; Jet OLEDB:Database Password = " + pass;
                         OleDbConnection con = new OleDbConnection(Tables.Caminho);
                         camexpo = pat;
@@ -120,7 +121,7 @@ namespace Software_Base_de_Dados
                     }
                     catch (Exception ex)
                     {
-                        // Invalid Connection requires the connection to be setup again
+                        // Invalid Connection requires the connection to be setup again.
                         MessageBox.Show("Erro na conexão, verifique a chave de conexão.\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
@@ -129,14 +130,14 @@ namespace Software_Base_de_Dados
         }
         private void ExportData_Click(object sender, EventArgs e)
         {
-            // Creates a Browsing Dialog to select where to store the file copy
+            // Creates a Browsing Dialog to select where to store the file copy.
             FolderBrowserDialog diag = new FolderBrowserDialog();
             diag.Description = "Onde deseja guardar a cópia?";
             // ON "OK" pressed, gets the path
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string folder = diag.SelectedPath;  //selected folder path
-                // Copy the File from old path to new path with the name "WORK2GODataCopy.accdb"
+                string folder = diag.SelectedPath;  //selected folder path.
+                // Copy the File from old path to new path with the name "WORK2GODataCopy.accdb".
                 File.Copy(camexpo, folder + "/WORK2GODataCopy.accdb");
             }
         }

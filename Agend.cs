@@ -37,15 +37,15 @@ namespace Software_Base_de_Dados
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            // Vai buscar os Dados para as MultiColumnComboBox
-            // Bind dos valores com as ComboBox, e define o valor a ser mostrado
+            // Vai buscar os Dados para as MultiColumnComboBox.
+            // Bind dos valores com as ComboBox, e define o valor a ser mostrado.
             query = "SELECT ID AS Id, Descricao AS Descrição FROM tab_teams";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(dset, "idteam");
             DataTable dataTable = dset.Tables["idteam"];
             sfComboBox1.DataSource = dataTable;
             sfComboBox1.DisplayMember = "ID";
-            // Gets Data for ComboBox
+            // Gets Data for ComboBox.
             query = "SELECT ID AS Id, Descricao AS Descrição FROM tab_tasks";
             adapter = new OleDbDataAdapter(query, connection);
             adapter.Fill(ds, "idtask");
@@ -68,7 +68,7 @@ namespace Software_Base_de_Dados
             {
                 maskedTextBox1.Text = Id.ToString();
             }
-            // Torna o ID Imutável pelo utilizador
+            // Torna o ID Imutável pelo utilizador.
             maskedTextBox1.Enabled = false;
             maskedTextBox1.ReadOnly = true;
             connection.Close();
