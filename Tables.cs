@@ -150,17 +150,17 @@ namespace Software_Base_de_Dados
                 workers.Tipo = "Add";
                 workers.ShowDialog();
             }
-            // On Close (New Entry added or not)
-            // Refreshes the current shown Table
+            // On Close (New Entry added or not).
+            // Refreshes the current shown Table.
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
             UpdateTable();
         }
         private void Modify_Button_Click(object sender, EventArgs e)
         {
-            // check connection
-            // specify action (modify data) and shows window
-            // Down to next Comment
+            // check connection.
+            // specify action (modify data) and shows window.
+            // Down to next Comment.
             if (Tabela == "tab_agend")
             {
                 agend.Tipo = "";
@@ -186,8 +186,8 @@ namespace Software_Base_de_Dados
                 workers.Tipo = "";
                 workers.ShowDialog();
             }
-            // On Close ( Entry modified or not)
-            // Refreshes the current shown Table
+            // On Close ( Entry modified or not).
+            // Refreshes the current shown Table.
             UpdateTable();
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
@@ -207,27 +207,27 @@ namespace Software_Base_de_Dados
                     MessageBox.Show(ex.Message);
                 }
             }
-            // Ask for Confirmation 
-            // for deleting current selected item
+            // Ask for Confirmation .
+            // for deleting current selected item.
             DialogResult response = MessageBox.Show("Tem a certeza?", "Apagar?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
             // ID of the row
-            // its always the first column of the selected row
+            // its always the first column of the selected row.
             deleteid = (int)((DataRowView)sfDataGrid1.SelectedItem).Row.ItemArray[0];
-            // Tabela is the name of the table
-            // being shown to the user
+            // Tabela is the name of the table.
+            // being shown to the user.
             query = "DELETE FROM " + Tabela + " WHERE ID = " + deleteid;
             oleDbCommand = new OleDbCommand(query, connection);
-            // If the answer to confirmation box is YES
+            // If the answer to confirmation box is YES.
             if (response == DialogResult.Yes)
             {
                 try
                 {
-                    // Execute the Command (Try)
+                    // Execute the Command (Try).
                     oleDbCommand.ExecuteNonQuery();
-                    // Says that data was deleted
+                    // Says that data was deleted.
                     MessageBox.Show("Dados apagados com sucesso", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -246,8 +246,8 @@ namespace Software_Base_de_Dados
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             // Updates the DataGridView.
-            // After Executing the querry (deleting the entry selected)
-            // or canceling
+            // After Executing the querry (deleting the entry selected).
+            // or canceling.
             connection.Close();
             UpdateTable();
             Modify_Button.Enabled = false;
