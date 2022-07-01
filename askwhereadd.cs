@@ -39,7 +39,6 @@ namespace Software_Base_de_Dados
                 sfToolTip1.Show("Selecione a tabela na qual deseja adicionar dados");
             }
         }
-
         private void toolStripButton1_MouseLeave(object sender, EventArgs e)
         {
             sfToolTip1.Hide();
