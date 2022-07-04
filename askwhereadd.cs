@@ -11,7 +11,6 @@ namespace Software_Base_de_Dados
             InitializeComponent();
         }
         public int answer;
-
         private void askwhereadd_Load(object sender, EventArgs e)
         {
             // Cria uma lista de entradas para a combobox.
