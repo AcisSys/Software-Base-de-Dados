@@ -25,10 +25,8 @@ namespace Software_Base_de_Dados
         askwhereadd askwhereadd = new askwhereadd();
         OleDbCommand oleDbCommand;
         string currentT;
-
         int entries;
         string CheckNull;
-
         int deleteid;
         void UpdateTable()
         {
