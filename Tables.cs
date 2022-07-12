@@ -68,51 +68,82 @@ namespace Software_Base_de_Dados
                 // Stores the Data in the DataTable.
                 adapter.Fill(dset);
                 // Sets the DataSource of Display Object (sfDataGrid1).
-                // Down to next Comment.
+                
                 sfDataGrid1.DataSource = dset;
             }
             else if (Tabela == "tab_workers")
             {
+                // SQL Command to get actual complex table (mix of 3 tables).
                 query = " SELECT tab_workers.ID AS Id, tab_workers.Nome, tab_teams.Descricao AS Equipa, tab_workers.img AS Imagem, tab_workers.Cod AS Código"
                     + " FROM(tab_workers INNER JOIN "
                     + " tab_teams ON tab_workers.IDEquipa = tab_teams.ID) ";
+                // resets the DataSet.
+                // so it cleans ALL data (resets the variable to null).
                 dset.Reset();
+                // Creates an Adapter to store the Data in the DataTable.
                 adapter = new OleDbDataAdapter(query, connection);
+                // Stores the Data in the DataTable.
                 adapter.Fill(dset);
+                // Sets the DataSource of Display Object (sfDataGrid1).
                 sfDataGrid1.DataSource = dset;
             }
             else if (Tabela == "tab_tags")
             {
+                // SQL Command to get table
                 query = "SELECT ID AS Id, Ref AS Referência, taken AS Usado FROM tab_tags";
+                // resets the DataSet.
+                // so it cleans ALL data (resets the variable to null).
                 dset.Reset();
+                // Creates an Adapter to store the Data in the DataTable.
                 adapter = new OleDbDataAdapter(query, connection);
+                // Stores the Data in the DataTable.
                 adapter.Fill(dset);
+                // Sets the DataSource of Display Object (sfDataGrid1).
                 sfDataGrid1.DataSource = dset;
             }
             else if (Tabela == "tab_places")
             {
+                // SQL Command to get table
                 query = "SELECT ID AS Id, LocaLizacao As Localização, X, Y FROM tab_places";
+                // resets the DataSet.
+                // so it cleans ALL data (resets the variable to null).
                 dset.Reset();
+                // Creates an Adapter to store the Data in the DataTable.
                 adapter = new OleDbDataAdapter(query, connection);
+                // Stores the Data in the DataTable.
                 adapter.Fill(dset);
+                // Sets the DataSource of Display Object (sfDataGrid1).
                 sfDataGrid1.DataSource = dset;
             }
             else if (Tabela == "tab_teams")
             {
+                // SQL Command to get table
                 query = "SELECT ID AS Id, Descricao As Descrição FROM tab_teams";
+                // resets the DataSet.
+                // so it cleans ALL data (resets the variable to null).
                 dset.Reset();
+                // Creates an Adapter to store the Data in the DataTable.
                 adapter = new OleDbDataAdapter(query, connection);
+                // Stores the Data in the DataTable.
                 adapter.Fill(dset);
+                // Sets the DataSource of Display Object (sfDataGrid1).
                 sfDataGrid1.DataSource = dset;
             }
             else
             {
+                // SQL Command to get table
                 query = "SELECT * FROM " + Tabela;
+                // resets the DataSet.
+                // so it cleans ALL data (resets the variable to null).
                 dset.Reset();
+                // Creates an Adapter to store the Data in the DataTable.
                 adapter = new OleDbDataAdapter(query, connection);
+                // Stores the Data in the DataTable.
                 adapter.Fill(dset);
+                // Sets the DataSource of Display Object (sfDataGrid1).
                 sfDataGrid1.DataSource = dset;
             }
+            // Disables buttons and Updates Tables (Clsoes Connection)
             Modify_Button.Enabled = false;
             Remove_Button.Enabled = false;
             sfDataGrid1.Update();
