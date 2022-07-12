@@ -114,6 +114,19 @@ namespace Software_Base_de_Dados
                         oleDbCommand.Parameters.Add("@taken", OleDbType.LongVarChar).Value = taken;
                     }
                 }
+                if (connection.State == ConnectionState.Closed)
+                {
+                    try
+                    {
+                        connection.ConnectionString = Tables.Caminho;
+                        connection.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
                 // Execute command.
                 try
                 {

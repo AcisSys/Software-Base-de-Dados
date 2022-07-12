@@ -84,19 +84,7 @@ namespace Software_Base_de_Dados
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (connection.State == ConnectionState.Closed)
-            {
-                try
-                {
-                    connection.ConnectionString = Tables.Caminho;
-                    connection.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            
             // Verifies entries.
             if ((maskedTextBox2.Text == "") || (sfComboBox1.SelectedItem == null))
             {
@@ -136,6 +124,19 @@ namespace Software_Base_de_Dados
                     oleDbCommand.Parameters.Add("@IDPlace", OleDbType.Integer).Value = int.Parse(sfComboBox1.Text);
                     oleDbCommand.Parameters.Add("@Active", OleDbType.LongVarChar).Value = active;
                     oleDbCommand.Parameters.Add("@RefTag", OleDbType.Integer).Value = int.Parse(sfComboBox2.Text);
+                }
+                if (connection.State == ConnectionState.Closed)
+                {
+                    try
+                    {
+                        connection.ConnectionString = Tables.Caminho;
+                        connection.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Não foi possivel connectar á base de dados\n" + ex.Message, "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 try
                 {
