@@ -80,7 +80,7 @@
             this.Modify_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Modify_Button.Enabled = false;
             this.Modify_Button.Image = ((System.Drawing.Image)(resources.GetObject("Modify_Button.Image")));
-            this.Modify_Button.Location = new System.Drawing.Point(811, 390);
+            this.Modify_Button.Location = new System.Drawing.Point(808, 390);
             this.Modify_Button.Name = "Modify_Button";
             this.Modify_Button.Size = new System.Drawing.Size(164, 65);
             this.Modify_Button.TabIndex = 7;

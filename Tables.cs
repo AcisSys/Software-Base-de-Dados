@@ -68,7 +68,6 @@ namespace Software_Base_de_Dados
                 // Stores the Data in the DataTable.
                 adapter.Fill(dset);
                 // Sets the DataSource of Display Object (sfDataGrid1).
-                
                 sfDataGrid1.DataSource = dset;
             }
             else if (Tabela == "tab_workers")
@@ -117,7 +116,7 @@ namespace Software_Base_de_Dados
             }
             else if (Tabela == "tab_teams")
             {
-                // SQL Command to get table
+                // SQL Command to get table.
                 query = "SELECT ID AS Id, Descricao As Descrição FROM tab_teams";
                 // resets the DataSet.
                 // so it cleans ALL data (resets the variable to null).
