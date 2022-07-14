@@ -40,6 +40,7 @@ namespace Software_Base_de_Dados
                 int maxid = (int)oleDbCommand.ExecuteScalar();
                 int currentid = maxid + 1;
                 maskedTextBox1.Text = currentid.ToString();
+                
             }
             else
             {
